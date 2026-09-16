@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Катя • English — интерактивные уроки</title>
+<style>
+
+  :root{
+    --ivory: #FBF9F5;
+    --card: #FFFFFF;
+    --ink: #2A2630;
+    --ink-soft: #756E7C;
+    --ink-faint: #A79FB0;
+    --violet: #7A5AC7;
+    --violet-soft: #EFE9FA;
+    --amber: #E3A23B;
+    --amber-soft: #FBF0DC;
+    --hairline: #E9E4DD;
+    --shadow-rest: 0 1px 2px rgba(42,38,48,0.04), 0 1px 1px rgba(42,38,48,0.03);
+    --shadow-hover: 0 20px 40px -18px rgba(122,90,199,0.28), 0 6px 14px -6px rgba(42,38,48,0.08);
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body{
+    margin: 0;
+    background: var(--ivory);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* ---------- decorative background shapes ---------- */
+
+  .field-shape{
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .field-shape--violet{
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle, rgba(122,90,199,0.16), rgba(122,90,199,0) 70%);
+    top: -140px;
+    right: -100px;
+  }
+  .field-shape--amber{
+    width: 360px;
+    height: 360px;
+    background: radial-gradient(circle, rgba(227,162,59,0.14), rgba(227,162,59,0) 70%);
+    top: 420px;
+    left: -160px;
+  }
+
+  /* ---------- layout shell ---------- */
+
+  .page{
+    position: relative;
+    z-index: 1;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 88px 32px 64px;
+  }
+
+  /* ---------- hero ---------- */
+
+  .hero{
+    text-align: center;
+    margin-bottom: 96px;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes rise{
+    to{ opacity: 1; transform: translateY(0); }
+  }
+
+  .hero__eyebrow{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+    font-weight: 600;
+    margin-bottom: 28px;
+  }
+
+  .hero__eyebrow-dot{
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--violet);
+  }
+
+  .hero__title{
+    font-family: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-weight: 500;
+    font-size: clamp(38px, 6vw, 64px);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    margin: 0 0 22px;
+    color: var(--ink);
+  }
+
+  .hero__subtitle{
+    font-size: 17px;
+    color: var(--ink-soft);
+    max-width: 440px;
+    margin: 0 auto;
+  }
+
+  .hero__rule{
+    width: 56px;
+    height: 2px;
+    margin: 32px auto 0;
+    background: linear-gradient(90deg, var(--violet), var(--amber));
+    border-radius: 2px;
+  }
+
+  /* ---------- students section ---------- */
+
+  .section-label{
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+    color: var(--ink-faint);
+    margin: 0 0 28px;
+  }
+
+  .grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+
+  /* ---------- card ---------- */
+
+  .card{
+    position: relative;
+    display: block;
+    background: var(--card);
+    border: 1px solid var(--hairline);
+    border-radius: 20px;
+    padding: 30px 26px 28px;
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    box-shadow: var(--shadow-rest);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.35s ease;
+  }
+
+  .card:hover,
+  .card:focus-visible{
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+    border-color: rgba(122,90,199,0.28);
+  }
+
+  .card:focus-visible{
+    outline: 2px solid var(--violet);
+    outline-offset: 3px;
+  }
+
+  .card__mark{
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: var(--violet-soft);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .card--amber .card__mark{
+    background: var(--amber-soft);
+  }
+
+  .card:hover .card__mark{
+    transform: scale(1.15);
+  }
+
+  .card__name{
+    position: relative;
+    font-family: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size: 26px;
+    font-weight: 500;
+    margin: 0 0 8px;
+    color: var(--ink);
+  }
+
+  .card__meta{
+    position: relative;
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .card__arrow{
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid var(--hairline);
+    margin-top: 20px;
+    transition: border-color 0.35s ease, background 0.35s ease;
+  }
+
+  .card:hover .card__arrow{
+    border-color: transparent;
+    background: var(--violet);
+  }
+
+  .card__arrow svg{
+    width: 13px;
+    height: 13px;
+    stroke: var(--ink-soft);
+    transition: stroke 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .card:hover .card__arrow svg{
+    stroke: #fff;
+    transform: translateX(2px);
+  }
+
+  /* ---------- footer ---------- */
+
+  .footer{
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 40px 32px 56px;
+    border-top: 1px solid var(--hairline);
+    margin-top: 88px;
+  }
+
+  .footer__title{
+    font-family: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
+    margin: 0 0 4px;
+  }
+
+  .footer__sub{
+    font-size: 13px;
+    color: var(--ink-faint);
+    margin: 0;
+  }
+
+  /* ---------- responsive ---------- */
+
+  @media (max-width: 640px){
+    .page{ padding: 64px 20px 40px; }
+    .hero{ margin-bottom: 64px; }
+    .grid{ grid-template-columns: 1fr; }
+    .card{ padding: 26px 22px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    .hero{ opacity: 1; transform: none; }
+  }
+
+</style>
+</head>
+<body>
+
+  <div class="field-shape field-shape--violet"></div>
+  <div class="field-shape field-shape--amber"></div>
+
+  <div class="page">
+
+    <header class="hero">
+      <div class="hero__eyebrow">
+        <span class="hero__eyebrow-dot"></span>
+        Катя · English
+      </div>
+      <h1 class="hero__title">Интерактивные уроки</h1>
+      <p class="hero__subtitle">Здесь собраны материалы для наших занятий</p>
+      <div class="hero__rule"></div>
+    </header>
+
+    <main>
+      <h2 class="section-label">Мои ученики</h2>
+
+      <div class="grid" id="studentGrid">
+        <!-- Cards are rendered from data below -->
+      </div>
+    </main>
+
+  </div>
+
+  <footer class="footer">
+    <p class="footer__title">Катя · English</p>
+    <p class="footer__sub">Интерактивные материалы для наших занятий</p>
+  </footer>
+
+  <script>
+    // Student list — order is meaningful and preserved on render.
+    // Add future students here; each becomes a card automatically.
+    var students = [
+      { name: "Самина", meta: "Русский язык · ОГЭ",        href: "./samina/",      accent: "violet" },
+      { name: "Лиза",   meta: "English · ЕГЭ · 11 класс",  href: "./lisa-ege/",    accent: "amber"  },
+      { name: "Лиза",   meta: "English",                    href: "./lisa-english/", accent: "violet" },
+      { name: "Женя",   meta: "English · 5 класс",          href: "./zhenya/",      accent: "amber"  },
+      { name: "Миша",   meta: "English",                    href: "./misha/",       accent: "violet" },
+      { name: "Настя",  meta: "Обществознание · ОГЭ",       href: "./nastya/",      accent: "amber"  }
+    ];
+
+    var grid = document.getElementById("studentGrid");
+
+    students.forEach(function(student){
+      var card = document.createElement("a");
+      card.className = "card" + (student.accent === "amber" ? " card--amber" : "");
+      card.href = student.href;
+
+      card.innerHTML =
+        '<span class="card__mark" aria-hidden="true"></span>' +
+        '<p class="card__name">' + student.name + '</p>' +
+        '<p class="card__meta">' + student.meta + '</p>' +
+        '<span class="card__arrow" aria-hidden="true">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+            '<line x1="5" y1="12" x2="19" y2="12"></line>' +
+            '<polyline points="12 5 19 12 12 19"></polyline>' +
+          '</svg>' +
+        '</span>';
+
+      grid.appendChild(card);
+    });
+  </script>
+
+</body>
+</html>
