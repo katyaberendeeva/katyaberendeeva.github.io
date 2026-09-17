@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Банки и банковская система — урок к ОГЭ, 9 класс</title>
+<style>
+  :root{
+    --ink:#182634; --paper:#FAF7F0; --gold:#B98A2E; --gold-soft:#E9D9B4;
+    --teal:#2F5C58; --teal-soft:#DCEAE7; --brick:#A24E3C; --brick-soft:#F0DED8;
+    --line:#D8CFBE; --ok:#3C6E47; --ok-soft:#DCEBDD; --bad:#A24E3C; --bad-soft:#F3DFDA;
+    --serif: "PT Serif", Georgia, "Times New Roman", serif;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans); line-height:1.55; font-size:16px;}
+  .wrap{max-width:820px; margin:0 auto; padding:0 24px 70px;}
+  header.hero{background:var(--ink); color:var(--paper); padding:44px 24px 30px; border-bottom:6px solid var(--gold);}
+  header.hero .wrap{padding:0;}
+  .eyebrow{font-family:var(--serif); font-style:italic; color:var(--gold-soft); font-size:1.05rem; margin:0 0 6px;}
+  h1.title{font-family:var(--serif); font-size:2.3rem; margin:0 0 12px; line-height:1.15; max-width:16ch;}
+  .hero-sub{max-width:56ch; color:#D9D2C2; font-size:1.02rem;}
+  .course-bar{display:flex; gap:0; margin-top:24px; border-top:1px solid #3a4c5c; border-bottom:1px solid #3a4c5c; flex-wrap:wrap;}
+  .course-step{flex:1; min-width:140px; padding:12px 14px; border-right:1px solid #3a4c5c;}
+  .course-step:last-child{border-right:none;}
+  .course-step .k{font-size:0.72rem; text-transform:uppercase; letter-spacing:0.04em; color:#9aa8b3;}
+  .course-step .v{font-family:var(--serif); font-size:1.02rem; margin-top:2px;}
+  .course-step.now{background:#233647;}
+  .course-step.now .v{color:var(--gold-soft);}
+  section{padding:36px 0; border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  h2{font-family:var(--serif); font-size:1.5rem; margin:0 0 6px;}
+  h2 .num{color:var(--gold); font-family:var(--sans); font-weight:700; font-size:0.95rem; display:block; margin-bottom:4px;}
+  h3{font-family:var(--serif); font-size:1.1rem; margin:20px 0 8px;}
+  p{margin:0 0 12px; max-width:70ch;}
+  .scenario{background:var(--teal-soft); border-left:4px solid var(--teal); padding:16px 20px; border-radius:2px; margin:14px 0; font-family:var(--serif); font-size:1.05rem;}
+  .example{background:var(--gold-soft); border-left:4px solid var(--gold); padding:12px 18px; margin:12px 0; border-radius:2px;}
+  .example .tag{font-weight:700; font-size:0.78rem; color:#7a5b1a; margin-bottom:4px; display:block;}
+  table{width:100%; border-collapse:collapse; margin:14px 0; font-size:0.92rem;}
+  th,td{border:1px solid var(--line); padding:9px 11px; text-align:left; vertical-align:top;}
+  th{background:var(--ink); color:var(--paper); font-weight:600;}
+  tr:nth-child(even) td{background:#F2EEE3;}
+  ul,ol{margin:0 0 12px; padding-left:20px;}
+  li{margin-bottom:5px;}
+  details.q{border:1px solid var(--line); border-radius:4px; margin:10px 0; background:#fff;}
+  details.q summary{padding:12px 16px; cursor:pointer; font-weight:600; list-style:none; display:flex; gap:10px; align-items:baseline;}
+  details.q summary::-webkit-details-marker{display:none;}
+  details.q summary::before{content:"?"; background:var(--teal); color:#fff; width:20px; height:20px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:0.75rem; flex-shrink:0;}
+  details.q[open] summary::before{content:"✓"; background:var(--ok);}
+  .qbody{padding:0 16px 16px; border-top:1px solid var(--line);}
+  .qbody .opts{margin:10px 0;}
+  .qbody .opt{padding:5px 0; color:#555;}
+  .answer{margin-top:10px; background:var(--ok-soft); border-left:4px solid var(--ok); padding:9px 14px; border-radius:2px;}
+  .answer .lbl{font-weight:700; color:var(--ok); font-size:0.82rem;}
+  .why{font-size:0.87rem; color:#556; margin-top:5px;}
+  .howto{font-size:0.85rem; color:#6b5a2a; margin-top:6px; font-style:italic;}
+  details.written{border:1px solid var(--line); border-radius:4px; margin:12px 0; background:#fff;}
+  details.written summary{padding:12px 16px; cursor:pointer; font-weight:600; list-style:none;}
+  details.written summary::-webkit-details-marker{display:none;}
+  details.written summary::before{content:"✎ "; color:var(--brick);}
+  .wbody{padding:0 16px 16px; border-top:1px solid var(--line);}
+  .model{background:var(--teal-soft); border-left:4px solid var(--teal); padding:9px 14px; margin-top:10px; border-radius:2px; font-size:0.92rem;}
+  .criteria{font-size:0.87rem; color:#556;}
+  textarea{width:100%; min-height:70px; margin-top:8px; border:1px solid var(--line); border-radius:4px; padding:9px; font-family:var(--sans); font-size:0.92rem; resize:vertical;}
+  .factcard{background:#F2EEE3; border:1px dashed var(--line); border-radius:4px; padding:12px 16px; margin:14px 0; font-size:0.92rem;}
+  .factcard .tag{font-weight:700; color:var(--brick); font-size:0.78rem; display:block; margin-bottom:4px;}
+  .trap{background:var(--bad-soft); border-left:4px solid var(--bad); padding:11px 16px; margin:9px 0; border-radius:2px; font-size:0.94rem;}
+  .trap b{color:var(--bad);}
+  .tagline{display:inline-block; font-size:0.72rem; font-weight:700; padding:2px 8px; border-radius:10px; margin-bottom:8px;}
+  .tag-official{background:var(--teal-soft); color:var(--teal);}
+  .tag-adapted{background:var(--gold-soft); color:#7a5b1a;}
+  .cheatsheet{background:var(--ink); color:var(--paper); padding:28px 24px; border-radius:6px; margin-top:16px;}
+  .cheatsheet h3{color:var(--gold-soft); margin-top:0;}
+  .flow{display:flex; flex-direction:column; align-items:flex-start; gap:2px; font-family:var(--serif); font-size:1.05rem;}
+  .flow .step{padding:3px 0;}
+  .flow .arrow{color:var(--gold); font-size:0.85rem; padding-left:6px;}
+  .source{font-size:0.76rem; color:#8a8272; margin-top:2px;}
+  .toc{display:flex; flex-wrap:wrap; gap:8px; margin-top:20px;}
+  .toc a{font-size:0.8rem; color:var(--gold-soft); text-decoration:none; border:1px solid #4a5a68; padding:5px 10px; border-radius:14px;}
+  .toc a:hover{background:#233647;}
+  .hwbox{background:var(--teal-soft); border:1px solid var(--teal); border-radius:6px; padding:18px 22px; margin-top:10px;}
+  .srclist{font-size:0.85rem; color:#556;}
+  .srclist li{margin-bottom:4px;}
+  .glossary{display:grid; grid-template-columns:1fr; gap:10px; margin-top:14px;}
+  .gterm{border-left:3px solid var(--gold); padding-left:12px;}
+  .gterm b{font-family:var(--serif); font-size:1.02rem;}
+  @media(max-width:600px){h1.title{font-size:1.9rem;} header.hero{padding:36px 18px 24px;} section{padding:26px 0;} .course-step{border-right:none; border-bottom:1px solid #3a4c5c;}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Обществознание · 9 класс · подготовка к ОГЭ-2027</p>
+    <h1 class="title">🏦 Банки и банковская система</h1>
+    <p class="hero-sub">Третий урок мини-курса по экономике. Разберёмся, зачем нужны банки, что такое ключевая ставка и как она связана с инфляцией.</p>
+    <div class="course-bar">
+      <div class="course-step"><div class="k">Уже знаем</div><div class="v">Инфляция, Деньги</div></div>
+      <div class="course-step now"><div class="k">Сегодня</div><div class="v">Банки и банковская система</div></div>
+      <div class="course-step"><div class="k">Дальше</div><div class="v">Рынок</div></div>
+    </div>
+    <div class="toc">
+      <a href="#s0">Про ставку 150 ₽/час</a><a href="#s1">Разогрев</a><a href="#s2">Что такое банк</a>
+      <a href="#s3">Банковская система</a><a href="#s5">Ключевая ставка</a><a href="#s6">Ставка и инфляция</a>
+      <a href="#s8">Вклад</a><a href="#s9">Кредит</a><a href="#s11">Карты</a>
+      <a href="#s13">Практика ОГЭ</a><a href="#s14">Письменная часть</a><a href="#s15">Мини-тест</a>
+      <a href="#s16">Шпаргалка</a><a href="#s17">Домашнее задание</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section id="s0">
+  <h2><span class="num">Прежде чем начать</span>Помнишь разговор про ставку?</h2>
+  <div class="scenario">
+    Кстати, вспомнила наш прошлый разговор про ставку. Тогда ты сказала, что ставка — это, например, 150 рублей в час на работе. И в этом контексте твоя логика была абсолютно понятной: ставка правда может означать сумму за единицу времени.<br><br>
+    Но сегодня мы встретим слово «ставка» в другом смысле. Теперь речь пойдёт не про одного человека и не про одну работу, а про экономику целой страны.<br><br>
+    <b>Ключевая ставка — это уже не 150 рублей в час. Это процентная ставка, которую устанавливает Центральный банк и которая влияет на стоимость денег в экономике.</b>
+  </div>
+  <details class="q">
+    <summary>Мини-вопрос: почему число процентов, которое устанавливает Центральный банк где-то «наверху», вообще может повлиять на обычного человека?</summary>
+    <div class="qbody"><div class="answer">Потому что это число влияет на то, насколько дорого или дёшево банкам обходятся деньги — а значит, и на то, под какой процент банки предлагают кредиты и вклады обычным людям. Разберёмся в этом по порядку.</div></div>
+  </details>
+</section>
+
+<section id="s1">
+  <h2><span class="num">Разогрев</span>Зачем вообще существуют банки?</h2>
+  <div class="scenario">
+    У тебя есть 100 000 ₽. Можно хранить их дома, положить в банк, потратить или, наоборот, взять ещё денег в кредит на крупную покупку. Зачем вообще нужны банки, если деньги можно просто держать дома?
+  </div>
+  <details class="q"><summary>Зачем люди хранят деньги в банке, а не дома?</summary>
+    <div class="qbody"><div class="answer">Деньги в банке защищены от кражи и пожара, а ещё банк платит за хранение процент — деньги «работают», пока лежат на счёте.</div></div></details>
+  <details class="q"><summary>Зачем люди берут кредиты?</summary>
+    <div class="qbody"><div class="answer">Чтобы получить крупную сумму сейчас (на квартиру, машину, учёбу), а не копить на неё много лет.</div></div></details>
+  <details class="q"><summary>Почему банк готов платить проценты вкладчику?</summary>
+    <div class="qbody"><div class="answer">Банк привлекает деньги клиентов и использует привлечённые средства и другие источники финансирования в своей банковской деятельности, в том числе для выдачи кредитов, — поэтому ему выгодно привлекать вклады.</div></div></details>
+  <details class="q"><summary>Почему банк сам берёт проценты с тех, кому выдаёт кредит?</summary>
+    <div class="qbody"><div class="answer">Это плата за то, что банк даёт деньги в пользование прямо сейчас, — источник дохода банка. Разберём это подробнее ниже.</div></div></details>
+  <p>Сегодня разбираемся, как вообще работает банковская система.</p>
+</section>
+
+<section id="s2">
+  <h2><span class="num">01 · Теория</span>Что такое банк</h2>
+  <p><b>Банк</b> — финансовая организация, которая принимает деньги, проводит платежи и предоставляет кредиты.</p>
+  <div class="example"><span class="tag">Это не абстракция — это твоя повседневность</span>Получил зарплату на карту; положил деньги на вклад; оплатил покупку картой; перевёл деньги другу; взял кредит на технику — всё это операции через банк.</div>
+  <details class="q"><summary>Мини-вопрос: когда ты в последний раз пользовался услугами банка, даже не задумываясь об этом?</summary>
+    <div class="qbody"><div class="answer">Скорее всего, каждый раз, когда оплачивал что-то картой или получал перевод, — это уже банковская операция.</div></div></details>
+</section>
+
+<section id="s3">
+  <h2><span class="num">02 · Теория</span>Банковская система</h2>
+  <p>Банковская система страны устроена просто:</p>
+  <div class="scenario">банковская система → Центральный банк + коммерческие банки</div>
+  <p>В России Центральный банк — Банк России — является главным регулятором банковской системы. Коммерческих банков много, и именно с ними обычные люди работают напрямую: открывают счета, пользуются картами, размещают вклады, берут кредиты.</p>
+</section>
+
+<section id="s4">
+  <h2><span class="num">03 · Теория</span>Центральный банк</h2>
+  <p><b>Центральный банк</b> (в России — Банк России) — главный банк страны, который не обслуживает обычных клиентов напрямую, а регулирует всю банковскую систему.</p>
+  <div class="example"><span class="tag">Что делает Центральный банк</span>
+    <ul style="margin-bottom:0;">
+      <li>Регулирует работу банковской системы страны.</li>
+      <li>Выпускает наличные деньги.</li>
+      <li>Устанавливает ключевую ставку.</li>
+      <li>Проводит денежно-кредитную политику — то есть влияет на количество и стоимость денег в экономике.</li>
+    </ul>
+  </div>
+  <details class="q"><summary>Мини-вопрос: пойдёт ли обычный человек в Центральный банк, чтобы открыть вклад или получить карту?</summary>
+    <div class="qbody"><div class="answer">Нет — этим занимаются коммерческие банки. Центральный банк работает не с людьми напрямую, а со всей банковской системой в целом.</div></div></details>
+</section>
+
+<section id="s5">
+  <h2><span class="num">04 · Теория</span>Ключевая ставка — главный живой блок</h2>
+  <p>Мы выяснили, что слово «ставка» бывает разным. Теперь посмотрим, что значит именно <b>ключевая</b> ставка.</p>
+  <p><b>Ключевая ставка</b> — процентная ставка, которую устанавливает Центральный банк и которая влияет на стоимость денег и процентные ставки в экономике.</p>
+  <div class="example"><span class="tag">Простыми словами</span>
+    Ключевая ставка высокая → брать деньги в долг становится дороже → кредиты обычно становятся дороже.<br>
+    Ключевая ставка снижается → кредиты обычно могут становиться доступнее.
+  </div>
+  <div class="factcard"><span class="tag">Важно не перепутать</span>Коммерческий банк не обязан выдавать кредит ровно по ключевой ставке. Ключевая ставка <b>влияет</b> на условия кредитов и вкладов, но конкретный процент каждый банк устанавливает сам.</div>
+  <details class="q"><summary>Мини-вопрос: если Центральный банк повысил ключевую ставку, что, скорее всего, произойдёт с кредитами в обычных банках?</summary>
+    <div class="qbody"><div class="answer">Они, скорее всего, подорожают — банкам самим становится дороже привлекать деньги, и это обычно отражается на ставках по кредитам для клиентов.</div></div></details>
+</section>
+
+<section id="s6">
+  <h2><span class="num">05 · Теория</span>📈 Ключевая ставка и инфляция</h2>
+  <p>Вспомним первый урок: инфляция — это устойчивый рост цен, который снижает покупательную способность денег. Вот как ключевая ставка связана с этим:</p>
+  <div class="cheatsheet" style="background:var(--teal-soft); color:var(--ink);">
+    <div class="flow">
+      <div class="step">инфляция высокая</div><div class="arrow">↓</div>
+      <div class="step">Центральный банк может повысить ключевую ставку</div><div class="arrow">↓</div>
+      <div class="step">кредиты становятся дороже</div><div class="arrow">↓</div>
+      <div class="step">люди и бизнес могут брать меньше кредитов</div><div class="arrow">↓</div>
+      <div class="step">спрос может снизиться</div><div class="arrow">↓</div>
+      <div class="step">инфляционное давление может ослабнуть</div>
+    </div>
+  </div>
+  <div class="factcard"><span class="tag">Важно</span>Это упрощённая логика для понимания темы, а не единственный фактор, который влияет на инфляцию в реальной экономике.</div>
+  <details class="q"><summary>Мини-вопрос: почему более дорогие кредиты могут снизить давление на цены?</summary>
+    <div class="qbody"><div class="answer">Если кредиты дороже, люди и компании реже их берут и меньше тратят — спрос на товары и услуги снижается, а значит, у продавцов меньше повода поднимать цены.</div></div></details>
+</section>
+
+<section id="s7">
+  <h2><span class="num">06 · Теория</span>Коммерческие банки</h2>
+  <p><b>Коммерческий банк</b> работает непосредственно с клиентами — с тобой, твоими родителями, компаниями.</p>
+  <ul>
+    <li>Принимает вклады.</li>
+    <li>Выдаёт кредиты.</li>
+    <li>Осуществляет платежи и переводы.</li>
+    <li>Работает с банковскими счетами и картами.</li>
+  </ul>
+  <table>
+    <tr><th>Центральный банк</th><th>Коммерческий банк</th></tr>
+    <tr><td>Регулирует банковскую систему</td><td>Работает с клиентами</td></tr>
+    <tr><td>Выпускает наличные деньги</td><td>Принимает вклады</td></tr>
+    <tr><td>Устанавливает ключевую ставку</td><td>Выдаёт кредиты</td></tr>
+    <tr><td>Проводит денежно-кредитную политику</td><td>Осуществляет платежи и переводы</td></tr>
+  </table>
+  <details class="q"><summary>Мини-вопрос: если тебе нужно открыть вклад — ты идёшь в Центральный банк или в коммерческий?</summary>
+    <div class="qbody"><div class="answer">В коммерческий банк — именно он работает напрямую с клиентами.</div></div></details>
+</section>
+
+<section id="s8">
+  <h2><span class="num">07 · Теория</span>💰 Вклад</h2>
+  <p><b>Вклад (депозит)</b> — деньги, которые человек размещает в банке на определённых условиях и за которые получает процентный доход.</p>
+  <div class="example"><span class="tag">Простой расчёт</span>100 000 ₽ под 10% годовых. Для простоты представим, что банк начисляет 10% от первоначальной суммы за год.<br>За год начислят: 100 000 × 10% = <b>10 000 ₽</b>.<br>Через год на счёте будет 110 000 ₽ — исходная сумма плюс проценты.</div>
+  <details class="q"><summary>Мини-вопрос: почему банк вообще готов платить человеку за то, что тот просто хранит у него деньги?</summary>
+    <div class="qbody"><div class="answer">Банк привлекает деньги клиентов и использует привлечённые средства в своей банковской деятельности, в том числе для выдачи кредитов другим клиентам под более высокий процент, — часть этой разницы банк отдаёт вкладчику в виде процента по вкладу.</div></div></details>
+</section>
+
+<section id="s9">
+  <h2><span class="num">08 · Теория</span>Кредит</h2>
+  <p><b>Кредит</b> — деньги, которые банк предоставляет человеку или организации на определённых условиях, с обязанностью вернуть их, обычно с процентами.</p>
+  <div class="example"><span class="tag">Простой пример</span>Банк дал: 100 000 ₽.<br>Вернуть нужно: 110 000 ₽.<br>Дополнительные 10 000 ₽ — это <b>проценты</b>, плата за пользование кредитом.</div>
+  <ul>
+    <li><b>Сумма кредита</b> — сколько денег банк выдал.</li>
+    <li><b>Срок</b> — за какое время нужно вернуть деньги.</li>
+    <li><b>Процент</b> — плата за пользование кредитом.</li>
+    <li><b>Переплата</b> — сколько всего сверх суммы кредита придётся заплатить банку.</li>
+  </ul>
+  <details class="q"><summary>Мини-вопрос: чем 10 000 ₽ переплаты по кредиту отличаются от 10 000 ₽ процентов по вкладу?</summary>
+    <div class="qbody"><div class="answer">По вкладу проценты получает клиент — это его доход. По кредиту проценты платит клиент банку — это его расход, плата за пользование чужими деньгами.</div></div></details>
+</section>
+
+<section id="s10">
+  <h2><span class="num">09 · Теория</span>Как банк зарабатывает</h2>
+  <div class="scenario">вкладчики → банк → кредиты → заёмщики → проценты → банк</div>
+  <p>Банк привлекает деньги (вклады, счета клиентов) и выдаёт кредиты, зарабатывая на разнице процентов и на других услугах. Это упрощённая схема: банк не берёт деньги конкретного вкладчика и не передаёт их буквально конкретному заёмщику — он работает с общим потоком денег.</p>
+</section>
+
+<section id="s11">
+  <h2><span class="num">10 · Теория</span>💳 Дебетовая и кредитная карта</h2>
+  <table>
+    <tr><th>Дебетовая карта</th><th>Кредитная карта</th></tr>
+    <tr><td>Собственные деньги</td><td>Заёмные деньги банка</td></tr>
+    <tr><td>Потратил — уменьшились свои средства</td><td>Потратил — возникает задолженность перед банком</td></tr>
+    <tr><td>Зарплата может поступать на карту</td><td>Есть кредитный лимит</td></tr>
+  </table>
+  <div class="factcard"><span class="tag">Важно не перепутать</span>По кредитной карте возникает задолженность перед банком, которую необходимо погасить. Условия начисления процентов зависят от условий конкретной карты — не по любой покупке проценты начисляются автоматически.</div>
+  <details class="q"><summary>Ситуация 1: девушка расплатилась дебетовой картой за продукты. Откуда списались деньги?</summary>
+    <div class="qbody"><div class="answer">С её собственного счёта — это её деньги, а не деньги банка.</div></div></details>
+  <details class="q"><summary>Ситуация 2: молодой человек оплатил ремонт телефона кредитной картой, у него не было своих денег на счёте. Что произошло?</summary>
+    <div class="qbody"><div class="answer">У него возникла задолженность перед банком — он потратил заёмные деньги в пределах кредитного лимита, и теперь должен их вернуть; будут ли начислены проценты и в каком размере, зависит от условий конкретной карты.</div></div></details>
+</section>
+
+<section id="s12">
+  <h2><span class="num">Связь с уроком «Деньги»</span></h2>
+  <p>Помнишь функции денег из прошлого урока? Банк — это как раз то, что помогает деньгам перемещаться между людьми и организациями.</p>
+  <div class="scenario">человек получает зарплату → хранит деньги на счёте → оплачивает покупку → переводит деньги другу → при необходимости берёт кредит</div>
+  <p>На каждом из этих шагов работает банк — деньги не просто существуют, а всё время двигаются между людьми и организациями именно через банковскую систему.</p>
+</section>
+
+<section id="s13">
+  <h2><span class="num">Практика ОГЭ</span>Задания по теме «Банки»</h2>
+  <p>Задания составлены по реальным форматам и проверяемому содержанию ОГЭ. Если задание — адаптированный вариант по формату ОГЭ, это указано отдельно.</p>
+
+  <details class="q"><summary><span class="tagline tag-adapted">адаптированный вариант по формату ОГЭ</span><br>1. Выберите правильное определение банка</summary>
+    <div class="qbody"><div class="opts">
+      <div class="opt">А) финансовая организация, которая принимает деньги, проводит платежи и предоставляет кредиты</div>
+      <div class="opt">Б) государственное учреждение, которое печатает деньги для всех желающих</div>
+      <div class="opt">В) магазин, где продают финансовые услуги без ограничений</div>
+    </div><div class="answer"><span class="lbl">Ответ: А</span></div></div>
+  </details>
+
+  <details class="q"><summary><span class="tagline tag-adapted">адаптированный вариант по формату ОГЭ</span><br>2. Какая из перечисленных функций относится именно к Центральному банку?</summary>
+    <div class="qbody"><div class="opts">
+      <div class="opt">А) выдаёт кредиты населению</div>
+      <div class="opt">Б) устанавливает ключевую ставку</div>
+      <div class="opt">В) принимает вклады у частных лиц</div>
+    </div><div class="answer"><span class="lbl">Ответ: Б</span></div></div>
+  </details>
+
+  <details class="q"><summary><span class="tagline tag-adapted">адаптированный вариант по формату ОГЭ</span><br>3. Установите соответствие между действием и типом банка</summary>
+    <div class="qbody"><p><b>Действия:</b> 1) открыл вклад под процент 2) установил ключевую ставку<br><b>Банки:</b> А) Центральный банк Б) коммерческий банк</p>
+    <div class="answer"><span class="lbl">Ответ: 1—Б, 2—А</span></div></div>
+  </details>
+
+  <details class="q"><summary><span class="tagline tag-adapted">адаптированный вариант по формату ОГЭ</span><br>4. Человек положил 100 000 ₽ на вклад под 8% годовых. Что произойдёт с этой суммой через год при прочих равных условиях?</summary>
+    <div class="qbody"><div class="answer"><span class="lbl">Ответ: сумма увеличится примерно на 8 000 ₽</span><div class="why">Банк начислит процентный доход — вкладчик получит исходную сумму плюс проценты.</div></div></div>
+  </details>
+
+  <details class="q"><summary><span class="tagline tag-adapted">адаптированный вариант по формату ОГЭ</span><br>5. Определите кредитную ситуацию: банк выдал 50 000 ₽, вернуть нужно 55 000 ₽. Чем являются 5 000 ₽?</summary>
+    <div class="qbody"><div class="answer"><span class="lbl">Ответ: это проценты (переплата) за пользование кредитом</span></div></div>
+  </details>
+
+  <details class="q"><summary><span class="tagline tag-adapted">адаптированный вариант по формату ОГЭ</span><br>6. Верны ли следующие суждения о ключевой ставке?<br>А. Ключевую ставку устанавливает Центральный банк.<br>Б. Коммерческие банки обязаны выдавать кредиты ровно по ключевой ставке.</summary>
+    <div class="qbody"><div class="opts">
+      <div class="opt">1) верно только А</div>
+      <div class="opt">2) верно только Б</div>
+      <div class="opt">3) верны оба суждения</div>
+      <div class="opt">4) оба суждения неверны</div>
+    </div><div class="answer"><span class="lbl">Ответ: 1</span><div class="why">Суждение Б неверно: ключевая ставка влияет на условия кредитов, но не обязывает банки выдавать кредиты именно по ней.</div></div></div>
+  </details>
+
+  <details class="q"><summary><span class="tagline tag-adapted">адаптированный вариант по формату ОГЭ</span><br>7. Ситуация. Центральный банк снизил ключевую ставку. Что, скорее всего, произойдёт с условиями кредитов в коммерческих банках?</summary>
+    <div class="qbody"><div class="answer"><span class="lbl">Ответ: кредиты, скорее всего, станут доступнее (дешевле)</span></div></div>
+  </details>
+
+  <details class="q"><summary><span class="tagline tag-adapted">адаптированный вариант по формату ОГЭ</span><br>8. Девушка расплатилась в магазине картой, деньги списались с её собственного счёта. Какая это карта?</summary>
+    <div class="qbody"><div class="answer"><span class="lbl">Ответ: дебетовая</span></div></div>
+  </details>
+
+  <details class="q"><summary><span class="tagline tag-adapted">адаптированный вариант по формату ОГЭ</span><br>9. Ситуация. Центральный банк повысил ключевую ставку. Семья собиралась взять кредит на ремонт квартиры. Как изменение ставки может повлиять на решение семьи? Объясните.</summary>
+    <div class="qbody"><div class="answer"><span class="lbl">Ответ</span><div class="why">После повышения ключевой ставки кредиты, скорее всего, подорожают, поэтому семье может стать невыгодно брать кредит прямо сейчас — она может отложить ремонт, взять кредит на меньшую сумму или поискать более выгодные условия.</div></div></div>
+  </details>
+
+  <details class="q"><summary><span class="tagline tag-adapted">адаптированный вариант по формату ОГЭ</span><br>10. Ситуация. В стране ускорился рост цен. Центральный банк решил повысить ключевую ставку. Объясните, как это решение может повлиять на инфляцию.</summary>
+    <div class="qbody"><div class="answer"><span class="lbl">Ответ</span><div class="why">Более высокая ставка обычно делает кредиты дороже → люди и бизнес берут меньше кредитов и меньше тратят → спрос на товары и услуги может снизиться → это может ослабить инфляционное давление в экономике.</div></div></div>
+  </details>
+</section>
+
+<section id="s14">
+  <h2><span class="num">Письменная часть</span></h2>
+  <details class="written"><summary>1. Что такое ключевая ставка?</summary>
+    <div class="wbody">
+      <textarea placeholder="Впишите свой ответ..."></textarea>
+      <div class="model"><b>Эталонный ответ:</b> Ключевая ставка — процентная ставка, которую устанавливает Центральный банк и которая влияет на стоимость денег и процентные ставки в экономике.</div>
+      <p class="criteria"><b>Частая ошибка:</b> путают ключевую ставку с конкретной ставкой по кредиту в отдельном банке — ключевая ставка на неё именно влияет, а не задаёт напрямую.</p>
+    </div>
+  </details>
+  <details class="written"><summary>2. Почему повышение ключевой ставки может привести к снижению спроса на кредиты?</summary>
+    <div class="wbody">
+      <textarea placeholder="Впишите свой ответ..."></textarea>
+      <div class="model"><b>Эталонный ответ:</b> Когда ключевая ставка растёт, банкам становится дороже привлекать деньги, и они обычно повышают проценты по кредитам. Кредиты дорожают, поэтому людям и бизнесу становится невыгодно занимать деньги — спрос на кредиты снижается.</div>
+      <p class="criteria"><b>Критерий:</b> должна быть показана цепочка «ставка выше → кредит дороже → спрос ниже», а не просто утверждение без объяснения.</p>
+    </div>
+  </details>
+  <details class="written"><summary>3. Человек хочет положить деньги на вклад. Какие преимущества можно назвать? Какие моменты ему стоит учитывать?</summary>
+    <div class="wbody">
+      <textarea placeholder="Впишите свой ответ..."></textarea>
+      <div class="model"><b>Эталонный ответ:</b> Преимущества: деньги защищены от кражи лучше, чем дома, и приносят процентный доход. Учитывать стоит: на какой срок открывается вклад, можно ли снять деньги досрочно без потери процентов, и что при высокой инфляции реальная выгода от вклада может быть меньше, чем кажется по номинальной ставке.</div>
+      <p class="criteria"><b>Критерий:</b> ответ должен включать и плюсы, и хотя бы один момент, который нужно учитывать при выборе вклада.</p>
+    </div>
+  </details>
+</section>
+
+<section id="s15">
+  <h2><span class="num">Финальный мини-тест</span></h2>
+  <details class="q"><summary>1. Что из перечисленного лучше всего описывает банк?</summary>
+    <div class="qbody"><div class="opts">
+      <div class="opt">А) организация, которая принимает деньги, проводит платежи и выдаёт кредиты</div>
+      <div class="opt">Б) государственный орган, который печатает деньги для граждан по запросу</div>
+    </div><div class="answer"><span class="lbl">Ответ: А</span></div></div>
+  </details>
+  <details class="q"><summary>2. Кто устанавливает ключевую ставку?</summary>
+    <div class="qbody"><div class="answer">Центральный банк.</div></div>
+  </details>
+  <details class="q"><summary>3. Банк дал в кредит 60 000 ₽, вернуть нужно 66 000 ₽. Чем являются 6 000 ₽?</summary>
+    <div class="qbody"><div class="answer">Проценты (переплата) за пользование кредитом.</div></div>
+  </details>
+  <details class="q"><summary>4. Верны ли суждения?<br>А. Коммерческий банк принимает вклады у населения.<br>Б. Центральный банк напрямую выдаёт кредиты обычным людям.</summary>
+    <div class="qbody"><div class="opts">
+      <div class="opt">1) верно только А</div>
+      <div class="opt">2) верно только Б</div>
+      <div class="opt">3) верны оба суждения</div>
+      <div class="opt">4) оба суждения неверны</div>
+    </div><div class="answer"><span class="lbl">Ответ: 1</span><div class="why">Суждение Б неверно: Центральный банк не работает напрямую с обычными клиентами.</div></div></div>
+  </details>
+  <details class="q"><summary>5. Ситуация. В стране ускорился рост цен, и Центральный банк повысил ключевую ставку. Объясните своими словами: как это решение может отразиться на кредитах и на дальнейшей инфляции в стране?</summary>
+    <div class="qbody"><div class="answer"><span class="lbl">Ответ</span><div class="why">Кредиты, скорее всего, подорожают → люди и бизнес будут брать их реже и меньше тратить → спрос на товары и услуги может снизиться → это может ослабить инфляционное давление в экономике.</div></div></div>
+  </details>
+</section>
+
+<section id="s16">
+  <h2><span class="num">Итог</span>Банки за 1 минуту</h2>
+  <div class="glossary">
+    <div class="gterm"><b>Банк</b> — организация, которая принимает деньги, проводит платежи и выдаёт кредиты.</div>
+    <div class="gterm"><b>Центральный банк</b> — главный банк страны: регулирует систему, выпускает деньги, устанавливает ключевую ставку.</div>
+    <div class="gterm"><b>Коммерческий банк</b> — работает напрямую с клиентами: вклады, кредиты, карты, переводы.</div>
+    <div class="gterm"><b>Вклад</b> — деньги, размещённые в банке под процент в пользу вкладчика.</div>
+    <div class="gterm"><b>Кредит</b> — деньги банка, которые нужно вернуть, обычно с процентами.</div>
+    <div class="gterm"><b>Ключевая ставка</b> — ставка Центрального банка, которая влияет на стоимость денег в экономике.</div>
+    <div class="gterm"><b>Дебетовая карта</b> — доступ к собственным деньгам на счёте.</div>
+    <div class="gterm"><b>Кредитная карта</b> — доступ к заёмным деньгам банка в пределах лимита.</div>
+  </div>
+  <div class="cheatsheet">
+    <div class="flow">
+      <div class="step">ключевая ставка ↑</div><div class="arrow">↓</div>
+      <div class="step">кредиты обычно дороже</div><div class="arrow">↓</div>
+      <div class="step">спрос на кредиты может ↓</div>
+    </div>
+  </div>
+  <div class="cheatsheet" style="margin-top:14px;">
+    <div class="flow">
+      <div class="step">инфляция ↑</div><div class="arrow">↓</div>
+      <div class="step">ЦБ может повысить ключевую ставку</div><div class="arrow">↓</div>
+      <div class="step">кредиты дорожают</div><div class="arrow">↓</div>
+      <div class="step">спрос может снизиться</div><div class="arrow">↓</div>
+      <div class="step">инфляционное давление может ослабнуть</div>
+    </div>
+  </div>
+</section>
+
+<section id="s17">
+  <h2><span class="num">Домашнее задание</span>15–20 минут</h2>
+  <div class="hwbox">
+    <p><b>1. Определение.</b> Своими словами объясни, чем коммерческий банк отличается от Центрального банка.</p>
+    <p><b>2. Вклад или кредит?</b> Определи, что описано: (а) человек положил 30 000 ₽ под процент; (б) человек взял 30 000 ₽ и обязался вернуть 33 000 ₽.</p>
+    <p><b>3. Верны ли суждения?</b> А. Ключевая ставка влияет на условия кредитов в коммерческих банках. Б. Ключевая ставка напрямую устанавливает зарплату всех банковских сотрудников. Определи, какие суждения верны, и объясни почему.</p>
+    <p><b>4. Ситуация на ключевую ставку.</b> Центральный банк снизил ключевую ставку. Как это может повлиять на решение семьи взять кредит на ремонт квартиры? Объясни свой ответ.</p>
+  </div>
+  <p class="source">Задания домашней работы составлены автором урока по мотивам содержания и форматов ОГЭ — это не дословные задания реального экзамена.</p>
+</section>
+
+</div>
+</body>
+</html>

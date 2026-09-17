@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Деньги — урок к ОГЭ, 9 класс</title>
+<style>
+  :root{
+    --ink:#182634; --paper:#FAF7F0; --gold:#B98A2E; --gold-soft:#E9D9B4;
+    --teal:#2F5C58; --teal-soft:#DCEAE7; --brick:#A24E3C; --brick-soft:#F0DED8;
+    --line:#D8CFBE; --ok:#3C6E47; --ok-soft:#DCEBDD; --bad:#A24E3C; --bad-soft:#F3DFDA;
+    --serif: "PT Serif", Georgia, "Times New Roman", serif;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans); line-height:1.55; font-size:16px;}
+  .wrap{max-width:820px; margin:0 auto; padding:0 24px 70px;}
+  header.hero{background:var(--ink); color:var(--paper); padding:44px 24px 30px; border-bottom:6px solid var(--gold);}
+  header.hero .wrap{padding:0;}
+  .eyebrow{font-family:var(--serif); font-style:italic; color:var(--gold-soft); font-size:1.05rem; margin:0 0 6px;}
+  h1.title{font-family:var(--serif); font-size:2.3rem; margin:0 0 12px; line-height:1.15; max-width:16ch;}
+  .hero-sub{max-width:56ch; color:#D9D2C2; font-size:1.02rem;}
+  .course-bar{display:flex; gap:0; margin-top:24px; border-top:1px solid #3a4c5c; border-bottom:1px solid #3a4c5c; flex-wrap:wrap;}
+  .course-step{flex:1; min-width:140px; padding:12px 14px; border-right:1px solid #3a4c5c;}
+  .course-step:last-child{border-right:none;}
+  .course-step .k{font-size:0.72rem; text-transform:uppercase; letter-spacing:0.04em; color:#9aa8b3;}
+  .course-step .v{font-family:var(--serif); font-size:1.02rem; margin-top:2px;}
+  .course-step.now{background:#233647;}
+  .course-step.now .v{color:var(--gold-soft);}
+  section{padding:36px 0; border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  h2{font-family:var(--serif); font-size:1.5rem; margin:0 0 6px;}
+  h2 .num{color:var(--gold); font-family:var(--sans); font-weight:700; font-size:0.95rem; display:block; margin-bottom:4px;}
+  h3{font-family:var(--serif); font-size:1.1rem; margin:20px 0 8px;}
+  p{margin:0 0 12px; max-width:70ch;}
+  .scenario{background:var(--teal-soft); border-left:4px solid var(--teal); padding:16px 20px; border-radius:2px; margin:14px 0; font-family:var(--serif); font-size:1.05rem;}
+  .example{background:var(--gold-soft); border-left:4px solid var(--gold); padding:12px 18px; margin:12px 0; border-radius:2px;}
+  .example .tag{font-weight:700; font-size:0.78rem; color:#7a5b1a; margin-bottom:4px; display:block;}
+  table{width:100%; border-collapse:collapse; margin:14px 0; font-size:0.92rem;}
+  th,td{border:1px solid var(--line); padding:9px 11px; text-align:left; vertical-align:top;}
+  th{background:var(--ink); color:var(--paper); font-weight:600;}
+  tr:nth-child(even) td{background:#F2EEE3;}
+  ul,ol{margin:0 0 12px; padding-left:20px;}
+  li{margin-bottom:5px;}
+  details.q{border:1px solid var(--line); border-radius:4px; margin:10px 0; background:#fff;}
+  details.q summary{padding:12px 16px; cursor:pointer; font-weight:600; list-style:none; display:flex; gap:10px; align-items:baseline;}
+  details.q summary::-webkit-details-marker{display:none;}
+  details.q summary::before{content:"?"; background:var(--teal); color:#fff; width:20px; height:20px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:0.75rem; flex-shrink:0;}
+  details.q[open] summary::before{content:"✓"; background:var(--ok);}
+  .qbody{padding:0 16px 16px; border-top:1px solid var(--line);}
+  .qbody .opts{margin:10px 0;}
+  .qbody .opt{padding:5px 0; color:#555;}
+  .answer{margin-top:10px; background:var(--ok-soft); border-left:4px solid var(--ok); padding:9px 14px; border-radius:2px;}
+  .answer .lbl{font-weight:700; color:var(--ok); font-size:0.82rem;}
+  .why{font-size:0.87rem; color:#556; margin-top:5px;}
+  .howto{font-size:0.85rem; color:#6b5a2a; margin-top:6px; font-style:italic;}
+  details.written{border:1px solid var(--line); border-radius:4px; margin:12px 0; background:#fff;}
+  details.written summary{padding:12px 16px; cursor:pointer; font-weight:600; list-style:none;}
+  details.written summary::-webkit-details-marker{display:none;}
+  details.written summary::before{content:"✎ "; color:var(--brick);}
+  .wbody{padding:0 16px 16px; border-top:1px solid var(--line);}
+  .model{background:var(--teal-soft); border-left:4px solid var(--teal); padding:9px 14px; margin-top:10px; border-radius:2px; font-size:0.92rem;}
+  .criteria{font-size:0.87rem; color:#556;}
+  textarea{width:100%; min-height:70px; margin-top:8px; border:1px solid var(--line); border-radius:4px; padding:9px; font-family:var(--sans); font-size:0.92rem; resize:vertical;}
+  .factcard{background:#F2EEE3; border:1px dashed var(--line); border-radius:4px; padding:12px 16px; margin:14px 0; font-size:0.92rem;}
+  .factcard .tag{font-weight:700; color:var(--brick); font-size:0.78rem; display:block; margin-bottom:4px;}
+  .trap{background:var(--bad-soft); border-left:4px solid var(--bad); padding:11px 16px; margin:9px 0; border-radius:2px; font-size:0.94rem;}
+  .trap b{color:var(--bad);}
+  .tagline{display:inline-block; font-size:0.72rem; font-weight:700; padding:2px 8px; border-radius:10px; margin-bottom:8px;}
+  .tag-official{background:var(--teal-soft); color:var(--teal);}
+  .tag-adapted{background:var(--gold-soft); color:#7a5b1a;}
+  .cheatsheet{background:var(--ink); color:var(--paper); padding:28px 24px; border-radius:6px; margin-top:16px;}
+  .cheatsheet h3{color:var(--gold-soft); margin-top:0;}
+  .flow{display:flex; flex-direction:column; align-items:flex-start; gap:2px; font-family:var(--serif); font-size:1.05rem;}
+  .flow .step{padding:3px 0;}
+  .flow .arrow{color:var(--gold); font-size:0.85rem; padding-left:6px;}
+  .source{font-size:0.76rem; color:#8a8272; margin-top:2px;}
+  .toc{display:flex; flex-wrap:wrap; gap:8px; margin-top:20px;}
+  .toc a{font-size:0.8rem; color:var(--gold-soft); text-decoration:none; border:1px solid #4a5a68; padding:5px 10px; border-radius:14px;}
+  .toc a:hover{background:#233647;}
+  .hwbox{background:var(--teal-soft); border:1px solid var(--teal); border-radius:6px; padding:18px 22px; margin-top:10px;}
+  .srclist{font-size:0.85rem; color:#556;}
+  .srclist li{margin-bottom:4px;}
+  @media(max-width:600px){h1.title{font-size:1.9rem;} header.hero{padding:36px 18px 24px;} section{padding:26px 0;} .course-step{border-right:none; border-bottom:1px solid #3a4c5c;}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Обществознание · 9 класс · подготовка к ОГЭ-2027</p>
+    <h1 class="title">💵 Деньги: почему кусок бумаги можно обменять на что угодно</h1>
+    <p class="hero-sub">Второй урок мини-курса по экономике. Разберёмся, что такое деньги, зачем они нужны и как это спрашивают на ОГЭ.</p>
+    <div class="course-bar">
+      <div class="course-step"><div class="k">Уже знаем</div><div class="v">Инфляция</div></div>
+      <div class="course-step now"><div class="k">Сегодня</div><div class="v">Деньги</div></div>
+      <div class="course-step"><div class="k">Дальше</div><div class="v">Банки и банковская система</div></div>
+    </div>
+    <div class="toc">
+      <a href="#s1">Разогрев</a><a href="#s2">Что такое деньги</a><a href="#s3">Функции</a>
+      <a href="#s4">Наличные / безналичные</a><a href="#s5">Покупательная способность</a><a href="#s6">Помнишь инфляцию?</a>
+      <a href="#s7">Практика ОГЭ</a><a href="#s8">Не перепутай</a><a href="#s9">Письменная часть</a>
+      <a href="#s10">Мини-тест</a><a href="#s11">Шпаргалка</a><a href="#s12">Домашнее задание</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section id="s1">
+  <h2><span class="num">Разогрев</span>Представь мир без денег</h2>
+  <div class="scenario">
+    Представь: завтра исчезли все деньги. Не только наличные — пропали и цифры на банковских счетах. Ты приходишь в магазин с телефоном, картой и даже золотым кольцом, а продавец говорит: «Мне нужно что-то, что я и сам смогу потом обменять на другие вещи. А это мне ни к чему».<br><br>
+    <b>Почему современная экономика без денег почти перестанет работать?</b>
+  </div>
+  <details class="q">
+    <summary>Мини-вопрос: что вообще должны «делать» деньги, чтобы экономика работала?</summary>
+    <div class="qbody"><div class="answer"><span class="lbl">Ответ</span><br>Деньги должны быть чем-то, что все согласны принимать в обмен на любой товар или услугу — тогда не нужно искать того, кому пригодится именно твоё кольцо или твой телефон. Это и есть их главная задача, из которой вырастают все функции денег.</div></div>
+  </details>
+</section>
+
+<section id="s2">
+  <h2><span class="num">01 · Теория</span>Что такое деньги</h2>
+  <p><b>Деньги</b> — особое средство, которое все согласны принимать в обмен на любые товары и услуги. Это как универсальный посредник в обмене.</p>
+  <div class="example"><span class="tag">Простыми словами</span>Без денег обмен выглядел бы так: <b>товар → товар</b>. Тебе нужны кроссовки, а у тебя есть только гитара — придётся искать того, кому одновременно нужна гитара и есть лишние кроссовки. Это неудобно и долго.<br><br>С деньгами всё проще: <b>товар → деньги → другой товар</b>. Ты продаёшь гитару за деньги, а потом на эти деньги покупаешь кроссовки — не важно, нужна ли продавцу кроссовок именно гитара.</div>
+  <details class="q">
+    <summary>Мини-вопрос: почему цепочка «товар → деньги → товар» удобнее, чем прямой обмен «товар → товар»?</summary>
+    <div class="qbody"><div class="answer">Не нужно искать человека, у которого есть именно нужный тебе товар и который одновременно хочет именно то, что есть у тебя. Деньги принимает почти любой, поэтому обмен становится намного проще и быстрее.</div></div>
+  </details>
+</section>
+
+<section id="s3">
+  <h2><span class="num">02 · Теория</span>Функции денег</h2>
+  <p>У денег несколько «работ». Разберём каждую на примере.</p>
+
+  <h3>1. Мера стоимости</h3>
+  <p>Деньги позволяют выразить стоимость любого товара в виде цены — и сравнивать разные товары между собой.</p>
+  <div class="example"><span class="tag">Пример</span>Кофе стоит 300 рублей, а пицца — 900 рублей. Ты сразу понимаешь: пицца «весит» как три чашки кофе, хотя это совсем разные вещи.</div>
+  <details class="q"><summary>Какая функция денег здесь проявляется: на ценнике в магазине указано «450 ₽»?</summary>
+    <div class="qbody"><div class="answer">Мера стоимости — деньги позволяют выразить и сравнить ценность товара в виде числа.</div></div></details>
+
+  <h3>2. Средство обращения (обмена)</h3>
+  <p>Деньги используются при покупке товара или услуги — переходят из рук в руки прямо в момент сделки.</p>
+  <div class="example"><span class="tag">Пример</span>Купил кофе → средство обращения. Ты отдаёшь деньги на кассе → сразу получаешь товар взамен.</div>
+  <details class="q"><summary>Какая функция денег здесь: ты купил билет на автобус за наличные?</summary>
+    <div class="qbody"><div class="answer">Средство обращения — деньги были посредником при покупке услуги (проезда) прямо в момент сделки.</div></div></details>
+
+  <h3>3. Средство платежа</h3>
+  <p>Деньги используются для выполнения денежного обязательства — не в момент покупки товара, а когда нужно что-то «закрыть»: долг, зарплату, налог.</p>
+  <div class="example"><span class="tag">Пример</span>Уплата налога; погашение кредита; выплата зарплаты. Прямого товара «в ответ» здесь нет — деньги выполняют обязательство.</div>
+  <div class="factcard"><span class="tag">Контраст</span>Купил товар → средство обращения.<br>Погасил обязательство → средство платежа.</div>
+  <details class="q"><summary>Чем функция «средство платежа» отличается от простого обмена деньгами на товар на кассе?</summary>
+    <div class="qbody"><div class="answer">При покупке на кассе ты сразу получаешь товар взамен денег — это средство обращения. При выполнении обязательства (зарплата, кредит, налог) прямого товара «в ответ» нет — деньги погашают долг или обязательство, это средство платежа.</div></div></details>
+
+  <h3>4. Средство накопления</h3>
+  <p>Деньги позволяют сохранять деньги и использовать их в будущем.</p>
+  <div class="example"><span class="tag">Пример</span>Подросток откладывает часть карманных денег каждый месяц, чтобы через полгода купить новый телефон.</div>
+  <div class="factcard"><span class="tag">Важно</span>При инфляции покупательная способность накопленных денег может снижаться — отложенная сумма со временем позволяет купить меньше, чем в момент накопления.</div>
+  <details class="q"><summary>Какая функция денег здесь: человек кладёт часть зарплаты на счёт «на отпуск через год»?</summary>
+    <div class="qbody"><div class="answer">Средство накопления — деньги сохраняются, чтобы использовать их в будущем.</div></div></details>
+
+  <h3>Потренируйся: определи функцию</h3>
+  <ol>
+    <li>Иван купил пачку печенья за 50 рублей.
+      <details class="q"><summary>Какая функция?</summary><div class="qbody"><div class="answer">Средство обращения — деньги были посредником при покупке товара прямо в момент сделки.<div class="why">Почему именно эта функция: товар получен сразу в обмен на деньги, обязательства здесь нет.</div></div></div></details></li>
+    <li>В ценнике указано: «Смартфон — 35 000 ₽».
+      <details class="q"><summary>Какая функция?</summary><div class="qbody"><div class="answer">Мера стоимости — цена показывает ценность товара в деньгах.<div class="why">Почему именно эта функция: здесь ничего не покупают и не погашают, а просто выражают стоимость в числе.</div></div></div></details></li>
+    <li>Семья откладывает по 5000 рублей в месяц на ремонт квартиры через год.
+      <details class="q"><summary>Какая функция?</summary><div class="qbody"><div class="answer">Средство накопления.<div class="why">Почему именно эта функция: деньги не тратятся сразу, а сохраняются для использования в будущем.</div></div></div></details></li>
+    <li>Гражданин ежегодно платит налог на автомобиль.
+      <details class="q"><summary>Какая функция?</summary><div class="qbody"><div class="answer">Средство платежа.<div class="why">Почему именно эта функция: это выполнение обязательства перед государством, а не покупка товара.</div></div></div></details></li>
+    <li>Мужчина каждый месяц вносит платёж по кредиту за автомобиль.
+      <details class="q"><summary>Какая функция?</summary><div class="qbody"><div class="answer">Средство платежа.<div class="why">Почему именно эта функция: погашение кредита — это закрытие денежного обязательства перед банком, а не покупка нового товара.</div></div></div></details></li>
+    <li>Девушка расплатилась картой за билеты в кино.
+      <details class="q"><summary>Какая функция?</summary><div class="qbody"><div class="answer">Средство обращения.<div class="why">Почему именно эта функция: деньги сразу обменяны на услугу (билет) в момент покупки.</div></div></div></details></li>
+    <li>На витрине рядом стоят два ноутбука с ценниками 45 000 ₽ и 60 000 ₽, и по ним сразу понятно, какой дороже.
+      <details class="q"><summary>Какая функция?</summary><div class="qbody"><div class="answer">Мера стоимости.<div class="why">Почему именно эта функция: цены позволяют сравнить ценность двух товаров, не покупая их.</div></div></div></details></li>
+    <li>Работодатель перевёл сотруднику зарплату за месяц.
+      <details class="q"><summary>Какая функция?</summary><div class="qbody"><div class="answer">Средство платежа.<div class="why">Почему именно эта функция: выплата зарплаты — это выполнение обязательства работодателя перед работником, а не покупка товара.</div></div></div></details></li>
+  </ol>
+</section>
+
+<section id="s4">
+  <h2><span class="num">03 · Теория</span>💳 Наличные и безналичные деньги</h2>
+  <ul>
+    <li><b>Наличные</b> — бумажные купюры и монеты, которые можно подержать в руках.</li>
+    <li><b>Безналичные</b> — деньги «в цифрах» на банковском счёте, без физической купюры.</li>
+  </ul>
+  <div class="factcard"><span class="tag">Важно не перепутать</span>Банковская карта — это <b>не деньги сами по себе</b>. Это инструмент доступа к деньгам, которые хранятся на твоём банковском счёте. Если на счёте пусто, карта не поможет.</div>
+  <p>Знакомые ситуации с безналичными деньгами: оплата картой в магазине, перевод другу через СБП, покупка в интернет-магазине, а вот снятие наличных в банкомате — наоборот, превращает безналичные деньги в наличные.</p>
+  <details class="q"><summary>Мини-вопрос: если у тебя есть карта, но на счёте 0 рублей, есть ли у тебя деньги?</summary>
+    <div class="qbody"><div class="answer">Нет — карта сама по себе не деньги, а лишь инструмент доступа к ним. Без денег на счёте оплатить покупку не получится.</div></div></details>
+</section>
+
+<section id="s5">
+  <h2><span class="num">04 · Теория</span>📉 Покупательная способность денег</h2>
+  <p><b>Покупательная способность</b> — это то, сколько товаров и услуг можно купить на определённую сумму денег.</p>
+  <div class="example"><span class="tag">Пример</span>В прошлом году на 1000 рублей ты могла купить кофе, немного продуктов и доехать на такси. Сегодня на те же 1000 рублей получается купить меньше. Сумма не изменилась — изменилась именно покупательная способность этих денег.</div>
+  <details class="q"><summary>Ситуация: у человека было 50 000 рублей, а цены за это время выросли. Что произошло с покупательной способностью этих денег?</summary>
+    <div class="qbody"><div class="answer">Она снизилась — на ту же сумму 50 000 ₽ теперь можно купить меньше товаров и услуг, чем раньше.</div></div></details>
+</section>
+
+<section id="s6">
+  <h2><span class="num">Связь с прошлым уроком</span>🔁 Помнишь инфляцию?</h2>
+  <div class="cheatsheet" style="background:var(--teal-soft); color:var(--ink);">
+    <div class="flow">
+      <div class="step">инфляция</div><div class="arrow">↓</div>
+      <div class="step">рост общего уровня цен</div><div class="arrow">↓</div>
+      <div class="step">на те же деньги можно купить меньше</div><div class="arrow">↓</div>
+      <div class="step">снижается покупательная способность денег</div>
+    </div>
+  </div>
+  <p>Инфляция — это как раз то явление, из-за которого покупательная способность денег снижается. Проверим, что осталось в памяти:</p>
+  <details class="q"><summary>1. Как называется устойчивый рост общего уровня цен в стране?</summary><div class="qbody"><div class="answer">Инфляция.</div></div></details>
+  <details class="q"><summary>2. Подорожал только один товар — это инфляция?</summary><div class="qbody"><div class="answer">Нет, инфляция — это рост общего уровня цен на широкий круг товаров, а не подорожание одного товара.</div></div></details>
+  <details class="q"><summary>3. Если цены выросли, а сумма денег у человека не изменилась — что происходит с покупательной способностью этих денег?</summary><div class="qbody"><div class="answer">Она снижается — на ту же сумму теперь можно купить меньше.</div></div></details>
+</section>
+
+<section id="s7">
+  <h2><span class="num">Практика ОГЭ</span>Задания по теме «Деньги»</h2>
+  <p>Задания составлены по реальным форматам и проверяемому содержанию ОГЭ. Если задание адаптировано из старой модели, это явно указано. Точные формулировки демоверсии ОГЭ-2027 нужно сверять напрямую на сайте fipi.ru — на момент подготовки урока опубликован только проект документов.</p>
+
+  <details class="q">
+    <summary><span class="tagline tag-adapted">по мотивам заданий прошлых лет</span><br>1. Какое суждение характеризует функцию денег как средства обращения?</summary>
+    <div class="qbody"><div class="opts">
+      <div class="opt">А) Деньги — посредник в обмене товаров</div>
+      <div class="opt">Б) Деньги — измеритель ценности товаров и услуг</div>
+      <div class="opt">В) Деньги — средство сохранения ценности</div>
+    </div>
+    <div class="answer"><span class="lbl">Ответ: А</span></div>
+    <div class="howto">Как распознать: если в вопросе речь о том, что деньги «передаются из рук в руки» при покупке — это средство обращения.</div></div>
+  </details>
+
+  <details class="q">
+    <summary><span class="tagline tag-adapted">по мотивам заданий прошлых лет</span><br>2. Верны ли следующие суждения о покупательной способности денег?<br>А. Покупательная способность денег снижается при росте цен.<br>Б. Покупательная способность денег не зависит от инфляции.</summary>
+    <div class="qbody"><div class="opts">
+      <div class="opt">1) верно только А</div>
+      <div class="opt">2) верно только Б</div>
+      <div class="opt">3) верны оба суждения</div>
+      <div class="opt">4) оба суждения неверны</div>
+    </div>
+    <div class="answer"><span class="lbl">Ответ: 1</span><div class="why">Суждение А верно — это прямая связь инфляции и покупательной способности. Суждение Б неверно: покупательная способность денег как раз напрямую зависит от инфляции.</div></div>
+    <div class="howto">Как распознать: задания «верны ли суждения» часто проверяют именно связь инфляции и покупательной способности — перечитывай оба суждения по отдельности.</div></div>
+  </details>
+
+  <details class="q">
+    <summary><span class="tagline tag-adapted">по мотивам заданий прошлых лет</span><br>3. Установите соответствие между примером и функцией денег</summary>
+    <div class="qbody">
+      <p><b>Примеры:</b> 1) семья откладывает деньги на отпуск 2) на ценнике указана стоимость товара<br><b>Функции:</b> А) мера стоимости Б) средство накопления</p>
+      <div class="answer"><span class="lbl">Ответ: 1—Б, 2—А</span></div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><span class="tagline tag-adapted">по мотивам заданий прошлых лет</span><br>4. Работа с ситуацией. Гражданин ежемесячно переводит часть зарплаты в счёт погашения кредита. Какую функцию выполняют деньги в этой ситуации?</summary>
+    <div class="qbody"><div class="answer"><span class="lbl">Ответ: средство платежа</span><div class="why">Погашение кредита — это выполнение денежного обязательства, а не прямой обмен на товар.</div></div></div>
+  </details>
+</section>
+
+<section id="s8">
+  <h2><span class="num">Не перепутай</span>Частые ловушки</h2>
+  <div class="trap"><b>1.</b> Банковская карта — это не деньги, а инструмент доступа к деньгам на счёте.</div>
+  <div class="trap"><b>2.</b> Цена товара на ценнике — это функция «мера стоимости», а не «средство накопления».</div>
+  <div class="trap"><b>3.</b> Если человек просто получил зарплату — это ещё не накопление. Накопление начинается, когда деньги откладывают на будущее, а не тратят.</div>
+  <div class="trap"><b>4.</b> При инфляции покупательная способность денег снижается, а не растёт.</div>
+  <div class="trap"><b>5.</b> Подорожание одного товара — это ещё не инфляция, а инфляция — это рост общего уровня цен.</div>
+</section>
+
+<section id="s9">
+  <h2><span class="num">Письменная часть</span></h2>
+  <details class="written"><summary>1. Что такое деньги? Назовите две функции денег.</summary>
+    <div class="wbody">
+      <textarea placeholder="Впишите свой ответ..."></textarea>
+      <div class="model"><b>Эталонный ответ:</b> Деньги — особое средство, которое принимается в обмен на любые товары и услуги. Функции: мера стоимости (позволяют выразить и сравнить ценность товаров в цене) и средство обращения (выступают посредником при покупке).</div>
+      <p class="criteria"><b>Критерий:</b> нужны именно две разные функции с кратким пояснением каждой, а не просто перечисление названий.</p>
+    </div>
+  </details>
+  <details class="written"><summary>2. Объясните на примере функцию денег как средства накопления.</summary>
+    <div class="wbody">
+      <textarea placeholder="Впишите свой ответ..."></textarea>
+      <div class="model"><b>Эталонный ответ:</b> Средство накопления — деньги позволяют сохранить покупательную способность и использовать её в будущем. Пример: подросток откладывает часть карманных денег каждый месяц, чтобы через несколько месяцев купить желаемую вещь, а не тратит всё сразу.</div>
+      <p class="criteria"><b>Частая ошибка:</b> путают накопление с обычным хранением зарплаты до момента трат — накопление предполагает именно откладывание на будущее использование.</p>
+    </div>
+  </details>
+  <details class="written"><summary>3. Объясните связь инфляции и покупательной способности денег.</summary>
+    <div class="wbody">
+      <textarea placeholder="Впишите свой ответ..."></textarea>
+      <div class="model"><b>Эталонный ответ:</b> Инфляция — устойчивый рост общего уровня цен. Когда цены растут, на прежнюю сумму денег можно купить меньше товаров и услуг — значит, покупательная способность денег снижается.</div>
+      <p class="criteria"><b>Критерий:</b> должна быть показана именно причинно-следственная связь «рост цен → меньше можно купить», а не два отдельных определения.</p>
+    </div>
+  </details>
+</section>
+
+<section id="s10">
+  <h2><span class="num">Финальный мини-тест</span></h2>
+  <details class="q"><summary>1. Что из перечисленного лучше всего описывает деньги?</summary>
+    <div class="qbody"><div class="opts">
+      <div class="opt">А) средство, которое все согласны принимать в обмен на товары и услуги</div>
+      <div class="opt">Б) любой ценный предмет, который жалко отдавать</div>
+      <div class="opt">В) документ, подтверждающий право собственности</div>
+    </div><div class="answer"><span class="lbl">Ответ: А</span></div></div>
+  </details>
+  <details class="q"><summary>2. Выберите верное утверждение о банковской карте</summary>
+    <div class="qbody"><div class="opts">
+      <div class="opt">А) карта — это и есть деньги</div>
+      <div class="opt">Б) карта — инструмент доступа к деньгам на счёте</div>
+    </div><div class="answer"><span class="lbl">Ответ: Б</span></div></div>
+  </details>
+  <details class="q"><summary>3. На ценнике указана стоимость товара — 780 рублей. Какая функция денег здесь проявляется?</summary>
+    <div class="qbody"><div class="answer">Мера стоимости.</div></div>
+  </details>
+  <details class="q"><summary>4. Человек ежемесячно платит за квартиру по договору аренды. Какая функция денег здесь проявляется?</summary>
+    <div class="qbody"><div class="answer">Средство платежа.</div></div>
+  </details>
+  <details class="q"><summary>5. Установите соответствие: 1) откладывать деньги на будущую покупку 2) расплатиться за товар на кассе → А) средство обращения Б) средство накопления</summary>
+    <div class="qbody"><div class="answer">1—Б, 2—А</div></div>
+  </details>
+  <details class="q"><summary>6. Верны ли следующие суждения о деньгах?<br>А. Средство обращения проявляется в момент покупки товара.<br>Б. Погашение кредита — это тоже пример средства обращения.</summary>
+    <div class="qbody"><div class="opts">
+      <div class="opt">1) верно только А</div>
+      <div class="opt">2) верно только Б</div>
+      <div class="opt">3) верны оба суждения</div>
+      <div class="opt">4) оба суждения неверны</div>
+    </div>
+    <div class="answer"><span class="lbl">Ответ: 1</span><div class="why">Суждение А верно. Суждение Б неверно: погашение кредита — это выполнение обязательства, то есть средство платежа, а не средство обращения.</div></div></div>
+  </details>
+  <details class="q"><summary>7. Работа с ситуацией. Гражданин каждый месяц откладывает часть зарплаты на счёт, чтобы через два года купить машину, а остальное тратит на текущие покупки в магазинах. Какие две функции денег здесь проявляются?</summary>
+    <div class="qbody"><div class="answer"><span class="lbl">Ответ: средство накопления и средство обращения</span><div class="why">Откладывание на будущую покупку — средство накопления; повседневные покупки в магазинах — средство обращения.</div></div></div>
+  </details>
+  <details class="q"><summary>8. Ситуация. У человека на счёте было 40 000 рублей. За год в стране заметно выросли цены на товары и услуги, а сумма на счёте не изменилась. Что произошло с этими деньгами и почему?</summary>
+    <div class="qbody"><div class="answer"><span class="lbl">Ответ: покупательная способность денег снизилась</span><div class="why">Инфляция → рост цен → на прежнюю сумму денег теперь можно купить меньше товаров и услуг, чем год назад, хотя сама сумма на счёте не изменилась.</div></div></div>
+  </details>
+</section>
+
+<section id="s11">
+  <h2><span class="num">Итог</span>Деньги за 1 минуту</h2>
+  <div class="cheatsheet">
+    <div class="flow">
+      <div class="step">деньги — облегчают обмен товарами и услугами</div><div class="arrow">↓</div>
+      <div class="step">мера стоимости — выражают цену товара</div><div class="arrow">↓</div>
+      <div class="step">средство обращения — посредник при покупке товара</div><div class="arrow">↓</div>
+      <div class="step">средство платежа — выполняют обязательства (зарплата, кредит, налог)</div><div class="arrow">↓</div>
+      <div class="step">средство накопления — позволяют сохранять деньги и использовать их в будущем</div><div class="arrow">↓</div>
+      <div class="step">покупательная способность — сколько товаров можно купить на эту сумму</div><div class="arrow">↓</div>
+      <div class="step">инфляция снижает покупательную способность денег</div>
+    </div>
+  </div>
+</section>
+
+<section id="s12">
+  <h2><span class="num">Домашнее задание</span>15–20 минут</h2>
+  <div class="hwbox">
+    <p><b>1. Функция денег.</b> Определи, какая функция денег проявляется в ситуации: семья откладывает часть дохода на летний отпуск через полгода.</p>
+    <p><b>2. Средство обращения или средство платежа?</b> Сравни две ситуации и определи функцию денег в каждой: (а) человек купил продукты в магазине; (б) человек внёс ежемесячный платёж по кредиту за холодильник.</p>
+    <p><b>3. Два суждения.</b> Верны ли суждения? А. Банковская карта — это то же самое, что деньги. Б. Карта — инструмент доступа к деньгам на счёте. Выбери верный вариант и коротко объясни свой выбор.</p>
+    <p><b>4. Покупательная способность и инфляция.</b> У человека было 20 000 рублей отложенных денег. Через год цены в стране заметно выросли, а сумма не изменилась. Объясни, что произошло с покупательной способностью этих денег и почему.</p>
+  </div>
+  <p class="source">Задания домашней работы составлены автором урока по мотивам содержания и форматов ОГЭ — это не дословные задания реального экзамена.</p>
+</section>
+
+<section id="src">
+  <h2><span class="num">Источники</span></h2>
+  <ul class="srclist">
+    <li>ФИПИ — официальные демоверсии, спецификации и кодификаторы ОГЭ, включая проект ОГЭ-2027 по обществознанию: fipi.ru</li>
+    <li>Обзор изменений ОГЭ-2027 по обществознанию (новое задание №17 с развёрнутым ответом): mel.fm, публикация от 26 августа 2026</li>
+    <li>Формат заданий по теме «Деньги и функции денег» — открытый банк заданий ОГЭ (videouroki.net, ДЗ «Деньги и инфляция»); задания урока составлены по мотивам этого формата, не являются дословным воспроизведением</li>
+  </ul>
+  <p class="source">Задания в блоке «Практика ОГЭ» и в финальном тесте написаны заново по мотивам реальных форматов ОГЭ, а не скопированы из источников. Точные формулировки демоверсии ОГЭ-2027 — только проект на момент подготовки урока, сверяйте на fipi.ru ближе к экзамену.</p>
+</section>
+
+</div>
+</body>
+</html>

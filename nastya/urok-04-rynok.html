@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Рынок — урок к ОГЭ, 9 класс</title>
+<style>
+  :root{
+    --ink:#182634; --paper:#FAF7F0; --gold:#B98A2E; --gold-soft:#E9D9B4;
+    --teal:#2F5C58; --teal-soft:#DCEAE7; --brick:#A24E3C; --brick-soft:#F0DED8;
+    --line:#D8CFBE; --ok:#3C6E47; --ok-soft:#DCEBDD; --bad:#A24E3C; --bad-soft:#F3DFDA;
+    --serif: "PT Serif", Georgia, "Times New Roman", serif;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans); line-height:1.55; font-size:16px;}
+  .wrap{max-width:820px; margin:0 auto; padding:0 24px 70px;}
+  header.hero{background:var(--ink); color:var(--paper); padding:44px 24px 30px; border-bottom:6px solid var(--gold);}
+  header.hero .wrap{padding:0;}
+  .eyebrow{font-family:var(--serif); font-style:italic; color:var(--gold-soft); font-size:1.05rem; margin:0 0 6px;}
+  h1.title{font-family:var(--serif); font-size:2.3rem; margin:0 0 12px; line-height:1.15; max-width:16ch;}
+  .hero-sub{max-width:56ch; color:#D9D2C2; font-size:1.02rem;}
+  .course-bar{display:flex; gap:0; margin-top:24px; border-top:1px solid #3a4c5c; border-bottom:1px solid #3a4c5c; flex-wrap:wrap;}
+  .course-step{flex:1; min-width:140px; padding:12px 14px; border-right:1px solid #3a4c5c;}
+  .course-step:last-child{border-right:none;}
+  .course-step .k{font-size:0.72rem; text-transform:uppercase; letter-spacing:0.04em; color:#9aa8b3;}
+  .course-step .v{font-family:var(--serif); font-size:1.02rem; margin-top:2px;}
+  .course-step.now{background:#233647;}
+  .course-step.now .v{color:var(--gold-soft);}
+  .timebar{margin-top:16px; font-size:0.8rem; color:#9aa8b3;}
+  section{padding:36px 0; border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  h2{font-family:var(--serif); font-size:1.5rem; margin:0 0 6px;}
+  h2 .num{color:var(--gold); font-family:var(--sans); font-weight:700; font-size:0.95rem; display:block; margin-bottom:4px;}
+  h3{font-family:var(--serif); font-size:1.1rem; margin:20px 0 8px;}
+  h4{font-family:var(--sans); font-size:0.9rem; text-transform:uppercase; letter-spacing:0.03em; color:var(--teal); margin:22px 0 6px;}
+  p{margin:0 0 12px; max-width:70ch;}
+  .scenario{background:var(--teal-soft); border-left:4px solid var(--teal); padding:16px 20px; border-radius:2px; margin:14px 0; font-family:var(--serif); font-size:1.05rem;}
+  .example{background:var(--gold-soft); border-left:4px solid var(--gold); padding:12px 18px; margin:12px 0; border-radius:2px;}
+  .example .tag{font-weight:700; font-size:0.78rem; color:#7a5b1a; margin-bottom:4px; display:block;}
+  table{width:100%; border-collapse:collapse; margin:14px 0; font-size:0.92rem;}
+  th,td{border:1px solid var(--line); padding:9px 11px; text-align:left; vertical-align:top;}
+  th{background:var(--ink); color:var(--paper); font-weight:600;}
+  tr:nth-child(even) td{background:#F2EEE3;}
+  ul,ol{margin:0 0 12px; padding-left:20px;}
+  li{margin-bottom:5px;}
+  details.q{border:1px solid var(--line); border-radius:4px; margin:10px 0; background:#fff;}
+  details.q summary{padding:12px 16px; cursor:pointer; font-weight:600; list-style:none; display:flex; gap:10px; align-items:baseline;}
+  details.q summary::-webkit-details-marker{display:none;}
+  details.q summary::before{content:"?"; background:var(--teal); color:#fff; width:20px; height:20px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:0.75rem; flex-shrink:0;}
+  details.q[open] summary::before{content:"✓"; background:var(--ok);}
+  .qbody{padding:0 16px 16px; border-top:1px solid var(--line);}
+  .qbody .opts{margin:10px 0;}
+  .qbody .opt{padding:5px 0; color:#555;}
+  .answer{margin-top:10px; background:var(--ok-soft); border-left:4px solid var(--ok); padding:9px 14px; border-radius:2px;}
+  .answer .lbl{font-weight:700; color:var(--ok); font-size:0.82rem;}
+  .why{font-size:0.87rem; color:#556; margin-top:5px;}
+  .howto{font-size:0.85rem; color:#6b5a2a; margin-top:6px; font-style:italic;}
+  .reasoning{margin-top:10px; font-size:0.9rem; color:#333;}
+  .reasoning b{color:var(--teal);}
+  .reasoning li{margin-bottom:4px;}
+  details.written{border:1px solid var(--line); border-radius:4px; margin:12px 0; background:#fff;}
+  details.written summary{padding:12px 16px; cursor:pointer; font-weight:600; list-style:none;}
+  details.written summary::-webkit-details-marker{display:none;}
+  details.written summary::before{content:"✎ "; color:var(--brick);}
+  .wbody{padding:0 16px 16px; border-top:1px solid var(--line);}
+  .model{background:var(--teal-soft); border-left:4px solid var(--teal); padding:9px 14px; margin-top:10px; border-radius:2px; font-size:0.92rem;}
+  .criteria{font-size:0.87rem; color:#556;}
+  textarea{width:100%; min-height:70px; margin-top:8px; border:1px solid var(--line); border-radius:4px; padding:9px; font-family:var(--sans); font-size:0.92rem; resize:vertical;}
+  .factcard{background:#F2EEE3; border:1px dashed var(--line); border-radius:4px; padding:12px 16px; margin:14px 0; font-size:0.92rem;}
+  .factcard .tag{font-weight:700; color:var(--brick); font-size:0.78rem; display:block; margin-bottom:4px;}
+  .trap{background:var(--bad-soft); border-left:4px solid var(--bad); padding:11px 16px; margin:9px 0; border-radius:2px; font-size:0.94rem;}
+  .trap b{color:var(--bad);}
+  .tagline{display:inline-block; font-size:0.72rem; font-weight:700; padding:2px 8px; border-radius:10px; margin-bottom:8px;}
+  .tag-official{background:var(--teal-soft); color:var(--teal);}
+  .tag-adapted{background:var(--gold-soft); color:#7a5b1a;}
+  .tag-real{background:var(--brick-soft); color:var(--brick);}
+  .srcline{font-size:0.78rem; color:#8a8272; margin-top:8px;}
+  .quest{background:linear-gradient(135deg,#233647,var(--ink)); color:var(--paper); border-radius:8px; padding:22px 24px; margin:18px 0; border:1px solid #3a4c5c;}
+  .quest .qtag{display:inline-block; font-size:0.75rem; font-weight:700; color:var(--gold-soft); border:1px solid var(--gold); padding:3px 10px; border-radius:12px; margin-bottom:10px;}
+  .quest p{color:#E4DFD2;}
+  .quest details.q{background:#233647; border-color:#3a4c5c;}
+  .quest details.q summary{color:var(--paper);}
+  .quest .answer{background:#1c3a34; border-left-color:var(--ok); color:#E4DFD2;}
+  .quest .answer .lbl{color:#8fd39f;}
+  .extra-box{border:1px dashed var(--gold); border-radius:6px; padding:16px 18px; margin-top:18px; background:#F5EFDF;}
+  .extra-box .lbl{font-weight:700; color:#7a5b1a; font-size:0.85rem; display:block; margin-bottom:8px;}
+  .cheatsheet{background:var(--ink); color:var(--paper); padding:28px 24px; border-radius:6px; margin-top:16px;}
+  .cheatsheet h3{color:var(--gold-soft); margin-top:0;}
+  .flow{display:flex; flex-direction:column; align-items:flex-start; gap:2px; font-family:var(--serif); font-size:1.05rem;}
+  .flow .step{padding:3px 0;}
+  .flow .arrow{color:var(--gold); font-size:0.85rem; padding-left:6px;}
+  .source{font-size:0.76rem; color:#8a8272; margin-top:2px;}
+  .toc{display:flex; flex-wrap:wrap; gap:8px; margin-top:20px;}
+  .toc a{font-size:0.8rem; color:var(--gold-soft); text-decoration:none; border:1px solid #4a5a68; padding:5px 10px; border-radius:14px;}
+  .toc a:hover{background:#233647;}
+  .hwbox{background:var(--teal-soft); border:1px solid var(--teal); border-radius:6px; padding:18px 22px; margin-top:10px;}
+  .srclist{font-size:0.85rem; color:#556;}
+  .srclist li{margin-bottom:4px;}
+  .glossary{display:grid; grid-template-columns:1fr; gap:10px; margin-top:14px;}
+  .gterm{border-left:3px solid var(--gold); padding-left:12px;}
+  .gterm b{font-family:var(--serif); font-size:1.02rem;}
+  @media(max-width:600px){h1.title{font-size:1.9rem;} header.hero{padding:36px 18px 24px;} section{padding:26px 0;} .course-step{border-right:none; border-bottom:1px solid #3a4c5c;}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Обществознание · 9 класс · подготовка к ОГЭ-2027</p>
+    <h1 class="title">🛒 Рынок: как встречаются продавец и покупатель</h1>
+    <p class="hero-sub">Четвёртый урок мини-курса по экономике. Рассчитан на одно занятие — 60 минут вместе с обсуждением.</p>
+    <div class="course-bar">
+      <div class="course-step"><div class="k">Уже знаем</div><div class="v">Инфляция, Деньги, Банки</div></div>
+      <div class="course-step now"><div class="k">Сегодня</div><div class="v">Рынок</div></div>
+      <div class="course-step"><div class="k">Дальше</div><div class="v">Спрос и предложение</div></div>
+    </div>
+    <div class="toc">
+      <a href="#s0">Разогрев (5 мин)</a><a href="#s1">Что такое рынок (7 мин)</a><a href="#s2">Участники, товары, услуги (7 мин)</a>
+      <a href="#s4">Конкуренция (8 мин)</a><a href="#s5">Цена (6 мин)</a><a href="#s6">Рыночная экономика (5 мин)</a>
+      <a href="#s7">Практика ОГЭ (12 мин)</a><a href="#quest">Задача недели</a><a href="#s8">Письменная часть (5 мин)</a>
+      <a href="#s9">Мини-тест (3 мин)</a><a href="#s10">Шпаргалка</a><a href="#s11">Домашнее задание</a><a href="#src">Источники</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section id="s0">
+  <h2><span class="num">Разогрев · ~5 мин</span>Где встречаются продавец и покупатель?</h2>
+  <div class="scenario">
+    Представь: ты решил продать старый велосипед. Выложил объявление — и вдруг откликнулись сразу три человека, готовых купить. А через неделю ты сам захотел купить кроссовки — и нашёл сразу пять магазинов, где они продаются по разной цене.<br><br>
+    <b>Где вообще встречаются те, кто хочет продать, и те, кто хочет купить?</b>
+  </div>
+  <p>Мы уже разобрали <b>инфляцию</b> (рост цен), <b>деньги</b> (чем мы платим) и <b>банки</b> (как деньги двигаются между людьми). Но откуда вообще берутся цены, продавцы и покупатели, между которыми банк проводит платежи? Это и есть тема сегодняшнего урока — рынок.</p>
+  <details class="q"><summary>Мини-вопрос: велосипед и кроссовки продавались в одном и том же месте?</summary>
+    <div class="qbody"><div class="answer">Необязательно — объявление могло быть в интернете, а кроссовки в разных магазинах города. Рынок — это не обязательно конкретное место. Разберёмся, что это значит.</div></div></details>
+</section>
+
+<section id="s1">
+  <h2><span class="num">01 · Теория · ~7 мин</span>Что такое рынок</h2>
+  <p><b>Рынок</b> — система экономических отношений, в которой продавцы и покупатели взаимодействуют по поводу обмена товарами и услугами.</p>
+  <div class="example"><span class="tag">Проще говоря</span>Есть тот, кто хочет продать, и тот, кто хочет купить. Рынок — это то, что их сводит вместе.</div>
+  <p><b>Важно:</b> рынок — это не только физическое место с прилавками.</p>
+  <ul>
+    <li>обычный магазин;</li>
+    <li>интернет-магазин;</li>
+    <li>сервис объявлений (например, для продажи вещей);</li>
+    <li>рынок услуг (репетиторы, мастера, доставка);</li>
+    <li>рынок труда (люди ищут работу, компании ищут сотрудников).</li>
+  </ul>
+  <details class="q"><summary>Мини-вопрос: можно ли назвать сайт объявлений рынком, если там нет ни одного прилавка?</summary>
+    <div class="qbody"><div class="answer">Да — рынок это про взаимодействие продавцов и покупателей, а не про конкретное здание. Прилавок необязателен.</div></div></details>
+</section>
+
+<section id="s2">
+  <h2><span class="num">02 · Теория · ~7 мин</span>Участники рынка. Товары и услуги</h2>
+  <div class="scenario">продавцы ↔ рынок ↔ покупатели</div>
+  <p><b>Продавец</b> предлагает товар или услугу. <b>Покупатель</b> хочет его приобрести. Часто продавца называют <b>производителем</b> (если он сам создаёт товар), а покупателя — <b>потребителем</b> (тем, кто в итоге пользуется товаром или услугой).</p>
+  <p><b>Товар</b> — вещь или продукт, который можно приобрести. <b>Услуга</b> — действие или деятельность, результат которой получает потребитель.</p>
+  <div class="example"><span class="tag">Примеры</span><b>Товар:</b> телефон, одежда, продукты.<br><b>Услуга:</b> репетиторство, стрижка, доставка, ремонт.</div>
+  <h3>Мини-игра: товар или услуга?</h3>
+  <ol>
+    <li>Новый рюкзак <details class="q"><summary>Ответ</summary><div class="qbody"><div class="answer">Товар — вещь, которую можно взять в руки.</div></div></details></li>
+    <li>Стрижка в парикмахерской <details class="q"><summary>Ответ</summary><div class="qbody"><div class="answer">Услуга — результат действия мастера, а не вещь.</div></div></details></li>
+    <li>Доставка еды курьером <details class="q"><summary>Ответ</summary><div class="qbody"><div class="answer">Услуга — покупатель платит за само действие (доставку), а не за отдельный предмет.</div></div></details></li>
+    <li>Смартфон в магазине электроники <details class="q"><summary>Ответ</summary><div class="qbody"><div class="answer">Товар.</div></div></details></li>
+  </ol>
+  <h4>Обмен и деньги</h4>
+  <p>Вспомни урок «Деньги»: деньги выполняют функцию средства обращения — именно с их помощью происходит обмен на рынке.</p>
+  <div class="scenario" style="font-size:0.98rem;">покупатель → деньги → продавец<br>продавец → товар/услуга → покупатель</div>
+</section>
+
+<section id="s4">
+  <h2><span class="num">03 · Теория · ~8 мин</span>Конкуренция</h2>
+  <p><b>Конкуренция</b> — соперничество участников рынка за лучшие условия производства, продажи и покупки товаров и услуг, прежде всего за покупателей.</p>
+  <div class="example"><span class="tag">Проще говоря</span>Несколько продавцов хотят, чтобы купили именно у них. Представь три кофейни на одной улице: чтобы не терять клиентов, одна вводит скидки для постоянных гостей, вторая улучшает вкус кофе, а третья ускоряет обслуживание.</div>
+  <h4>Почему конкуренция важна</h4>
+  <p>Конкуренция создаёт стимулы бороться за покупателя: расширять выбор, повышать качество, улучшать сервис, предлагать новые идеи, а иногда и снижать цену.</p>
+  <div class="factcard"><span class="tag">Важно не перепутать</span>Конкуренция не означает, что цена обязательно снизится. Продавцы могут бороться за покупателя и другими способами — качеством, сервисом, скоростью, новыми предложениями, а не только ценой.</div>
+  <details class="q"><summary>Мини-вопрос: репетитор по английскому — единственный в своём районе. У него много конкурентов или мало? Как это может повлиять на его старания привлекать учеников?</summary>
+    <div class="qbody"><div class="answer">Конкурентов мало (или нет). У него меньше стимулов специально улучшать сервис или снижать цену, чтобы привлечь учеников, — они и так к нему приходят, потому что выбора немного.</div></div></details>
+</section>
+
+<section id="s5">
+  <h2><span class="num">04 · Теория · ~6 мин</span>Цена на рынке</h2>
+  <p>На цену товара или услуги могут влиять сразу несколько вещей:</p>
+  <ul>
+    <li>спрос покупателей — насколько сильно товар хотят купить;</li>
+    <li>предложение продавцов — сколько товара есть на рынке;</li>
+    <li>конкуренция между продавцами;</li>
+    <li>количество товара;</li>
+    <li>другие условия рынка (сезон, мода, новости).</li>
+  </ul>
+  <details class="q"><summary>Мини-вопрос: перед 1 сентября резко вырос спрос на рюкзаки, а количество рюкзаков в магазинах осталось прежним. Что, скорее всего, произойдёт с ценой?</summary>
+    <div class="qbody"><div class="answer">Цена, скорее всего, вырастет — спрос увеличился, а предложение осталось тем же.</div></div></details>
+  <div class="factcard"><span class="tag">Переходим дальше</span>А теперь главный вопрос: почему покупатели хотят купить разное количество товара при разных ценах, а продавцы готовы предложить разное количество? Это и есть спрос и предложение — тема следующего урока.</div>
+</section>
+
+<section id="s6">
+  <h2><span class="num">05 · Теория · ~5 мин</span>Рыночная экономика и рыночное равновесие</h2>
+  <p><b>Рыночная экономика</b> — экономическая система, в которой значительная часть решений о производстве, обмене и ценах принимается участниками рынка, а не назначается «сверху».</p>
+  <div class="example"><span class="tag">Простое сравнение</span>В рыночной экономике продавцы и покупатели сами решают, что производить и покупать и по какой цене договориться. В командной экономике эти решения в основном принимает государство.</div>
+  <p><b>Рыночное равновесие</b> — ситуация, при которой объём товара, который продавцы готовы предложить, соответствует объёму товара, который покупатели готовы приобрести при определённой цене.</p>
+  <details class="q"><summary>Мини-вопрос: своими словами — что значит, что рынок пришёл в «равновесие»?</summary>
+    <div class="qbody"><div class="answer">Продавцы предлагают ровно столько товара, сколько покупатели готовы купить по этой цене, — нет ни лишнего нераспроданного товара, ни очереди недовольных покупателей.</div></div></details>
+</section>
+
+<section id="s7">
+  <h2><span class="num">Практика ОГЭ · ~12 мин</span>Понять → применить → подумать → решить реальное задание</h2>
+
+  <h4>Уровень 1 — понять</h4>
+  <details class="q"><summary><span class="tagline tag-official">Авторское задание</span><br>1. Что из перечисленного правильно описывает рынок?</summary>
+    <div class="qbody"><div class="opts">
+      <div class="opt">А) система отношений, в которой продавцы и покупатели взаимодействуют по поводу обмена товарами и услугами</div>
+      <div class="opt">Б) здание с прилавками, где продают продукты</div>
+    </div><div class="answer"><span class="lbl">Ответ: А</span></div></div>
+  </details>
+
+  <h4>Уровень 2 — применить</h4>
+  <details class="q"><summary><span class="tagline tag-adapted">Адаптированный вариант по формату ОГЭ</span><br>2. В городе открылось сразу три новых кафе рядом с уже существующим. Как это, скорее всего, повлияет на поведение владельца старого кафе?</summary>
+    <div class="qbody"><div class="answer"><span class="lbl">Ответ</span><div class="why">Скорее всего, он начнёт что-то менять — снижать цены, улучшать меню или сервис, — чтобы не потерять посетителей из-за усилившейся конкуренции.</div></div></div>
+  </details>
+  <details class="q"><summary><span class="tagline tag-adapted">Адаптированный вариант по формату ОГЭ</span><br>3. Мастер маникюра работает через сайт с объявлениями и принимает клиентов у себя дома. Является ли это участием в рынке услуг? Обоснуйте.</summary>
+    <div class="qbody"><div class="answer"><span class="lbl">Да, является</span><div class="why">Есть продавец услуги (мастер), покупатели (клиенты) и обмен — услуга в обмен на деньги. Физического магазина нет, но рынок не обязательно привязан к конкретному месту.</div></div></div>
+  </details>
+
+  <h4>Уровень 3 — суждения</h4>
+  <details class="q"><summary><span class="tagline tag-adapted">Адаптированный вариант по формату ОГЭ</span><br>4. Верны ли следующие суждения о конкуренции?<br>А. Конкуренция всегда приводит к снижению цены товара.<br>Б. Конкуренция может стимулировать продавцов улучшать качество и сервис.</summary>
+    <div class="qbody"><div class="opts">
+      <div class="opt">1) верно только А</div>
+      <div class="opt">2) верно только Б</div>
+      <div class="opt">3) верны оба суждения</div>
+      <div class="opt">4) оба суждения неверны</div>
+    </div><div class="answer"><span class="lbl">Ответ: 2</span><div class="why">Суждение А неверно: конкуренция создаёт стимул бороться за покупателя, но не обязательно через снижение цены — иногда через качество или сервис. Суждение Б верно.</div></div></div>
+  </details>
+
+  <h4>Уровень 4 — реальное задание ОГЭ, разбираем подробно</h4>
+  <details class="q"><summary><span class="tagline tag-real">Реальное задание — источник указан</span><br>5. Работа с текстом (по мотивам задания из банка ОГЭ по обществознанию, тема «Рыночная экономика»)</summary>
+    <div class="qbody">
+      <p><b>Текст (пересказ содержания источника):</b> Экономисты объясняют, что в условиях рыночной экономики конкуренция заставляет производителей работать эффективнее и учитывать запросы покупателей. Компании, которые не могут предложить качественный товар по конкурентной цене, теряют прибыль и постепенно уходят с рынка. Предприниматели свободны в выборе новых продуктов и технологий — для этого им нужна прежде всего поддержка инвесторов, а не одобрение центральных плановых органов.</p>
+      <p><b>Вопрос:</b> какие черты рыночной экономики, помимо конкуренции, названы в тексте? Опираясь на текст, укажите две черты.</p>
+      <div class="reasoning">
+        <b>Что проверяет задание:</b> умение находить в тексте признаки понятия (здесь — рыночной экономики) и правильно их формулировать.<br>
+        <b>На какое понятие опираемся:</b> рыночная экономика — решения о производстве и ценах принимают сами участники рынка, а не государство «сверху».<br>
+        <b>Как рассуждать:</b> перечитываем текст и ищем фразы, которые описывают именно черты системы, а не только конкуренцию — обычно это про свободу выбора и про отсутствие центрального контроля.
+      </div>
+      <div class="answer"><span class="lbl">Ответ</span><div class="why">1) Свобода предпринимательства — предприниматели сами выбирают, какие продукты и технологии развивать. 2) Отсутствие необходимости получать одобрение центральных плановых органов — решения принимаются участниками рынка, а не назначаются государством.</div></div>
+      <p class="srcline">Источник: реальное задание из открытого банка заданий ОГЭ по обществознанию (раздел «Экономика», тема «Рыночная экономика»), soc-oge.sdamgia.ru. Текст и вопрос пересказаны близко к содержанию источника с учётом требований по цитированию; оригинал доступен по ссылке в разделе «Источники».</p>
+    </div>
+  </details>
+
+  <div class="extra-box">
+    <span class="lbl">Дополнительно / если останется время</span>
+    <details class="q"><summary><span class="tagline tag-real">Реальное задание — источник указан</span><br>Из перечня понятий: прибыль, образование, государство, федерация, рыночная конкуренция. Найдите два понятия, которые относятся к экономической сфере жизни общества, и раскройте смысл одного из них.</summary>
+      <div class="qbody"><div class="answer"><span class="lbl">Ответ</span><div class="why">К экономической сфере относятся: прибыль и рыночная конкуренция. Например, рыночная конкуренция — соперничество участников рынка за лучшие условия производства, продажи и покупки товаров и услуг.</div></div>
+      <p class="srcline">Источник: реальное задание из открытого банка заданий ОГЭ по обществознанию, 100points.ru.</p></div>
+    </details>
+    <details class="q"><summary><span class="tagline tag-adapted">Адаптированный вариант по формату ОГЭ</span><br>Установите соответствие между примером и понятием: 1) рюкзак на полке магазина 2) настройка компьютера мастером → А) товар Б) услуга</summary>
+      <div class="qbody"><div class="answer"><span class="lbl">Ответ: 1—А, 2—Б</span></div></div>
+    </details>
+  </div>
+</section>
+
+<div class="quest" id="quest">
+  <span class="qtag">Задача недели — подумай</span>
+  <p><b>В районе, где ты живёшь, много лет работала только одна маленькая пекарня. Хлеб там был неплохой, но выбор небольшой, а цены — на усмотрение хозяина. В этом году рядом открылись сразу две сетевые пекарни с более широким ассортиментом.</b></p>
+  <p>Подумай: что, скорее всего, изменится для покупателей в этом районе — и почему? Постарайся назвать не одно, а хотя бы два разных последствия.</p>
+  <details class="q"><summary>Показать ход рассуждения и ответ</summary>
+    <div class="qbody">
+      <div class="answer"><span class="lbl">Ход рассуждения</span>
+        <div class="why">
+          1) До появления новых пекарен у старой пекарни фактически не было конкурентов — у покупателей не было альтернативы, поэтому хозяину не нужно было особенно стараться.<br>
+          2) С приходом двух новых продавцов похожего товара (хлеба) в районе резко усилилась конкуренция за одних и тех же покупателей.<br>
+          3) Конкуренция создаёт стимул бороться за покупателя — значит, старая пекарня, скорее всего, будет вынуждена что-то изменить: расширить ассортимент, поработать над качеством или ценой, улучшить обслуживание — иначе рискует потерять клиентов.<br>
+          4) Для покупателей это означает больше вариантов выбора и, вероятно, более выгодные условия — но необязательно именно снижение цены: важно помнить, что конкуренция не гарантирует подешевение, продавцы могут бороться и другими способами.
+        </div>
+      </div>
+    </div>
+  </details>
+</div>
+
+<section id="s8">
+  <h2><span class="num">Письменная часть · ~5 мин</span></h2>
+  <p>Напиши 2–4 предложения, объясняющих причинно-следственную связь.</p>
+  <details class="written"><summary>В районе появилось несколько новых продавцов одного и того же товара. Объясните, как усиление конкуренции может повлиять на положение покупателей.</summary>
+    <div class="wbody">
+      <textarea placeholder="Впишите свой ответ (2–4 предложения)..."></textarea>
+      <div class="model"><b>Эталонный ответ:</b> Когда появляется несколько продавцов одного товара, между ними усиливается конкуренция за одних и тех же покупателей. Чтобы не потерять клиентов, продавцы могут снижать цены, расширять ассортимент или улучшать сервис. В результате у покупателей появляется больше вариантов выбора и обычно более выгодные условия, хотя точный способ борьбы за клиента продавцы выбирают сами.</div>
+      <p class="criteria"><b>Критерий:</b> должна быть видна цепочка «больше продавцов → усилилась конкуренция → продавцы меняют условия → выигрывают покупатели», а не просто общее утверждение «стало лучше».</p>
+    </div>
+  </details>
+</section>
+
+<section id="s9">
+  <h2><span class="num">Итог · ~3 мин</span>Финальный мини-тест</h2>
+  <details class="q"><summary>1. Что такое рынок — своими словами?</summary>
+    <div class="qbody"><div class="answer">Система отношений, в которой продавцы и покупатели обмениваются товарами и услугами.</div></div>
+  </details>
+  <details class="q"><summary>2. Кто из участников рынка создаёт товар, а кто в итоге им пользуется?</summary>
+    <div class="qbody"><div class="answer">Создаёт — производитель (продавец), пользуется — потребитель (покупатель).</div></div>
+  </details>
+  <details class="q"><summary>3. Своими словами: что такое конкуренция?</summary>
+    <div class="qbody"><div class="answer">Соперничество продавцов (и других участников рынка) за покупателей и лучшие условия продажи.</div></div>
+  </details>
+  <details class="q"><summary>4. Верны ли суждения?<br>А. Рынок — это обязательно физическое место с прилавками.<br>Б. Рынком можно назвать и сайт объявлений, и рынок труда.</summary>
+    <div class="qbody"><div class="opts">
+      <div class="opt">1) верно только А</div>
+      <div class="opt">2) верно только Б</div>
+      <div class="opt">3) верны оба суждения</div>
+      <div class="opt">4) оба суждения неверны</div>
+    </div><div class="answer"><span class="lbl">Ответ: 2</span></div></div>
+  </details>
+  <details class="q"><summary>5. Ситуация. В городе резко вырос спрос на определённый товар, а число продавцов этого товара осталось прежним. Что, скорее всего, произойдёт с ценой и почему это не связано напрямую с конкуренцией?</summary>
+    <div class="qbody"><div class="answer"><span class="lbl">Ответ</span><div class="why">Цена, скорее всего, вырастет — на неё повлиял рост спроса при неизменном предложении. Конкуренция здесь не изменилась (число продавцов то же), значит дело не в ней, а именно в соотношении спроса и предложения — тема следующего урока.</div></div></div>
+  </details>
+</section>
+
+<section id="s10">
+  <h2><span class="num">Итог</span>Рынок за 1 минуту</h2>
+  <div class="glossary">
+    <div class="gterm"><b>Рынок</b> — система отношений, в которой продавцы и покупатели обмениваются товарами и услугами.</div>
+    <div class="gterm"><b>Продавец / производитель</b> — предлагает товар или услугу.</div>
+    <div class="gterm"><b>Покупатель / потребитель</b> — приобретает и пользуется товаром или услугой.</div>
+    <div class="gterm"><b>Конкуренция</b> — соперничество участников рынка за лучшие условия, прежде всего за покупателей.</div>
+    <div class="gterm"><b>Рыночная экономика</b> — система, где решения о производстве и ценах принимают сами участники рынка.</div>
+    <div class="gterm"><b>Рыночное равновесие</b> — объём предложения соответствует объёму спроса при определённой цене.</div>
+  </div>
+  <div class="cheatsheet">
+    <div class="flow">
+      <div class="step">продавцы ↔ рынок ↔ покупатели</div><div class="arrow">↓</div>
+      <div class="step">конкуренция → борьба за покупателя</div><div class="arrow">↓</div>
+      <div class="step">стимулы улучшать товар, сервис, а иногда и цену</div>
+    </div>
+  </div>
+</section>
+
+<section id="s11">
+  <h2><span class="num">Домашнее задание</span>15–20 минут</h2>
+  <div class="hwbox">
+    <p><b>1. Закрепление.</b> <span class="tagline tag-official">Авторское задание</span><br>Своими словами объясни, чем товар отличается от услуги, и приведи по одному примеру.</p>
+    <p><b>2. Ситуация.</b> <span class="tagline tag-official">Авторское задание</span><br>В переходе метро много лет стоял только один киоск с кофе. Недавно рядом открылся ещё один. Опиши, что может измениться для покупателей и почему.</p>
+    <p><b>3. Реальное задание ФИПИ.</b> <span class="tagline tag-real">Реальное задание — источник указан</span><br>Из перечня понятий: прибыль, образование, государство, федерация, рыночная конкуренция — выпишите два понятия, которые относятся к экономической сфере жизни общества, и раскройте смысл одного из них. (Источник: открытый банк заданий ОГЭ по обществознанию, 100points.ru)</p>
+    <p><b>4. Более сложное задание.</b> <span class="tagline tag-real">Реальное задание — источник указан</span><br>Опираясь на текст урока про черты рыночной экономики (задание №5 из практики на уроке), назовите ещё одну черту рыночной экономики, которая не была названа на уроке, и объясните её своими словами. (Подсказка: подумайте о том, кто в рыночной экономике решает, что производить.)</p>
+  </div>
+  <p class="source">Задания 1–2 составлены автором урока по мотивам содержания ОГЭ — это не дословные задания реального экзамена. Задания 3–4 основаны на реальных заданиях из открытого банка заданий ОГЭ, источники указаны.</p>
+</section>
+
+<section id="src">
+  <h2><span class="num">Источники</span></h2>
+  <ul class="srclist">
+    <li>ФИПИ — официальные демоверсии, спецификации и кодификаторы ОГЭ, включая проект ОГЭ-2027 по обществознанию: fipi.ru</li>
+    <li>Открытый банк заданий ОГЭ по обществознанию (реальные варианты ОГЭ прошлых лет, тема «Рыночная экономика», «Экономическая сфера общества»): soc-oge.sdamgia.ru</li>
+    <li>Открытый банк заданий ОГЭ по обществознанию (задание на определение понятий экономической сферы): 100points.ru</li>
+  </ul>
+  <p class="source">Задания, отмеченные как «Реальное задание», основаны на реальных заданиях указанных источников; содержание текстов и формулировки переданы близко к источнику с учётом требований по цитированию, а не скопированы дословно. Задания, отмеченные как «Адаптированный вариант» или «Авторское задание», написаны автором урока по мотивам формата и содержания ОГЭ и не являются дословными заданиями экзамена.</p>
+</section>
+
+</div>
+</body>
+</html>

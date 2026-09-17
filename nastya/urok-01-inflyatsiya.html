@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Инфляция — урок к ОГЭ, 9 класс</title>
+<style>
+  :root{
+    --ink:#182634;
+    --paper:#FAF7F0;
+    --gold:#B98A2E;
+    --gold-soft:#E9D9B4;
+    --teal:#2F5C58;
+    --teal-soft:#DCEAE7;
+    --brick:#A24E3C;
+    --brick-soft:#F0DED8;
+    --line:#D8CFBE;
+    --ok:#3C6E47;
+    --ok-soft:#DCEBDD;
+    --bad:#A24E3C;
+    --bad-soft:#F3DFDA;
+    --serif: "PT Serif", Georgia, "Times New Roman", serif;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans); line-height:1.55; font-size:16px;}
+  .wrap{max-width:820px; margin:0 auto; padding:0 24px 70px;}
+  header.hero{background:var(--ink); color:var(--paper); padding:48px 24px 36px; border-bottom:6px solid var(--gold);}
+  header.hero .wrap{padding:0;}
+  .eyebrow{font-family:var(--serif); font-style:italic; color:var(--gold-soft); font-size:1.05rem; margin:0 0 6px;}
+  h1.title{font-family:var(--serif); font-size:2.3rem; margin:0 0 12px; line-height:1.15; max-width:16ch;}
+  .hero-sub{max-width:56ch; color:#D9D2C2; font-size:1.02rem;}
+  .hero-price{margin-top:22px; display:flex; gap:26px; flex-wrap:wrap;}
+  .price-tag{border-left:2px solid var(--gold); padding-left:12px;}
+  .price-tag .num{font-family:var(--serif); font-size:1.5rem; color:var(--gold-soft); display:block;}
+  .price-tag .lbl{font-size:0.8rem; color:#B9B2A0;}
+  section{padding:36px 0; border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  h2{font-family:var(--serif); font-size:1.5rem; margin:0 0 6px;}
+  h2 .num{color:var(--gold); font-family:var(--sans); font-weight:700; font-size:0.95rem; display:block; margin-bottom:4px;}
+  h3{font-family:var(--serif); font-size:1.1rem; margin:20px 0 8px;}
+  p{margin:0 0 12px; max-width:70ch;}
+  .scenario{background:var(--teal-soft); border-left:4px solid var(--teal); padding:16px 20px; border-radius:2px; margin:14px 0; font-family:var(--serif); font-size:1.05rem;}
+  .example{background:var(--gold-soft); border-left:4px solid var(--gold); padding:12px 18px; margin:12px 0; border-radius:2px;}
+  .example .tag{font-weight:700; font-size:0.78rem; color:#7a5b1a; margin-bottom:4px; display:block;}
+  table{width:100%; border-collapse:collapse; margin:14px 0; font-size:0.92rem;}
+  th,td{border:1px solid var(--line); padding:9px 11px; text-align:left; vertical-align:top;}
+  th{background:var(--ink); color:var(--paper); font-weight:600;}
+  tr:nth-child(even) td{background:#F2EEE3;}
+  ul,ol{margin:0 0 12px; padding-left:20px;}
+  li{margin-bottom:5px;}
+  details.q{border:1px solid var(--line); border-radius:4px; margin:10px 0; background:#fff;}
+  details.q summary{padding:12px 16px; cursor:pointer; font-weight:600; list-style:none; display:flex; gap:10px; align-items:baseline;}
+  details.q summary::-webkit-details-marker{display:none;}
+  details.q summary::before{content:"?"; background:var(--teal); color:#fff; width:20px; height:20px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:0.75rem; flex-shrink:0;}
+  details.q[open] summary::before{content:"✓"; background:var(--ok);}
+  .qbody{padding:0 16px 16px; border-top:1px solid var(--line);}
+  .qbody .opts{margin:10px 0;}
+  .qbody .opt{padding:5px 0; color:#555;}
+  .answer{margin-top:10px; background:var(--ok-soft); border-left:4px solid var(--ok); padding:9px 14px; border-radius:2px;}
+  .answer .lbl{font-weight:700; color:var(--ok); font-size:0.82rem;}
+  .why{font-size:0.87rem; color:#556; margin-top:5px;}
+  details.written{border:1px solid var(--line); border-radius:4px; margin:12px 0; background:#fff;}
+  details.written summary{padding:12px 16px; cursor:pointer; font-weight:600; list-style:none;}
+  details.written summary::-webkit-details-marker{display:none;}
+  details.written summary::before{content:"✎ "; color:var(--brick);}
+  .wbody{padding:0 16px 16px; border-top:1px solid var(--line);}
+  .model{background:var(--teal-soft); border-left:4px solid var(--teal); padding:9px 14px; margin-top:10px; border-radius:2px; font-size:0.92rem;}
+  .criteria{font-size:0.87rem; color:#556;}
+  textarea{width:100%; min-height:70px; margin-top:8px; border:1px solid var(--line); border-radius:4px; padding:9px; font-family:var(--sans); font-size:0.92rem; resize:vertical;}
+  .factcard{background:#F2EEE3; border:1px dashed var(--line); border-radius:4px; padding:12px 16px; margin:14px 0; font-size:0.92rem;}
+  .factcard .tag{font-weight:700; color:var(--brick); font-size:0.78rem; display:block; margin-bottom:4px;}
+  .cheatsheet{background:var(--ink); color:var(--paper); padding:28px 24px; border-radius:6px; margin-top:16px;}
+  .cheatsheet h3{color:var(--gold-soft); margin-top:0;}
+  .flow{display:flex; flex-direction:column; align-items:flex-start; gap:2px; font-family:var(--serif); font-size:1.05rem;}
+  .flow .step{padding:3px 0;}
+  .flow .arrow{color:var(--gold); font-size:0.85rem; padding-left:6px;}
+  .source{font-size:0.76rem; color:#8a8272; margin-top:2px;}
+  .toc{display:flex; flex-wrap:wrap; gap:8px; margin-top:20px;}
+  .toc a{font-size:0.8rem; color:var(--gold-soft); text-decoration:none; border:1px solid #4a5a68; padding:5px 10px; border-radius:14px;}
+  .toc a:hover{background:#233647;}
+  @media(max-width:600px){h1.title{font-size:1.9rem;} header.hero{padding:36px 18px 28px;} section{padding:26px 0;}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Обществознание · 9 класс · подготовка к ОГЭ</p>
+    <h1 class="title">Инфляция: почему на те же деньги теперь покупаешь меньше</h1>
+    <p class="hero-sub">Короткий урок с примерами из жизни и практикой в формате ОГЭ — без лишней макроэкономики.</p>
+    <div class="hero-price">
+      <div class="price-tag"><span class="num">5,98%</span><span class="lbl">годовая инфляция в РФ, июль 2026</span></div>
+      <div class="price-tag"><span class="num">14%</span><span class="lbl">ключевая ставка ЦБ, июль 2026</span></div>
+    </div>
+    <div class="toc">
+      <a href="#s1">Разогрев</a><a href="#s2">Что такое инфляция</a><a href="#s3">Причины</a>
+      <a href="#s4">Спрос и предложение</a><a href="#s5">Виды</a><a href="#s6">Последствия</a>
+      <a href="#s7">Меры борьбы</a><a href="#s9">Тест</a><a href="#s10">Письменная часть</a><a href="#s11">Шпаргалка</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section id="s1">
+  <h2><span class="num">Разогрев</span>Год назад и сейчас</h2>
+  <div class="scenario">
+    Год назад у тебя было 1000 рублей. На них ты могла купить кофе десять дней подряд и доехать на такси через весь город. Сейчас у тебя всё те же 1000 рублей — но кофе хватит на семь дней, а такси — только через полгорода.<br><br>
+    <b>Деньги те же. Так что случилось?</b>
+  </div>
+  <details class="q">
+    <summary>Как одним словом назвать процесс, когда на ту же сумму денег со временем покупаешь всё меньше?</summary>
+    <div class="qbody"><div class="answer"><span class="lbl">Ответ</span><br>Это инфляция — обесценивание денег. Разберём, что это значит точно.</div></div>
+  </details>
+</section>
+
+<section id="s2">
+  <h2><span class="num">01 · Теория</span>Что такое инфляция</h2>
+  <p><b>Инфляция</b> — это устойчивый рост общего уровня цен на товары и услуги в стране, из-за которого деньги обесцениваются: на ту же сумму со временем можно купить меньше.</p>
+  <div class="example"><span class="tag">Простыми словами</span>Дорожает не что-то одно, а почти всё сразу — продукты, транспорт, услуги — и это длится не один день, а месяцы и годы.</div>
+  <p><b>Важно:</b> подорожание одного товара — это ещё не инфляция.</p>
+  <details class="q">
+    <summary>Мини-задание: инфляция это или нет? Осенью подорожали яблоки из-за неурожая, остальные цены не изменились</summary>
+    <div class="qbody"><div class="answer"><span class="lbl">Не инфляция</span><div class="why">Подорожал один товар по конкретной причине — это не рост общего уровня цен.</div></div></div>
+  </details>
+  <details class="q">
+    <summary>А если так: за год постепенно подорожали продукты, аренда, такси, кафе и техника?</summary>
+    <div class="qbody"><div class="answer"><span class="lbl">Это инфляция</span><div class="why">Рост цен затронул широкий круг товаров и услуг и продолжался долго.</div></div></div>
+  </details>
+</section>
+
+<section id="s3">
+  <h2><span class="num">02 · Теория</span>Причины инфляции</h2>
+  <p>Основные причины — рост спроса при недостаточном предложении и рост издержек производства. Есть ещё две дополнительные, которые полезно знать:</p>
+  <ul>
+    <li><b>В обращении становится больше денег</b>, а товаров столько же — на каждую единицу товара приходится больше денег.</li>
+    <li><b>Государство увеличивает расходы</b> (зарплаты, пособия) — у людей на руках больше денег, спрос растёт.</li>
+  </ul>
+  <div class="example"><span class="tag">Простой пример</span>Люди ждут, что цены вырастут ещё сильнее, и начинают покупать заранее — из-за этого спрос и правда растёт быстрее.</div>
+  <details class="q">
+    <summary>Мини-вопрос: почему увеличение государственных выплат населению может подтолкнуть цены вверх?</summary>
+    <div class="qbody"><div class="answer">У людей становится больше денег на руках, спрос на товары растёт, а количество товаров на рынке не меняется так же быстро — цены могут вырасти.</div></div>
+  </details>
+</section>
+
+<section id="s4">
+  <h2><span class="num">03 · Теория</span>Инфляция спроса и инфляция издержек</h2>
+  <p><b>Инфляция спроса:</b> спрос превышает предложение → цены растут.</p>
+  <p><b>Инфляция издержек:</b> у производителя растут затраты → растёт себестоимость → он поднимает цену товара.</p>
+  <table>
+    <tr><th></th><th>Инфляция спроса</th><th>Инфляция издержек</th></tr>
+    <tr><td>Что растёт первым</td><td>Желание купить больше товара</td><td>Затраты производителя</td></tr>
+    <tr><td>Пример</td><td>Ажиотажный спрос на билеты перед концертом</td><td>Подорожало топливо → выросла цена доставки</td></tr>
+    <tr><td>Как узнать в задании</td><td>В условии — про покупателей, доходы, спрос</td><td>В условии — про издержки, сырьё, топливо, поставщиков</td></tr>
+  </table>
+  <div class="example"><span class="tag">Актуально, 2026</span>Летом 2026 года заметно подорожало топливо — это подняло издержки перевозчиков, и часть компаний повысила цены на доставку. Классический пример инфляции издержек: подорожал ресурс → выросли затраты → выросла цена услуги.</div>
+  <h3>Определи вид: 4 ситуации</h3>
+  <ol>
+    <li>Перед 1 сентября вырос спрос на канцтовары.
+      <details class="q"><summary>Ответ</summary><div class="qbody"><div class="answer">Инфляция спроса.</div></div></details></li>
+    <li>Подорожала аренда складов — интернет-магазины подняли цену доставки.
+      <details class="q"><summary>Ответ</summary><div class="qbody"><div class="answer">Инфляция издержек.</div></div></details></li>
+    <li>После повышения зарплат сотрудникам кафе выросли цены в меню.
+      <details class="q"><summary>Ответ</summary><div class="qbody"><div class="answer">Инфляция издержек — вырос один из видов затрат (труд).</div></div></details></li>
+    <li>Государство увеличило выплаты населению — вырос спрос на товары.
+      <details class="q"><summary>Ответ</summary><div class="qbody"><div class="answer">Инфляция спроса.</div></div></details></li>
+  </ol>
+</section>
+
+<section id="s5">
+  <h2><span class="num">04 · Теория</span>Виды инфляции по темпам роста</h2>
+  <table>
+    <tr><th>Вид</th><th>Как ощущается</th></tr>
+    <tr><td>Умеренная (ползучая)</td><td>Цены растут медленно и почти незаметно</td></tr>
+    <tr><td>Галопирующая</td><td>Цены заметно меняются от месяца к месяцу</td></tr>
+    <tr><td>Гиперинфляция</td><td>Деньги обесцениваются почти на глазах, доверие к ним падает</td></tr>
+  </table>
+  <div class="example"><span class="tag">Мнемоника</span>Ползёт → скачет → взрывается. Точные процентные границы в разных пособиях звучат по-разному — главное понимать разницу между медленным, быстрым и крайне быстрым ростом цен, а перед экзаменом свериться с демоверсией ФИПИ.</div>
+  <details class="q">
+    <summary>Определи вид: за год цены выросли на 6%, население почти не замечает изменений в тратах</summary>
+    <div class="qbody"><div class="answer"><span class="lbl">Умеренная (ползучая) инфляция</span></div></div>
+  </details>
+</section>
+
+<section id="s6">
+  <h2><span class="num">05 · Теория</span>Последствия инфляции</h2>
+  <ul>
+    <li>Снижается покупательная способность денег.</li>
+    <li>Снижаются реальные доходы населения.</li>
+    <li>Обесцениваются сбережения.</li>
+    <li>Ухудшается уровень жизни.</li>
+    <li>Растёт безработица, возможно сокращение производства.</li>
+  </ul>
+  <div class="example"><span class="tag">Простой пример</span>Зарплата выросла на 5%, а цены — на 10%. На ту же зарплату теперь можно купить меньше товаров, чем раньше — реальный доход снизился, хотя цифра в зарплатной ведомости выросла.</div>
+  <p><b>Кто может пострадать сильнее всего:</b> люди с фиксированным доходом (пенсионеры, стипендиаты) — их доход не растёт вместе с ценами; те, кто хранит сбережения наличными, — их деньги обесцениваются.</p>
+  <details class="q">
+    <summary>Мини-вопрос: Мария хранит все сбережения наличными дома. Что происходит с покупательной способностью её денег при инфляции?</summary>
+    <div class="qbody"><div class="answer">Она снижается — на ту же сумму Мария сможет купить меньше товаров, чем раньше.</div></div>
+  </details>
+</section>
+
+<section id="s7">
+  <h2><span class="num">06 · Теория</span>Как государство борется с инфляцией</h2>
+  <p>Каждая мера работает через простую цепочку «причина → следствие»:</p>
+  <ul>
+    <li><b>Повышение ключевой ставки:</b> ставка ↑ → кредиты дороже → люди и бизнес берут их реже → спрос ↓ → цены растут медленнее.</li>
+    <li><b>Сокращение количества денег в обращении:</b> денег в экономике меньше → меньше давления на цены.</li>
+    <li><b>Сокращение государственных расходов:</b> государство тратит меньше → совокупный спрос ↓ → цены растут медленнее.</li>
+  </ul>
+  <div class="example"><span class="tag">Актуально, 2026</span>24 июля 2026 года Банк России снизил ключевую ставку до 14% годовых — регулятор балансирует между поддержкой экономики и сдерживанием роста цен, который в июле составил 5,98% в годовом выражении.</div>
+  <details class="q">
+    <summary>Мини-вопрос: почему повышение ключевой ставки помогает замедлить инфляцию?</summary>
+    <div class="qbody"><div class="answer">Кредиты становятся дороже → люди и бизнес реже берут кредиты и меньше тратят → спрос снижается → у продавцов меньше возможностей повышать цены.</div></div>
+  </details>
+</section>
+
+<section id="s8">
+  <h2><span class="num">Дополнительно</span>Два факта на заметку</h2>
+  <div class="factcard"><span class="tag">Интересный факт</span>Иногда государство искусственно сдерживает цену на товар — тогда рост цены не виден в ценнике, но товар начинает пропадать с полок. Деньги всё равно обесцениваются, просто это проявляется не в цене, а в дефиците.</div>
+  <div class="factcard"><span class="tag">Дефляция</span>Дефляция — процесс, обратный инфляции: цены не растут, а снижаются.</div>
+</section>
+
+<section id="s9">
+  <h2><span class="num">Практика</span>Задания в формате ОГЭ</h2>
+
+  <details class="q"><summary>1. Что из перечисленного является признаком инфляции?</summary>
+    <div class="qbody"><div class="opts">
+      <div class="opt">А) рост цены на один сезонный товар</div>
+      <div class="opt">Б) долговременный рост общего уровня цен в стране</div>
+      <div class="opt">В) снижение цены на один вид техники</div>
+    </div><div class="answer"><span class="lbl">Ответ: Б</span></div></div>
+  </details>
+
+  <details class="q"><summary>2. Выберите три верные позиции. Последствия инфляции:</summary>
+    <div class="qbody"><div class="opts">
+      <div class="opt">1) снижение реальных доходов населения</div>
+      <div class="opt">2) обесценивание сбережений</div>
+      <div class="opt">3) снижение покупательной способности денег</div>
+      <div class="opt">4) рост числа рабочих мест во всех отраслях</div>
+    </div><div class="answer"><span class="lbl">Ответ: 1, 2, 3</span></div></div>
+  </details>
+
+  <details class="q"><summary>3. Установите соответствие вида инфляции и причины</summary>
+    <div class="qbody"><p><b>Виды:</b> А) инфляция спроса Б) инфляция издержек<br><b>Причины:</b> 1) подорожало сырьё 2) резко вырос спрос населения</p>
+    <div class="answer"><span class="lbl">Ответ: А—2, Б—1</span></div></div>
+  </details>
+
+  <details class="q"><summary>4. Расставьте этапы в правильном порядке (инфляция издержек)</summary>
+    <div class="qbody"><p>1) производитель повышает цену товара 2) выросла себестоимость 3) подорожал ключевой ресурс 4) выросли издержки производителя</p>
+    <div class="answer"><span class="lbl">Ответ: 3 → 4 → 2 → 1</span></div></div>
+  </details>
+
+  <details class="q"><summary>5. За год цены на продукты и услуги выросли в среднем на 45%. Как называется такой темп роста?</summary>
+    <div class="qbody"><div class="answer"><span class="lbl">Галопирующая инфляция</span></div></div>
+  </details>
+
+  <details class="q"><summary>6. Из-за роста тарифов на электроэнергию завод повысил отпускные цены на продукцию. Определите вид инфляции</summary>
+    <div class="qbody"><div class="answer"><span class="lbl">Инфляция издержек</span></div></div>
+  </details>
+
+  <details class="q"><summary>7. Зарплата гражданина выросла на 5%, а цены — на 9%. Что произошло с его реальным доходом?</summary>
+    <div class="qbody"><div class="answer"><span class="lbl">Снизился</span><div class="why">Рост цен опередил рост зарплаты.</div></div></div>
+  </details>
+
+  <details class="q"><summary>8. Какая мера направлена на снижение доступности кредитов ради сдерживания инфляции?</summary>
+    <div class="qbody"><div class="answer"><span class="lbl">Повышение ключевой ставки</span></div></div>
+  </details>
+
+  <details class="q"><summary>9. Гражданин хранит все сбережения наличными. Как на них повлияет инфляция?</summary>
+    <div class="qbody"><div class="opts">
+      <div class="opt">А) покупательная способность сбережений снизится</div>
+      <div class="opt">Б) сбережения вырастут в цене</div>
+      <div class="opt">В) инфляция никак не повлияет</div>
+    </div><div class="answer"><span class="lbl">Ответ: А</span></div></div>
+  </details>
+
+  <details class="q"><summary>10. Работа с ситуацией. В городе резко вырос спрос на аренду квартир, число квартир не изменилось. Какой вид инфляции здесь виден?</summary>
+    <div class="qbody"><div class="answer"><span class="lbl">Инфляция спроса</span></div></div>
+  </details>
+</section>
+
+<section id="s10">
+  <h2><span class="num">Письменная часть</span></h2>
+
+  <details class="written"><summary>1. Что такое инфляция? Дайте определение и приведите пример её проявления в жизни.</summary>
+    <div class="wbody">
+      <textarea placeholder="Впишите свой ответ..."></textarea>
+      <div class="model"><b>Эталонный ответ:</b> Инфляция — устойчивый рост общего уровня цен, из-за которого деньги обесцениваются и на ту же сумму можно купить меньше. Пример: за год стоимость привычной продуктовой корзины выросла, хотя набор товаров не изменился.</div>
+      <p class="criteria"><b>Частая ошибка:</b> путают инфляцию с подорожанием одного товара.</p>
+    </div>
+  </details>
+
+  <details class="written"><summary>2. Назовите два последствия инфляции для населения и приведите пример.</summary>
+    <div class="wbody">
+      <textarea placeholder="Впишите свой ответ..."></textarea>
+      <div class="model"><b>Эталонный ответ:</b> 1) Снижение реальных доходов — при том же номинальном доходе человек может купить меньше товаров. 2) Обесценивание сбережений — деньги, хранящиеся наличными, со временем "стоят" меньше.</div>
+      <p class="criteria"><b>Критерий:</b> последствия должны быть разными по сути, каждое — с пояснением, а не просто названием.</p>
+    </div>
+  </details>
+
+  <details class="written"><summary>3. Объясните на примере, чем инфляция спроса отличается от инфляции издержек.</summary>
+    <div class="wbody">
+      <textarea placeholder="Впишите свой ответ..."></textarea>
+      <div class="model"><b>Эталонный ответ:</b> Инфляция спроса возникает, когда покупатели хотят купить больше товара, чем есть на рынке — например, ажиотажный спрос на билеты. Инфляция издержек возникает, когда у производителя растут затраты, например топливо, — из-за этого он поднимает цену товара.</div>
+      <p class="criteria"><b>Критерий:</b> нужны оба вида и по одному примеру на каждый.</p>
+    </div>
+  </details>
+</section>
+
+<section id="s11">
+  <h2><span class="num">Итог</span>Инфляция за 1 минуту</h2>
+  <div class="cheatsheet">
+    <div class="flow">
+      <div class="step">что это — устойчивый рост цен, деньги обесцениваются</div><div class="arrow">↓</div>
+      <div class="step">причины — спрос выше предложения, растут издержки, больше денег в обороте, больше госрасходов</div><div class="arrow">↓</div>
+      <div class="step">два вида — инфляция спроса и инфляция издержек</div><div class="arrow">↓</div>
+      <div class="step">по темпу — умеренная, галопирующая, гиперинфляция</div><div class="arrow">↓</div>
+      <div class="step">последствия — доходы и сбережения теряют в цене, может расти безработица</div><div class="arrow">↓</div>
+      <div class="step">меры государства — ключевая ставка, меньше денег в обороте, меньше госрасходов</div>
+    </div>
+  </div>
+</section>
+
+</div>
+</body>
+</html>
