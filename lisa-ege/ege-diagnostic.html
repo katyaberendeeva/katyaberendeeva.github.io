@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Диагностика ЕГЭ-2027 · Урок 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F2EFE6; --paper2:#EAE6D9; --ink:#232C39; --muted:#5C6672;
+  --rule:#C9C2AE; --red:#B23A2E; --red-bg:#F4E1DE; --amber:#B8862E; --amber-bg:#F3E7CC;
+  --green:#3F7A55; --green-bg:#DEEBE1; --navy:#24425F; --navy-soft:#EDEFEA;
+  --card:#FFFFFF; --grey-bg:#EAE8E1;
+  font-family:'IBM Plex Sans', system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#1B1F26; --paper2:#20252D; --ink:#EAE7DD; --muted:#9BA4AF;
+    --rule:#3A414C; --red:#E58A7B; --red-bg:#3A2723; --amber:#E4BC72; --amber-bg:#392E1D;
+    --green:#7FC79A; --green-bg:#1E332A; --navy:#8FB4DC; --navy-soft:#232B36;
+    --card:#242A33; --grey-bg:#2A303A;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#1B1F26; --paper2:#20252D; --ink:#EAE7DD; --muted:#9BA4AF;
+  --rule:#3A414C; --red:#E58A7B; --red-bg:#3A2723; --amber:#E4BC72; --amber-bg:#392E1D;
+  --green:#7FC79A; --green-bg:#1E332A; --navy:#8FB4DC; --navy-soft:#232B36;
+  --card:#242A33; --grey-bg:#2A303A;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{background:var(--paper);color:var(--ink);line-height:1.55;}
+h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:600;line-height:1.2;margin:0 0 .4em;}
+h1{font-size:clamp(28px,4vw,40px);font-weight:700;}
+h2{font-size:26px;border-bottom:1px solid var(--rule);padding-bottom:10px;margin-bottom:18px;}
+h3{font-size:18px;color:var(--navy);}
+p{margin:0 0 12px;}
+a{color:var(--navy);}
+.layout{display:flex;gap:44px;max-width:1180px;margin:0 auto;padding:0 24px 80px;}
+.nav{width:224px;flex-shrink:0;position:sticky;top:22px;align-self:flex-start;}
+.nav-inner{background:var(--card);border:1px solid var(--rule);border-radius:2px;padding:14px 0;}
+.nav a{display:block;padding:7px 16px;font-size:13.5px;color:var(--ink);text-decoration:none;border-left:3px solid transparent;}
+.nav a:hover{background:var(--navy-soft);}
+.nav a.active{border-left-color:var(--navy);color:var(--navy);font-weight:600;}
+.nav .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--muted);margin-right:7px;vertical-align:middle;}
+.dot.g{background:var(--green);} .dot.y{background:var(--amber);} .dot.r{background:var(--red);}
+.content{flex:1;min-width:0;max-width:740px;padding-top:8px;}
+header.masthead{max-width:740px;margin:0 auto;padding:44px 24px 0;}
+.masthead .kicker{font-size:13px;color:var(--muted);letter-spacing:.02em;margin-bottom:6px;}
+.masthead .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:13.5px;color:var(--muted);margin-top:14px;border-top:1px solid var(--rule);padding-top:14px;}
+section{margin-bottom:56px;scroll-margin-top:20px;}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:3px;padding:20px 22px;margin-bottom:16px;}
+.teacher-box{background:var(--navy-soft);border-left:3px solid var(--navy);padding:14px 18px;border-radius:2px;font-size:14.5px;margin-bottom:20px;}
+.teacher-box b{color:var(--navy);}
+details.instructions{background:var(--card);border:1px solid var(--rule);border-radius:3px;padding:4px 18px;margin-bottom:14px;}
+details.instructions summary{cursor:pointer;font-weight:600;padding:12px 0;color:var(--navy);}
+.item{border-top:1px solid var(--rule);padding:16px 0;}
+.item:first-child{border-top:none;padding-top:4px;}
+.item-num{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);}
+.item-prompt{font-size:15.5px;margin:4px 0 10px;}
+.item-prompt em{color:var(--navy);font-style:normal;font-weight:600;}
+.item input[type=text]{width:100%;max-width:340px;padding:8px 10px;border:1px solid var(--rule);border-radius:2px;background:var(--paper2);color:var(--ink);font-size:14.5px;}
+.item textarea{width:100%;padding:9px 11px;border:1px solid var(--rule);border-radius:2px;background:var(--paper2);color:var(--ink);font-size:14.5px;font-family:inherit;resize:vertical;}
+.opts{display:flex;flex-wrap:wrap;gap:8px;}
+.opts label{border:1px solid var(--rule);padding:6px 13px;border-radius:20px;font-size:14px;cursor:pointer;background:var(--paper2);}
+.opts input{margin-right:6px;}
+.opts label:has(input:checked){border-color:var(--navy);background:var(--navy-soft);font-weight:600;}
+.feedback{margin-top:10px;font-size:13.5px;padding:8px 12px;border-radius:2px;display:none;}
+.feedback.show{display:block;}
+.feedback.ok{background:var(--green-bg);color:var(--green);}
+.feedback.bad{background:var(--red-bg);color:var(--red);}
+.target-tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);background:var(--grey-bg);padding:2px 7px;border-radius:2px;margin-left:8px;}
+.hint{margin-top:6px;font-size:13px;color:var(--muted);font-style:italic;}
+button.primary{background:var(--navy);color:var(--paper);border:none;padding:11px 22px;border-radius:2px;font-size:14.5px;font-weight:600;cursor:pointer;font-family:inherit;}
+button.primary:hover{opacity:.9;}
+button.ghost{background:transparent;border:1px solid var(--rule);color:var(--ink);padding:9px 18px;border-radius:2px;font-size:13.5px;cursor:pointer;font-family:inherit;}
+.actions{display:flex;gap:10px;align-items:center;margin-top:18px;flex-wrap:wrap;}
+.save-note{font-size:12.5px;color:var(--muted);}
+table.diag{width:100%;border-collapse:collapse;margin-top:14px;font-size:14px;}
+table.diag th,table.diag td{border:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top;}
+table.diag th{background:var(--navy-soft);font-weight:600;font-size:12.5px;color:var(--muted);text-transform:none;}
+table.diag select{padding:4px 6px;border:1px solid var(--rule);border-radius:2px;background:var(--paper2);color:var(--ink);font-size:14px;}
+table.diag input[type=text]{padding:5px 7px;font-size:13px;}
+.score-cell{font-family:'IBM Plex Mono',monospace;font-size:13px;white-space:nowrap;}
+.summary-grid{display:grid;grid-template-columns:1fr;gap:16px;}
+@media(min-width:640px){.summary-grid{grid-template-columns:1fr 1fr 1fr;}}
+.summary-col{border-radius:3px;padding:16px 18px;min-height:100px;}
+.summary-col.g{background:var(--green-bg);}
+.summary-col.y{background:var(--amber-bg);}
+.summary-col.r{background:var(--red-bg);}
+.summary-col h4{margin:0 0 10px;font-family:'IBM Plex Sans';font-size:14px;}
+.summary-col ul{margin:0;padding-left:18px;font-size:13.5px;}
+.summary-col li{margin-bottom:6px;}
+.topic-group{margin-bottom:22px;}
+.topic-group h4{font-size:14.5px;color:var(--navy);margin-bottom:8px;border-bottom:1px dashed var(--rule);padding-bottom:6px;}
+.topic-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:14px;border-bottom:1px solid var(--paper2);gap:10px;}
+.topic-row span.tname{flex:1;}
+.topic-row select{padding:4px 8px;border:1px solid var(--rule);border-radius:2px;background:var(--paper2);color:var(--ink);font-size:13.5px;}
+.tag-auto{font-size:10.5px;color:var(--muted);margin-left:6px;}
+.badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:20px;background:var(--grey-bg);color:var(--muted);margin-left:8px;}
+.hw-list{padding-left:20px;}
+.hw-list li{margin-bottom:10px;}
+footer.foot{max-width:740px;margin:0 auto;padding:0 24px 60px;color:var(--muted);font-size:13px;text-align:center;}
+::selection{background:var(--navy);color:var(--paper);}
+@media(max-width:900px){
+  .layout{flex-direction:column;padding:0;}
+  .nav{position:sticky;top:0;width:100%;z-index:20;background:var(--paper);padding:0;}
+  .nav-inner{display:flex;overflow-x:auto;border-radius:0;border-left:none;border-right:none;padding:10px 12px;gap:4px;}
+  .nav a{border-left:none;border-bottom:3px solid transparent;padding:6px 12px;white-space:nowrap;}
+  .nav a.active{border-left:none;border-bottom-color:var(--navy);}
+  .content{max-width:100%;padding:0 16px;}
+  header.masthead{padding:28px 16px 0;}
+  footer.foot{padding:0 16px 50px;}
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="kicker">УрГУ курс подготовки · Диагностика №1</div>
+  <h1>Диагностический урок ЕГЭ-2027</h1>
+  <p style="color:var(--muted);max-width:560px;">Первое занятие после вводной встречи. Цель — не научить, а <strong style="color:var(--ink)">точно измерить</strong> реальный уровень ученицы по всем разделам экзамена, чтобы построить программу до декабря.</p>
+  <div class="meta">
+    <span>⏱ 60 минут</span>
+    <span>🎯 Цель ученицы: 85–88+ баллов</span>
+    <span>👤 11 класс, спикинг тренирован в школе, письменная часть — почти не отрабатывалась</span>
+  </div>
+</header>
+
+<div class="layout">
+  <nav class="nav"><div class="nav-inner" id="navInner"></div></nav>
+  <main class="content" id="content">
+
+    <section id="instructions">
+      <details class="instructions" open>
+        <summary>Инструкция для преподавателя — прочитать перед уроком</summary>
+        <div style="padding-bottom:16px;">
+          <p><b>Главный принцип:</b> не спрашивайте «ты знаешь Present Perfect?» — проверяйте через задания. После каждого ответа задавайте вопрос: <i>«Почему ты выбрала именно этот вариант? Какое здесь правило?»</i> Правильный ответ без объяснения — это 🟡, а не 🟢.</p>
+          <p><b>Три уровня:</b> 🟢 уверенно знает и может объяснить · 🟡 узнаёт / угадывает / знает частично · 🔴 не знает или системно ошибается.</p>
+          <p><b>Как пользоваться уроком:</b> ученица отвечает в полях ввода → вы нажимаете «Проверить блок» → появляются авто-результаты и мини-таблица по темам → вы выставляете приоритет (🟢🟡🔴) на основании не только ответа, но и объяснения ученицы вслух, и коротко фиксируете тип ошибки. Все поля сохраняются в этом браузере автоматически.</p>
+          <p>В конце — нажмите «Обновить сводку» в разделе «Итоговая диагностика»: карта тем и итоговые списки STRONG / NEEDS REVISION / CRITICAL заполнятся из ваших отметок автоматически.</p>
+        </div>
+      </details>
+    </section>
+
+    <section id="intro">
+      <h2>Вступление для ученицы</h2>
+      <div class="card">
+        <p style="margin:0;">Прочитайте вслух перед началом (2–3 минуты, на русском или английском — как комфортнее ученице):</p>
+        <p style="margin-top:12px;font-style:italic;color:var(--muted);">«Сегодня мы не проходим новую тему — мы выясняем, что ты уже знаешь по-настоящему хорошо, а что нужно подтянуть. Не переживай из-за ошибок: чем честнее ты будешь отвечать и объяснять, почему выбрала тот или иной вариант, тем точнее я смогу построить программу именно под тебя. Если не знаешь — так и скажи, это тоже важная информация.»</p>
+      </div>
+    </section>
+
+    <!-- BLOCK SECTIONS INSERTED BY JS -->
+    <section id="blockhost-grammar"></section>
+    <section id="blockhost-wordformation"></section>
+    <section id="blockhost-prepositions"></section>
+    <section id="blockhost-vocabulary"></section>
+    <section id="blockhost-reading"></section>
+    <section id="blockhost-listening"></section>
+    <section id="blockhost-writing"></section>
+
+    <section id="summary">
+      <h2>Итоговая диагностика</h2>
+      <div class="teacher-box">Нажмите кнопку ниже после того как пройдены все блоки — приоритеты из мини-таблиц каждого блока соберутся в три колонки, а карта тем ниже обновится автоматически по протестированным темам.</div>
+      <div class="actions" style="margin-top:0;margin-bottom:18px;">
+        <button class="primary" id="btnRefreshSummary">Обновить сводку</button>
+        <span class="save-note" id="summaryNote">Сводка ещё не сформирована</span>
+      </div>
+      <div class="summary-grid">
+        <div class="summary-col g"><h4>🟢 STRONG</h4><ul id="sumGreen"><li style="color:var(--muted);">—</li></ul></div>
+        <div class="summary-col y"><h4>🟡 NEEDS REVISION</h4><ul id="sumYellow"><li style="color:var(--muted);">—</li></ul></div>
+        <div class="summary-col r"><h4>🔴 CRITICAL GAPS</h4><ul id="sumRed"><li style="color:var(--muted);">—</li></ul></div>
+      </div>
+      <div class="card" style="margin-top:18px;">
+        <h3 style="margin-top:0;">⚠️ Exam skills — отдельные наблюдения</h3>
+        <p style="font-size:13.5px;color:var(--muted);margin-top:-4px;">Что именно из экзаменационных навыков отсутствует (тайм-менеджмент, формат заданий, стратегия угадывания и т.д.) — впишите вручную, это не выводится автоматически.</p>
+        <textarea id="examSkillsNote" rows="4" placeholder="Например: не успевает читать варианты в Listening; не понимает формат словообразования; не умеет структурировать эссе..."></textarea>
+      </div>
+    </section>
+
+    <section id="topicmap">
+      <h2>Карта тем до ЕГЭ-2027</h2>
+      <p style="color:var(--muted);font-size:14px;">Статус выставляется только по факту проверки. Темы, протестированные сегодня, подставляются автоматически кнопкой «Обновить сводку» выше; остальные — ⚪ проверить позже, пока не подтверждено обратное.</p>
+      <div class="card" id="topicMapHost"></div>
+    </section>
+
+    <section id="homework">
+      <h2>Домашнее задание после урока №1</h2>
+      <div class="card">
+        <ol class="hw-list">
+          <li><b>Полный диагностический пробник ЕГЭ</b> — письменная часть целиком: Listening, Reading, Grammar &amp; Vocabulary, Writing. Выполнять самостоятельно, без словаря и подсказок, в условиях, максимально приближенных к экзамену (тайминг по разделам). Speaking пока не включаем — его регулярно тренируют в школе.</li>
+          <li><b>Writing</b> — если полноценное эссе не попало в пробник отдельным заданием, дать его отдельно как самостоятельную работу.</li>
+          <li><b>Vocabulary</b> — большой список слов пока не даём. Систему vocabulary подбираем после анализа результатов пробника.</li>
+        </ol>
+        <div class="actions">
+          <button class="ghost" id="btnCopyHw">Скопировать текст для ученицы</button>
+          <span class="save-note" id="hwCopyNote"></span>
+        </div>
+        <textarea id="hwText" rows="6" readonly style="margin-top:12px;"></textarea>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="foot">Диагностика заполняется прямо в браузере преподавателя и сохраняется локально на этом устройстве. Результаты пробника и разбор ошибок пришлите отдельно — по ним будет собрана программа подготовки до декабря.</footer>
+
+<script>
+(function(){
+"use strict";
+
+var CATEGORY_LABELS = {
+  tenses:"Tenses (времена)", passive:"Passive Voice", conditionals:"Conditionals",
+  modals:"Modal verbs", ginf:"Infinitive / Gerund", articles:"Articles",
+  pronouns:"Pronouns", comparatives:"Degrees of comparison", relative:"Relative clauses",
+  reported:"Reported Speech", wordorder:"Word order", agreement:"Subject–verb agreement",
+  participles:"Participles / constructions", wordformation:"Word Formation",
+  prepositions:"Prepositions", collocations:"Collocations", vocabulary:"Vocabulary",
+  reading:"Reading", listening:"Listening", writing:"Writing"
+};
+
+function norm(s){
+  return (s||"").toString().trim().toLowerCase()
+    .replace(/['’]/g,"'").replace(/\s+/g," ");
+}
+function isCorrect(item, val){
+  var v = norm(val);
+  if(!v) return false;
+  var ans = Array.isArray(item.answer) ? item.answer : [item.answer];
+  for(var i=0;i<ans.length;i++){ if(norm(ans[i])===v) return true; }
+  return false;
+}
+
+var BLOCKS = [
+{
+  id:"grammar", key:"grammar", title:"1 · Grammar Diagnostic", time:"≈20 мин",
+  note:"Широкая выборка по всем ключевым темам грамматики ЕГЭ. Не разбирайте правило до ответа ученицы — сначала пусть выполнит задание, затем спросите «почему именно так?».",
+  items:[
+    {id:"t1",cat:"tenses",type:"text",prompt:"By the time we arrived, the film ___ (already / start).",answer:["had already started","had started already"],target:"Past Perfect"},
+    {id:"t2",cat:"tenses",type:"text",prompt:"I ___ (never / be) to Japan, but I'd love to go one day.",answer:["have never been","'ve never been"],target:"Present Perfect"},
+    {id:"t3",cat:"tenses",type:"text",prompt:"This time tomorrow we ___ (fly) over the Alps.",answer:"will be flying",target:"Future Continuous"},
+    {id:"t4",cat:"tenses",type:"text",prompt:"When she called, I ___ (cook) dinner, so I couldn't talk.",answer:"was cooking",target:"Past Continuous"},
+    {id:"t5",cat:"tenses",type:"text",prompt:"By 2030, scientists ___ (find) a cure for several rare diseases, according to some experts.",answer:"will have found",target:"Future Perfect"},
+    {id:"t6",cat:"tenses",type:"text",prompt:"He ___ (study) English for six years, and now he speaks it fluently.",answer:["has been studying","has studied"],target:"Present Perfect (Continuous)"},
+    {id:"p1",cat:"passive",type:"text",prompt:"The new bridge ___ (build) by a Chinese company last year.",answer:"was built",target:"Past Simple Passive"},
+    {id:"p2",cat:"passive",type:"mc",prompt:"The report ___ by tomorrow morning.",options:["is finishing","will have been finished","has finishing","will finish"],answer:"will have been finished",target:"Future Perfect Passive"},
+    {id:"c1",cat:"conditionals",type:"mc",prompt:"If I ___ you, I would apologise immediately.",options:["am","was","were","will be"],answer:"were",target:"Second Conditional"},
+    {id:"c2",cat:"conditionals",type:"text",prompt:"If we ___ (leave) earlier, we wouldn't have missed the train.",answer:"had left",target:"Third Conditional"},
+    {id:"c3",cat:"conditionals",type:"mc",prompt:"___ we get a refund, we'll have to complain to the manager.",options:["Unless","If","Provided","Whether"],answer:"Unless",target:"unless"},
+    {id:"c4",cat:"conditionals",type:"text",prompt:"I wish I ___ (know) the answer right now.",answer:"knew",target:"I wish + Past Simple"},
+    {id:"m1",cat:"modals",type:"mc",prompt:"You ___ show your passport at the airport — it's a legal requirement, not a personal choice.",options:["must","have to","should","could"],answer:"have to",target:"must vs have to"},
+    {id:"m2",cat:"modals",type:"text",prompt:"She's not in her office. She ___ (must) have left early.",answer:"must",target:"modal perfect — deduction"},
+    {id:"m3",cat:"modals",type:"mc",prompt:"You ___ have told me earlier — now it's too late to help.",options:["should","must","can","need"],answer:"should",target:"modal perfect — reproach"},
+    {id:"g1",cat:"ginf",type:"text",prompt:"I regret ___ (not / study) harder at school.",answer:"not studying",target:"regret + gerund"},
+    {id:"g2",cat:"ginf",type:"mc",prompt:"Remember ___ the door before you leave!",options:["to lock","locking"],answer:"to lock",target:"remember + to-infinitive"},
+    {id:"g3",cat:"ginf",type:"text",prompt:"She is used to ___ (get up) early now.",answer:"getting up",target:"be used to + gerund"},
+    {id:"a1",cat:"articles",type:"text",prompt:"___ Moon orbits Earth every 27 days.",answer:"The",target:"the — unique object"},
+    {id:"a2",cat:"articles",type:"mc",prompt:"I'd like to become ___ engineer one day.",options:["a","an","the","—"],answer:"an",target:"a/an before vowel sound"},
+    {id:"pr1",cat:"pronouns",type:"mc",prompt:"Everybody left ___ bags in the hall.",options:["his","their","its","our"],answer:"their",target:"indefinite pronoun agreement"},
+    {id:"cmp1",cat:"comparatives",type:"text",prompt:"This exam is far ___ (difficult) than the previous one.",answer:"more difficult",target:"comparative of long adjective"},
+    {id:"rc1",cat:"relative",type:"text",prompt:"The scientist ___ theory we discussed yesterday won the Nobel Prize.",answer:"whose",target:"relative pronoun — whose"},
+    {id:"rs1",cat:"reported",type:"text",prompt:"She said (that) she ___ (finish) the project the day before.",answer:"had finished",target:"reported speech — backshift"},
+    {id:"wo1",cat:"wordorder",type:"text",prompt:"Соберите предложение правильно: always / to school / walks / she",answer:"She always walks to school",target:"adverb of frequency position"},
+    {id:"sv1",cat:"agreement",type:"mc",prompt:"Neither of the answers ___ correct.",options:["is","are","were"],answer:"is",target:"neither of + singular verb"},
+    {id:"pt1",cat:"participles",type:"text",prompt:"___ (exhaust) after the long flight, they went straight to bed.",answer:"Exhausted",target:"participle clause"}
+  ]
+},
+{
+  id:"wordformation", key:"wordformation", title:"2 · Word Formation", time:"≈8–10 мин",
+  note:"Проверяем задания 25–29 формата ЕГЭ. После ответа спросите: какая часть речи нужна в этом месте и почему?",
+  items:[
+    {id:"wf1",cat:"wordformation",type:"text",prompt:"The invention was extremely ___. (USE)",answer:"useful",target:"noun → adjective"},
+    {id:"wf2",cat:"wordformation",type:"text",prompt:"She answered the question with surprising ___. (CONFIDENT)",answer:"confidence",target:"adjective → noun"},
+    {id:"wf3",cat:"wordformation",type:"text",prompt:"The government is trying to reduce ___. (EMPLOY)",answer:"unemployment",target:"verb → noun + negative prefix"},
+    {id:"wf4",cat:"wordformation",type:"text",prompt:"It would be ___ to ignore the warning signs. (RESPONSIBLE)",answer:"irresponsible",target:"negative prefix"},
+    {id:"wf5",cat:"wordformation",type:"text",prompt:"The committee reached its decision ___. (QUICK)",answer:"quickly",target:"adjective → adverb"},
+    {id:"wf6",cat:"wordformation",type:"text",prompt:"There has been a significant ___ in air quality this year. (IMPROVE)",answer:"improvement",target:"verb → noun"}
+  ]
+},
+{
+  id:"prepositions", key:"prepositions", title:"3 · Prepositions + Collocations", time:"≈8 мин",
+  note:"Смешиваем задания с вариантами и открытые вопросы (без вариантов) — это позволяет отличить реальное знание от угадывания.",
+  items:[
+    {id:"pc1",cat:"prepositions",type:"mc",prompt:"She's very good ___ solving logical problems.",options:["at","in","for","with"],answer:"at",target:"adjective + preposition"},
+    {id:"pc2",cat:"prepositions",type:"text",prompt:"This project depends entirely ___ external funding.",answer:"on",target:"verb + preposition (открытый вопрос)"},
+    {id:"pc3",cat:"prepositions",type:"mc",prompt:"He's responsible ___ the whole marketing team.",options:["of","for","with","to"],answer:"for",target:"adjective + preposition"},
+    {id:"pc4",cat:"collocations",type:"text",prompt:"It's important to pay ___ to small details.",answer:"attention",target:"collocation: pay attention"},
+    {id:"pc5",cat:"prepositions",type:"mc",prompt:"Smoking can result ___ serious health problems.",options:["in","to","from","with"],answer:"in",target:"verb + preposition"},
+    {id:"pc6",cat:"prepositions",type:"text",prompt:"They insist ___ checking every document twice.",answer:"on",target:"verb + preposition (открытый вопрос)"},
+    {id:"pc7",cat:"prepositions",type:"mc",prompt:"She was really afraid ___ making a mistake.",options:["of","from","for","about"],answer:"of",target:"adjective + preposition"},
+    {id:"pc8",cat:"collocations",type:"text",prompt:"We need to make a ___ about the budget by Friday.",answer:"decision",target:"collocation: make a decision"}
+  ]
+},
+{
+  id:"vocabulary", key:"vocabulary", title:"4 · Vocabulary", time:"≈5 мин",
+  note:"Слова проверяются в контексте предложения, а не списком синонимов. Задание V3 не проверяется автоматически — оцените вслух вместе с ученицей.",
+  items:[
+    {id:"v1",cat:"vocabulary",type:"mc",prompt:"His argument was so ___ that nobody in the room could disagree.",options:["convincing","boring","quiet","cheap"],answer:"convincing",target:"meaning in context"},
+    {id:"v2",cat:"vocabulary",type:"mc",prompt:"Which phrase fits a formal essay better?",options:["a lot of","a great deal of"],answer:"a great deal of",target:"register"},
+    {id:"v3",cat:"vocabulary",type:"text",prompt:"Перепишите предложение, заменив базовое слово на более точное: «The results were very good.» (без автопроверки — оцените ответ вместе)",answer:"__manual__",target:"precision vocabulary (проверка вручную)"},
+    {id:"v4",cat:"vocabulary",type:"mc",prompt:"\"Smartphones have become ubiquitous in modern life.\" — ubiquitous means:",options:["present everywhere","very expensive","poorly designed","completely new"],answer:"present everywhere",target:"infer meaning from context"},
+    {id:"v5",cat:"vocabulary",type:"text",prompt:"The new policy had a ___ effect on small businesses (opposite of 'positive').",answer:"negative",target:"antonym in context"}
+  ]
+},
+{
+  id:"reading", key:"reading", title:"5 · Reading", time:"≈5 мин",
+  note:"Дайте прочитать текст один раз про себя, затем — задания. Не помогайте с лексикой во время чтения.",
+  passage:"Urban beekeeping has quietly become one of the most popular hobbies in big cities over the past decade. What used to be seen as a strictly rural activity is now practised on rooftops, balconies and even office buildings in London, Paris and New York. Enthusiasts argue that city bees are often healthier than their countryside relatives, since urban gardens and parks provide a wider variety of flowers throughout the year, while rural bees may depend on a single crop that blooms for only a few weeks. Critics, however, warn that keeping too many hives in a small area can create unhealthy competition for food among local pollinators, including wild bees that are already struggling to survive. City councils in several countries are now discussing whether beekeeping should be regulated like any other form of urban farming.",
+  items:[
+    {id:"r1",cat:"reading",type:"mc",prompt:"What is the main idea of the text?",options:["Urban beekeeping is a growing but debated trend","Rural bees are dying out completely","City councils have banned beekeeping","Bees cannot survive in cities"],answer:"Urban beekeeping is a growing but debated trend",target:"main idea"},
+    {id:"r2",cat:"reading",type:"mc",prompt:"According to the text, why might city bees be healthier?",options:["Access to a wider variety of flowers year-round","They are protected by law","They don't compete with wild bees","They live longer naturally"],answer:"Access to a wider variety of flowers year-round",target:"specific information"},
+    {id:"r3",cat:"reading",type:"mc",prompt:"The phrase 'unhealthy competition for food' most likely refers to:",options:["Hives competing with wild pollinators for limited flowers","Beekeepers competing for honey prices","Cities competing for tourism","Bees fighting each other physically"],answer:"Hives competing with wild pollinators for limited flowers",target:"understanding paraphrase"}
+  ]
+},
+{
+  id:"listening", key:"listening", title:"6 · Listening", time:"≈5 мин",
+  note:"Аудио нет — прочитайте текст вслух ОДИН раз в естественном темпе (не медленнее и не быстрее, чем в реальном ЕГЭ). После заданий обязательно спросите причину каждой ошибки: не услышала / услышала, но не поняла / не знала слово / попалась на дистрактор / не успела прочитать варианты.",
+  passage:"[Скрипт для чтения вслух] \"Last weekend I finally visited my grandmother in the countryside — I hadn't seen her since spring because of my exam preparation. We spent most of Saturday just talking and looking through old photographs, which was actually more relaxing than I expected. On Sunday morning it started raining heavily, so instead of going for the walk we'd planned, we baked bread together, something she used to do every week when she was younger. I came back home feeling much calmer about the exams than I did before I left.\"",
+  items:[
+    {id:"l1",cat:"listening",type:"mc",prompt:"Why hadn't the speaker visited earlier?",options:["Exam preparation","Bad weather","A family argument","Work commitments"],answer:"Exam preparation",target:"specific detail"},
+    {id:"l2",cat:"listening",type:"mc",prompt:"What did they do on Sunday instead of the planned walk?",options:["Baked bread","Watched a film","Went shopping","Read old letters"],answer:"Baked bread",target:"listening for detail after a plan change (distractor risk)"},
+    {id:"l3",cat:"listening",type:"mc",prompt:"How did the speaker feel afterwards?",options:["Calmer about the exams","More anxious","Tired and bored","Confused"],answer:"Calmer about the exams",target:"overall attitude / gist"}
+  ]
+}
+];
+
+// ---------- render items / blocks ----------
+function el(tag, cls, html){
+  var e = document.createElement(tag);
+  if(cls) e.className = cls;
+  if(html!==undefined) e.innerHTML = html;
+  return e;
+}
+
+function renderItem(item, idx){
+  var wrap = el("div","item"); wrap.dataset.id = item.id;
+  var num = el("div","item-num","№"+(idx+1)+" <span class='target-tag'>"+item.target+"</span>");
+  wrap.appendChild(num);
+  wrap.appendChild(el("div","item-prompt",item.prompt));
+  if(item.type==="mc"){
+    var opts = el("div","opts");
+    item.options.forEach(function(o,i){
+      var lab = document.createElement("label");
+      var inp = document.createElement("input");
+      inp.type="radio"; inp.name="q_"+item.id; inp.value=o; inp.id="in_"+item.id+"_"+i;
+      lab.appendChild(inp); lab.appendChild(document.createTextNode(o));
+      opts.appendChild(lab);
+    });
+    wrap.appendChild(opts);
+  } else {
+    var inp2 = document.createElement("input");
+    inp2.type="text"; inp2.id="in_"+item.id; inp2.placeholder="ответ ученицы...";
+    wrap.appendChild(inp2);
+  }
+  var fb = el("div","feedback"); fb.id="fb_"+item.id;
+  wrap.appendChild(fb);
+  return wrap;
+}
+
+function getItemValue(item){
+  if(item.type==="mc"){
+    var checked = document.querySelector("input[name='q_"+item.id+"']:checked");
+    return checked ? checked.value : "";
+  }
+  var f = document.getElementById("in_"+item.id);
+  return f ? f.value : "";
+}
+
+function buildCategoryTable(block, tallies){
+  var table = el("table","diag");
+  table.innerHTML = "<thead><tr><th>Тема</th><th>Результат</th><th>Наблюдение / тип ошибки</th><th>Приоритет</th></tr></thead>";
+  var tbody = document.createElement("tbody");
+  Object.keys(tallies).forEach(function(cat){
+    var t = tallies[cat];
+    var ratio = t.total? t.correct/t.total : 0;
+    var suggested = t.manual ? "y" : (ratio>=0.8?"g":ratio>=0.4?"y":"r");
+    var tr = document.createElement("tr");
+    var scoreTxt = t.manual ? "—" : (t.correct+"/"+t.total);
+    tr.innerHTML =
+      "<td>"+CATEGORY_LABELS[cat]+"</td>"+
+      "<td class='score-cell'>"+scoreTxt+"</td>"+
+      "<td><input type='text' id='note_"+block.id+"_"+cat+"' placeholder='угадывает / не знает правило / уверенно...'></td>"+
+      "<td><select class='cat-select' data-cat='"+cat+"' data-label='"+CATEGORY_LABELS[cat]+"' id='cat_"+block.id+"_"+cat+"'>"+
+        "<option value='g'"+(suggested==="g"?" selected":"")+">🟢 strong</option>"+
+        "<option value='y'"+(suggested==="y"?" selected":"")+">🟡 revise</option>"+
+        "<option value='r'"+(suggested==="r"?" selected":"")+">🔴 critical</option>"+
+      "</select></td>";
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+  return table;
+}
+
+function renderBlock(block){
+  var host = document.getElementById("blockhost-"+block.id);
+  host.innerHTML = "";
+  host.appendChild(el("h2", null, block.title));
+  host.appendChild(el("div","teacher-box","<b>Преподавателю:</b> "+block.note+" &nbsp;<span class='badge'>"+block.time+"</span>"));
+  if(block.passage){
+    var pcard = el("div","card","<h3 style='margin-top:0'>Текст</h3><p style='white-space:pre-line'>"+block.passage+"</p>");
+    host.appendChild(pcard);
+  }
+  var itemsCard = el("div","card");
+  block.items.forEach(function(item, idx){
+    itemsCard.appendChild(renderItem(item, idx));
+  });
+  host.appendChild(itemsCard);
+
+  var actions = el("div","actions");
+  var btn = el("button","primary","Проверить блок");
+  var note = el("span","save-note","");
+  actions.appendChild(btn); actions.appendChild(note);
+  host.appendChild(actions);
+
+  var tableHost = el("div"); tableHost.id="table_"+block.id;
+  host.appendChild(tableHost);
+
+  btn.addEventListener("click", function(){
+    var tallies = {};
+    block.items.forEach(function(item){
+      if(!tallies[item.cat]) tallies[item.cat] = {correct:0,total:0,manual:false};
+      var val = getItemValue(item);
+      var fb = document.getElementById("fb_"+item.id);
+      if(item.answer === "__manual__"){
+        tallies[item.cat].manual = true;
+        fb.className = "feedback show";
+        fb.style.background = "var(--grey-bg)"; fb.style.color="var(--muted)";
+        fb.textContent = val ? "Ответ записан — оцените вместе с ученицей вслух." : "Пока не отвечено.";
+        return;
+      }
+      tallies[item.cat].total++;
+      var ok = isCorrect(item, val);
+      if(ok) tallies[item.cat].correct++;
+      fb.className = "feedback show " + (ok?"ok":"bad");
+      var ansTxt = Array.isArray(item.answer) ? item.answer[0] : item.answer;
+      fb.textContent = ok ? "✅ верно" : "❌ неверно — правильный ответ: "+ansTxt;
+    });
+    var table = buildCategoryTable(block, tallies);
+    var th = document.getElementById("table_"+block.id);
+    th.innerHTML = "<h3>Мини-диагностика блока</h3>";
+    th.appendChild(table);
+    note.textContent = "Проверено — заполните наблюдения и приоритет выше.";
+    saveState();
+  });
+}
+
+// Writing block (no auto grading — open fields + manual rubric)
+function renderWritingBlock(){
+  var host = document.getElementById("blockhost-writing");
+  host.innerHTML = "";
+  host.appendChild(el("h2", null, "7 · Writing Diagnostic"));
+  host.appendChild(el("div","teacher-box","<b>Преподавателю:</b> Полноценное эссе на уроке не пишем. Задача — понять, умеет ли ученица формулировать позицию, развивать мысль и связывать идеи, и какой у неё письменный словарный запас. &nbsp;<span class='badge'>≈5 мин</span>"));
+  var card = el("div","card");
+  card.innerHTML =
+    "<h3 style='margin-top:0'>Тема (формат ЕГЭ, opinion essay)</h3>"+
+    "<p style='font-style:italic'>«Some people believe that school students should choose which subjects to study themselves. Others think schools should decide for them. What is your opinion?»</p>"+
+    "<p style='color:var(--muted);font-size:13.5px'>Попросите ученицу быстро, без черновика, письменно набросать структуру:</p>";
+  var fields = [
+    ["w_thesis","Тезис / позиция (1 предложение)"],
+    ["w_arg1","Первый аргумент"],
+    ["w_arg2","Второй аргумент"],
+    ["w_example","Пример"],
+    ["w_conclusion","Идея для заключения"]
+  ];
+  fields.forEach(function(f){
+    var d = el("div","item");
+    d.innerHTML = "<div class='item-prompt'>"+f[1]+"</div><input type='text' id='"+f[0]+"'>";
+    card.appendChild(d);
+  });
+  var d2 = el("div","item");
+  d2.innerHTML = "<div class='item-prompt'>Дополнительно (по желанию): 3–5 связных предложений на эту тему</div><textarea id='w_free' rows='3'></textarea>";
+  card.appendChild(d2);
+  host.appendChild(card);
+
+  var rubricCard = el("div","card");
+  rubricCard.innerHTML = "<h3 style='margin-top:0'>Быстрая оценка</h3>";
+  var table = el("table","diag");
+  table.innerHTML = "<thead><tr><th>Тема</th><th>Результат</th><th>Наблюдение</th><th>Приоритет</th></tr></thead>";
+  var tbody = document.createElement("tbody");
+  var tr = document.createElement("tr");
+  tr.innerHTML = "<td>"+CATEGORY_LABELS.writing+"</td>"+
+    "<td class='score-cell'>—</td>"+
+    "<td><input type='text' id='note_writing_writing' placeholder='структура / словарь / грамматика / связность...'></td>"+
+    "<td><select class='cat-select' data-cat='writing' data-label='"+CATEGORY_LABELS.writing+"' id='cat_writing_writing'>"+
+      "<option value='g'>🟢 strong</option><option value='y' selected>🟡 revise</option><option value='r'>🔴 critical</option>"+
+    "</select></td>";
+  tbody.appendChild(tr); table.appendChild(tbody);
+  rubricCard.appendChild(table);
+  host.appendChild(rubricCard);
+}
+
+BLOCKS.forEach(renderBlock);
+renderWritingBlock();
+
+// ---------- topic map ----------
+var TOPIC_MAP = [
+  ["GRAMMAR",[
+    ["Present Simple / Continuous",null],["Past Simple / Continuous",null],
+    ["Present Perfect (Continuous)","tenses"],["Past Perfect","tenses"],["Future forms","tenses"],["Future in the Past",null],
+    ["Passive Voice — all tenses","passive"],
+    ["Conditionals 0–3, Mixed","conditionals"],["unless / provided / as long as","conditionals"],["I wish / If only","conditionals"],
+    ["Modal verbs — core meanings","modals"],["Modal perfects (should have done etc.)","modals"],
+    ["Infinitive vs Gerund","ginf"],["used to / be-get used to","ginf"],
+    ["Articles","articles"],["Pronouns","pronouns"],["Degrees of comparison","comparatives"],
+    ["Relative clauses","relative"],["Reported Speech","reported"],["Word order","wordorder"],
+    ["Subject–verb agreement","agreement"],["Participles / complex constructions","participles"]
+  ]],
+  ["WORD FORMATION",[
+    ["Noun → adjective","wordformation"],["Adjective → adverb","wordformation"],["Verb → noun","wordformation"],
+    ["Adjective → noun","wordformation"],["Negative prefixes","wordformation"],["Determining part of speech in context","wordformation"]
+  ]],
+  ["VOCABULARY",[
+    ["Synonyms in context","vocabulary"],["Antonyms in context","vocabulary"],["Register (formal/informal)","vocabulary"],
+    ["Collocations — vocabulary level",null],["Inferring meaning from context","vocabulary"],["Precision — replacing basic words",null]
+  ]],
+  ["PREPOSITIONS & COLLOCATIONS",[
+    ["Adjective + preposition","prepositions"],["Verb + preposition","prepositions"],["Noun + preposition",null],
+    ["Fixed collocations","collocations"]
+  ]],
+  ["READING",[
+    ["Main idea","reading"],["Specific information","reading"],["Matching headings",null],
+    ["Understanding paraphrase","reading"],["Contextual meaning",null]
+  ]],
+  ["LISTENING",[
+    ["Gist / main idea","listening"],["Specific detail","listening"],["Distractor resistance","listening"],["Multiple choice format",null]
+  ]],
+  ["WRITING",[
+    ["Thesis / position","writing"],["Argumentation","writing"],["Coherence & cohesion",null],
+    ["Register & vocabulary range",null],["Grammar accuracy in extended writing",null]
+  ]],
+  ["SPEAKING",[
+    ["Fluency",null],["Pronunciation",null],["Task format familiarity",null]
+  ]]
+];
+
+function renderTopicMap(){
+  var host = document.getElementById("topicMapHost");
+  host.innerHTML = "";
+  TOPIC_MAP.forEach(function(group){
+    var g = el("div","topic-group");
+    g.appendChild(el("h4",null,group[0]));
+    group[1].forEach(function(topic){
+      var row = el("div","topic-row");
+      row.dataset.cat = topic[1] || "";
+      var span = el("span","tname", topic[0] + (topic[1]?"<span class='tag-auto'>🔗 связано с диагностикой</span>":""));
+      row.appendChild(span);
+      var sel = document.createElement("select");
+      sel.className = "topic-select";
+      sel.id = "topic_" + topic[0].replace(/[^a-zA-Zа-яА-Я0-9]/g,"_");
+      sel.innerHTML =
+        "<option value='w' selected>⚪ проверить позже</option>"+
+        "<option value='g'>🟢 знает</option>"+
+        "<option value='y'>🟡 повторить</option>"+
+        "<option value='r'>🔴 изучить</option>";
+      row.appendChild(sel);
+      g.appendChild(row);
+    });
+    host.appendChild(g);
+  });
+}
+renderTopicMap();
+
+// ---------- summary refresh ----------
+function refreshSummary(){
+  var buckets = {g:[], y:[], r:[]};
+  document.querySelectorAll(".cat-select").forEach(function(sel){
+    var v = sel.value, label = sel.dataset.label;
+    if(buckets[v] && buckets[v].indexOf(label)===-1) buckets[v].push(label);
+  });
+  function fill(id, arr){
+    var ul = document.getElementById(id);
+    ul.innerHTML = arr.length ? arr.map(function(x){return "<li>"+x+"</li>";}).join("") : "<li style='color:var(--muted)'>—</li>";
+  }
+  fill("sumGreen", buckets.g); fill("sumYellow", buckets.y); fill("sumRed", buckets.r);
+
+  // sync topic map rows that are linked to a tested category
+  var catToValue = {};
+  document.querySelectorAll(".cat-select").forEach(function(sel){ catToValue[sel.dataset.cat] = sel.value; });
+  document.querySelectorAll(".topic-row").forEach(function(row){
+    var cat = row.dataset.cat;
+    if(cat && catToValue[cat]){
+      var sel = row.querySelector(".topic-select");
+      if(sel) sel.value = catToValue[cat];
+    }
+  });
+  document.getElementById("summaryNote").textContent = "Сводка обновлена · " + new Date().toLocaleTimeString("ru-RU").slice(0,5);
+  saveState();
+}
+document.getElementById("btnRefreshSummary").addEventListener("click", refreshSummary);
+
+// ---------- homework copy ----------
+var HW_TEXT = "Домашнее задание после диагностического урока:\n\n"+
+"1. Пройди полный диагностический пробник ЕГЭ: Listening, Reading, Grammar & Vocabulary, Writing. Выполняй самостоятельно, без словаря и подсказок, засекая время по разделам — как на настоящем экзамене.\n\n"+
+"2. Если в пробнике не было полноценного эссе — напиши его отдельно по формату ЕГЭ.\n\n"+
+"3. Список слов для заучивания пока не даю — подберу после разбора пробника, чтобы не тратить время впустую.";
+document.getElementById("hwText").value = HW_TEXT;
+document.getElementById("btnCopyHw").addEventListener("click", function(){
+  var ta = document.getElementById("hwText");
+  ta.select(); ta.setSelectionRange(0,999999);
+  var noteEl = document.getElementById("hwCopyNote");
+  try{
+    document.execCommand("copy");
+    noteEl.textContent = "Скопировано";
+  }catch(e){
+    noteEl.textContent = "Выделите текст и скопируйте вручную (Ctrl+C)";
+  }
+  setTimeout(function(){ noteEl.textContent=""; }, 2500);
+});
+
+// ---------- nav ----------
+var NAV_ITEMS = [
+  ["instructions","Инструкция"],["intro","Вступление"],
+  ["blockhost-grammar","1 · Grammar"],["blockhost-wordformation","2 · Word Formation"],
+  ["blockhost-prepositions","3 · Prepositions"],["blockhost-vocabulary","4 · Vocabulary"],
+  ["blockhost-reading","5 · Reading"],["blockhost-listening","6 · Listening"],
+  ["blockhost-writing","7 · Writing"],["summary","Итоговая диагностика"],
+  ["topicmap","Карта тем"],["homework","Домашнее задание"]
+];
+var navHost = document.getElementById("navInner");
+NAV_ITEMS.forEach(function(n){
+  var a = document.createElement("a");
+  a.href = "#"+n[0]; a.textContent = n[1]; a.dataset.target = n[0];
+  navHost.appendChild(a);
+});
+var navLinks = navHost.querySelectorAll("a");
+function updateActiveNav(){
+  var pos = window.scrollY + 120;
+  var current = NAV_ITEMS[0][0];
+  NAV_ITEMS.forEach(function(n){
+    var sec = document.getElementById(n[0]);
+    if(sec && sec.offsetTop <= pos) current = n[0];
+  });
+  navLinks.forEach(function(a){ a.classList.toggle("active", a.dataset.target===current); });
+}
+window.addEventListener("scroll", updateActiveNav);
+updateActiveNav();
+
+// ---------- persistence ----------
+var STORAGE_KEY = "ege2027-diagnostic-lesson1-v1";
+function saveState(){
+  try{
+    var data = {};
+    document.querySelectorAll("input[type=text], textarea").forEach(function(f){ if(f.id) data[f.id]=f.value; });
+    document.querySelectorAll("input[type=radio]:checked").forEach(function(f){ data[f.name]=f.value; });
+    document.querySelectorAll("select").forEach(function(f){ if(f.id) data[f.id]=f.value; });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  }catch(e){ /* storage unavailable — silently ignore */ }
+}
+function loadState(){
+  try{
+    var raw = localStorage.getItem(STORAGE_KEY);
+    if(!raw) return;
+    var data = JSON.parse(raw);
+    Object.keys(data).forEach(function(key){
+      var byId = document.getElementById(key);
+      if(byId){ byId.value = data[key]; return; }
+      var radios = document.querySelectorAll("input[type=radio][name='"+key+"']");
+      radios.forEach(function(r){ if(r.value===data[key]) r.checked = true; });
+    });
+  }catch(e){ /* corrupted or unavailable storage — start fresh */ }
+}
+document.addEventListener("input", function(e){
+  if(e.target.matches("input[type=text], textarea, input[type=radio]")) saveState();
+});
+document.addEventListener("change", function(e){
+  if(e.target.matches("select")) saveState();
+});
+loadState();
+
+})();
+</script>
+</body>
+</html>
