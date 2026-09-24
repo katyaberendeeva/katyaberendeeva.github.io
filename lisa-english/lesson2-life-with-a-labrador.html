@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lesson 2 — Life with a Labrador</title>
+<style>
+:root{
+  --lav:#b8a9db; --blue:#a8c8da; --peach:#f3c8a6; --cream:#fbf6ef; --graphite:#3a3a3a;
+  --lav-soft:#ece6f6; --blue-soft:#e4eff4; --peach-soft:#fbe7d6;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Georgia',serif;background:var(--cream);color:var(--graphite);
+  padding-top:env(safe-area-inset-top,0);padding-bottom:env(safe-area-inset-bottom,0);}
+h1,h2,h3{font-family:'Helvetica Neue',Arial,sans-serif;margin:0 0 8px}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px 60px}
+header.hero{background:linear-gradient(135deg,var(--lav),var(--blue));padding:48px 20px;text-align:center;color:#fff;border-radius:0 0 28px 28px}
+header.hero h1{font-size:2.1em;letter-spacing:.5px}
+header.hero p{font-family:Georgia,serif;font-size:1.05em;opacity:.95}
+.badge{display:inline-block;background:rgba(255,255,255,.25);padding:4px 14px;border-radius:20px;font-size:.8em;margin-top:10px}
+.progress{height:6px;background:var(--lav-soft);border-radius:6px;margin:18px 0 30px;overflow:hidden}
+.progress i{display:block;height:100%;background:var(--peach);width:0%}
+section{background:#fff;border-radius:18px;padding:24px 24px 20px;margin-bottom:22px;box-shadow:0 2px 10px rgba(58,58,58,.06)}
+section h2{font-size:1.3em;display:flex;align-items:center;gap:8px}
+.time{font-family:Arial,sans-serif;font-size:.72em;color:#8b7fae;background:var(--lav-soft);padding:3px 10px;border-radius:12px;margin-left:auto}
+.tier{border-left:4px solid var(--lav);padding:8px 14px;margin:10px 0;border-radius:0 10px 10px 0;background:var(--lav-soft)}
+.tier.routine{border-color:var(--blue);background:var(--blue-soft)}
+.tier.personal{border-color:var(--peach);background:var(--peach-soft)}
+.tier b{font-family:Arial,sans-serif;font-size:.78em;letter-spacing:1px;text-transform:uppercase;color:#6b6b6b}
+.tier ul{margin:6px 0 0;padding-left:18px}
+.vocab-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+@media(max-width:520px){.vocab-grid{grid-template-columns:1fr}}
+.vcard{background:var(--cream);border:1px solid #eee0cf;border-radius:12px;padding:12px 14px}
+.vcard b{font-family:Arial,sans-serif;color:#a5762f}
+.vcard .ex{font-style:italic;color:#555;margin:6px 0 2px}
+.vcard .q{font-family:Arial,sans-serif;font-size:.85em;color:#7d6fa0}
+.scale{display:flex;justify-content:space-between;align-items:flex-end;margin:18px 0;gap:6px}
+.scale div{flex:1;text-align:center}
+.bar{background:linear-gradient(180deg,var(--lav),var(--blue));border-radius:6px 6px 0 0;margin:0 auto 6px}
+.scale span{font-family:Arial,sans-serif;font-size:.72em;font-weight:bold}
+.scale small{display:block;font-family:Arial,sans-serif;font-size:.65em;color:#888}
+.practice-box{background:var(--blue-soft);border-radius:12px;padding:14px 16px;margin-top:10px}
+details.reveal{margin:8px 0;background:var(--cream);border-radius:8px;padding:8px 12px}
+details.reveal summary{cursor:pointer;font-family:Arial,sans-serif;font-size:.85em;color:#8b7fae}
+.game-card{display:flex;justify-content:space-between;align-items:center;background:var(--peach-soft);border-radius:12px;padding:12px 16px;margin:8px 0;font-family:Arial,sans-serif}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:#fff;border:1px solid var(--peach);border-radius:14px;padding:3px 10px;font-size:.75em;cursor:pointer}
+.video-block{background:linear-gradient(135deg,var(--lav-soft),var(--blue-soft));border-radius:14px;padding:18px}
+.video-block a.watch{display:inline-block;background:var(--graphite);color:#fff;text-decoration:none;padding:9px 18px;border-radius:24px;font-family:Arial,sans-serif;font-size:.85em;margin-top:8px}
+.video-meta{font-family:Arial,sans-serif;font-size:.8em;color:#555;margin-top:6px}
+.checklist label{display:block;font-family:Arial,sans-serif;margin:6px 0}
+.hw-block{background:var(--peach-soft);border-radius:14px;padding:16px}
+.hw-block h3{font-family:Arial,sans-serif;font-size:1em}
+.teacher-note{display:none;background:#fff3e0;border:1px dashed #d9a441;border-radius:10px;padding:10px 14px;margin-top:10px;font-family:Arial,sans-serif;font-size:.83em;color:#6b5225}
+.teacher-note b{color:#a5762f}
+body.teacher-on .teacher-note{display:block}
+#tmode{position:fixed;bottom:18px;right:18px;background:var(--graphite);color:#fff;border:none;border-radius:24px;padding:10px 18px;font-family:Arial,sans-serif;font-size:.8em;cursor:pointer;z-index:10;box-shadow:0 3px 10px rgba(0,0,0,.2)}
+body.teacher-on #tmode{background:#a5762f}
+.emoji-row{font-size:1.3em;letter-spacing:6px;text-align:center;margin:10px 0}
+:root:not([data-theme="light"]){}
+</style>
+</head>
+<body>
+<button id="tmode" onclick="document.body.classList.toggle('teacher-on');this.textContent=document.body.classList.contains('teacher-on')?'👩‍🏫 Teacher Mode: ON':'👩‍🏫 Teacher Mode'">👩‍🏫 Teacher Mode</button>
+
+<header class="hero">
+  <div class="badge">Lesson 2 · Series: My New Life → Life with a Labrador</div>
+  <h1>🐶 Life with a Labrador</h1>
+  <p>Daily routines, habits &amp; funny stories</p>
+</header>
+
+<div class="wrap">
+<div class="progress"><i style="width:100%"></i></div>
+<p class="teacher-note"><b>Lesson overview:</b> 60 min. Builds on Lesson 1 (Present Simple vs Past Simple, daily routine, irregular verbs). New focus: Present Simple + adverbs of frequency, light PS review. Liza — 20yo, massage therapist + factory worker, has a labrador, above 5th-grade vocabulary.</p>
+
+<section>
+<h2>☕ Warm-up <span class="time">5 min</span></h2>
+<p>Casual catch-up, no correction — just get her talking.</p>
+<ul>
+<li>How was your week? Are you tired after work?</li>
+<li>What do you usually do after work?</li>
+<li>Did anything funny happen this week?</li>
+<li><i>→ And what about your dog?</i></li>
+</ul>
+</section>
+
+<section>
+<h2>🐶 Speaking — Meet My Labrador <span class="time">10 min</span></h2>
+<p><b>Tell me about your dog.</b> Move through the tiers — you don't need every question, follow what she says.</p>
+<div class="tier"><b>Easy</b><ul>
+<li>What's your dog's name? How old is he/she?</li>
+<li>What does he/she look like?</li>
+<li>What does he/she like?</li>
+</ul></div>
+<div class="tier routine"><b>Routine</b><ul>
+<li>What does your dog usually do in the morning?</li>
+<li>How often do you walk your dog?</li>
+<li>Where does your dog usually sleep?</li>
+<li>What does your dog do when you're working? What does he/she usually eat?</li>
+</ul></div>
+<div class="tier personal"><b>Personal</b><ul>
+<li>What's the funniest thing your dog does?</li>
+<li>What does your dog hate? What does your dog always do?</li>
+<li>What's one thing you'd like to change?</li>
+</ul></div>
+<div class="teacher-note"><b>Follow-ups:</b> "Why do you think he does that?" / "Does he do that every day?" / "How does that make you feel?" — push for one extra sentence each time.</div>
+</section>
+
+<section>
+<h2>🧠 Vocabulary <span class="time">7 min</span></h2>
+<div class="vocab-grid">
+<div class="vcard"><b>go for a walk</b><div class="ex">We go for a walk every evening.</div><div class="q">Q: When do you go for a walk?</div></div>
+<div class="vcard"><b>feed</b><div class="ex">I feed him at 8am and 6pm.</div><div class="q">Q: Who usually feeds your dog?</div></div>
+<div class="vcard"><b>bark</b><div class="ex">He barks at the postman.</div><div class="q">Q: What does your dog bark at?</div></div>
+<div class="vcard"><b>play</b><div class="ex">We play with a ball in the yard.</div><div class="q">Q: How does your dog like to play?</div></div>
+<div class="vcard"><b>cuddle</b><div class="ex">He cuddles with me on the sofa.</div><div class="q">Q: Does your dog like to cuddle?</div></div>
+<div class="vcard"><b>be scared of</b><div class="ex">He's scared of thunder.</div><div class="q">Q: Is your dog scared of anything?</div></div>
+<div class="vcard"><b>be obsessed with</b><div class="ex">She's obsessed with tennis balls.</div><div class="q">Q: What's your dog obsessed with?</div></div>
+<div class="vcard"><b>make a mess</b><div class="ex">He always makes a mess when I'm away.</div><div class="q">Q: Does your dog ever make a mess?</div></div>
+</div>
+</section>
+
+<section>
+<h2>🔄 Grammar — Adverbs of Frequency <span class="time">10 min</span></h2>
+<div class="scale">
+<div><div class="bar" style="height:70px;background:#7a5fb0"></div><span>ALWAYS</span><small>100%</small></div>
+<div><div class="bar" style="height:56px"></div><span>USUALLY</span><small>80%</small></div>
+<div><div class="bar" style="height:42px"></div><span>OFTEN</span><small>60%</small></div>
+<div><div class="bar" style="height:28px;background:#9fb8cc"></div><span>SOMETIMES</span><small>40%</small></div>
+<div><div class="bar" style="height:12px;background:#c9d7e0"></div><span>RARELY</span><small>10%</small></div>
+<div><div class="bar" style="height:4px;background:#dfe7ec"></div><span>NEVER</span><small>0%</small></div>
+</div>
+<p><b>Position:</b> before most verbs — <i>I usually work late.</i> &nbsp;|&nbsp; after <b>be</b> — <i>My dog is always tired.</i></p>
+<div class="practice-box">
+<p><b>Practice A — reorder:</b></p>
+<details class="reveal"><summary>1. I walk my dog in the morning. (usually)</summary>I <b>usually</b> walk my dog in the morning.</details>
+<details class="reveal"><summary>2. He sits still when I work. (never)</summary>He <b>never</b> sits still when I work.</details>
+<details class="reveal"><summary>3. She is hungry before dinner. (always)</summary>She <b>is always</b> hungry before dinner.</details>
+<details class="reveal"><summary>4. We go for a long walk on Sundays. (sometimes)</summary>We <b>sometimes</b> go for a long walk on Sundays.</details>
+<details class="reveal"><summary>5. He barks at strangers. (often)</summary>He <b>often</b> barks at strangers.</details>
+<p style="margin-top:14px"><b>Practice B — make it personal:</b> I always... / I usually... / I often... / I sometimes... / I rarely... / I never...</p>
+</div>
+<div class="teacher-note"><b>Watch for:</b> adverb placed after main verb ("I walk usually") or before "be" ("I am usually" said correctly but "I usually am" as error). Gently model, don't over-correct mid-flow.</div>
+</section>
+
+<section>
+<h2>🎯 Quick Practice — How Often? <span class="time">5 min</span></h2>
+<p>She picks a frequency, then makes a full sentence about her own dog.</p>
+<div class="game-card">🐶 food <div class="chips"><span class="chip">always</span><span class="chip">usually</span><span class="chip">often</span><span class="chip">sometimes</span><span class="chip">rarely</span><span class="chip">never</span></div></div>
+<div class="game-card">🚶 walk <div class="chips"><span class="chip">always</span><span class="chip">usually</span><span class="chip">often</span><span class="chip">sometimes</span><span class="chip">rarely</span><span class="chip">never</span></div></div>
+<div class="game-card">🛋️ sleep <div class="chips"><span class="chip">always</span><span class="chip">usually</span><span class="chip">often</span><span class="chip">sometimes</span><span class="chip">rarely</span><span class="chip">never</span></div></div>
+<div class="game-card">🎾 play <div class="chips"><span class="chip">always</span><span class="chip">usually</span><span class="chip">often</span><span class="chip">sometimes</span><span class="chip">rarely</span><span class="chip">never</span></div></div>
+<div class="game-card">🧹 make a mess <div class="chips"><span class="chip">always</span><span class="chip">usually</span><span class="chip">often</span><span class="chip">sometimes</span><span class="chip">rarely</span><span class="chip">never</span></div></div>
+</section>
+
+<section>
+<h2>🎧 Watch &amp; Listen <span class="time">10 min</span></h2>
+<div class="video-block">
+<b>▶️ WATCH VIDEO</b>
+<div class="video-meta"><b>Talking about Daily Routines in English (Present Simple)</b> — English Panda<br>~3 min · animated, clear narration, present simple, mentions a pet dog · subtitles on-screen</div>
+<a class="watch" href="https://www.youtube.com/watch?v=kePBvNotYy4" target="_blank" rel="noopener">Open video ↗</a>
+<p style="font-family:Arial,sans-serif;font-size:.85em;margin-top:10px"><b>Before:</b> What do you think "Julie" does first in the morning? Does she have a pet?<br>
+<b>While:</b> 1) What is the video about? 2) True/False: Julie feeds her dog in the morning. 3) What does the character usually do before leaving home? 4) Find 2 useful words/expressions.<br>
+<b>After:</b> Is this routine similar to yours? Which part was the most relatable?</p>
+</div>
+</section>
+
+<section>
+<h2>🎤 Final Speaking — My Dog's Perfect Day <span class="time">8 min</span></h2>
+<p>Tell a story: <i>"A perfect day for my dog."</i> Use at least: 3 adverbs of frequency, 3 Present Simple sentences, 2 new vocabulary words.</p>
+<div class="emoji-row">🌅 🍖 🚶 🎾 😴 🌙</div>
+<p style="font-family:Arial,sans-serif;font-size:.85em;color:#7d6fa0">Then: <i>"What did your dog do yesterday?"</i> — back to Past Simple.</p>
+</section>
+
+<section>
+<h2>✨ Wrap-up <span class="time">5 min</span></h2>
+<ul>
+<li>What new words do you remember?</li>
+<li>Which adverb do you use most often?</li>
+<li>Tell me one thing you always do / never do.</li>
+<li>Tell me one funny thing your dog did.</li>
+</ul>
+<div class="checklist">
+<b>Today I can...</b>
+<label><input type="checkbox"> talk about habits</label>
+<label><input type="checkbox"> use adverbs of frequency</label>
+<label><input type="checkbox"> describe my dog's routine</label>
+<label><input type="checkbox"> tell a short story about the past</label>
+</div>
+</section>
+
+<section class="hw-block">
+<h3>📝 Homework (20–25 min)</h3>
+<p><b>1. Writing</b> — "My dog's routine", 8–10 sentences, using always / usually / often / sometimes / never.</p>
+<p><b>2. Vocabulary</b> — 5 new words → one personal sentence each.</p>
+<p><b>3. Mini speaking</b> — 1-min voice message: "My dog's typical day," min. 3 adverbs of frequency.</p>
+</section>
+
+<div class="teacher-note" style="margin-bottom:30px"><b>Check next lesson:</b> adverb placement accuracy, comfort with "is always/never" pattern, readiness for Present Continuous (what's happening now vs habits) as Lesson 3 candidate.</div>
+
+</div>
+</body>
+</html>
