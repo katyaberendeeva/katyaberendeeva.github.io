@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 1 · Основы английского</title>
+<style>
+  :root{
+    --bg:#F4F6FA;
+    --card:#FFFFFF;
+    --ink:#1B1F2E;
+    --ink-soft:#5A6178;
+    --border:#E3E6F0;
+    --grammar:#4F5DFF;
+    --grammar-bg:#EEF0FF;
+    --vocab:#0FA98F;
+    --vocab-bg:#E6F8F4;
+    --practice:#FF7A45;
+    --practice-bg:#FFEEE4;
+    --good:#1B9E5A;
+    --good-bg:#E7F7EE;
+    --bad:#D9483C;
+    --bad-bg:#FDECEA;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.5;
+    padding-bottom:80px;
+  }
+  h1,h2,h3{
+    font-family:Georgia,"Times New Roman",serif;
+    font-weight:700;
+    margin:0 0 8px 0;
+    letter-spacing:-0.01em;
+  }
+  .topbar{
+    position:sticky; top:0; z-index:50;
+    background:rgba(244,246,250,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--border);
+    padding:14px 20px;
+  }
+  .topbar-inner{max-width:760px;margin:0 auto;}
+  .topbar h1{font-size:17px; margin-bottom:2px;}
+  .topbar p{margin:0; font-size:13px; color:var(--ink-soft);}
+  .progress-dots{display:flex; gap:6px; margin-top:10px;}
+  .dot{flex:1; height:5px; border-radius:3px; background:var(--border); transition:background .25s;}
+  .dot.active{background:var(--grammar);}
+  .wrap{max-width:760px; margin:0 auto; padding:28px 20px;}
+  section{margin-bottom:44px;}
+  .block-head{display:flex; align-items:baseline; gap:10px; margin-bottom:14px;}
+  .block-num{
+    font-family:Georgia,serif; font-size:13px; color:var(--ink-soft);
+  }
+  .card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:20px 22px;
+    margin-bottom:16px;
+  }
+  .card.grammar{border-left:4px solid var(--grammar);}
+  .card.vocab{border-left:4px solid var(--vocab);}
+  .card.practice{border-left:4px solid var(--practice);}
+  .tag{
+    display:inline-block; font-size:11.5px; font-weight:600;
+    padding:3px 9px; border-radius:20px; margin-bottom:10px;
+  }
+  .tag.grammar{background:var(--grammar-bg); color:var(--grammar);}
+  .tag.vocab{background:var(--vocab-bg); color:var(--vocab);}
+  .tag.practice{background:var(--practice-bg); color:var(--practice);}
+  p{margin:0 0 10px 0; font-size:15px;}
+  .example{
+    font-family:Georgia,serif; font-style:italic; color:var(--ink);
+    background:var(--grammar-bg); padding:8px 12px; border-radius:8px;
+    margin:6px 0; font-size:14.5px;
+  }
+  table.conj{width:100%; border-collapse:collapse; margin:10px 0 16px 0; font-size:14.5px;}
+  table.conj th, table.conj td{text-align:left; padding:7px 10px; border-bottom:1px solid var(--border);}
+  table.conj th{color:var(--ink-soft); font-weight:600; font-size:12.5px;}
+  .exercise{
+    background:#FBFBFD; border:1px dashed var(--border); border-radius:10px;
+    padding:16px 18px; margin-top:14px;
+  }
+  .exercise-title{font-weight:700; font-size:13.5px; color:var(--ink-soft); margin-bottom:10px; text-transform:none;}
+  .q-row{display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap;}
+  .q-row .q-text{flex:1; min-width:160px; font-size:14.5px;}
+  input[type=text]{
+    border:1.5px solid var(--border); border-radius:8px; padding:7px 10px;
+    font-size:14.5px; width:150px; font-family:inherit; color:var(--ink);
+  }
+  input[type=text]:focus{outline:none; border-color:var(--grammar);}
+  select{
+    border:1.5px solid var(--border); border-radius:8px; padding:6px 8px;
+    font-size:14px; font-family:inherit; background:#fff; color:var(--ink);
+  }
+  select:focus{outline:none; border-color:var(--grammar);}
+  textarea{
+    width:100%; border:1.5px solid var(--border); border-radius:8px; padding:10px;
+    font-family:inherit; font-size:14.5px; resize:vertical; min-height:60px;
+  }
+  .btn{
+    background:var(--grammar); color:#fff; border:none; border-radius:8px;
+    padding:9px 18px; font-size:14px; font-weight:600; cursor:pointer;
+    font-family:inherit;
+  }
+  .btn:hover{opacity:.9;}
+  .btn.secondary{background:transparent; color:var(--grammar); border:1.5px solid var(--grammar);}
+  .feedback{margin-top:10px; font-size:14px; font-weight:600; display:none; padding:8px 12px; border-radius:8px;}
+  .feedback.show{display:block;}
+  .feedback.good{background:var(--good-bg); color:var(--good);}
+  .feedback.bad{background:var(--bad-bg); color:var(--bad);}
+  .why-card{
+    background:#FFF9EC; border:1px solid #F1E3B8; border-radius:10px;
+    padding:14px 16px; margin-top:14px; font-size:13.5px;
+  }
+  .why-card b{color:#8A6D1E;}
+  .pos-item{
+    display:inline-flex; align-items:center; gap:6px; margin:4px 6px 4px 0;
+  }
+  .word-chip{
+    display:inline-block; background:#fff; border:1.5px solid var(--border);
+    border-radius:8px; padding:4px 10px; font-family:Georgia,serif; font-size:14.5px;
+  }
+  .tabs{display:flex; gap:6px; margin-bottom:18px; flex-wrap:wrap;}
+  .tab{
+    padding:8px 16px; border-radius:20px; border:1.5px solid var(--border);
+    background:#fff; font-size:13.5px; font-weight:600; cursor:pointer; color:var(--ink-soft);
+  }
+  .tab.active{background:var(--practice); border-color:var(--practice); color:#fff;}
+  .day-panel{display:none;}
+  .day-panel.active{display:block;}
+  .homework-min{
+    display:inline-block; font-size:12px; color:var(--ink-soft);
+    background:var(--practice-bg); padding:2px 10px; border-radius:20px; margin-left:8px;
+  }
+  ul.simple{padding-left:18px; margin:8px 0;}
+  ul.simple li{margin-bottom:5px; font-size:14.5px;}
+  .final-score{
+    text-align:center; padding:24px; border-radius:14px; background:var(--grammar-bg);
+    display:none;
+  }
+  .final-score.show{display:block;}
+  .final-score .num{font-family:Georgia,serif; font-size:38px; color:var(--grammar); font-weight:700;}
+  hr.soft{border:none; border-top:1px solid var(--border); margin:10px 0 16px 0;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <h1>Урок 1 · Части речи, структура предложения и глагол to be</h1>
+    <p>Первый урок после диагностики · 60 минут</p>
+    <div class="progress-dots" id="progressDots">
+      <div class="dot" data-sec="b1"></div>
+      <div class="dot" data-sec="b2"></div>
+      <div class="dot" data-sec="b3"></div>
+      <div class="dot" data-sec="b4"></div>
+      <div class="dot" data-sec="b5"></div>
+      <div class="dot" data-sec="hw"></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- INTRO -->
+  <section>
+    <div class="card grammar">
+      <p>Привет! Сегодня мы не будем сразу учить времена. Сначала разберёмся, из чего вообще состоит английское предложение — как из кирпичиков строится дом. Это фундамент, без которого дальше будет тяжело. Идём по шагам: понять → потренировать → применить → закрепить.</p>
+    </div>
+  </section>
+
+  <!-- BLOCK 1 -->
+  <section id="b1">
+    <div class="block-head">
+      <span class="block-num">BLOCK 1 · 15 мин</span>
+    </div>
+    <h2>Parts of Speech — части речи</h2>
+
+    <div class="card grammar">
+      <span class="tag grammar">Grammar</span>
+      <p>В любом языке слова делятся на группы по тому, какую роль они играют в предложении. Вот главные:</p>
+      <table class="conj">
+        <tr><th>Часть речи</th><th>Вопрос</th><th>Пример</th></tr>
+        <tr><td><b>Noun</b> (существительное)</td><td>кто? что?</td><td>student, London, book</td></tr>
+        <tr><td><b>Pronoun</b> (местоимение)</td><td>заменяет существительное</td><td>I, she, they, it</td></tr>
+        <tr><td><b>Verb</b> (глагол)</td><td>что делает?</td><td>run, is, like, study</td></tr>
+        <tr><td><b>Adjective</b> (прилагательное)</td><td>какой? какая?</td><td>beautiful, big, happy</td></tr>
+        <tr><td><b>Adverb</b> (наречие)</td><td>как? когда? где?</td><td>quickly, always, here</td></tr>
+        <tr><td><b>Preposition</b> (предлог)</td><td>связывает слова</td><td>in, on, at, to</td></tr>
+        <tr><td><b>Article</b> (артикль)</td><td>стоит перед существительным</td><td>a, an, the</td></tr>
+      </table>
+      <p>Например: <span class="word-chip">quickly</span> отвечает на вопрос «как?» — значит, это <b>adverb</b>. А <span class="word-chip">student</span> отвечает на вопрос «кто?» — это <b>noun</b>.</p>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-title">Задание 1.1 · Определи часть речи каждого слова</div>
+      <div id="ex1-container"></div>
+      <button class="btn" onclick="checkEx1()">Проверить</button>
+      <div class="feedback" id="ex1-feedback"></div>
+    </div>
+
+    <div class="why-card"><b>Зачем это нужно для ЕГЭ?</b> Чтобы решать задания на грамматику, тебе нужно понимать, какая часть речи и какая форма слова нужна в предложении. Это основа всех заданий Grammar & Vocabulary.</div>
+  </section>
+
+  <!-- BLOCK 2 -->
+  <section id="b2">
+    <div class="block-head"><span class="block-num">BLOCK 2 · 10 мин</span></div>
+    <h2>Sentence Structure — структура предложения</h2>
+
+    <div class="card grammar">
+      <span class="tag grammar">Grammar</span>
+      <p>Английское предложение строится по строгому порядку: <b>Subject + Verb + Object</b> (подлежащее + сказуемое + дополнение). В отличие от русского, порядок слов почти нельзя менять.</p>
+      <div class="example">I read books. &nbsp;·&nbsp; She likes music. &nbsp;·&nbsp; They study English.</div>
+      <p>Subject — кто выполняет действие. Verb — что он делает. Object — на что направлено действие.</p>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-title">Задание 2.1 · Собери предложение из слов</div>
+      <div class="q-row"><span class="q-text">books / I / read</span><input type="text" id="ex2a-1" placeholder="Напиши предложение"></div>
+      <div class="q-row"><span class="q-text">music / she / likes</span><input type="text" id="ex2a-2" placeholder="Напиши предложение"></div>
+      <div class="q-row"><span class="q-text">English / study / they</span><input type="text" id="ex2a-3" placeholder="Напиши предложение"></div>
+      <button class="btn" onclick="checkEx2a()">Проверить</button>
+      <div class="feedback" id="ex2a-feedback"></div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-title">Задание 2.2 · Найди Subject и Verb</div>
+      <div class="q-row"><span class="q-text">My sister reads books.</span></div>
+      <div class="q-row"><span class="q-text">Subject:</span><input type="text" id="ex2b-s1" placeholder="кто?"><span class="q-text">Verb:</span><input type="text" id="ex2b-v1" placeholder="что делает?"></div>
+      <div class="q-row"><span class="q-text">We study English every day.</span></div>
+      <div class="q-row"><span class="q-text">Subject:</span><input type="text" id="ex2b-s2" placeholder="кто?"><span class="q-text">Verb:</span><input type="text" id="ex2b-v2" placeholder="что делает?"></div>
+      <button class="btn" onclick="checkEx2b()">Проверить</button>
+      <div class="feedback" id="ex2b-feedback"></div>
+    </div>
+
+    <div class="why-card"><b>Зачем это нужно для ЕГЭ?</b> В заданиях на словообразование и грамматику важно понимать, какое слово в предложении — подлежащее, а какое — сказуемое, чтобы правильно подобрать форму.</div>
+  </section>
+
+  <!-- BLOCK 3 -->
+  <section id="b3">
+    <div class="block-head"><span class="block-num">BLOCK 3 · 20 мин</span></div>
+    <h2>Verb To Be — am / is / are</h2>
+
+    <div class="card grammar">
+      <span class="tag grammar">Grammar</span>
+      <p>Глагол <b>to be</b> — самый важный глагол в английском. Он значит «быть, являться» и меняется в зависимости от того, кто действует:</p>
+      <table class="conj">
+        <tr><th>Кто</th><th>Форма</th></tr>
+        <tr><td>I</td><td>am</td></tr>
+        <tr><td>he / she / it</td><td>is</td></tr>
+        <tr><td>you / we / they</td><td>are</td></tr>
+      </table>
+
+      <p><b>Affirmative (утверждение):</b></p>
+      <div class="example">I am a student. &nbsp;·&nbsp; She is happy. &nbsp;·&nbsp; They are tired.</div>
+
+      <p><b>Negative (отрицание):</b> добавляем <b>not</b> после am/is/are</p>
+      <div class="example">I am not tired. &nbsp;·&nbsp; She is not at home. &nbsp;·&nbsp; They are not ready.</div>
+
+      <p><b>Questions (вопрос):</b> am/is/are выходит на первое место</p>
+      <div class="example">Am I right? &nbsp;·&nbsp; Is she happy? &nbsp;·&nbsp; Are they ready?</div>
+
+      <p><b>Short answers (краткие ответы):</b></p>
+      <div class="example">Yes, I am. &nbsp;·&nbsp; No, she isn't. &nbsp;·&nbsp; Yes, they are.</div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-title">Задание 3.1 · Вставь am / is / are</div>
+      <div class="q-row"><span class="q-text">1. I ___ a student.</span><input type="text" id="ex3a-1" style="width:80px"></div>
+      <div class="q-row"><span class="q-text">2. She ___ happy.</span><input type="text" id="ex3a-2" style="width:80px"></div>
+      <div class="q-row"><span class="q-text">3. They ___ tired.</span><input type="text" id="ex3a-3" style="width:80px"></div>
+      <div class="q-row"><span class="q-text">4. We ___ ready.</span><input type="text" id="ex3a-4" style="width:80px"></div>
+      <div class="q-row"><span class="q-text">5. My brother ___ at school.</span><input type="text" id="ex3a-5" style="width:80px"></div>
+      <button class="btn" onclick="checkEx3a()">Проверить</button>
+      <div class="feedback" id="ex3a-feedback"></div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-title">Задание 3.2 · Сделай предложение отрицательным</div>
+      <div class="q-row"><span class="q-text">I am tired. →</span><input type="text" id="ex3b-1" style="width:220px"></div>
+      <div class="q-row"><span class="q-text">She is at home. →</span><input type="text" id="ex3b-2" style="width:220px"></div>
+      <div class="q-row"><span class="q-text">They are ready. →</span><input type="text" id="ex3b-3" style="width:220px"></div>
+      <button class="btn" onclick="checkEx3b()">Проверить</button>
+      <div class="feedback" id="ex3b-feedback"></div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-title">Задание 3.3 · Сделай вопрос</div>
+      <div class="q-row"><span class="q-text">She is happy. →</span><input type="text" id="ex3c-1" style="width:220px"></div>
+      <div class="q-row"><span class="q-text">They are at home. →</span><input type="text" id="ex3c-2" style="width:220px"></div>
+      <button class="btn" onclick="checkEx3c()">Проверить</button>
+      <div class="feedback" id="ex3c-feedback"></div>
+    </div>
+
+    <div class="why-card"><b>Зачем это нужно для ЕГЭ?</b> Глагол to be — основа многих конструкций: Passive Voice, Present Continuous, вопросов и отрицаний. Без него не разберёшь и половину грамматики ЕГЭ.</div>
+  </section>
+
+  <!-- BLOCK 4 -->
+  <section id="b4">
+    <div class="block-head"><span class="block-num">BLOCK 4 · 10 мин</span></div>
+    <h2>Связь с ЕГЭ</h2>
+
+    <div class="card practice">
+      <span class="tag practice">Practice</span>
+      <p>Сейчас мы разберём то же самое, но в формате, похожем на задания ЕГЭ. Сегодня ты научишься решать то, что раньше выбирала наугад.</p>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-title">Задание 4.1 · Grammar & Vocabulary style</div>
+      <div class="q-row"><span class="q-text">1. My sister ___ a student.</span><input type="text" id="ex4-1" style="width:100px"></div>
+      <div class="q-row"><span class="q-text">2. They ___ not at home.</span><input type="text" id="ex4-2" style="width:100px"></div>
+      <div class="q-row"><span class="q-text">3. ___ your parents at work?</span><input type="text" id="ex4-3" style="width:100px"></div>
+      <div class="q-row"><span class="q-text">4. We ___ ready for the test.</span><input type="text" id="ex4-4" style="width:100px"></div>
+      <div class="q-row"><span class="q-text">5. He ___ not tired today.</span><input type="text" id="ex4-5" style="width:100px"></div>
+      <button class="btn" onclick="checkEx4()">Проверить</button>
+      <div class="feedback" id="ex4-feedback"></div>
+    </div>
+  </section>
+
+  <!-- BLOCK 5 -->
+  <section id="b5">
+    <div class="block-head"><span class="block-num">BLOCK 5 · 5 мин</span></div>
+    <h2>Mini Check</h2>
+    <div class="card">
+      <p>Без подсказок! Проверим, что осталось в голове.</p>
+    </div>
+    <div class="exercise">
+      <div class="q-row"><span class="q-text">1. quickly — это ...</span><input type="text" id="ex5-1" style="width:130px" placeholder="часть речи"></div>
+      <div class="q-row"><span class="q-text">2. Найди Subject: "The dog runs fast." →</span><input type="text" id="ex5-2" style="width:130px"></div>
+      <div class="q-row"><span class="q-text">3. I ___ happy. (am/is/are)</span><input type="text" id="ex5-3" style="width:100px"></div>
+      <div class="q-row"><span class="q-text">4. She is not ready. → сделай вопрос:</span><input type="text" id="ex5-4" style="width:220px"></div>
+      <div class="q-row"><span class="q-text">5. beautiful — это ...</span><input type="text" id="ex5-5" style="width:130px" placeholder="часть речи"></div>
+      <div class="q-row"><span class="q-text">6. They ___ not tired.</span><input type="text" id="ex5-6" style="width:100px"></div>
+      <div class="q-row"><span class="q-text">7. run — это ...</span><input type="text" id="ex5-7" style="width:130px" placeholder="часть речи"></div>
+      <button class="btn" onclick="checkEx5()">Завершить урок</button>
+      <div class="feedback" id="ex5-feedback"></div>
+    </div>
+    <div class="final-score" id="finalScore">
+      <div class="num" id="finalScoreNum">0/7</div>
+      <p>Сегодня ты научилась: различать части речи, строить предложение по схеме Subject–Verb–Object и правильно использовать am/is/are в утверждениях, отрицаниях и вопросах.</p>
+    </div>
+  </section>
+
+  <!-- HOMEWORK -->
+  <section id="hw">
+    <div class="block-head"><span class="block-num">MINI HOMEWORK</span></div>
+    <h2>Домашняя работа · Present Simple</h2>
+    <p style="color:var(--ink-soft); font-size:14px;">Общее время: примерно 40–50 минут. Задача — довести Present Simple до уверенного автоматического использования: много практики, потом небольшой блок в стиле ЕГЭ.</p>
+
+    <div class="card grammar">
+      <span class="tag grammar">Grammar</span>
+      <h3>Homework 1 · Affirmative <span class="homework-min">≈10 мин</span></h3>
+      <p style="font-size:13.5px; color:var(--ink-soft);">Поставь глагол в скобках в правильную форму Present Simple. Не забывай про -s после he/she/it.</p>
+      <div class="q-row"><span class="q-text">1. She ___ (work) every day.</span><input type="text" style="width:140px"></div>
+      <div class="q-row"><span class="q-text">2. They ___ (live) in Bali.</span><input type="text" style="width:140px"></div>
+      <div class="q-row"><span class="q-text">3. My brother ___ (play) football.</span><input type="text" style="width:140px"></div>
+      <div class="q-row"><span class="q-text">4. I ___ (study) English.</span><input type="text" style="width:140px"></div>
+      <div class="q-row"><span class="q-text">5. We ___ (watch) TV in the evening.</span><input type="text" style="width:140px"></div>
+      <div class="q-row"><span class="q-text">6. He ___ (like) tea.</span><input type="text" style="width:140px"></div>
+      <div class="q-row"><span class="q-text">7. My parents ___ (have) a big house.</span><input type="text" style="width:140px"></div>
+      <div class="q-row"><span class="q-text">8. You ___ (read) books every week.</span><input type="text" style="width:140px"></div>
+      <div class="q-row"><span class="q-text">9. My sister ___ (go) to school by bus.</span><input type="text" style="width:140px"></div>
+      <div class="q-row"><span class="q-text">10. It ___ (rain) a lot in autumn.</span><input type="text" style="width:140px"></div>
+      <div class="q-row"><span class="q-text">11. We ___ (want) to learn English.</span><input type="text" style="width:140px"></div>
+      <div class="q-row"><span class="q-text">12. He ___ (study) every day.</span><input type="text" style="width:140px"></div>
+    </div>
+
+    <div class="card grammar">
+      <span class="tag grammar">Grammar</span>
+      <h3>Homework 2 · do / does / don't / doesn't <span class="homework-min">≈10 мин</span></h3>
+      <p style="font-size:13.5px; color:var(--ink-soft);">Вставь нужное слово: do, does, don't или doesn't.</p>
+      <div class="q-row"><span class="q-text">1. ___ you like coffee?</span><input type="text" style="width:100px"></div>
+      <div class="q-row"><span class="q-text">2. ___ she work here?</span><input type="text" style="width:100px"></div>
+      <div class="q-row"><span class="q-text">3. They ___ live in London.</span><input type="text" style="width:100px"></div>
+      <div class="q-row"><span class="q-text">4. He ___ like tea.</span><input type="text" style="width:100px"></div>
+      <div class="q-row"><span class="q-text">5. ___ they study English?</span><input type="text" style="width:100px"></div>
+      <div class="q-row"><span class="q-text">6. My brother ___ play football.</span><input type="text" style="width:100px"></div>
+      <div class="q-row"><span class="q-text">7. ___ your parents work at home?</span><input type="text" style="width:100px"></div>
+      <div class="q-row"><span class="q-text">8. We ___ watch TV every day.</span><input type="text" style="width:100px"></div>
+      <div class="q-row"><span class="q-text">9. ___ he read books?</span><input type="text" style="width:100px"></div>
+      <div class="q-row"><span class="q-text">10. She ___ have a car.</span><input type="text" style="width:100px"></div>
+      <hr class="soft">
+      <p style="font-size:13.5px; color:var(--ink-soft);">Найди ошибку и запиши предложение правильно:</p>
+      <div class="q-row"><span class="q-text">11. Does she works every day?</span><input type="text" style="width:260px" placeholder="исправленный вариант"></div>
+      <div class="q-row"><span class="q-text">12. Does he plays football?</span><input type="text" style="width:260px" placeholder="исправленный вариант"></div>
+      <div class="q-row"><span class="q-text">13. Does they live in Bali?</span><input type="text" style="width:260px" placeholder="исправленный вариант"></div>
+    </div>
+
+    <div class="card grammar">
+      <span class="tag grammar">Grammar</span>
+      <h3>Homework 3 · To be or ordinary verb? <span class="homework-min">≈10 мин</span></h3>
+      <p style="font-size:13.5px; color:var(--ink-soft);">Реши, что нужно: am/is/are ИЛИ do/does/don't/doesn't + обычный глагол.</p>
+      <div class="q-row"><span class="q-text">1. She ___ happy.</span><input type="text" style="width:120px"></div>
+      <div class="q-row"><span class="q-text">2. She ___ (work) every day.</span><input type="text" style="width:120px"></div>
+      <div class="q-row"><span class="q-text">3. They ___ tired.</span><input type="text" style="width:120px"></div>
+      <div class="q-row"><span class="q-text">4. They ___ (live) in Bali.</span><input type="text" style="width:120px"></div>
+      <div class="q-row"><span class="q-text">5. It ___ cold today.</span><input type="text" style="width:120px"></div>
+      <div class="q-row"><span class="q-text">6. ___ he tired?</span><input type="text" style="width:120px"></div>
+      <div class="q-row"><span class="q-text">7. ___ he (study) English?</span><input type="text" style="width:120px"></div>
+      <div class="q-row"><span class="q-text">8. ___ they at home?</span><input type="text" style="width:120px"></div>
+      <div class="q-row"><span class="q-text">9. ___ they (live) in Bali?</span><input type="text" style="width:120px"></div>
+      <div class="q-row"><span class="q-text">10. ___ she a teacher?</span><input type="text" style="width:120px"></div>
+    </div>
+
+    <div class="card grammar">
+      <span class="tag grammar">Grammar</span>
+      <h3>Homework 4 · Transformation <span class="homework-min">≈10 мин</span></h3>
+      <p style="font-size:13.5px; color:var(--ink-soft);">Преврати утверждение в отрицание и в вопрос.</p>
+      <div class="q-row"><span class="q-text">1. She works every day.</span></div>
+      <div class="q-row"><span class="q-text">Negative:</span><input type="text" style="width:260px"><span class="q-text">Question:</span><input type="text" style="width:260px"></div>
+      <div class="q-row"><span class="q-text">2. They live in London.</span></div>
+      <div class="q-row"><span class="q-text">Negative:</span><input type="text" style="width:260px"><span class="q-text">Question:</span><input type="text" style="width:260px"></div>
+      <div class="q-row"><span class="q-text">3. He is tired.</span></div>
+      <div class="q-row"><span class="q-text">Negative:</span><input type="text" style="width:260px"><span class="q-text">Question:</span><input type="text" style="width:260px"></div>
+      <div class="q-row"><span class="q-text">4. I like tea.</span></div>
+      <div class="q-row"><span class="q-text">Negative:</span><input type="text" style="width:260px"><span class="q-text">Question:</span><input type="text" style="width:260px"></div>
+    </div>
+
+    <div class="card practice">
+      <span class="tag practice">Practice</span>
+      <h3>Homework 5 · Mini ЕГЭ <span class="homework-min">≈10 мин</span></h3>
+      <p style="font-size:13.5px; color:var(--ink-soft);">Небольшой блок в формате экзамена — проверяет то же самое, что ты уже умеешь.</p>
+      <div class="q-row"><span class="q-text">1. My sister usually ___ to school by bus.</span><input type="text" style="width:200px" placeholder="1) go  2) goes  3) going  4) went"></div>
+      <div class="q-row"><span class="q-text">2. ___ you like pizza?</span><input type="text" style="width:100px"></div>
+      <div class="q-row"><span class="q-text">3. She ___ (not/like) coffee.</span><input type="text" style="width:160px"></div>
+      <div class="q-row"><span class="q-text">4. My parents ___ happy today.</span><input type="text" style="width:200px" placeholder="1) is  2) are  3) am  4) be"></div>
+      <div class="q-row"><span class="q-text">5. He ___ football every weekend.</span><input type="text" style="width:200px" placeholder="1) play  2) plays  3) playing  4) played"></div>
+      <div class="q-row"><span class="q-text">6. ___ she a doctor?</span><input type="text" style="width:100px"></div>
+      <div class="q-row"><span class="q-text">7. They ___ (not/live) in Moscow.</span><input type="text" style="width:160px"></div>
+      <div class="q-row"><span class="q-text">8. We ___ every day to the park.</span><input type="text" style="width:200px" placeholder="1) walk  2) walks  3) walking  4) walked"></div>
+      <div class="q-row"><span class="q-text">9. ___ your brother study English?</span><input type="text" style="width:100px"></div>
+      <div class="q-row"><span class="q-text">10. My dog ___ very fast.</span><input type="text" style="width:200px" placeholder="1) run  2) runs  3) running  4) ran"></div>
+    </div>
+
+    <div class="card vocab">
+      <span class="tag vocab">Vocabulary</span>
+      <h3>Mini Vocabulary <span class="homework-min">8–10 слов</span></h3>
+      <table class="conj">
+        <tr><th>Слово</th><th>Перевод</th><th>Пример</th></tr>
+        <tr><td>live</td><td>жить</td><td>I live in Ekaterinburg.</td></tr>
+        <tr><td>work</td><td>работать</td><td>She works every day.</td></tr>
+        <tr><td>study</td><td>учиться, изучать</td><td>We study English.</td></tr>
+        <tr><td>like</td><td>нравиться</td><td>I like tea.</td></tr>
+        <tr><td>play</td><td>играть</td><td>He plays football.</td></tr>
+        <tr><td>watch</td><td>смотреть</td><td>They watch TV in the evening.</td></tr>
+        <tr><td>read</td><td>читать</td><td>I read books.</td></tr>
+        <tr><td>go</td><td>идти, ходить, ездить</td><td>She goes to school by bus.</td></tr>
+        <tr><td>have</td><td>иметь</td><td>We have a big house.</td></tr>
+        <tr><td>want</td><td>хотеть</td><td>I want to learn English.</td></tr>
+      </table>
+    </div>
+
+    <div class="card practice">
+      <span class="tag practice">Practice</span>
+      <h3>Daily English <span class="homework-min">10–15 мин / день</span></h3>
+      <p>Каждый день — немного лёгкого контакта с английским. Сейчас важно не понять всё на 100%, а привыкнуть к звучанию языка:</p>
+      <ul class="simple">
+        <li>видео уровня beginner (простое, медленное, понятное);</li>
+        <li>короткие видео с субтитрами;</li>
+        <li>простой текст на знакомую бытовую тему;</li>
+        <li>короткое аудио (1–3 минуты).</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Before the next lesson</h3>
+      <p style="font-size:13.5px; color:var(--ink-soft); margin-bottom:10px;">К следующему уроку постарайся уметь без подсказки:</p>
+      <ul class="simple" style="list-style:none; padding-left:0;">
+        <li>☐ объяснить, когда используется Present Simple</li>
+        <li>☐ поставить -s после he/she/it</li>
+        <li>☐ построить утверждение</li>
+        <li>☐ построить отрицание</li>
+        <li>☐ построить вопрос</li>
+        <li>☐ выбрать do или does</li>
+        <li>☐ не ставить -s после does</li>
+        <li>☐ отличить to be от обычного глагола</li>
+      </ul>
+      <p style="font-size:13.5px; color:var(--ink-soft);">Если что-то не получается — это нормально. На следующем уроке мы это разберём.</p>
+    </div>
+
+  </section>
+
+</div>
+
+<script>
+function norm(s){ return (s||"").toString().trim().toLowerCase().replace(/[.!?]/g,"").replace(/\s+/g," "); }
+
+function setFeedback(id, correct, total, msg){
+  const el = document.getElementById(id);
+  el.classList.remove("good","bad");
+  el.classList.add("show", correct===total ? "good" : "bad");
+  el.textContent = msg || (correct + " из " + total + " правильно" + (correct===total ? " — отлично!" : ". Попробуй ещё раз или посмотри правило выше."));
+}
+
+// EX1: Parts of speech
+const ex1Words = [
+  {w:"beautiful", a:"adjective"},
+  {w:"quickly", a:"adverb"},
+  {w:"student", a:"noun"},
+  {w:"run", a:"verb"},
+  {w:"she", a:"pronoun"},
+  {w:"in", a:"preposition"}
+];
+(function buildEx1(){
+  const c = document.getElementById("ex1-container");
+  ex1Words.forEach((item,i)=>{
+    const row = document.createElement("div");
+    row.className = "q-row";
+    row.innerHTML = `<span class="word-chip">${item.w}</span><select id="ex1-${i}">
+      <option value="">выбери...</option>
+      <option value="noun">noun</option>
+      <option value="verb">verb</option>
+      <option value="adjective">adjective</option>
+      <option value="adverb">adverb</option>
+      <option value="pronoun">pronoun</option>
+      <option value="preposition">preposition</option>
+    </select>`;
+    c.appendChild(row);
+  });
+})();
+function checkEx1(){
+  let correct=0;
+  ex1Words.forEach((item,i)=>{
+    if(document.getElementById("ex1-"+i).value === item.a) correct++;
+  });
+  setFeedback("ex1-feedback", correct, ex1Words.length);
+}
+
+// EX2a
+function checkEx2a(){
+  const ans = [
+    {id:"ex2a-1", correct:["i read books"]},
+    {id:"ex2a-2", correct:["she likes music"]},
+    {id:"ex2a-3", correct:["they study english"]}
+  ];
+  let correct=0;
+  ans.forEach(a=>{ if(a.correct.includes(norm(document.getElementById(a.id).value))) correct++; });
+  setFeedback("ex2a-feedback", correct, ans.length);
+}
+
+// EX2b
+function checkEx2b(){
+  let correct=0, total=4;
+  if(norm(document.getElementById("ex2b-s1").value)==="my sister") correct++;
+  if(norm(document.getElementById("ex2b-v1").value)==="reads") correct++;
+  if(norm(document.getElementById("ex2b-s2").value)==="we") correct++;
+  if(norm(document.getElementById("ex2b-v2").value)==="study") correct++;
+  setFeedback("ex2b-feedback", correct, total);
+}
+
+// EX3a
+function checkEx3a(){
+  const ans = ["am","is","are","are","is"];
+  let correct=0;
+  ans.forEach((a,i)=>{ if(norm(document.getElementById("ex3a-"+(i+1)).value)===a) correct++; });
+  setFeedback("ex3a-feedback", correct, ans.length);
+}
+
+// EX3b
+function checkEx3b(){
+  const ans = [
+    ["i am not tired"],
+    ["she is not at home", "she isn't at home"],
+    ["they are not ready", "they aren't ready"]
+  ];
+  let correct=0;
+  ans.forEach((opts,i)=>{ if(opts.includes(norm(document.getElementById("ex3b-"+(i+1)).value))) correct++; });
+  setFeedback("ex3b-feedback", correct, ans.length);
+}
+
+// EX3c
+function checkEx3c(){
+  const ans = [["is she happy"], ["are they at home"]];
+  let correct=0;
+  ans.forEach((opts,i)=>{ if(opts.includes(norm(document.getElementById("ex3c-"+(i+1)).value))) correct++; });
+  setFeedback("ex3c-feedback", correct, ans.length);
+}
+
+// EX4
+function checkEx4(){
+  const ans = ["is","are","are","are","is"];
+  let correct=0;
+  ans.forEach((a,i)=>{ if(norm(document.getElementById("ex4-"+(i+1)).value)===a) correct++; });
+  setFeedback("ex4-feedback", correct, ans.length);
+}
+
+// EX5
+function checkEx5(){
+  const ans = [
+    ["adverb"], ["the dog"], ["am"], ["is she ready"], ["adjective"], ["are"], ["verb"]
+  ];
+  let correct=0;
+  ans.forEach((opts,i)=>{ if(opts.includes(norm(document.getElementById("ex5-"+(i+1)).value))) correct++; });
+  document.getElementById("finalScoreNum").textContent = correct + "/" + ans.length;
+  document.getElementById("finalScore").classList.add("show");
+  setFeedback("ex5-feedback", correct, ans.length, "Урок завершён! Результат: " + correct + "/" + ans.length);
+}
+
+// Progress dots via scroll
+const sections = ["b1","b2","b3","b4","b5","hw"].map(id=>document.getElementById(id));
+const dots = document.querySelectorAll(".dot");
+window.addEventListener("scroll", ()=>{
+  let current = 0;
+  sections.forEach((sec,i)=>{
+    if(sec.getBoundingClientRect().top < 140) current = i;
+  });
+  dots.forEach((d,i)=> d.classList.toggle("active", i<=current));
+});
+</script>
+</body>
+</html>
