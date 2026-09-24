@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Урок 2 · Present Simple</title>
+<style>
+  :root{
+    --bg:#F4F6FA;
+    --card:#FFFFFF;
+    --ink:#1B1F2E;
+    --ink-soft:#5A6178;
+    --border:#E3E6F0;
+    --grammar:#4F5DFF;
+    --grammar-bg:#EEF0FF;
+    --vocab:#0FA98F;
+    --vocab-bg:#E6F8F4;
+    --practice:#FF7A45;
+    --practice-bg:#FFEEE4;
+    --good:#1B9E5A;
+    --good-bg:#E7F7EE;
+    --bad:#D9483C;
+    --bad-bg:#FDECEA;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.5;
+    padding-bottom:80px;
+  }
+  h1,h2,h3{
+    font-family:Georgia,"Times New Roman",serif;
+    font-weight:700;
+    margin:0 0 8px 0;
+    letter-spacing:-0.01em;
+  }
+  .topbar{
+    position:sticky; top:0; z-index:50;
+    background:rgba(244,246,250,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--border);
+    padding:14px 20px;
+  }
+  .topbar-inner{max-width:760px;margin:0 auto;}
+  .topbar h1{font-size:17px; margin-bottom:2px;}
+  .topbar p{margin:0; font-size:13px; color:var(--ink-soft);}
+  .progress-dots{display:flex; gap:6px; margin-top:10px;}
+  .dot{flex:1; height:5px; border-radius:3px; background:var(--border); transition:background .25s;}
+  .dot.active{background:var(--grammar);}
+  .wrap{max-width:760px; margin:0 auto; padding:28px 20px;}
+  section{margin-bottom:44px;}
+  .block-head{display:flex; align-items:baseline; gap:10px; margin-bottom:14px;}
+  .block-num{
+    font-family:Georgia,serif; font-size:13px; color:var(--ink-soft);
+  }
+  .card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:20px 22px;
+    margin-bottom:16px;
+  }
+  .card.grammar{border-left:4px solid var(--grammar);}
+  .card.vocab{border-left:4px solid var(--vocab);}
+  .card.practice{border-left:4px solid var(--practice);}
+  .tag{
+    display:inline-block; font-size:11.5px; font-weight:600;
+    padding:3px 9px; border-radius:20px; margin-bottom:10px;
+  }
+  .tag.grammar{background:var(--grammar-bg); color:var(--grammar);}
+  .tag.vocab{background:var(--vocab-bg); color:var(--vocab);}
+  .tag.practice{background:var(--practice-bg); color:var(--practice);}
+  p{margin:0 0 10px 0; font-size:15px;}
+  .example{
+    font-family:Georgia,serif; font-style:italic; color:var(--ink);
+    background:var(--grammar-bg); padding:8px 12px; border-radius:8px;
+    margin:6px 0; font-size:14.5px;
+  }
+  table.conj{width:100%; border-collapse:collapse; margin:10px 0 16px 0; font-size:14.5px;}
+  table.conj th, table.conj td{text-align:left; padding:7px 10px; border-bottom:1px solid var(--border);}
+  table.conj th{color:var(--ink-soft); font-weight:600; font-size:12.5px;}
+  .exercise{
+    background:#FBFBFD; border:1px dashed var(--border); border-radius:10px;
+    padding:16px 18px; margin-top:14px;
+  }
+  .exercise-title{font-weight:700; font-size:13.5px; color:var(--ink-soft); margin-bottom:10px; text-transform:none;}
+  .q-row{display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap;}
+  .q-row .q-text{flex:1; min-width:160px; font-size:14.5px;}
+  input[type=text]{
+    border:1.5px solid var(--border); border-radius:8px; padding:7px 10px;
+    font-size:14.5px; width:150px; font-family:inherit; color:var(--ink);
+  }
+  input[type=text]:focus{outline:none; border-color:var(--grammar);}
+  select{
+    border:1.5px solid var(--border); border-radius:8px; padding:6px 8px;
+    font-size:14px; font-family:inherit; background:#fff; color:var(--ink);
+  }
+  select:focus{outline:none; border-color:var(--grammar);}
+  textarea{
+    width:100%; border:1.5px solid var(--border); border-radius:8px; padding:10px;
+    font-family:inherit; font-size:14.5px; resize:vertical; min-height:60px;
+  }
+  .btn{
+    background:var(--grammar); color:#fff; border:none; border-radius:8px;
+    padding:9px 18px; font-size:14px; font-weight:600; cursor:pointer;
+    font-family:inherit;
+  }
+  .btn:hover{opacity:.9;}
+  .btn.secondary{background:transparent; color:var(--grammar); border:1.5px solid var(--grammar);}
+  .feedback{margin-top:10px; font-size:14px; font-weight:600; display:none; padding:8px 12px; border-radius:8px;}
+  .feedback.show{display:block;}
+  .feedback.good{background:var(--good-bg); color:var(--good);}
+  .feedback.bad{background:var(--bad-bg); color:var(--bad);}
+  .why-card{
+    background:#FFF9EC; border:1px solid #F1E3B8; border-radius:10px;
+    padding:14px 16px; margin-top:14px; font-size:13.5px;
+  }
+  .why-card b{color:#8A6D1E;}
+  .pos-item{
+    display:inline-flex; align-items:center; gap:6px; margin:4px 6px 4px 0;
+  }
+  .word-chip{
+    display:inline-block; background:#fff; border:1.5px solid var(--border);
+    border-radius:8px; padding:4px 10px; font-family:Georgia,serif; font-size:14.5px;
+  }
+  .tabs{display:flex; gap:6px; margin-bottom:18px; flex-wrap:wrap;}
+  .tab{
+    padding:8px 16px; border-radius:20px; border:1.5px solid var(--border);
+    background:#fff; font-size:13.5px; font-weight:600; cursor:pointer; color:var(--ink-soft);
+  }
+  .tab.active{background:var(--practice); border-color:var(--practice); color:#fff;}
+  .day-panel{display:none;}
+  .day-panel.active{display:block;}
+  .homework-min{
+    display:inline-block; font-size:12px; color:var(--ink-soft);
+    background:var(--practice-bg); padding:2px 10px; border-radius:20px; margin-left:8px;
+  }
+  ul.simple{padding-left:18px; margin:8px 0;}
+  ul.simple li{margin-bottom:5px; font-size:14.5px;}
+  .final-score{
+    text-align:center; padding:24px; border-radius:14px; background:var(--grammar-bg);
+    display:none;
+  }
+  .final-score.show{display:block;}
+  .final-score .num{font-family:Georgia,serif; font-size:38px; color:var(--grammar); font-weight:700;}
+  hr.soft{border:none; border-top:1px solid var(--border); margin:10px 0 16px 0;}
+  .big-rule{
+    background:var(--grammar-bg); border:2px solid var(--grammar); border-radius:14px;
+    padding:22px 20px; text-align:center; margin:14px 0;
+  }
+  .big-rule h3{margin-bottom:6px;}
+  .warn-card{
+    background:#FFF3F0; border:2px solid #F3B3A8; border-radius:12px; padding:18px 20px; margin:14px 0;
+  }
+  .warn-card .cross{color:var(--bad); font-weight:700;}
+  .warn-card .check{color:var(--good); font-weight:700;}
+  .mini-cards{display:flex; gap:12px; flex-wrap:wrap; margin:12px 0;}
+  .mini-card{
+    flex:1; min-width:150px; background:#fff; border:1px solid var(--border);
+    border-radius:10px; padding:12px 14px;
+  }
+  .mini-card .label{
+    font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-soft);
+    margin-bottom:4px; display:block;
+  }
+  .toggle-row{display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap;}
+  .toggle-row .q-text{flex:1; min-width:200px; font-size:14.5px;}
+  .toggle-btn{
+    padding:6px 14px; border-radius:20px; border:1.5px solid var(--border);
+    background:#fff; font-size:13px; cursor:pointer; font-family:inherit; color:var(--ink-soft);
+  }
+  .toggle-btn.selected{background:var(--grammar); color:#fff; border-color:var(--grammar);}
+  .checklist{list-style:none; padding-left:0;}
+  .checklist li{margin-bottom:7px; font-size:14.5px;}
+  .checklist input[type=checkbox]{margin-right:8px; transform:scale(1.1);}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <h1>Урок 2 · Present Simple</h1>
+    <p>60 минут · строим фундамент, а не угадываем</p>
+    <div class="progress-dots" id="progressDots">
+      <div class="dot" data-sec="b0"></div>
+      <div class="dot" data-sec="b1"></div>
+      <div class="dot" data-sec="b2"></div>
+      <div class="dot" data-sec="b3"></div>
+      <div class="dot" data-sec="b4"></div>
+      <div class="dot" data-sec="b5"></div>
+      <div class="dot" data-sec="b6"></div>
+      <div class="dot" data-sec="hw"></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section>
+    <div class="card grammar">
+      <p>Сегодня мы разбираемся с Present Simple — но не для того, чтобы «пройти тему», а чтобы ты по-настоящему поняла логику: почему форма меняется, почему does «забирает» окончание -s, и как отличить to be от обычного глагола. Понимание важнее скорости.</p>
+    </div>
+  </section>
+
+  <!-- BLOCK 0 -->
+  <section id="b0">
+    <div class="block-head"><span class="block-num">BLOCK 0 · 5 мин</span></div>
+    <h2>Quick Recap</h2>
+    <div class="card">
+      <p>Быстро вспомним прошлый урок — это фундамент, на котором строится всё дальше.</p>
+    </div>
+    <div class="exercise">
+      <div class="q-row"><span class="q-text">1. happy — какая это часть речи?</span><input type="text" style="width:150px"></div>
+      <div class="q-row"><span class="q-text">2. Найди Subject: "My sister reads books."</span><input type="text" style="width:150px"></div>
+      <div class="q-row"><span class="q-text">3. Найди Verb в этом же предложении:</span><input type="text" style="width:150px"></div>
+      <div class="q-row"><span class="q-text">4. They ___ ready. (am / is / are)</span><input type="text" style="width:100px"></div>
+      <div class="q-row"><span class="q-text">5. Сделай вопрос: "She is happy."</span><input type="text" style="width:220px"></div>
+    </div>
+  </section>
+
+  <!-- BLOCK 1 -->
+  <section id="b1">
+    <div class="block-head"><span class="block-num">BLOCK 1 · 8 мин</span></div>
+    <h2>What is Present Simple?</h2>
+    <div class="card grammar">
+      <span class="tag grammar">Grammar</span>
+      <p>Present Simple используем, когда говорим о:</p>
+      <p>🔁 регулярных действиях &nbsp;·&nbsp; ❤️ привычках и предпочтениях &nbsp;·&nbsp; 🌍 фактах &nbsp;·&nbsp; 📌 том, что обычно происходит</p>
+      <div class="example">I study English every day. &nbsp;·&nbsp; She lives in Bali. &nbsp;·&nbsp; I like coffee. &nbsp;·&nbsp; The sun rises in the east.</div>
+    </div>
+
+    <div class="mini-cards">
+      <div class="mini-card"><span class="label">Every day</span>I study English every day.</div>
+      <div class="mini-card"><span class="label">Habit</span>She drinks coffee every morning.</div>
+      <div class="mini-card"><span class="label">Fact</span>Water boils at 100°C.</div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-title">Is it Present Simple?</div>
+      <p style="font-size:13px; color:var(--ink-soft); margin-top:-4px;">Нажми на вариант — просто для себя, ответы разберём вместе на уроке.</p>
+      <div id="ps-container"></div>
+    </div>
+
+    <div class="why-card"><b>Зачем это нужно для ЕГЭ?</b> Умение узнать Present Simple по смыслу предложения — это то, что помогает выбрать правильное время в заданиях на грамматику и в письменной части.</div>
+  </section>
+
+  <!-- BLOCK 2 -->
+  <section id="b2">
+    <div class="block-head"><span class="block-num">BLOCK 2 · 10 мин</span></div>
+    <h2>Affirmative — утверждение</h2>
+    <div class="card grammar">
+      <span class="tag grammar">Grammar</span>
+      <p><b>I / you / we / they + V</b> (глагол без изменений)</p>
+      <div class="example">I work. &nbsp;·&nbsp; You work. &nbsp;·&nbsp; We work. &nbsp;·&nbsp; They work.</div>
+      <p><b>He / she / it + V-s</b></p>
+      <div class="example">He works. &nbsp;·&nbsp; She works. &nbsp;·&nbsp; It works.</div>
+    </div>
+
+    <div class="big-rule">
+      <h3>THE MAGIC S ✨</h3>
+      <p style="margin:0;"><b>HE / SHE / IT → + S</b></p>
+      <p style="margin-top:10px; font-size:14px;">he = один человек &nbsp;·&nbsp; she = один человек &nbsp;·&nbsp; it = одна вещь / животное</p>
+      <p style="font-size:14px;">Поэтому форма глагола меняется — добавляется -s.</p>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-title">Practice 2.1 · Поставь глагол в правильную форму</div>
+      <div class="q-row"><span class="q-text">1. She ___ (work) every day.</span><input type="text" style="width:130px"></div>
+      <div class="q-row"><span class="q-text">2. They ___ (live) in Bali.</span><input type="text" style="width:130px"></div>
+      <div class="q-row"><span class="q-text">3. He ___ (play) football.</span><input type="text" style="width:130px"></div>
+      <div class="q-row"><span class="q-text">4. I ___ (study) English.</span><input type="text" style="width:130px"></div>
+      <div class="q-row"><span class="q-text">5. My sister ___ (like) coffee.</span><input type="text" style="width:130px"></div>
+      <div class="q-row"><span class="q-text">6. We ___ (watch) films.</span><input type="text" style="width:130px"></div>
+      <div class="q-row"><span class="q-text">7. Tom ___ (read) books.</span><input type="text" style="width:130px"></div>
+      <div class="q-row"><span class="q-text">8. You ___ (work) a lot.</span><input type="text" style="width:130px"></div>
+      <div class="q-row"><span class="q-text">9. It ___ (look) nice.</span><input type="text" style="width:130px"></div>
+      <div class="q-row"><span class="q-text">10. My parents ___ (live) in Russia.</span><input type="text" style="width:130px"></div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-title">Practice 2.2 · Исправь ошибку</div>
+      <div class="q-row"><span class="q-text">1. She work every day.</span><input type="text" style="width:240px"></div>
+      <div class="q-row"><span class="q-text">2. He like coffee.</span><input type="text" style="width:240px"></div>
+      <div class="q-row"><span class="q-text">3. They lives in London.</span><input type="text" style="width:240px"></div>
+      <div class="q-row"><span class="q-text">4. I studies English.</span><input type="text" style="width:240px"></div>
+    </div>
+
+    <div class="why-card"><b>Зачем это нужно для ЕГЭ?</b> Ошибка на -s после he/she/it — одна из самых частых в письменной части и заданиях на грамматику. Автоматизировать это правило = не терять баллы на «мелочи».</div>
+  </section>
+
+  <!-- BLOCK 3 -->
+  <section id="b3">
+    <div class="block-head"><span class="block-num">BLOCK 3 · 15 мин</span></div>
+    <h2>Do / Does — самая важная часть урока</h2>
+    <div class="card grammar">
+      <span class="tag grammar">Grammar</span>
+      <p>Смотри на логику по шагам:</p>
+      <div class="example">She works. → Does she work? → She doesn't work.</div>
+      <table class="conj">
+        <tr><th>DO</th><th>DOES</th></tr>
+        <tr><td>I / you / we / they</td><td>he / she / it</td></tr>
+      </table>
+    </div>
+
+    <div class="warn-card">
+      <h3 style="margin-bottom:8px;">⚠️ DOES ALREADY HAS THE S</h3>
+      <p>Если: <b>She works.</b></p>
+      <p>То вопрос: <span class="cross">❌ Does she works?</span> — <span class="check">✅ Does she work?</span></p>
+      <p style="margin-top:10px;">Потому что <b>does</b> уже показывает he/she/it — поэтому основной глагол возвращается в базовую форму (без -s).</p>
+      <p>То же самое в отрицании: <span class="cross">❌ She doesn't works.</span> — <span class="check">✅ She doesn't work.</span></p>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-title">Practice 3.1 · Do or Does?</div>
+      <div class="q-row"><span class="q-text">1. ___ you like coffee?</span><input type="text" style="width:90px"></div>
+      <div class="q-row"><span class="q-text">2. ___ she work here?</span><input type="text" style="width:90px"></div>
+      <div class="q-row"><span class="q-text">3. ___ they live in Bali?</span><input type="text" style="width:90px"></div>
+      <div class="q-row"><span class="q-text">4. ___ he study English?</span><input type="text" style="width:90px"></div>
+      <div class="q-row"><span class="q-text">5. ___ your parents work?</span><input type="text" style="width:90px"></div>
+      <div class="q-row"><span class="q-text">6. ___ your sister like music?</span><input type="text" style="width:90px"></div>
+      <div class="q-row"><span class="q-text">7. ___ we need this book?</span><input type="text" style="width:90px"></div>
+      <div class="q-row"><span class="q-text">8. ___ it work well?</span><input type="text" style="width:90px"></div>
+      <div class="q-row"><span class="q-text">9. ___ your brother play tennis?</span><input type="text" style="width:90px"></div>
+      <div class="q-row"><span class="q-text">10. ___ you and your friend study together?</span><input type="text" style="width:90px"></div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-title">Practice 3.2 · Negative: don't / doesn't</div>
+      <div class="q-row"><span class="q-text">1. I ___ like tea.</span><input type="text" style="width:90px"></div>
+      <div class="q-row"><span class="q-text">2. She ___ work here.</span><input type="text" style="width:90px"></div>
+      <div class="q-row"><span class="q-text">3. They ___ live in London.</span><input type="text" style="width:90px"></div>
+      <div class="q-row"><span class="q-text">4. He ___ play football.</span><input type="text" style="width:90px"></div>
+      <div class="q-row"><span class="q-text">5. We ___ watch TV every day.</span><input type="text" style="width:90px"></div>
+      <div class="q-row"><span class="q-text">6. My sister ___ like coffee.</span><input type="text" style="width:90px"></div>
+      <div class="q-row"><span class="q-text">7. You ___ study French.</span><input type="text" style="width:90px"></div>
+      <div class="q-row"><span class="q-text">8. It ___ look nice.</span><input type="text" style="width:90px"></div>
+      <div class="q-row"><span class="q-text">9. My parents ___ live in Bali.</span><input type="text" style="width:90px"></div>
+      <div class="q-row"><span class="q-text">10. He ___ read books.</span><input type="text" style="width:90px"></div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-title">Practice 3.3 · Сделай вопрос</div>
+      <div class="q-row"><span class="q-text">1. You like coffee.</span><input type="text" style="width:240px"></div>
+      <div class="q-row"><span class="q-text">2. She works here.</span><input type="text" style="width:240px"></div>
+      <div class="q-row"><span class="q-text">3. They live in Bali.</span><input type="text" style="width:240px"></div>
+      <div class="q-row"><span class="q-text">4. He studies English.</span><input type="text" style="width:240px"></div>
+      <div class="q-row"><span class="q-text">5. Your sister watches films.</span><input type="text" style="width:240px"></div>
+    </div>
+
+    <div class="why-card"><b>Зачем это нужно для ЕГЭ?</b> Do/does — основа вопросов и отрицаний в Present Simple. Без этого невозможно правильно строить письменную речь и устные ответы на экзамене.</div>
+  </section>
+
+  <!-- BLOCK 4 -->
+  <section id="b4">
+    <div class="block-head"><span class="block-num">BLOCK 4 · 10 мин</span></div>
+    <h2>To be vs Ordinary verb</h2>
+    <div class="card grammar">
+      <span class="tag grammar">Grammar</span>
+      <p><b>TO BE:</b></p>
+      <div class="example">She is happy. → Is she happy? → She isn't happy.</div>
+      <p><b>ORDINARY VERB:</b></p>
+      <div class="example">She works. → Does she work? → She doesn't work.</div>
+    </div>
+
+    <div class="big-rule">
+      <h3>STOP & THINK</h3>
+      <p style="margin:0;">После subject идёт: happy / tired / ready / at home / a student → часто нужен <b>to be</b></p>
+      <div class="example" style="margin-top:8px;">She is happy.</div>
+      <p style="margin-top:10px;">Если это действие: work / study / live / like / play → <b>ordinary verb</b></p>
+      <div class="example">She works. → Does she work?</div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-title">Practice 4.1 · Выбери правильный вариант</div>
+      <div class="q-row"><span class="q-text">1. She ___ happy.</span><input type="text" style="width:110px"></div>
+      <div class="q-row"><span class="q-text">2. She ___ work every day.</span><input type="text" style="width:110px"></div>
+      <div class="q-row"><span class="q-text">3. ___ he tired?</span><input type="text" style="width:110px"></div>
+      <div class="q-row"><span class="q-text">4. ___ he study English?</span><input type="text" style="width:110px"></div>
+      <div class="q-row"><span class="q-text">5. They ___ at home.</span><input type="text" style="width:110px"></div>
+      <div class="q-row"><span class="q-text">6. They ___ live in Bali.</span><input type="text" style="width:110px"></div>
+      <div class="q-row"><span class="q-text">7. My sister ___ a student.</span><input type="text" style="width:110px"></div>
+      <div class="q-row"><span class="q-text">8. My sister ___ study English.</span><input type="text" style="width:110px"></div>
+      <div class="q-row"><span class="q-text">9. We ___ ready.</span><input type="text" style="width:110px"></div>
+      <div class="q-row"><span class="q-text">10. We ___ work every day.</span><input type="text" style="width:110px"></div>
+    </div>
+  </section>
+
+  <!-- BLOCK 5 -->
+  <section id="b5">
+    <div class="block-head"><span class="block-num">BLOCK 5 · 7 мин</span></div>
+    <h2>ЕГЭ Mode 📝</h2>
+    <div class="card practice">
+      <span class="tag practice">Practice</span>
+      <p>Теперь то же самое выглядит немного страшнее — но ты уже знаешь, что делать.</p>
+    </div>
+    <div class="exercise">
+      <div class="q-row"><span class="q-text">1. My sister usually ___ to school by bus.</span><input type="text" style="width:200px" placeholder="1) go 2) goes 3) going 4) went"></div>
+      <div class="q-row"><span class="q-text">2. ___ your brother work here?</span><input type="text" style="width:200px" placeholder="1) Is 2) Does 3) Do 4) Are"></div>
+      <div class="q-row"><span class="q-text">3. My parents ___ tired today.</span><input type="text" style="width:200px" placeholder="1) is 2) are 3) am 4) be"></div>
+      <div class="q-row"><span class="q-text">4. She ___ (not/like) tea.</span><input type="text" style="width:150px"></div>
+      <div class="q-row"><span class="q-text">5. ___ you often watch films?</span><input type="text" style="width:100px"></div>
+      <div class="q-row"><span class="q-text">6. He ___ football every weekend.</span><input type="text" style="width:200px" placeholder="1) play 2) plays 3) playing 4) played"></div>
+      <div class="q-row"><span class="q-text">7. They ___ (not/live) in Moscow.</span><input type="text" style="width:150px"></div>
+      <div class="q-row"><span class="q-text">8. My dog ___ very fast.</span><input type="text" style="width:200px" placeholder="1) run 2) runs 3) running 4) ran"></div>
+    </div>
+  </section>
+
+  <!-- BLOCK 6 -->
+  <section id="b6">
+    <div class="block-head"><span class="block-num">BLOCK 6 · 5 мин</span></div>
+    <h2>Mini Check</h2>
+    <div class="card"><p>Без подсказок — смешиваем всё, что прошли сегодня.</p></div>
+    <div class="exercise">
+      <div class="q-row"><span class="q-text">1. She ___ (like) tea.</span><input type="text" style="width:120px"></div>
+      <div class="q-row"><span class="q-text">2. ___ he play football?</span><input type="text" style="width:120px"></div>
+      <div class="q-row"><span class="q-text">3. They ___ not live here.</span><input type="text" style="width:120px"></div>
+      <div class="q-row"><span class="q-text">4. I ___ tired.</span><input type="text" style="width:120px"></div>
+      <div class="q-row"><span class="q-text">5. My sister ___ a teacher.</span><input type="text" style="width:120px"></div>
+      <div class="q-row"><span class="q-text">6. Сделай вопрос: "They live in Bali."</span><input type="text" style="width:220px"></div>
+      <div class="q-row"><span class="q-text">7. Исправь: "She don't work here."</span><input type="text" style="width:220px"></div>
+    </div>
+  </section>
+
+  <!-- VOCAB -->
+  <section id="vocab">
+    <div class="block-head"><span class="block-num">MINI VOCABULARY</span></div>
+    <h2>10 useful verbs</h2>
+    <div class="card vocab">
+      <span class="tag vocab">Vocabulary</span>
+      <table class="conj">
+        <tr><th>Слово</th><th>Перевод</th><th>Пример</th></tr>
+        <tr><td>live</td><td>жить</td><td>I live in Ekaterinburg.</td></tr>
+        <tr><td>work</td><td>работать</td><td>She works every day.</td></tr>
+        <tr><td>study</td><td>учиться</td><td>We study English.</td></tr>
+        <tr><td>like</td><td>нравиться / любить</td><td>I like coffee.</td></tr>
+        <tr><td>play</td><td>играть</td><td>He plays football.</td></tr>
+        <tr><td>watch</td><td>смотреть</td><td>They watch films.</td></tr>
+        <tr><td>read</td><td>читать</td><td>I read books.</td></tr>
+        <tr><td>go</td><td>идти / ехать</td><td>She goes to school by bus.</td></tr>
+        <tr><td>have</td><td>иметь</td><td>We have a car.</td></tr>
+        <tr><td>want</td><td>хотеть</td><td>I want to learn English.</td></tr>
+      </table>
+      <div class="why-card" style="margin-top:14px;"><b>One small note:</b> have → has with he/she/it. I have... / She has... Подробно разберём эту особенность на следующих уроках.</div>
+    </div>
+  </section>
+
+  <!-- HOMEWORK -->
+  <section id="hw">
+    <div class="block-head"><span class="block-num">HOMEWORK · ПН–ЧТ</span></div>
+    <h2>Домашняя работа на 4 дня</h2>
+    <p style="color:var(--ink-soft); font-size:14px;">Каждый день: 10–15 минут English exposure + 30–40 минут основной практики.</p>
+
+    <div class="tabs">
+      <div class="tab active" data-day="mon" onclick="showDay('mon')">Понедельник</div>
+      <div class="tab" data-day="tue" onclick="showDay('tue')">Вторник</div>
+      <div class="tab" data-day="wed" onclick="showDay('wed')">Среда</div>
+      <div class="tab" data-day="thu" onclick="showDay('thu')">Четверг</div>
+    </div>
+
+    <!-- MON -->
+    <div class="day-panel active" id="day-mon">
+      <div class="card grammar">
+        <span class="tag grammar">Grammar</span>
+        <h3>Present Simple — Affirmative <span class="homework-min">30–40 мин</span></h3>
+        <p style="font-size:13.5px; color:var(--ink-soft);">Exercise 1 · Поставь глагол в правильную форму</p>
+        <div class="q-row"><span class="q-text">1. She ___ (work) in a shop.</span><input type="text" style="width:120px"></div>
+        <div class="q-row"><span class="q-text">2. He ___ (study) at a big school.</span><input type="text" style="width:120px"></div>
+        <div class="q-row"><span class="q-text">3. They ___ (live) in Ekaterinburg.</span><input type="text" style="width:120px"></div>
+        <div class="q-row"><span class="q-text">4. I ___ (like) tea.</span><input type="text" style="width:120px"></div>
+        <div class="q-row"><span class="q-text">5. My brother ___ (play) tennis.</span><input type="text" style="width:120px"></div>
+        <div class="q-row"><span class="q-text">6. We ___ (watch) TV every evening.</span><input type="text" style="width:120px"></div>
+        <div class="q-row"><span class="q-text">7. My sister ___ (read) many books.</span><input type="text" style="width:120px"></div>
+        <div class="q-row"><span class="q-text">8. It ___ (look) beautiful in spring.</span><input type="text" style="width:120px"></div>
+        <div class="q-row"><span class="q-text">9. You ___ (work) hard.</span><input type="text" style="width:120px"></div>
+        <div class="q-row"><span class="q-text">10. My parents ___ (have) a car.</span><input type="text" style="width:120px"></div>
+        <div class="q-row"><span class="q-text">11. Tom ___ (go) to school by bus.</span><input type="text" style="width:120px"></div>
+        <div class="q-row"><span class="q-text">12. She ___ (have) a big family.</span><input type="text" style="width:120px"></div>
+        <hr class="soft">
+        <p style="font-size:13.5px; color:var(--ink-soft);">Exercise 2 · Исправь ошибки</p>
+        <div class="q-row"><span class="q-text">1. She work every day.</span><input type="text" style="width:240px"></div>
+        <div class="q-row"><span class="q-text">2. He like coffee.</span><input type="text" style="width:240px"></div>
+        <div class="q-row"><span class="q-text">3. They lives in London.</span><input type="text" style="width:240px"></div>
+        <div class="q-row"><span class="q-text">4. I studies English.</span><input type="text" style="width:240px"></div>
+        <div class="q-row"><span class="q-text">5. My sister play football.</span><input type="text" style="width:240px"></div>
+        <div class="q-row"><span class="q-text">6. We watches films.</span><input type="text" style="width:240px"></div>
+        <div class="q-row"><span class="q-text">7. It look nice.</span><input type="text" style="width:240px"></div>
+        <div class="q-row"><span class="q-text">8. You works a lot.</span><input type="text" style="width:240px"></div>
+        <hr class="soft">
+        <p style="font-size:13.5px; color:var(--ink-soft);">Exercise 3 · Выбери правильную форму</p>
+        <div class="q-row"><span class="q-text">1. She (work / works) every day.</span><input type="text" style="width:110px"></div>
+        <div class="q-row"><span class="q-text">2. They (live / lives) in Bali.</span><input type="text" style="width:110px"></div>
+        <div class="q-row"><span class="q-text">3. He (study / studies) English.</span><input type="text" style="width:110px"></div>
+        <div class="q-row"><span class="q-text">4. My friends (play / plays) football.</span><input type="text" style="width:110px"></div>
+        <div class="q-row"><span class="q-text">5. My mother (watch / watches) the news.</span><input type="text" style="width:110px"></div>
+        <div class="q-row"><span class="q-text">6. I (like / likes) music.</span><input type="text" style="width:110px"></div>
+        <div class="q-row"><span class="q-text">7. We (read / reads) books.</span><input type="text" style="width:110px"></div>
+        <div class="q-row"><span class="q-text">8. My brother (go / goes) to school.</span><input type="text" style="width:110px"></div>
+        <hr class="soft">
+        <p style="font-size:13.5px; color:var(--ink-soft);">Exercise 4 · Переведи</p>
+        <div class="q-row"><span class="q-text">1. Я работаю каждый день.</span><input type="text" style="width:260px"></div>
+        <div class="q-row"><span class="q-text">2. Она любит кофе.</span><input type="text" style="width:260px"></div>
+        <div class="q-row"><span class="q-text">3. Мы живём в России.</span><input type="text" style="width:260px"></div>
+        <div class="q-row"><span class="q-text">4. Он изучает английский.</span><input type="text" style="width:260px"></div>
+        <div class="q-row"><span class="q-text">5. Они смотрят фильмы.</span><input type="text" style="width:260px"></div>
+      </div>
+      <div class="card practice">
+        <span class="tag practice">Practice</span>
+        <h3>English exposure <span class="homework-min">10–15 мин</span></h3>
+        <p>Beginner-friendly видео или короткий текст на знакомую бытовую тему. Цель — привыкнуть к звучанию языка, не обязательно понимать всё.</p>
+      </div>
+    </div>
+
+    <!-- TUE -->
+    <div class="day-panel" id="day-tue">
+      <div class="card grammar">
+        <span class="tag grammar">Grammar</span>
+        <h3>Do / Does + Negative <span class="homework-min">30–40 мин</span></h3>
+        <p style="font-size:13.5px; color:var(--ink-soft);">Exercise 1 · do / does</p>
+        <div class="q-row"><span class="q-text">1. ___ you like coffee?</span><input type="text" style="width:90px"></div>
+        <div class="q-row"><span class="q-text">2. ___ she work here?</span><input type="text" style="width:90px"></div>
+        <div class="q-row"><span class="q-text">3. ___ they live in Bali?</span><input type="text" style="width:90px"></div>
+        <div class="q-row"><span class="q-text">4. ___ he study English?</span><input type="text" style="width:90px"></div>
+        <div class="q-row"><span class="q-text">5. ___ your parents work?</span><input type="text" style="width:90px"></div>
+        <div class="q-row"><span class="q-text">6. ___ your sister like music?</span><input type="text" style="width:90px"></div>
+        <div class="q-row"><span class="q-text">7. ___ we need this book?</span><input type="text" style="width:90px"></div>
+        <div class="q-row"><span class="q-text">8. ___ it work well?</span><input type="text" style="width:90px"></div>
+        <div class="q-row"><span class="q-text">9. ___ your brother play tennis?</span><input type="text" style="width:90px"></div>
+        <div class="q-row"><span class="q-text">10. ___ you and your friend study together?</span><input type="text" style="width:90px"></div>
+        <hr class="soft">
+        <p style="font-size:13.5px; color:var(--ink-soft);">Exercise 2 · don't / doesn't</p>
+        <div class="q-row"><span class="q-text">1. I ___ like tea.</span><input type="text" style="width:90px"></div>
+        <div class="q-row"><span class="q-text">2. She ___ work here.</span><input type="text" style="width:90px"></div>
+        <div class="q-row"><span class="q-text">3. They ___ live in London.</span><input type="text" style="width:90px"></div>
+        <div class="q-row"><span class="q-text">4. He ___ play football.</span><input type="text" style="width:90px"></div>
+        <div class="q-row"><span class="q-text">5. We ___ watch TV every day.</span><input type="text" style="width:90px"></div>
+        <div class="q-row"><span class="q-text">6. My sister ___ like coffee.</span><input type="text" style="width:90px"></div>
+        <div class="q-row"><span class="q-text">7. You ___ study French.</span><input type="text" style="width:90px"></div>
+        <div class="q-row"><span class="q-text">8. It ___ look nice.</span><input type="text" style="width:90px"></div>
+        <div class="q-row"><span class="q-text">9. My parents ___ live in Bali.</span><input type="text" style="width:90px"></div>
+        <div class="q-row"><span class="q-text">10. He ___ read books.</span><input type="text" style="width:90px"></div>
+        <hr class="soft">
+        <p style="font-size:13.5px; color:var(--ink-soft);">Exercise 3 · Сделай отрицание</p>
+        <div class="q-row"><span class="q-text">1. She works here.</span><input type="text" style="width:240px"></div>
+        <div class="q-row"><span class="q-text">2. I like tea.</span><input type="text" style="width:240px"></div>
+        <div class="q-row"><span class="q-text">3. They live in London.</span><input type="text" style="width:240px"></div>
+        <div class="q-row"><span class="q-text">4. He plays football.</span><input type="text" style="width:240px"></div>
+        <div class="q-row"><span class="q-text">5. We watch TV every day.</span><input type="text" style="width:240px"></div>
+        <div class="q-row"><span class="q-text">6. My sister likes coffee.</span><input type="text" style="width:240px"></div>
+        <div class="q-row"><span class="q-text">7. You study French.</span><input type="text" style="width:240px"></div>
+        <div class="q-row"><span class="q-text">8. My parents live in Bali.</span><input type="text" style="width:240px"></div>
+        <hr class="soft">
+        <p style="font-size:13.5px; color:var(--ink-soft);">Exercise 4 · Исправь ошибки</p>
+        <div class="q-row"><span class="q-text">1. Does she works here?</span><input type="text" style="width:240px"></div>
+        <div class="q-row"><span class="q-text">2. He don't like coffee.</span><input type="text" style="width:240px"></div>
+        <div class="q-row"><span class="q-text">3. She doesn't studies English.</span><input type="text" style="width:240px"></div>
+        <div class="q-row"><span class="q-text">4. Do he live here?</span><input type="text" style="width:240px"></div>
+        <div class="q-row"><span class="q-text">5. They doesn't work today.</span><input type="text" style="width:240px"></div>
+        <hr class="soft">
+        <p style="font-size:13.5px; color:var(--ink-soft);">Exercise 5 · Переведи</p>
+        <div class="q-row"><span class="q-text">1. Она не работает здесь.</span><input type="text" style="width:260px"></div>
+        <div class="q-row"><span class="q-text">2. Я не люблю кофе.</span><input type="text" style="width:260px"></div>
+        <div class="q-row"><span class="q-text">3. Он не изучает английский.</span><input type="text" style="width:260px"></div>
+        <div class="q-row"><span class="q-text">4. Мы не живём в Москве.</span><input type="text" style="width:260px"></div>
+        <div class="q-row"><span class="q-text">5. Они не смотрят фильмы.</span><input type="text" style="width:260px"></div>
+      </div>
+      <div class="card practice">
+        <span class="tag practice">Practice</span>
+        <h3>English exposure <span class="homework-min">10–15 мин</span></h3>
+        <p>Beginner-friendly видео с субтитрами на знакомую тему.</p>
+      </div>
+    </div>
+
+    <!-- WED -->
+    <div class="day-panel" id="day-wed">
+      <div class="card grammar">
+        <span class="tag grammar">Grammar</span>
+        <h3>Questions + To Be vs Ordinary Verb <span class="homework-min">30–40 мин</span></h3>
+        <p style="font-size:13.5px; color:var(--ink-soft);">Exercise 1 · Сделай вопрос</p>
+        <div class="q-row"><span class="q-text">1. She works here.</span><input type="text" style="width:240px"></div>
+        <div class="q-row"><span class="q-text">2. They live in Bali.</span><input type="text" style="width:240px"></div>
+        <div class="q-row"><span class="q-text">3. He studies English.</span><input type="text" style="width:240px"></div>
+        <div class="q-row"><span class="q-text">4. You like coffee.</span><input type="text" style="width:240px"></div>
+        <div class="q-row"><span class="q-text">5. My sister watches films.</span><input type="text" style="width:240px"></div>
+        <div class="q-row"><span class="q-text">6. Your parents work at home.</span><input type="text" style="width:240px"></div>
+        <div class="q-row"><span class="q-text">7. It looks nice.</span><input type="text" style="width:240px"></div>
+        <div class="q-row"><span class="q-text">8. We need this.</span><input type="text" style="width:240px"></div>
+        <hr class="soft">
+        <p style="font-size:13.5px; color:var(--ink-soft);">Exercise 2 · is / are / do / does</p>
+        <div class="q-row"><span class="q-text">1. ___ she happy?</span><input type="text" style="width:100px"></div>
+        <div class="q-row"><span class="q-text">2. ___ you like tea?</span><input type="text" style="width:100px"></div>
+        <div class="q-row"><span class="q-text">3. ___ they at home?</span><input type="text" style="width:100px"></div>
+        <div class="q-row"><span class="q-text">4. ___ he study English?</span><input type="text" style="width:100px"></div>
+        <div class="q-row"><span class="q-text">5. ___ we ready?</span><input type="text" style="width:100px"></div>
+        <div class="q-row"><span class="q-text">6. ___ your sister work here?</span><input type="text" style="width:100px"></div>
+        <div class="q-row"><span class="q-text">7. ___ it cold today?</span><input type="text" style="width:100px"></div>
+        <div class="q-row"><span class="q-text">8. ___ your parents live in Bali?</span><input type="text" style="width:100px"></div>
+        <div class="q-row"><span class="q-text">9. ___ I right?</span><input type="text" style="width:100px"></div>
+        <div class="q-row"><span class="q-text">10. ___ she work every day?</span><input type="text" style="width:100px"></div>
+        <hr class="soft">
+        <p style="font-size:13.5px; color:var(--ink-soft);">Exercise 3 · to be или ordinary verb</p>
+        <div class="q-row"><span class="q-text">1. She ___ (be) tired.</span><input type="text" style="width:120px"></div>
+        <div class="q-row"><span class="q-text">2. She ___ (work) every day.</span><input type="text" style="width:120px"></div>
+        <div class="q-row"><span class="q-text">3. They ___ (be) ready.</span><input type="text" style="width:120px"></div>
+        <div class="q-row"><span class="q-text">4. They ___ (live) in Bali.</span><input type="text" style="width:120px"></div>
+        <div class="q-row"><span class="q-text">5. It ___ (be) cold today.</span><input type="text" style="width:120px"></div>
+        <div class="q-row"><span class="q-text">6. He ___ (study) English.</span><input type="text" style="width:120px"></div>
+        <div class="q-row"><span class="q-text">7. My sister ___ (be) a student.</span><input type="text" style="width:120px"></div>
+        <div class="q-row"><span class="q-text">8. My sister ___ (study) hard.</span><input type="text" style="width:120px"></div>
+        <div class="q-row"><span class="q-text">9. We ___ (be) happy.</span><input type="text" style="width:120px"></div>
+        <div class="q-row"><span class="q-text">10. We ___ (watch) films every evening.</span><input type="text" style="width:120px"></div>
+        <hr class="soft">
+        <p style="font-size:13.5px; color:var(--ink-soft);">Exercise 4 · Трансформации</p>
+        <div class="q-row"><span class="q-text">1. She works every day. → Question:</span><input type="text" style="width:260px"></div>
+        <div class="q-row"><span class="q-text">2. They live in Bali. → Negative:</span><input type="text" style="width:260px"></div>
+        <div class="q-row"><span class="q-text">3. He is tired. → Question:</span><input type="text" style="width:260px"></div>
+        <div class="q-row"><span class="q-text">4. I like tea. → Negative:</span><input type="text" style="width:260px"></div>
+        <div class="q-row"><span class="q-text">5. We are ready. → Question:</span><input type="text" style="width:260px"></div>
+        <div class="q-row"><span class="q-text">6. My sister studies English. → Negative:</span><input type="text" style="width:260px"></div>
+        <hr class="soft">
+        <p style="font-size:13.5px; color:var(--ink-soft);">Exercise 5 · Переведи</p>
+        <div class="q-row"><span class="q-text">1. Она дома?</span><input type="text" style="width:220px"></div>
+        <div class="q-row"><span class="q-text">2. Она работает?</span><input type="text" style="width:220px"></div>
+        <div class="q-row"><span class="q-text">3. Он студент?</span><input type="text" style="width:220px"></div>
+        <div class="q-row"><span class="q-text">4. Он учится?</span><input type="text" style="width:220px"></div>
+        <div class="q-row"><span class="q-text">5. Они живут здесь?</span><input type="text" style="width:220px"></div>
+      </div>
+      <div class="card practice">
+        <span class="tag practice">Practice</span>
+        <h3>English exposure <span class="homework-min">10–15 мин</span></h3>
+        <p>Простой текст или короткое аудио на знакомую бытовую тему.</p>
+      </div>
+    </div>
+
+    <!-- THU -->
+    <div class="day-panel" id="day-thu">
+      <div class="card practice">
+        <span class="tag practice">Practice</span>
+        <h3>Mixed Practice + Mini ЕГЭ <span class="homework-min">30–40 мин</span></h3>
+        <p style="font-size:13.5px; color:var(--ink-soft);">Exercise 1 · Mixed Grammar</p>
+        <div class="q-row"><span class="q-text">1. I ___ a student.</span><input type="text" style="width:110px"></div>
+        <div class="q-row"><span class="q-text">2. She ___ (work) every day.</span><input type="text" style="width:110px"></div>
+        <div class="q-row"><span class="q-text">3. ___ you like tea?</span><input type="text" style="width:110px"></div>
+        <div class="q-row"><span class="q-text">4. They ___ not at home.</span><input type="text" style="width:110px"></div>
+        <div class="q-row"><span class="q-text">5. He ___ (study) English.</span><input type="text" style="width:110px"></div>
+        <div class="q-row"><span class="q-text">6. ___ she work here?</span><input type="text" style="width:110px"></div>
+        <div class="q-row"><span class="q-text">7. We ___ (live) in Russia.</span><input type="text" style="width:110px"></div>
+        <div class="q-row"><span class="q-text">8. My brother ___ not (like) coffee.</span><input type="text" style="width:170px"></div>
+        <div class="q-row"><span class="q-text">9. ___ they ready?</span><input type="text" style="width:110px"></div>
+        <div class="q-row"><span class="q-text">10. It ___ (look) nice.</span><input type="text" style="width:110px"></div>
+        <div class="q-row"><span class="q-text">11. My parents ___ (have) a car.</span><input type="text" style="width:110px"></div>
+        <div class="q-row"><span class="q-text">12. ___ he a teacher?</span><input type="text" style="width:110px"></div>
+        <hr class="soft">
+        <p style="font-size:13.5px; color:var(--ink-soft);">Exercise 2 · Find the mistake</p>
+        <div class="q-row"><span class="q-text">1. She work every day.</span><input type="text" style="width:240px"></div>
+        <div class="q-row"><span class="q-text">2. Does he plays football?</span><input type="text" style="width:240px"></div>
+        <div class="q-row"><span class="q-text">3. They is happy.</span><input type="text" style="width:240px"></div>
+        <div class="q-row"><span class="q-text">4. I likes tea.</span><input type="text" style="width:240px"></div>
+        <div class="q-row"><span class="q-text">5. He don't study English.</span><input type="text" style="width:240px"></div>
+        <div class="q-row"><span class="q-text">6. Is she works here?</span><input type="text" style="width:240px"></div>
+        <div class="q-row"><span class="q-text">7. My sister study hard.</span><input type="text" style="width:240px"></div>
+        <div class="q-row"><span class="q-text">8. We doesn't live here.</span><input type="text" style="width:240px"></div>
+        <hr class="soft">
+        <p style="font-size:13.5px; color:var(--ink-soft);">Exercise 3 · Transformation</p>
+        <div class="q-row"><span class="q-text">1. He plays football. → Negative:</span><input type="text" style="width:260px"></div>
+        <div class="q-row"><span class="q-text">2. They are tired. → Question:</span><input type="text" style="width:260px"></div>
+        <div class="q-row"><span class="q-text">3. I study English. → Question:</span><input type="text" style="width:260px"></div>
+        <div class="q-row"><span class="q-text">4. She is a teacher. → Negative:</span><input type="text" style="width:260px"></div>
+        <div class="q-row"><span class="q-text">5. We live in Moscow. → Negative:</span><input type="text" style="width:260px"></div>
+        <div class="q-row"><span class="q-text">6. You watch films. → Question:</span><input type="text" style="width:260px"></div>
+        <hr class="soft">
+        <p style="font-size:13.5px; color:var(--ink-soft);">Exercise 4 · Переведи</p>
+        <div class="q-row"><span class="q-text">1. Я не работаю по воскресеньям.</span><input type="text" style="width:260px"></div>
+        <div class="q-row"><span class="q-text">2. Она изучает английский каждый день.</span><input type="text" style="width:260px"></div>
+        <div class="q-row"><span class="q-text">3. Они не дома.</span><input type="text" style="width:260px"></div>
+        <div class="q-row"><span class="q-text">4. Он играет в футбол?</span><input type="text" style="width:260px"></div>
+        <div class="q-row"><span class="q-text">5. Мы готовы.</span><input type="text" style="width:260px"></div>
+        <hr class="soft">
+        <p style="font-size:13.5px; color:var(--ink-soft);">Exercise 5 · Mini ЕГЭ</p>
+        <div class="q-row"><span class="q-text">1. My sister usually ___ to school by bus.</span><input type="text" style="width:200px" placeholder="1) go 2) goes 3) going 4) went"></div>
+        <div class="q-row"><span class="q-text">2. ___ your brother work here?</span><input type="text" style="width:200px" placeholder="1) Is 2) Does 3) Do 4) Are"></div>
+        <div class="q-row"><span class="q-text">3. My parents ___ tired today.</span><input type="text" style="width:200px" placeholder="1) is 2) are 3) am 4) be"></div>
+        <div class="q-row"><span class="q-text">4. She ___ (not/like) tea.</span><input type="text" style="width:150px"></div>
+        <div class="q-row"><span class="q-text">5. ___ you often watch films?</span><input type="text" style="width:100px"></div>
+        <div class="q-row"><span class="q-text">6. He ___ football every weekend.</span><input type="text" style="width:200px" placeholder="1) play 2) plays 3) playing 4) played"></div>
+        <div class="q-row"><span class="q-text">7. They ___ (not/live) in Moscow.</span><input type="text" style="width:150px"></div>
+        <div class="q-row"><span class="q-text">8. My dog ___ very fast.</span><input type="text" style="width:200px" placeholder="1) run 2) runs 3) running 4) ran"></div>
+        <div class="q-row"><span class="q-text">9. ___ she a doctor?</span><input type="text" style="width:100px"></div>
+        <div class="q-row"><span class="q-text">10. We ___ every day to the park.</span><input type="text" style="width:200px" placeholder="1) walk 2) walks 3) walking 4) walked"></div>
+      </div>
+      <div class="card">
+        <h3>Self-Check</h3>
+        <ul class="checklist">
+          <li><input type="checkbox"> Я понимаю, когда нужен Present Simple.</li>
+          <li><input type="checkbox"> Я понимаю he/she/it + s.</li>
+          <li><input type="checkbox"> Я умею строить отрицание.</li>
+          <li><input type="checkbox"> Я умею строить вопрос.</li>
+          <li><input type="checkbox"> Я понимаю разницу между is и does.</li>
+          <li><input type="checkbox"> Я не пишу does + works.</li>
+          <li><input type="checkbox"> Я могу решить простое грамматическое задание без угадывания.</li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+
+</div>
+
+<script>
+// Block 1: Is it Present Simple? — simple toggle, no correctness stored, teacher checks live
+const psSentences = [
+  "I go to school every day.",
+  "She likes coffee.",
+  "They are at home now.",
+  "He plays football on Sundays.",
+  "I am tired.",
+  "We live in Russia."
+];
+(function buildPS(){
+  const c = document.getElementById("ps-container");
+  psSentences.forEach((s,i)=>{
+    const row = document.createElement("div");
+    row.className = "toggle-row";
+    row.innerHTML = `<span class="q-text">${i+1}. ${s}</span>
+      <button type="button" class="toggle-btn" data-i="${i}" data-v="yes" onclick="selectPS(this)">Present Simple</button>
+      <button type="button" class="toggle-btn" data-i="${i}" data-v="no" onclick="selectPS(this)">Not Present Simple</button>`;
+    c.appendChild(row);
+  });
+})();
+function selectPS(btn){
+  const i = btn.dataset.i;
+  document.querySelectorAll('.toggle-btn[data-i="'+i+'"]').forEach(b=>b.classList.remove("selected"));
+  btn.classList.add("selected");
+}
+
+// Homework tabs
+function showDay(day){
+  document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("active", t.dataset.day===day));
+  document.querySelectorAll(".day-panel").forEach(p=>p.classList.toggle("active", p.id==="day-"+day));
+}
+
+// Progress dots via scroll
+const sections = ["b0","b1","b2","b3","b4","b5","b6","hw"].map(id=>document.getElementById(id));
+const dots = document.querySelectorAll(".dot");
+window.addEventListener("scroll", ()=>{
+  let current = 0;
+  sections.forEach((sec,i)=>{
+    if(sec.getBoundingClientRect().top < 140) current = i;
+  });
+  dots.forEach((d,i)=> d.classList.toggle("active", i<=current));
+});
+</script>
+</body>
+</html>
