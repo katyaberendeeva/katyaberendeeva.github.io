@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Урок 7 — Предприятие и предпринимательство</title>
+<style>
+:root{
+--bg:#fbfaf7;--ink:#302b35;--muted:#817a87;--line:#e7dfeb;
+--purple:#7450b8;--pale:#f0eafb;--gold:#d99a18;--goldp:#fff1d2;
+--teal:#318f88;--tealp:#e5f5f2;--pink:#f7e8f1;--green:#397b55;
+--red:#b95a67;--dark:#302b35;--white:#fff
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+main{max-width:920px;margin:auto;padding:26px 20px 80px}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:500;line-height:1.08}
+h1{font-size:clamp(40px,6vw,68px);margin:12px 0}
+h2{font-size:34px;margin:0 0 12px}
+h3{font-size:24px;margin:0 0 8px}
+p{margin:8px 0}
+.top{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:13px;letter-spacing:.03em}
+.badge{background:var(--pale);color:var(--purple);padding:7px 12px;border-radius:99px;font-weight:800}
+.hero{margin-top:22px;background:white;border:1px solid var(--line);border-radius:30px;padding:34px;box-shadow:0 14px 38px rgba(55,40,70,.07);position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:210px;height:210px;border-radius:50%;background:var(--goldp);right:-80px;top:-90px}
+.hero>*{position:relative;z-index:1}
+.kicker{color:var(--gold);font-weight:900;text-transform:uppercase;letter-spacing:.08em;font-size:13px}
+.subtitle{font-size:19px;color:var(--muted);max-width:760px}
+.pills{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}
+.pill{border:1px solid var(--line);border-radius:99px;padding:7px 12px;background:#fff;color:var(--muted)}
+.route{margin:18px 0;padding:17px 20px;border-radius:18px;background:var(--pale);color:#513a7d;font-weight:800}
+.section{margin-top:26px;background:white;border:1px solid var(--line);border-radius:26px;padding:28px;box-shadow:0 12px 32px rgba(55,40,70,.055)}
+.gold{background:linear-gradient(135deg,#fffdf8,#fff7e7)}
+.teal{background:linear-gradient(135deg,#fbfffe,#eef9f7)}
+.purple{background:linear-gradient(135deg,#fff,#f8f3ff)}
+.dark{background:var(--dark);color:white}
+.time{display:inline-block;background:var(--pale);color:var(--purple);font-weight:900;font-size:12px;padding:6px 10px;border-radius:99px;margin-bottom:12px}
+.dark .time{background:#50465a;color:white}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.card{background:white;border:1px solid var(--line);border-radius:18px;padding:17px}
+.dark .card{color:var(--ink)}
+.card strong{display:block;margin-bottom:5px}
+.visual{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin:18px 0}
+.icon{font-size:46px}
+.arrow{font-size:28px;color:var(--gold);font-weight:900}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:18px 0}
+.flow span{background:white;border:1px solid var(--line);padding:9px 12px;border-radius:13px;font-weight:800}
+.formula{background:var(--dark);color:white;border-radius:17px;padding:17px;text-align:center;font-size:20px;font-weight:900;margin:15px 0}
+.money{font-size:29px;font-weight:900;color:var(--purple)}
+.note,.danger{padding:14px 16px;border-radius:16px;margin:14px 0}
+.note{background:var(--tealp)}
+.danger{background:#fff0f2}
+table{width:100%;border-collapse:collapse;margin:15px 0;background:white;font-size:15px}
+th,td{border:1px solid var(--line);padding:11px;text-align:left;vertical-align:top}
+th{background:#f4eff9}
+.task{background:white;border:1px solid var(--line);border-radius:19px;padding:19px;margin:14px 0}
+.label{font-size:11px;font-weight:900;color:var(--purple);text-transform:uppercase;letter-spacing:.07em}
+.options{padding-left:22px}
+textarea{width:100%;min-height:100px;border:1px solid #d8cfe0;border-radius:14px;padding:11px;font:inherit;resize:vertical}
+details{margin-top:12px;background:#f8f5fb;border:1px solid #e5dcef;border-radius:14px}
+summary{cursor:pointer;padding:11px 13px;font-weight:900;color:var(--purple)}
+.answer{padding:0 14px 14px}
+.correct{font-weight:900;color:var(--green)}
+.small{font-size:13px;color:var(--muted)}
+.photo{border:2px dashed #cfc3dd;border-radius:18px;background:#faf7ff;padding:24px;text-align:center;font-weight:800;color:#6e617d}
+.steps{counter-reset:step}
+.step{position:relative;padding:13px 16px 13px 52px;border:1px solid var(--line);border-radius:16px;background:white;margin:9px 0}
+.step:before{counter-increment:step;content:counter(step);position:absolute;left:14px;top:13px;width:27px;height:27px;border-radius:50%;background:var(--purple);color:white;text-align:center;line-height:27px;font-weight:900}
+.heat{font-size:25px;font-weight:900}
+.cheat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.home{background:var(--dark);color:white}
+.home .task{color:var(--ink)}
+@media(max-width:650px){.grid,.cheat{grid-template-columns:1fr}.hero,.section{padding:22px}h1{font-size:44px}}
+</style>
+</head>
+<body>
+<main>
+<div class="top"><span>ОБЩЕСТВОЗНАНИЕ · ОГЭ-2027</span><span class="badge">Урок 07</span></div>
+
+<section class="hero">
+<div class="kicker">Экономика · большой урок</div>
+<h1>Предприятие и предпринимательство 🏭✨</h1>
+<p class="subtitle">Не просто «что такое фирма», а как предприятие устроено изнутри: ресурсы, затраты, выручка, прибыль, решения предпринимателя и риски.</p>
+<div class="pills">
+<span class="pill">⏱ 60 минут</span><span class="pill">🧠 Сначала понять → потом решать</span><span class="pill">🧩 ОГЭ + реальные ситуации</span>
+</div>
+</section>
+
+<div class="route">ПРОИЗВОДСТВО → ПРЕДПРИЯТИЕ → ИЗДЕРЖКИ → ВЫРУЧКА → ПРИБЫЛЬ → ПРЕДПРИНИМАТЕЛЬ → РИСК</div>
+
+<section class="section gold">
+<span class="time">5 минут · Разогрев</span>
+<h2>Представим, что ты открыла кофейню ☕</h2>
+<div class="visual"><span class="icon">👩🏻‍💼</span><span class="arrow">→</span><span class="icon">☕</span><span class="arrow">→</span><span class="icon">💰</span></div>
+<p>Ты купила оборудование, арендовала помещение, наняла сотрудника, закупила кофе и начала продавать напитки.</p>
+<p><strong>Вопрос:</strong> где здесь производство, где предприятие, а где предпринимательство?</p>
+<details><summary>Проверить логику</summary><div class="answer">
+<p><strong>Производство</strong> — создание товара/услуги. <strong>Предприятие</strong> — организация, где эта деятельность осуществляется. <strong>Предпринимательство</strong> — самостоятельная инициативная деятельность, направленная на получение прибыли и связанная с риском.</p>
+</div></details>
+</section>
+
+<section class="section">
+<span class="time">7 минут · Предприятие</span>
+<h2>Что делает предприятие?</h2>
+<p><strong>Предприятие</strong> организует экономическую деятельность: соединяет ресурсы, производит товары или оказывает услуги и реализует их.</p>
+<div class="grid">
+<div class="card"><strong>👷 Труд</strong> сотрудники выполняют работу</div>
+<div class="card"><strong>🏢 Капитал</strong> оборудование, здания, инструменты</div>
+<div class="card"><strong>🌾 Природные ресурсы</strong> используются там, где они нужны производству</div>
+<div class="card"><strong>🧠 Предпринимательские способности</strong> организация, решения, риск</div>
+</div>
+<div class="note"><strong>Связь с уроком 6:</strong> предприятие использует факторы производства, чтобы создать товар или услугу, а затем вывести результат на рынок.</div>
+</section>
+
+<section class="section teal">
+<span class="time">12 минут · Издержки — подробнее</span>
+<h2>Куда уходят деньги предприятия? 💸</h2>
+<p><strong>Издержки</strong> — затраты предприятия на производство и реализацию товаров или услуг.</p>
+
+<div class="grid">
+<div class="card"><strong>📌 Постоянные</strong><p>В краткосрочном периоде не зависят напрямую от количества произведённых товаров.</p><p class="small">Примеры: аренда помещения, часть административных расходов.</p></div>
+<div class="card"><strong>📈 Переменные</strong><p>Меняются вместе с объёмом производства.</p><p class="small">Примеры: сырьё, материалы, упаковка, часть расходов на производство.</p></div>
+</div>
+
+<div class="task">
+<div class="label">Главная мысль</div>
+<p>Если кофейня печёт 50 круассанов вместо 20, ей понадобится больше муки, масла и упаковки. Аренда помещения от этого автоматически не становится в 2,5 раза больше.</p>
+</div>
+
+<div class="task">
+<div class="label">ОГЭ-логика · классификация</div>
+<p>Распредели расходы:</p>
+<table><tr><th>Расход</th><th>Постоянные / переменные?</th><th>Почему?</th></tr>
+<tr><td>Аренда помещения</td><td>________</td><td>________</td></tr>
+<tr><td>Сырьё для производства</td><td>________</td><td>________</td></tr>
+<tr><td>Упаковка на каждую единицу товара</td><td>________</td><td>________</td></tr>
+<tr><td>Оплата электроэнергии производственного оборудования</td><td>________</td><td>________</td></tr>
+</table>
+<details><summary>Ответ</summary><div class="answer">
+<p>Аренда — обычно постоянная; сырьё — переменные; упаковка — переменные; электроэнергия оборудования при увеличении работы оборудования обычно относится к переменным.</p>
+<p class="small">В реальной экономике классификация некоторых расходов может зависеть от условий, поэтому в ОГЭ смотрим на конкретную формулировку.</p>
+</div></details>
+</div>
+
+<div class="formula">ПРИБЫЛЬ = ВЫРУЧКА − ИЗДЕРЖКИ</div>
+<p><strong>Общие издержки</strong> — совокупные затраты предприятия. В учебных задачах их удобно рассматривать как сумму постоянных и переменных издержек.</p>
+<div class="formula">ОБЩИЕ ИЗДЕРЖКИ = ПОСТОЯННЫЕ + ПЕРЕМЕННЫЕ</div>
+
+<div class="task">
+<div class="label">Мини-задача</div>
+<p>Аренда кофейни — 40 000 ₽ в месяц. Сырьё и упаковка — 60 000 ₽. Каковы общие издержки?</p>
+<details><summary>Ответ</summary><div class="answer"><p class="correct">100 000 ₽.</p><p>40 000 + 60 000 = 100 000 ₽.</p></div></details>
+</div>
+</section>
+
+<section class="section purple">
+<span class="time">8 минут · Выручка, прибыль и экономическая логика</span>
+<h2>Главная формула предприятия 💰</h2>
+<p><strong>Выручка</strong> — доход от продажи товаров и услуг.</p>
+<div class="formula">ВЫРУЧКА = ЦЕНА × КОЛИЧЕСТВО ПРОДАННОГО</div>
+<p><strong>Прибыль</strong> — разница между выручкой и издержками.</p>
+<div class="formula">ПРИБЫЛЬ = ВЫРУЧКА − ИЗДЕРЖКИ</div>
+
+<div class="task">
+<div class="label">Пример целиком</div>
+<p>Кофейня продала 120 напитков по 250 ₽.</p>
+<p>Выручка: <strong>120 × 250 = 30 000 ₽</strong>.</p>
+<p>Все издержки за день — 21 000 ₽.</p>
+<p class="money">Прибыль = 30 000 − 21 000 = 9 000 ₽</p>
+</div>
+
+<div class="danger"><strong>Ловушка:</strong> рост выручки не гарантирует рост прибыли. Если одновременно издержки выросли сильнее, прибыль может уменьшиться.</div>
+
+<div class="task">
+<div class="label">Ситуация</div>
+<p>Магазин увеличил выручку на 20%, но издержки выросли на 35%. Можно ли автоматически сказать, что прибыль выросла?</p>
+<textarea placeholder="Объясни:"></textarea>
+<details><summary>Ответ</summary><div class="answer"><p class="correct">Нет.</p><p>Нужно знать конкретные значения выручки и издержек до и после изменения. Проценты сами по себе не позволяют сделать такой вывод.</p></div></details>
+</div>
+</section>
+
+<section class="section gold">
+<span class="time">10 минут · Предпринимательство</span>
+<h2>Предприниматель — не просто «владелец бизнеса»</h2>
+<p><strong>Предпринимательская деятельность</strong> связана с самостоятельностью, инициативой, организацией деятельности, стремлением получить прибыль и риском.</p>
+
+<div class="steps">
+<div class="step"><strong>Идея</strong> — предприниматель видит возможность предложить товар или услугу.</div>
+<div class="step"><strong>Ресурсы</strong> — ищет деньги, оборудование, помещение, сотрудников и другие необходимые ресурсы.</div>
+<div class="step"><strong>Решения</strong> — выбирает, что, как и для кого производить.</div>
+<div class="step"><strong>Риск</strong> — результат не гарантирован: спрос может оказаться ниже ожидаемого, расходы — выше.</div>
+<div class="step"><strong>Прибыль</strong> — при успешной деятельности предприниматель может получить прибыль.</div>
+</div>
+
+<div class="note"><strong>Важно:</strong> предпринимательский риск — это не обязательно «сделать что-то опасное». Это риск получить не тот экономический результат, на который рассчитывали.</div>
+
+<div class="task">
+<div class="label">Задача недели 🧠</div>
+<p>Предприниматель выбирает между двумя вариантами: открыть небольшую кофейню в центре с высокой арендой или кофейню в спальном районе с меньшим потоком людей, но низкой арендой.</p>
+<p>Назови <strong>минимум три</strong> показателя, которые стоит сравнить перед решением.</p>
+<textarea placeholder="Твой вариант:"></textarea>
+<details><summary>Один из возможных ходов мысли</summary><div class="answer">
+<p>Можно сравнить ожидаемый спрос и число покупателей, цену и возможную выручку, размер постоянных и переменных издержек, конкурентов, размер первоначальных вложений и риски. Важна не только выручка, а соотношение выручки и затрат.</p>
+</div></details>
+</div>
+</section>
+
+<section class="section">
+<span class="time">8 минут · Практика посложнее</span>
+<h2>Теперь не угадываем, а рассуждаем</h2>
+
+<div class="task">
+<div class="label">1 · расчёт</div>
+<p>Фирма продала 50 товаров по 800 ₽. Постоянные издержки — 12 000 ₽, переменные — 18 000 ₽. Найди выручку, общие издержки и прибыль.</p>
+<textarea placeholder="Решение:"></textarea>
+<details><summary>Ответ</summary><div class="answer"><p>Выручка: 50 × 800 = <strong>40 000 ₽</strong>. Общие издержки: 12 000 + 18 000 = <strong>30 000 ₽</strong>. Прибыль: 40 000 − 30 000 = <strong>10 000 ₽</strong>.</p></div></details>
+</div>
+
+<div class="task">
+<div class="label">2 · несколько факторов</div>
+<p>Фирма снизила цену товара. Какие последствия возможны? Выбери наиболее обоснованное рассуждение.</p>
+<p>А) Продажи обязательно вырастут, а прибыль обязательно вырастет.<br>
+Б) Спрос может измениться, но итог для прибыли зависит также от издержек и объёма продаж.<br>
+В) Выручка обязательно уменьшится.<br>
+Г) Издержки автоматически исчезнут.</p>
+<details><summary>Ответ</summary><div class="answer"><p class="correct">Б.</p><p>Нужно учитывать одновременно цену, объём продаж и издержки.</p></div></details>
+</div>
+
+<div class="task">
+<div class="label">3 · предпринимательское решение</div>
+<p>У предприятия выросли цены на сырьё. Назови два возможных решения предпринимателя и объясни, какой риск возникает у каждого.</p>
+<textarea placeholder="Твой ответ:"></textarea>
+<details><summary>Один из вариантов</summary><div class="answer"><p>Например, повысить цену товара — риск снижения спроса; найти более дешёвого поставщика — риск ухудшения качества или проблем с надёжностью поставок. Возможны другие обоснованные варианты.</p></div></details>
+</div>
+</section>
+
+<section class="section teal">
+<span class="time">10 минут · Большой мини-срез</span>
+<h2>Проверяем старое + новое</h2>
+
+<div class="task"><div class="label">1 · рынок</div><p>Как называется соперничество участников рынка за лучшие условия производства и продажи товаров?</p><details><summary>Ответ</summary><div class="answer"><p class="correct">Конкуренция.</p></div></details></div>
+
+<div class="task"><div class="label">2 · банки</div><p>Банк предоставил фирме кредит. Почему банк получает доход по кредиту?</p><textarea placeholder="Ответ:"></textarea><details><summary>Проверить</summary><div class="answer"><p>Заёмщик возвращает полученные средства на условиях договора, обычно с уплатой процентов.</p></div></details></div>
+
+<div class="task"><div class="label">3 · спрос</div><p>Цена товара снизилась. Можно ли утверждать, что спрос обязательно увеличится в любом случае? Объясни.</p><textarea placeholder="Ответ:"></textarea><details><summary>Один из вариантов</summary><div class="answer"><p>Нет. На спрос влияют не только цена, но и доходы потребителей, вкусы, цены других товаров и другие факторы.</p></div></details></div>
+
+<div class="task"><div class="label">4 · предприятие</div><p>Предприятие получило выручку 70 000 ₽, издержки составили 82 000 ₽. Каков финансовый результат?</p><details><summary>Ответ</summary><div class="answer"><p class="correct">Убыток 12 000 ₽.</p><p>70 000 − 82 000 = −12 000 ₽.</p></div></details></div>
+</section>
+
+<section class="section">
+<span class="time">Дополнительная нарешка · если успеем / на дом</span>
+<h2>🧩 Реальные задания из твоего банка</h2>
+<p class="small">Этот блок специально вынесен отдельно: основную тему не перегружаем. На уроке берём столько, сколько успеваем; остальное — домашняя нарешка.</p>
+
+<div class="task">
+<div class="label">Тип 2 №8326</div>
+<p>Запишите слово, пропущенное в таблице.</p>
+<table><tr><th>Экономическое явление</th><th>Характеристика</th></tr>
+<tr><td>Спрос</td><td>Зависимость объёма товара, который потребители готовы приобрести, от цен, по которым товары могут быть проданы.</td></tr>
+<tr><td>_____</td><td>Зависимость объёма товара, который производители/продавцы готовы продать, от цен, по которым товар может быть продан.</td></tr></table>
+<details><summary>Ответ</summary><div class="answer"><p class="correct">Предложение.</p></div></details>
+</div>
+
+<div class="task">
+<div class="label">Тип 10 №227</div>
+<p>Верны ли следующие суждения о факторах формирования спроса?</p>
+<p>А. На формирование спроса влияют культурные традиции общества.<br>Б. На формирование величины спроса влияет цена товара.</p>
+<p>1) верно только А &nbsp; 2) верно только Б &nbsp; 3) верны оба &nbsp; 4) оба неверны</p>
+<details><summary>Ответ</summary><div class="answer"><p class="correct">3.</p></div></details>
+</div>
+
+<div class="task">
+<div class="label">Тип 3 №300</div>
+<p>Выберите черты сходства и различия рыночной и командной экономики:</p>
+<p>1) решение проблемы ограниченности ресурсов; 2) многообразие форм собственности, в том числе частная; 3) одним из факторов производства выступает труд; 4) что, сколько и в каком количестве производить, определяет государство.</p>
+<table><tr><th>Сходство</th><th>Различия</th></tr><tr><td>_____</td><td>_____</td></tr></table>
+<details><summary>Ответ</summary><div class="answer"><p class="correct">Сходство: 1, 3. Различия: 2, 4.</p></div></details>
+</div>
+
+<div class="task">
+<div class="label">Роль государства в рыночной и командной экономике</div>
+<p>Распредели: 1) сбор налогов; 2) установление цен на основные виды сырья; 3) перераспределение средств через государственный бюджет; 4) создание правовой базы для развития конкуренции.</p>
+<table><tr><th>Сходство</th><th>Различия</th></tr><tr><td>_____</td><td>_____</td></tr></table>
+<details><summary>Ответ</summary><div class="answer"><p class="correct">Сходство: 1, 3. Различия: 2, 4.</p></div></details>
+</div>
+
+<div class="task">
+<div class="label">Тип 1 №8271</div>
+<p>Какие два понятия используются в первую очередь при описании экономической сферы общества?</p>
+<p>Нация; республика; конкуренция; прибыль; конфедерация.</p>
+<textarea placeholder="Ответ + раскрой смысл одного понятия:"></textarea>
+<details><summary>Ответ</summary><div class="answer"><p class="correct">Конкуренция, прибыль.</p><p>Конкуренция — соперничество участников экономической деятельности за наиболее выгодные условия. Прибыль — разница между выручкой и издержками.</p></div></details>
+</div>
+</section>
+
+<section class="section purple">
+<span class="time">Отдельный блок · банковские мошенничества 💳</span>
+<h2>Финансовая грамотность — реальные ситуации</h2>
+<p>Это не «теория ради теории»: здесь ребёнок учится распознавать опасные ситуации и объяснять правильное действие.</p>
+
+<div class="grid">
+<div class="card"><div class="icon">📱</div><strong>Срочный перевод</strong><p>«Я твой друг, срочно скинь 500 ₽ на этот номер».</p></div>
+<div class="card"><div class="icon">🏦</div><strong>«Банк» пишет в SMS</strong><p>«С вашего счёта списаны деньги. Перейдите по ссылке».</p></div>
+<div class="card"><div class="icon">🎁</div><strong>«Вы выиграли миллион»</strong><p>Для получения приза нужно ввести данные карты.</p></div>
+<div class="card"><div class="icon">🚗</div><strong>«Вы выиграли автомобиль»</strong><p>Сначала оплатите небольшую «пошлину».</p></div>
+</div>
+
+<div class="task">
+<div class="label">Тип 8 №8276</div>
+<p>Друг просит перевести 500 рублей на номер телефона через социальную сеть. В чём опасность? Как правильно поступить?</p>
+<details><summary>Ответ</summary><div class="answer"><p>Аккаунт друга мог быть взломан. Не следует переводить деньги без проверки. Нужно связаться с другом другим способом.</p></div></details>
+</div>
+
+<div class="task">
+<div class="label">Тип 8 №8277</div>
+<p>Банк прислал SMS о переводе денег с карты на неизвестный счёт. Что могло произойти? Что делать клиенту?</p>
+<details><summary>Ответ</summary><div class="answer"><p>Возможна мошенническая операция. Нужно обратиться в банк по официальному каналу, а не по ссылке или номеру из подозрительного сообщения.</p></div></details>
+</div>
+
+<div class="task">
+<div class="label">Тип 8 №8278</div>
+<p>Сообщение: «Вы победили 1 млн рублей. Перейдите по ссылке в интернет-банк и подтвердите получение». В чём опасность?</p>
+<details><summary>Ответ</summary><div class="answer"><p>Это может быть фишинг. Нельзя переходить по подозрительной ссылке и вводить данные банковского аккаунта. Нужно проверить информацию через официальный сайт/приложение или банк.</p></div></details>
+</div>
+
+<div class="task">
+<div class="label">Тип 8 №8284</div>
+<p>Анна «выиграла автомобиль», но для получения приза её попросили перевести деньги на карту. В чём опасность?</p>
+<details><summary>Ответ</summary><div class="answer"><p>Вероятна мошенническая схема. Нельзя переводить деньги неизвестным лицам ради «получения выигрыша».</p></div></details>
+</div>
+</section>
+
+<section class="section">
+<span class="time">Ещё на дом · работа с диаграммами</span>
+<h2>📊 Тренировка задания 12</h2>
+<div class="task">
+<div class="label">Тип 12 №8293</div>
+<div class="photo">📊 ДИАГРАММУ СКИНУ ТЕБЕ В TELEGRAM</div>
+<p>По результатам опроса о налогах сформулируй по одному выводу о сходстве и различии позиций групп и предложи объяснение каждого вывода.</p>
+<details><summary>Что проверяем</summary><div class="answer"><p>Точность сравнения данных + отдельный вывод о сходстве + отдельный вывод о различии + объяснение каждого.</p></div></details>
+</div>
+<div class="task">
+<div class="label">Тип 12 №8294</div>
+<div class="photo">📊 ДИАГРАММУ СКИНУ ТЕБЕ В TELEGRAM</div>
+<p>По результатам опроса разных возрастных групп о распределении домашних обязанностей сформулируй выводы о сходстве и различии и предложи объяснение.</p>
+<details><summary>Что проверяем</summary><div class="answer"><p>Та же четырёхчастная логика задания 12: сходство → различие → объяснение сходства → объяснение различия.</p></div></details>
+</div>
+</section>
+
+<section class="section">
+<span class="time">2 минуты · Шпаргалка</span>
+<h2>Вот что должно остаться в голове</h2>
+<div class="cheat">
+<div class="card"><strong>🏭 Предприятие</strong><p>Организует производство товаров/услуг.</p></div>
+<div class="card"><strong>💸 Издержки</strong><p>Затраты предприятия.</p></div>
+<div class="card"><strong>💰 Выручка</strong><p>Цена × количество проданного.</p></div>
+<div class="card"><strong>✨ Прибыль</strong><p>Выручка − издержки.</p></div>
+<div class="card"><strong>🧠 Предпринимательство</strong><p>Инициатива + самостоятельность + организация + риск.</p></div>
+<div class="card"><strong>⚠️ Риск</strong><p>Результат деятельности не гарантирован.</p></div>
+</div>
+</section>
+
+<section class="section home">
+<span class="time">Домашнее задание · 20 минут</span>
+<h2>🏠 После урока</h2>
+<div class="task"><p><strong>1.</strong> Реши один расчёт на издержки/выручку/прибыль.</p><textarea></textarea></div>
+<div class="task"><p><strong>2.</strong> Реши <strong>два</strong> реальных задания из блока выше, которые не успели на уроке.</p><textarea></textarea></div>
+<div class="task"><p><strong>3.</strong> Реши одно задание на банковское мошенничество и объясни правильное действие.</p><textarea></textarea></div>
+<details><summary>Ответ к расчётам из урока</summary><div class="answer"><p>50 × 800 = 40 000 ₽; общие издержки = 12 000 + 18 000 = 30 000 ₽; прибыль = 10 000 ₽.</p></div></details>
+</section>
+
+<p class="small" style="text-align:center;margin-top:28px">Урок 07 · Предприятие и предпринимательство</p>
+</main>
+</body>
+</html>
