@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="ru">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Урок 8 — Налоги и государственный бюджет</title><style>
+:root{
+  --ink:#17204a; --muted:#69708f; --cream:#fffaf0; --white:#fff;
+  --blue:#6f9df7; --cyan:#bfeef5; --yellow:#ffe58a; --lime:#dfff63;
+  --pink:#ffb8d8; --green:#bdebd1; --orange:#ffd4a8; --purple:#d9c8ff;
+  --line:#e6e4dc; --shadow:0 12px 35px rgba(23,32,74,.10);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}
+.wrap{max-width:920px;margin:auto;padding:18px}
+.hero{position:relative;overflow:hidden;border-radius:30px;padding:34px 30px 30px;background:linear-gradient(135deg,#17204a 0%,#263a8e 58%,#6f9df7 100%);color:#fff;box-shadow:var(--shadow)}
+.hero:after{content:"";position:absolute;width:280px;height:280px;border-radius:50%;background:rgba(223,255,99,.22);right:-80px;top:-100px}
+.kicker{display:inline-block;background:var(--lime);color:#17204a;border-radius:999px;padding:7px 13px;font-weight:800;font-size:13px;position:relative;z-index:1}
+h1{font-size:clamp(34px,7vw,62px);line-height:.98;margin:18px 0 14px;letter-spacing:-2px;position:relative;z-index:1}
+.hero p{font-size:18px;max-width:700px;position:relative;z-index:1}
+.meta{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px;position:relative;z-index:1}
+.pill{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.24);padding:7px 11px;border-radius:999px;font-size:13px}
+.route{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin:18px 0}
+.route div{padding:12px 7px;border-radius:16px;text-align:center;background:#fff;border:1px solid var(--line);font-size:12px;font-weight:750}
+.route div:first-child{background:var(--yellow)}
+section{margin:22px 0}
+.card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:24px;box-shadow:0 8px 25px rgba(23,32,74,.05)}
+h2{font-size:30px;line-height:1.08;margin:0 0 14px;letter-spacing:-.7px}
+h3{font-size:20px;margin:22px 0 9px}
+.lead{font-size:17px;color:#30385e}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.mini{padding:18px;border-radius:20px;border:1px solid var(--line)}
+.mini.blue{background:#eaf3ff}.mini.yellow{background:#fff5c9}.mini.green{background:#e8faef}.mini.pink{background:#fff0f7}.mini.orange{background:#fff1e3}.mini.purple{background:#f1ecff}
+.mini strong{display:block;font-size:17px;margin-bottom:5px}
+.formula{font-size:22px;font-weight:850;background:#17204a;color:#fff;border-radius:18px;padding:15px 18px;margin:14px 0;text-align:center}
+.note{padding:15px 17px;border-radius:18px;background:#f4f6ff;border-left:5px solid var(--blue);margin:14px 0}
+.trap{padding:15px 17px;border-radius:18px;background:#fff3f6;border-left:5px solid #ff8bb8;margin:14px 0}
+.good{padding:15px 17px;border-radius:18px;background:#edfff4;border-left:5px solid #72d29a;margin:14px 0}
+ul,ol{padding-left:24px}
+li{margin:6px 0}
+.q{border:1px solid var(--line);border-radius:20px;background:#fff;margin:14px 0;overflow:hidden}
+.q summary{cursor:pointer;list-style:none;padding:18px 20px;font-weight:800}
+.q summary::-webkit-details-marker{display:none}
+.q summary:after{content:"＋";float:right;font-size:22px}
+.q[open] summary:after{content:"−"}
+.qbody{padding:0 20px 20px;border-top:1px solid var(--line)}
+.answer{margin-top:15px;padding:14px 16px;border-radius:16px;background:#f5f7ff}
+.answer strong{color:#22358e}
+textarea{width:100%;min-height:82px;border:1px solid #d9dce8;border-radius:14px;padding:12px;font:inherit;resize:vertical;margin-top:8px;background:#fff}
+.choice{display:grid;gap:7px;margin:12px 0}
+.choice div{padding:9px 12px;border-radius:12px;background:#f7f7fa}
+.real{border:2px solid #17204a;box-shadow:0 10px 25px rgba(23,32,74,.08)}
+.real .tag{display:inline-block;background:#17204a;color:#fff;border-radius:999px;padding:5px 10px;font-size:12px;font-weight:800;margin-bottom:10px}
+.source{font-size:13px;color:#6c7185;margin-top:13px}
+.source b{color:#30385e}
+table{width:100%;border-collapse:collapse;margin:12px 0}
+th,td{border:1px solid #dfe1e8;padding:10px;vertical-align:top}
+th{background:#eef3ff;text-align:left}
+.steps{counter-reset:step;display:grid;gap:10px}
+.step{background:#fff;border:1px solid var(--line);border-radius:17px;padding:14px 15px 14px 50px;position:relative}
+.step:before{counter-increment:step;content:counter(step);position:absolute;left:15px;top:14px;width:26px;height:26px;border-radius:50%;background:var(--yellow);display:grid;place-items:center;font-weight:900}
+.footer{background:#17204a;color:#fff;border-radius:25px;padding:25px;margin-top:25px}
+.small{font-size:13px;color:#72778b}
+@media(max-width:700px){.wrap{padding:12px}.grid2,.grid3{grid-template-columns:1fr}.route{grid-template-columns:repeat(2,1fr)}.hero{padding:28px 21px}.card{padding:19px}h2{font-size:26px}}
+
+.solution{margin-top:14px}
+.solution summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:#eef2ff;color:#263a91;font-weight:800}
+.solution summary::-webkit-details-marker{display:none}
+.solution summary:before{content:"▸";font-size:14px;transition:transform .2s}
+.solution[open] summary:before{transform:rotate(90deg)}
+.solution .answer{margin-top:10px}
+</style></head>
+<body><div class="wrap">
+
+<header class="hero">
+  <span class="kicker">ОГЭ • ОБЩЕСТВОЗНАНИЕ • ЭКОНОМИКА</span>
+  <h1>Налоги + государственный бюджет 💸</h1>
+  <p>От зарплаты и покупок — к бюджету государства: кто платит налоги, зачем они нужны и что происходит с деньгами после их уплаты.</p>
+  <div class="meta"><span class="pill">Урок 8</span><span class="pill">60 минут</span><span class="pill">теория → применение → ОГЭ</span><span class="pill">реальные задания из твоей подборки</span></div>
+</header>
+
+<div class="route">
+  <div>5′<br>вход</div><div>12′<br>налоги</div><div>8′<br>виды</div><div>7′<br>ситуации</div><div>10′<br>бюджет</div><div>13′<br>ОГЭ-срез</div><div>5′<br>итог</div>
+</div>
+
+<section class="card">
+<h2>🎯 Что сегодня должно «сцепиться»</h2>
+<p class="lead">Не учим налоговые термины по одному. Собираем одну экономическую цепочку:</p>
+<div class="grid3">
+  <div class="mini yellow"><strong>👩‍💼 Доход / бизнес</strong>Получили доход → возникает налоговая обязанность.</div>
+  <div class="mini blue"><strong>💳 Налог</strong>Часть денежных средств поступает государству.</div>
+  <div class="mini green"><strong>🏛️ Бюджет</strong>Государство получает доходы и направляет деньги на расходы.</div>
+</div>
+<div class="formula">налоги → доходы бюджета → государственные расходы</div>
+<div class="note"><b>Главная мысль для ОГЭ:</b> если в утверждении есть «прямой / косвенный», «доход или имущество», «акциз», «бюджет», «дефицит / профицит» — сначала определяем понятие, а уже потом выбираем ответ.</div>
+</section>
+
+<section class="card">
+<h2>1. Налоги: что это вообще? 🧾</h2>
+<p><b>Налог</b> — обязательный платеж, который устанавливается государством и поступает в бюджет.</p>
+<div class="grid2">
+  <div class="mini blue"><strong>Кто платит?</strong>Налогоплательщики: граждане и организации — в зависимости от того, какой налог рассматриваем.</div>
+  <div class="mini yellow"><strong>Зачем?</strong>Чтобы формировать доходы государства и обеспечивать выполнение его функций.</div>
+</div>
+<h3>Не путай</h3>
+<table><tr><th>Понятие</th><th>Что важно увидеть</th></tr>
+<tr><td>Налог</td><td>Обязательный платеж в бюджет.</td></tr>
+<tr><td>Штраф</td><td>Мера ответственности за нарушение.</td></tr>
+<tr><td>Пошлина / сбор</td><td>Платёж, связанный с конкретным юридически значимым действием или услугой государства; на ОГЭ важно не смешивать его с налогом.</td></tr></table>
+<details class="q"><summary>🧠 Быстрый вход: почему государству вообще нужны налоги?</summary><div class="qbody"><p>Представь город, где никто не платит налоги. Какие расходы государства всё равно останутся?</p><textarea placeholder='Напиши 2–3 примера...'></textarea><details class="solution"><summary>Показать ответ и разбор</summary><div class="answer"><strong>Ответ и разбор</strong><br><p>Например: образование, здравоохранение, социальная поддержка, инфраструктура и другие государственные расходы. Важна сама логика: налоги формируют часть доходов бюджета.</p></div></details></div></details>
+</section>
+
+<section class="card">
+<h2>2. Прямые и косвенные налоги</h2>
+<div class="grid2">
+  <div class="mini green"><strong>🎯 Прямые</strong>Связаны непосредственно с доходом или имуществом налогоплательщика. Примеры: налог на доходы физических лиц, налог на имущество.</div>
+  <div class="mini pink"><strong>🛒 Косвенные</strong>Включаются в цену товара/услуги и фактически связаны с покупкой. Примеры: НДС, акцизы.</div>
+</div>
+<div class="trap"><b>Ловушка из реального задания:</b> акцизы относятся к косвенным налогам. А утверждение, что взимание прямых налогов «не связано с учётом доходов или имущества», — неверно.</div>
+<div class="formula">ПРЯМОЙ → доход / имущество &nbsp;&nbsp; | &nbsp;&nbsp; КОСВЕННЫЙ → цена / покупка</div>
+
+<details class="q"><summary>Задание-разминка: определи вид налога</summary><div class="qbody"><div class='choice'><div>1. Налог на доход физического лица</div><div>2. Акциз</div><div>3. Налог на имущество</div><div>4. НДС</div></div><textarea placeholder='Запиши: 1 — ..., 2 — ...'></textarea><details class="solution"><summary>Показать ответ и разбор</summary><div class="answer"><strong>Ответ и разбор</strong><br><p>1 — прямой; 2 — косвенный; 3 — прямой; 4 — косвенный.</p></div></details></div></details>
+</section>
+
+<section class="card">
+<h2>2.5. Ещё одна классификация: уровень налога 🧩</h2>
+<p class="lead">Не смешивай два разных основания классификации. <b>Прямой / косвенный</b> — это про связь налога с доходом, имуществом или ценой. <b>Федеральный / региональный / местный</b> — про уровень, на котором установлен налог и организовано его взимание.</p>
+<div class="grid3">
+  <div class="mini purple"><strong>🇷🇺 Федеральные</strong>Действуют на федеральном уровне. Пример: НДС, акцизы.</div>
+  <div class="mini blue"><strong>🏙️ Региональные</strong>Устанавливаются в рамках налоговой системы субъекта РФ. Пример: налог на имущество организаций.</div>
+  <div class="mini green"><strong>📍 Местные</strong>Связаны с местным уровнем. Пример: земельный налог, налог на имущество физических лиц.</div>
+</div>
+<div class="trap"><b>Ловушка ОГЭ:</b> один и тот же налог можно одновременно описывать по разным основаниям. Например, НДС — <b>косвенный</b> налог и при этом <b>федеральный</b>.</div>
+<details class="q"><summary>Мини-проверка: не перепутай основания</summary><div class="qbody"><p>НДС — это какой налог по двум основаниям?</p><div class="choice"><div>А) прямой + местный</div><div>Б) косвенный + федеральный</div><div>В) прямой + региональный</div></div><details class="solution"><summary>Показать ответ и разбор</summary><div class="answer"><strong>Ответ: Б.</strong><br>По способу взимания НДС — косвенный, по уровню — федеральный.</div></details></div></details>
+</section>
+
+<section class="card real">
+<span class="tag">РЕАЛЬНОЕ ЗАДАНИЕ • ТВОЙ СКРИНШОТ</span>
+<h2>№ 1716 • Тип 10</h2>
+<p><b>Верны ли следующие суждения о налогах?</b></p>
+<p>А. Взимание прямых налогов не связано с учетом доходов или имущества.<br>
+Б. Акцизы относятся к косвенным налогам.</p>
+<div class="choice"><div>1) верно только А</div><div>2) верно только Б</div><div>3) верны оба суждения</div><div>4) оба суждения неверны</div></div>
+<textarea placeholder="Твой ответ:"></textarea>
+<details class="q"><summary>Проверка + объяснение</summary><div class="qbody">
+<p><b>Правильный ответ: 2.</b></p>
+<p>А — неверно: прямые налоги непосредственно связаны с доходами или имуществом. Б — верно: акцизы являются косвенными налогами.</p>
+<p class="source"><b>Раздел кодификатора в предоставленном задании:</b> 4.16 «Налоги. Государственный бюджет».</p>
+</div></details>
+</section>
+
+<section class="card">
+<h2>3. Функции налогов 💡</h2>
+<div class="grid3">
+  <div class="mini blue"><strong>💰 Фискальная</strong>Формирование доходов бюджета.</div>
+  <div class="mini green"><strong>⚖️ Распределительная</strong>Перераспределение части доходов через бюджет.</div>
+  <div class="mini orange"><strong>🎛️ Регулирующая</strong>Воздействие на экономическое поведение через налоговую систему.</div>
+</div>
+<details class="q"><summary>Ситуация: какая функция?</summary><div class="qbody"><p>Государство повышает налоговую нагрузку на определённый вид деятельности, чтобы изменить экономическое поведение участников рынка. Какая функция проявляется?</p><details class="solution"><summary>Показать ответ и разбор</summary><div class="answer"><strong>Ответ и разбор</strong><br><p><b>Регулирующая.</b> Здесь налог используется как инструмент воздействия на экономическое поведение.</p></div></details></div></details>
+</section>
+
+<section class="card">
+<h2>4. Налоговые ситуации из жизни</h2>
+<div class="grid2">
+<div class="mini yellow"><strong>👩‍💻 Зарплата</strong>У человека есть доход → можно говорить о прямом налоге, связанном с доходом.</div>
+<div class="mini blue"><strong>🛍️ Покупка</strong>Цена товара может включать косвенный налог → пример НДС.</div>
+<div class="mini green"><strong>🚗 Имущество</strong>Автомобиль или другое имущество может быть объектом налогообложения.</div>
+<div class="mini pink"><strong>🏢 Бизнес</strong>Предпринимательская деятельность связана с налоговыми обязательствами в зависимости от режима и вида деятельности.</div>
+</div>
+<details class="q"><summary>Мини-кейс: магазин</summary><div class="qbody"><p>Магазин продаёт товар покупателю. В цене товара учтён косвенный налог. Какой пример подходит?</p><div class='choice'><div>А) акциз</div><div>Б) налог на имущество физического лица</div><div>В) налог на доход физического лица</div></div><details class="solution"><summary>Показать ответ и разбор</summary><div class="answer"><strong>Ответ и разбор</strong><br><p><b>А.</b> Акциз относится к косвенным налогам. В реальных задачах важно сначала распознать объект и механизм налога.</p></div></details></div></details>
+</section>
+
+<section class="card">
+<h2>4.5. Льготы и вычеты — только то, что нужно для ОГЭ</h2>
+<div class="grid2">
+  <div class="mini yellow"><strong>🎟️ Налоговая льгота</strong>Предусмотренное законом преимущество: например, освобождение от налога или уменьшение налоговой обязанности для определённых категорий/ситуаций.</div>
+  <div class="mini blue"><strong>🧾 Налоговый вычет</strong>Предусмотренное законом уменьшение налогооблагаемой базы или суммы налога при наличии соответствующего основания.</div>
+</div>
+<div class="note"><b>Для нашего курса:</b> не уходим в перечни категорий и юридические детали. На уровне ОГЭ важно узнавать саму идею: государство может предусмотреть особый порядок налогообложения для определённых случаев.</div>
+<details class="q"><summary>Ситуация: где здесь льгота?</summary><div class="qbody"><p>Для определённой категории налогоплательщиков законом предусмотрено уменьшение налоговой обязанности. Какое понятие подходит?</p><div class="choice"><div>А) дефицит бюджета</div><div>Б) налоговая льгота</div><div>В) государственный долг</div></div><details class="solution"><summary>Показать ответ и разбор</summary><div class="answer"><strong>Ответ: Б.</strong><br>Речь идёт о предусмотренном законом преимуществе в налогообложении.</div></details></div></details>
+</section>
+
+<section class="card">
+<h2>5. Государственный бюджет 🏛️</h2>
+<p class="lead">Бюджет можно представить как финансовый план государства: <b>откуда приходят деньги</b> и <b>на что они расходуются</b>.</p>
+<div class="grid2">
+  <div class="mini green"><strong>📥 Доходы</strong>Налоги и другие поступления.</div>
+  <div class="mini blue"><strong>📤 Расходы</strong>Образование, здравоохранение, социальная политика, инфраструктура, оборона и другие направления.</div>
+</div>
+<table><tr><th>Состояние бюджета</th><th>Что означает</th></tr>
+<tr><td><b>Дефицит</b></td><td>Расходы превышают доходы.</td></tr>
+<tr><td><b>Профицит</b></td><td>Доходы превышают расходы.</td></tr>
+<tr><td><b>Баланс</b></td><td>Доходы и расходы равны.</td></tr></table>
+<div class="trap"><b>Не путай:</b> дефицит — ситуация с соотношением доходов и расходов бюджета за определённый период; государственный долг — накопленные обязательства государства.</div>
+
+<details class="q"><summary>Задача: определяем состояние бюджета</summary><div class="qbody"><p>Доходы бюджета составили 8 трлн рублей, расходы — 9 трлн рублей. Каково состояние бюджета?</p><textarea placeholder='Ответ + короткое объяснение'></textarea><details class="solution"><summary>Показать ответ и разбор</summary><div class="answer"><strong>Ответ и разбор</strong><br><p><b>Дефицит.</b> Расходы больше доходов на 1 трлн рублей.</p></div></details></div></details>
+</section>
+
+<section class="card">
+<h2>6. Как связать налоги и бюджет?</h2>
+<div class="steps">
+<div class="step"><b>Налоги</b> поступают в доходную часть бюджета.</div>
+<div class="step"><b>Бюджет</b> распределяет финансовые ресурсы по направлениям расходов.</div>
+<div class="step"><b>Государство</b> через расходы выполняет свои функции и финансирует общественно значимые направления.</div>
+<div class="step"><b>ОГЭ</b> проверяет, умеешь ли ты увидеть эту цепочку в утверждении, таблице или ситуации.</div>
+</div>
+<div class="formula">налог → доход бюджета → расход бюджета → выполнение функций государства</div>
+<details class="q"><summary>Задача недели 🔥</summary><div class="qbody"><p>Представь: в одном году налоговые поступления снизились, но расходы на уже запланированные программы остались прежними. Назови <b>два возможных решения</b> бюджетной проблемы и по одному риску каждого.</p><textarea placeholder='1) решение + риск; 2) решение + риск'></textarea><details class="solution"><summary>Показать ответ и разбор</summary><div class="answer"><strong>Ответ и разбор</strong><br><p>Возможные направления: сократить/перенести часть расходов; увеличить доходы бюджета; использовать заёмные средства и т. п. Важно не просто назвать решение, а объяснить его возможный риск: сокращение расходов может затронуть финансирование программ; рост налоговой нагрузки может повлиять на экономическую активность; заимствования увеличивают долговые обязательства.</p></div></details></div></details>
+</section>
+
+<section class="card">
+<h2>7. Реальные задания из твоей подборки 📌</h2>
+<p>Сначала — <b>реальное задание по сегодняшней теме</b>. Затем — отдельный <b>срез по уже пройденной экономике</b>. Так ученику понятно, почему после налогов появляются старые темы.</p>
+<h3>🎯 Сегодняшняя тема: налоги</h3>
+
+<h3>🔄 Реальный ОГЭ-срез по пройденной экономике</h3>
+<p class="small">Эти задания не являются частью теории сегодняшнего урока. Они нужны, чтобы тренировать переключение между темами.</p>
+<div class="q real">
+<details>
+<summary>№ 9028 • Тип 10 • Экономические системы</summary>
+<div class="qbody">
+<p><b>Верны ли следующие суждения об экономических системах?</b></p>
+<p>А. Для командной экономической системы характерна свободная конкуренция производителей.<br>
+Б. Рыночную систему характеризует многообразие форм собственности.</p>
+<div class="choice"><div>1) верно только А</div><div>2) верно только Б</div><div>3) верны оба суждения</div><div>4) оба суждения неверны</div></div>
+<textarea placeholder="Ответ:"></textarea>
+<details class="solution"><summary>Показать ответ и разбор</summary><div class="answer"><strong>Правильный ответ: 2.</strong><br>А — неверно: свободная конкуренция — признак рыночной экономики. Б — верно: многообразие форм собственности характеризует рыночную систему.</div></details>
+<p class="source"><b>Раздел кодификатора в скриншоте:</b> 4.2 «Экономическая система и её функции».</p>
+</div>
+</details>
+</div>
+
+<div class="q real">
+<details>
+<summary>№ 1810 • Тип 10 • Предпринимательство</summary>
+<div class="qbody">
+<p><b>Верны ли следующие суждения о предпринимательстве?</b></p>
+<p>А. Предпринимательство — это деятельность, направленная на получение прибыли.<br>
+Б. Предпринимательская деятельность связана с финансовым риском.</p>
+<div class="choice"><div>1) верно только А</div><div>2) верно только Б</div><div>3) верны оба суждения</div><div>4) оба суждения неверны</div></div>
+<textarea placeholder="Ответ:"></textarea>
+<details class="solution"><summary>Показать ответ и разбор</summary><div class="answer"><strong>Правильный ответ: 3.</strong><br>В пояснении на скриншоте предпринимательство определяется как экономическая деятельность на свой риск, направленная на систематическое получение прибыли от производства и/или продажи товаров, оказания услуг.</div></details>
+<p class="source"><b>Раздел кодификатора в скриншоте:</b> 4.9 «Предпринимательство».</p>
+</div>
+</details>
+</div>
+
+<div class="q real">
+<details>
+<summary>№ 36613 • Тип 10 • Что такое экономика</summary>
+<div class="qbody">
+<p><b>Верны ли следующие суждения об экономике?</b></p>
+<p>А. Экономика обеспечивает людей материальными благами.<br>
+Б. Экономика изучает способы распределения обществом ограниченных ресурсов.</p>
+<div class="choice"><div>1) верно только А</div><div>2) верно только Б</div><div>3) верны оба суждения</div><div>4) оба суждения неверны</div></div>
+<textarea placeholder="Ответ:"></textarea>
+<details class="solution"><summary>Показать ответ и разбор</summary><div class="answer"><strong>Правильный ответ: 3.</strong><br>На скриншоте указано: А — верно, это одна из функций экономики; Б — верно, это одна из функций экономики как науки.</div></details>
+<p class="source"><b>Источник, указанный в скриншоте:</b> «ОГЭ по обществознанию 27.05.2024. Основная волна». Раздел: 4.1 «Что такое экономика».</p>
+</div>
+</details>
+</div>
+
+<div class="q real">
+<details>
+<summary>№ 8315 • Тип 2 • Факторные доходы</summary>
+<div class="qbody">
+<p><b>Запишите слово, пропущенное в таблице.</b></p>
+<table><tr><th>Фактор производства</th><th>Факторный доход</th></tr>
+<tr><td>Земля</td><td>__________</td></tr>
+<tr><td>Труд</td><td>Заработная плата</td></tr></table>
+<textarea placeholder="Ответ:"></textarea>
+<details class="solution"><summary>Показать ответ и разбор</summary><div class="answer"><strong>Ответ: рента.</strong><br>Факторный доход земли — рента.</div></details>
+<p class="source"><b>Раздел кодификатора в скриншоте:</b> 4.1 «Что такое экономика».</p>
+</div>
+</details>
+</div>
+
+<div class="q real">
+<details>
+<summary>№ 15524 • Тип 7 • Фотография: рациональное потребление</summary>
+<div class="qbody">
+<p><b>Рассмотрите фотографию.</b></p>
+<div style="text-align:center;margin:14px 0"><img src="data:image/jpeg;base64,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" alt="Семья выбирает продукты в магазине" style="width:min(180px,55vw);border-radius:16px;box-shadow:0 8px 22px rgba(23,32,74,.12);border:1px solid #e1e3eb"></div>
+<p class="small">Фото вставлено из присланного тобой скриншота задания №15524; рекламные и интерфейсные элементы в урок не перенесены.</p>
+<p><b>Задание:</b> Какой вид экономической деятельности осуществляют члены семьи? Используя обществоведческие знания, факты социальной жизни и личный социальный опыт, сформулируйте два правила рационального осуществления этой деятельности и кратко поясните каждое из правил.</p>
+<textarea placeholder="Напиши развёрнутый ответ."></textarea>
+<details class="solution"><summary>Показать ответ и разбор</summary><div class="answer"><strong>Что здесь проверяется:</strong> умение определить экономическую деятельность по ситуации и сформулировать два обоснованных правила рационального поведения. Важно: это уже формат развёрнутого ответа — здесь тренируем не выбор номера, а формулировку + пояснение.</div></details>
+</div>
+</details>
+</div>
+</section>
+
+<section class="card">
+<h2>🧩 Если осталось 10–15 минут</h2>
+<p class="lead">Этот блок не обязателен. Открывай его, если основной маршрут прошли быстрее.</p>
+<div class="grid3">
+  <div class="mini purple"><strong>1. № 9028</strong>Экономические системы · Тип 10<br><span class="small">Быстрый срез на старую тему.</span></div>
+  <div class="mini blue"><strong>2. № 8315</strong>Факторные доходы · Тип 2<br><span class="small">Одно короткое задание на термин.</span></div>
+  <div class="mini pink"><strong>3. № 15524</strong>Фото + развёрнутый ответ · Тип 7<br><span class="small">Если есть время — написать полный ответ.</span></div>
+</div>
+<div class="note"><b>Как использовать:</b> не обязательно решать все три. Выбери одно короткое + №15524, если хочется потренировать развёрнутый ответ.</div>
+</section>
+
+<section class="card">
+<h2>8. Финальный мини-срез 🧠</h2>
+<p>Теперь смешиваем сегодняшнюю тему со старыми — как будет на реальном экзамене.</p>
+<details class="q"><summary>1. Налог</summary><div class="qbody"><p>Верны ли утверждения?</p><p>А. Акцизы относятся к косвенным налогам.<br>Б. Прямые налоги непосредственно связаны с доходами или имуществом.</p><div class='choice'><div>1) только А</div><div>2) только Б</div><div>3) оба</div><div>4) ни одно</div></div><details class="solution"><summary>Показать ответ и разбор</summary><div class="answer"><strong>Ответ и разбор</strong><br><p><b>3.</b> Оба утверждения верны.</p></div></details></div></details>
+<details class="q"><summary>2. Бюджет</summary><div class="qbody"><p>Доходы государства — 7 трлн, расходы — 6,5 трлн. Что наблюдается?</p><details class="solution"><summary>Показать ответ и разбор</summary><div class="answer"><strong>Ответ и разбор</strong><br><p><b>Профицит</b>, потому что доходы превышают расходы.</p></div></details></div></details>
+<details class="q"><summary>3. Цепочка</summary><div class="qbody"><p>Объясни одним предложением связь между налогами и государственным бюджетом.</p><textarea placeholder=''></textarea><details class="solution"><summary>Показать ответ и разбор</summary><div class="answer"><strong>Ответ и разбор</strong><br><p>Налоги являются одним из источников доходов государственного бюджета.</p></div></details></div></details>
+</section>
+
+<section class="card">
+<h2>🏠 9. Домашнее задание • 15–20 минут</h2>
+<ol>
+<li><b>Короткая теория:</b> выучи различия прямых и косвенных налогов + 3 функции налогов.</li>
+<li><b>Ситуация:</b> придумай по одному жизненному примеру прямого и косвенного налога и объясни выбор.</li>
+<li><b>Реальное задание:</b> № 1716 — решить без подсказки и письменно объяснить, почему неверное утверждение неверно.</li>
+<li><b>Бюджет:</b> составь мини-пример дефицита и мини-пример профицита с цифрами.</li>
+<li><b>Если осталось время:</b> № 15524 — написать полный развёрнутый ответ.</li>
+</ol>
+<div class="good"><b>Важно:</b> не заучивай «дефицит = плохо» или «профицит = хорошо». На ОГЭ сначала определяем экономический факт: доходы больше/меньше расходов.</div>
+</section>
+
+<footer class="footer">
+<h2>📌 Шпаргалка урока</h2>
+<p><b>Прямые</b> → доход / имущество.</p>
+<p><b>Косвенные</b> → включаются в цену; акцизы и НДС.</p>
+<p><b>Фискальная функция</b> → доходы бюджета.</p>
+<p><b>Бюджет</b> → доходы + расходы.</p>
+<p><b>Дефицит</b> → расходы &gt; доходы.</p>
+<p><b>Профицит</b> → доходы &gt; расходы.</p>
+<p><b>Государственный долг</b> ≠ дефицит бюджета.</p>
+<p class="small" style="color:#cfd5ff">Реальные задания в блоке ОГЭ воспроизведены по присланным тобой скриншотам; номера, формулировки и указанные в скриншотах источники/разделы сохранены. Фотография к №15524 встроена отдельно без интерфейса и рекламы.</p>
+</footer>
+
+</div></body></html>
