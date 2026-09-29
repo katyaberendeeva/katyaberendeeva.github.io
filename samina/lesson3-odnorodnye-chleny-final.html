@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Однородные члены предложения — урок 3</title>
+<style>
+:root{
+  --bg:#fff; --purple:#5F3FA6; --purple-deep:#452C82; --purple-light:#F2EEFB;
+  --yellow:#FFC93C; --yellow-deep:#C98A00; --yellow-wash:#FFF6DE;
+  --blue:#2F72B0; --blue-wash:#EAF3FB; --green:#2E8B57; --green-wash:#EAF7EF;
+  --red:#C74343; --red-wash:#FCEDED; --ink:#231C33; --ink-soft:#5B5468;
+  --line:#E4DEF2; --serif:Georgia,'Iowan Old Style','Times New Roman',serif;
+  --sans:-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:auto;overflow-x:hidden} body{overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased}
+.page{max-width:760px;margin:0 auto;padding:0 20px 80px;min-height:100%;}
+header.top{position:relative;z-index:2;background:#fff;border-bottom:1px solid var(--line)}
+.top-inner{max-width:760px;margin:0 auto;padding:14px 20px 10px}
+.top-title{font-family:var(--serif);font-size:15px;color:var(--purple-deep);letter-spacing:.2px;margin:0 0 10px}
+.progress-track{height:5px;background:var(--purple-light);border-radius:4px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--yellow),var(--purple));width:0%;transition:width .4s ease}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding-top:10px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{border:1px solid var(--line);background:#fff;color:var(--ink-soft);border-radius:9px;padding:7px 9px;white-space:nowrap;font-size:12px;cursor:pointer}
+.tab .min{display:block;font-size:10px;color:#8b8398;margin-top:2px}
+.tab.active{background:var(--purple-light);border-color:#d7caef;color:var(--purple-deep);font-weight:700}
+.hero{padding:54px 0 35px}
+.hero-eyebrow,.stage-kicker{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--purple);font-weight:700}
+.hero h1{font-family:var(--serif);font-size:38px;line-height:1.12;margin:10px 0 24px;color:var(--purple-deep)}
+.hero-example{font-family:var(--serif);font-size:26px;background:var(--yellow-wash);border-left:4px solid var(--yellow);padding:18px 20px;border-radius:0 12px 12px 0;margin:20px 0}
+.hero-example .a{color:var(--purple-deep);font-weight:700}.hero-example .b{color:var(--blue);font-weight:700}
+.lead{font-size:16px;color:var(--ink-soft);max-width:680px}
+.btn-start,.nav-btn{border:0;border-radius:9px;padding:11px 18px;font-weight:700;cursor:pointer;font-size:14px}
+.btn-start,.nav-btn.primary{background:var(--purple);color:#fff}
+.stage{display:none;padding:38px 0 0;position:relative}
+.stage.active{display:block}
+.stage:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:#E7A0A0;opacity:.5}
+.stage-head{padding-left:20px;margin-bottom:28px}
+.stage-head h2{font-family:var(--serif);font-size:31px;line-height:1.15;color:var(--purple-deep);margin:5px 0 8px}
+.stage-sub{color:var(--ink-soft);margin:0}
+.block-title{font-family:var(--serif);font-size:21px;color:var(--purple-deep);margin:28px 0 12px}
+.card{border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:12px 0;background:#fff}
+.card.purple{background:var(--purple-light);border-color:#d7caef}.card.yellow{background:var(--yellow-wash);border-color:#f1dfa7}
+.card.blue{background:var(--blue-wash);border-color:#c9e0f4}
+.card.green{background:var(--green-wash);border-color:#c9e8d6}
+.card.red{background:var(--red-wash);border-color:#f0caca}
+.term{background:var(--purple-light);color:var(--purple-deep);padding:2px 5px;border-radius:4px;font-weight:700}
+.example-list{padding-left:22px}.example-list li{margin:7px 0}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+.compare > div{border:1px solid var(--line);border-radius:10px;padding:14px}
+.compare .left{background:#faf9fd}.compare .right{background:var(--yellow-wash)}
+.compare b{color:var(--purple-deep)}
+.rule{font-size:17px;font-weight:700}
+.ex{border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:10px 0;background:#fff}
+.ex-n{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--purple);font-weight:700;margin:0 0 5px}
+.ex-sentence{font-family:var(--serif);font-size:18px;margin:0 0 9px}
+.reveal-btn{border:1px solid var(--line);background:var(--purple-light);color:var(--purple-deep);border-radius:7px;padding:7px 11px;cursor:pointer;font-size:12px;font-weight:600}
+.answer{max-height:0;overflow:hidden;opacity:0;transition:max-height .35s ease,opacity .25s ease}
+.answer.open{max-height:500px;opacity:1;margin-top:10px}
+.answer-inner{background:#f7f6f9;border-left:3px solid var(--purple);padding:10px 12px;font-size:13.5px;color:var(--ink-soft)}
+.choice-q{border:1px solid var(--line);border-radius:11px;padding:15px;margin:11px 0}
+.choice-prompt{font-family:var(--serif);font-size:18px;margin:0 0 10px}
+.choice-options{display:flex;flex-wrap:wrap;gap:7px}
+.choice-opt{border:1px solid var(--line);background:#fff;border-radius:8px;padding:8px 12px;cursor:pointer;font-size:13px}
+.choice-opt.correct{background:var(--green-wash);border-color:#a9d9bc;color:#226b42}
+.choice-opt.incorrect{background:var(--red-wash);border-color:#e5abab;color:#a33535}
+.choice-opt:disabled{cursor:default}
+.choice-explain{display:none;margin-top:9px}.choice-explain.open{display:block}
+.choice-explain-inner{font-size:13px;color:var(--ink-soft);background:#f7f6f9;padding:9px 11px;border-radius:7px}
+.algo{counter-reset:item;list-style:none;padding:0}
+.algo li{counter-increment:item;position:relative;padding:11px 12px 11px 44px;border-bottom:1px solid var(--line)}
+.algo li:before{content:counter(item);position:absolute;left:10px;top:9px;width:25px;height:25px;border-radius:50%;background:var(--purple-light);color:var(--purple-deep);font-weight:700;text-align:center;line-height:25px}
+.mistake{display:flex;gap:10px;align-items:flex-start;background:var(--red-wash);border-radius:10px;padding:11px 14px;margin:9px 0;font-size:14px}
+.mistake .x{color:var(--red);font-weight:800}
+.stage-nav{display:flex;justify-content:space-between;gap:10px;margin-top:30px;padding-top:18px;border-top:1px solid var(--line)}
+.score-bar{display:flex;align-items:center;justify-content:space-between;background:var(--yellow-wash);border-radius:10px;padding:12px 17px;margin:14px 0;font-weight:700;color:var(--yellow-deep)}
+.teacher{margin-top:55px;border-top:2px dashed var(--line);padding-top:18px}
+.teacher-toggle{background:#f4f3f6;border:1px solid var(--line);color:var(--ink-soft);font-size:13px;font-weight:600;padding:9px 15px;border-radius:8px;cursor:pointer}
+.teacher-body{max-height:0;overflow:hidden;opacity:0;transition:max-height .4s ease,opacity .3s ease}
+.teacher-body.open{max-height:9000px;opacity:1;margin-top:15px}
+.teacher-body h4{font-family:var(--serif);color:var(--purple-deep);font-size:15px;margin:18px 0 6px}
+.teacher-body ol{padding-left:20px;font-size:13.5px;color:var(--ink-soft)}
+.teacher-body li{margin-bottom:4px}
+footer.end{text-align:center;padding:40px 0 10px;color:var(--ink-soft);font-size:13px}
+@media(max-width:600px){
+ .hero h1{font-size:31px}.hero-example{font-size:21px}.compare{grid-template-columns:1fr}
+ .stage-head h2{font-size:27px}.tab{padding:6px 8px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <p class="top-title">Урок 3 · Однородные члены предложения</p>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="tabs">
+      <button class="tab" data-stage="1" onclick="showStage(1)">Разминка<span class="min">5 мин</span></button>
+      <button class="tab" data-stage="2" onclick="showStage(2)">Что такое?<span class="min">10 мин</span></button>
+      <button class="tab" data-stage="3" onclick="showStage(3)">Запятые<span class="min">20 мин</span></button>
+      <button class="tab" data-stage="4" onclick="showStage(4)">Ловушки<span class="min">15 мин</span></button>
+      <button class="tab" data-stage="5" onclick="showStage(5)">ОГЭ<span class="min">7 мин</span></button>
+      <button class="tab" data-stage="6" onclick="showStage(6)">Итог<span class="min">3 мин</span></button>
+    </div>
+  </div>
+</header>
+
+<div class="page">
+
+<section class="hero" id="stage0">
+  <p class="hero-eyebrow">Урок 3 · 60 минут</p>
+  <h1>Однородные члены: когда ставить запятую?</h1>
+  <div class="hero-example">
+    Мы купили <span class="a">яблоки, груши и бананы</span>.
+  </div>
+  <p class="lead">Сегодня научимся видеть не просто «несколько слов подряд», а однородные члены: определять, к чему они относятся, чем связаны и нужна ли между ними запятая. Главная цель — научиться принимать решение по алгоритму, а не угадывать по паузе.</p>
+  <button class="btn-start" onclick="showStage(1)">Начать урок →</button>
+</section>
+
+<!-- 1 -->
+<section class="stage" data-stage="1">
+  <div class="stage-head">
+    <p class="stage-kicker">Блок 1 · 5 минут</p>
+    <h2>Разминка</h2>
+    <p class="stage-sub">Быстро вспоминаем грамматическую основу и тип предложения. Сегодня это понадобится, чтобы увидеть, что именно является членом предложения.</p>
+  </div>
+
+  <div class="choice-q">
+    <p class="choice-prompt">1. В предложении «В комнате было тихо» грамматическая основа — это…</p>
+    <div class="choice-options">
+      <button class="choice-opt" data-correct="false" onclick="pickChoice(this)">комната была</button>
+      <button class="choice-opt" data-correct="true" onclick="pickChoice(this)">было тихо</button>
+      <button class="choice-opt" data-correct="false" onclick="pickChoice(this)">в комнате</button>
+    </div>
+    <div class="choice-explain"><div class="choice-explain-inner">Это односоставное безличное предложение: подлежащего нет, грамматическая основа — «было тихо».</div></div>
+  </div>
+
+  <div class="choice-q">
+    <p class="choice-prompt">2. «Ребята быстро собрали вещи и вышли из дома». Сколько грамматических основ?</p>
+    <div class="choice-options">
+      <button class="choice-opt" data-correct="true" onclick="pickChoice(this)">Одна</button>
+      <button class="choice-opt" data-correct="false" onclick="pickChoice(this)">Две</button>
+      <button class="choice-opt" data-correct="false" onclick="pickChoice(this)">Три</button>
+    </div>
+    <div class="choice-explain"><div class="choice-explain-inner">Одна: «ребята собрали и вышли». Два сказуемых относятся к одному подлежащему и образуют однородные сказуемые.</div></div>
+  </div>
+
+  <div class="card yellow">
+    <b>Сегодняшняя подсказка:</b> если в предложении несколько слов выполняют одну и ту же синтаксическую функцию и относятся к одному слову, проверь, не являются ли они однородными.
+  </div>
+
+  <div class="stage-nav">
+    <span></span><button class="nav-btn primary" onclick="showStage(2)">Дальше →</button>
+  </div>
+</section>
+
+<!-- 2 -->
+<section class="stage" data-stage="2">
+  <div class="stage-head">
+    <p class="stage-kicker">Блок 2 · 10 минут</p>
+    <h2>Что такое однородные члены?</h2>
+    <p class="stage-sub">Сначала научимся их находить. Пунктуацию пока не запоминаем.</p>
+  </div>
+
+  <div class="card purple">
+    <p class="rule">Однородные члены — это члены предложения, которые выполняют одну и ту же синтаксическую функцию, относятся к одному и тому же слову и отвечают на один и тот же вопрос.</p>
+  </div>
+
+  <div class="compare">
+    <div>
+      <b>Один член</b>
+      <p>Мы купили <b>спелые яблоки</b>.</p>
+      <p>«спелые» — один определяющий признак.</p>
+    </div>
+    <div>
+      <b>Однородные члены</b>
+      <p>Мы купили яблоки <b>спелые, сочные, сладкие</b>.</p>
+      <p>Все три отвечают на «какие?» и относятся к «яблоки».</p>
+    </div>
+  </div>
+
+  <h3 class="block-title">Как проверить?</h3>
+  <ol class="algo">
+    <li>Найди член предложения, который хочешь проверить.</li>
+    <li>Задай к каждому слову один и тот же вопрос.</li>
+    <li>Проверь, относится ли каждое слово к одному и тому же слову.</li>
+    <li>Проверь, равноправны ли они: одно не является частью другого.</li>
+  </ol>
+
+  <div class="card blue">
+    <b>Однородными могут быть не только дополнения.</b>
+    <ul class="example-list">
+      <li><b>Подлежащие:</b> Мама и папа приехали.</li>
+      <li><b>Сказуемые:</b> Он вошёл, улыбнулся и сел.</li>
+      <li><b>Дополнения:</b> Я люблю чай, кофе и какао.</li>
+      <li><b>Определения:</b> Стоял тихий, тёплый вечер.</li>
+      <li><b>Обстоятельства:</b> Он говорил спокойно и уверенно.</li>
+    </ul>
+  </div>
+
+  <h3 class="block-title">Проверь себя</h3>
+  <div class="ex">
+    <p class="ex-n">1</p><p class="ex-sentence">«На столе лежали книги, тетради и карандаши».</p>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">Показать разбор</button>
+    <div class="answer"><div class="answer-inner"><b>Книги, тетради и карандаши</b> — однородные подлежащие: отвечают на «что?», относятся к сказуемому «лежали».</div></div>
+  </div>
+  <div class="ex">
+    <p class="ex-n">2</p><p class="ex-sentence">«Мы вошли в большой светлый зал».</p>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">Показать разбор</button>
+    <div class="answer"><div class="answer-inner"><b>Большой, светлый</b> — однородные определения: оба относятся к «зал», отвечают на «какой?».</div></div>
+  </div>
+  <div class="ex">
+    <p class="ex-n">3</p><p class="ex-sentence">«На столе лежала большая красная книга».</p>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">Показать разбор</button>
+    <div class="answer"><div class="answer-inner"><b>Не однородные.</b> «Большая» и «красная» относятся к «книга», но здесь нет обычного ряда перечисляемых равноправных признаков. Для сегодняшнего урока важно сначала уверенно находить типичные однородные конструкции.</div></div>
+  </div>
+
+  <div class="stage-nav">
+    <button class="nav-btn" onclick="showStage(1)">← Назад</button>
+    <button class="nav-btn primary" onclick="showStage(3)">Дальше: запятые →</button>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="stage" data-stage="3">
+  <div class="stage-head">
+    <p class="stage-kicker">Блок 3 · 20 минут</p>
+    <h2>Когда ставим запятую?</h2>
+    <p class="stage-sub">Идём маленькими шагами: правило → сразу практика → следующее правило.</p>
+  </div>
+
+  <h3 class="block-title">1. Однородные без союза</h3>
+  <div class="card yellow">
+    <p class="rule">Если однородные члены идут подряд без союза, между ними обычно ставится запятая.</p>
+    <p>Мы купили <b>хлеб, молоко, сыр</b>.</p>
+    <p>Он <b>вошёл, оглянулся, улыбнулся</b>.</p>
+  </div>
+
+  <div class="ex">
+    <p class="ex-n">Сразу попробуй</p>
+    <p class="ex-sentence">«На полке стояли книги журналы альбомы».</p>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">Показать ответ</button>
+    <div class="answer"><div class="answer-inner">На полке стояли <b>книги, журналы, альбомы</b>. Три однородных подлежащих идут без союза → ставим запятые.</div></div>
+  </div>
+
+  <h3 class="block-title">2. Одиночный И / ИЛИ / ЛИБО</h3>
+  <div class="card green">
+    <p class="rule">Между двумя однородными членами, соединёнными одиночным союзом <b>и, или, либо</b>, запятая не ставится.</p>
+    <p>Я купил <b>хлеб и молоко</b>.</p>
+    <p>Позвони мне <b>вечером или утром</b>.</p>
+  </div>
+
+  <div class="ex">
+    <p class="ex-n">Сравни</p>
+    <p class="ex-sentence">«Я купил хлеб и молоко».</p>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">Почему нет запятой?</button>
+    <div class="answer"><div class="answer-inner"><b>Хлеб и молоко</b> — однородные дополнения, соединённые одиночным союзом «и». Запятая не ставится.</div></div>
+  </div>
+
+  <div class="ex">
+    <p class="ex-n">Самостоятельно</p>
+    <p class="ex-sentence">«Мы встретимся вечером или утром».</p>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">Показать ответ</button>
+    <div class="answer"><div class="answer-inner">Запятая <b>не ставится</b>: «вечером или утром» — однородные обстоятельства с одиночным союзом «или».</div></div>
+  </div>
+
+  <h3 class="block-title">3. Противительные союзы А, НО, ЗАТО</h3>
+  <div class="card blue">
+    <p class="rule">Перед противительными союзами <b>а, но, зато</b> между однородными членами ставится запятая.</p>
+    <p>Он говорил тихо, <b>но</b> уверенно.</p>
+    <p>День был холодный, <b>а</b> солнечный.</p>
+    <p>Задача трудная, <b>зато</b> интересная.</p>
+  </div>
+
+  <div class="ex">
+    <p class="ex-n">Поставь знак</p>
+    <p class="ex-sentence">«Он отвечал спокойно но уверенно».</p>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">Показать ответ</button>
+    <div class="answer"><div class="answer-inner">Он отвечал <b>спокойно, но уверенно</b>. «Спокойно» и «уверенно» — однородные обстоятельства, перед «но» ставится запятая.</div></div>
+  </div>
+
+  <h3 class="block-title">4. Повторяющиеся союзы</h3>
+  <div class="card yellow">
+    <p class="rule">Если союз повторяется перед однородными членами, запятые разделяют эти члены.</p>
+    <p><b>И</b> дождь, <b>и</b> ветер, <b>и</b> холод не остановили нас.</p>
+    <p>Он хотел <b>и</b> читать, <b>и</b> гулять, <b>и</b> путешествовать.</p>
+  </div>
+
+  <div class="ex">
+    <p class="ex-n">Поставь все запятые</p>
+    <p class="ex-sentence">«И ветер и дождь и холод мешали прогулке».</p>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">Показать ответ</button>
+    <div class="answer"><div class="answer-inner"><b>И ветер, и дождь, и холод</b> мешали прогулке. Схема: <b>и О, и О, и О</b>.</div></div>
+  </div>
+
+  <h3 class="block-title">⚠️ Одна основа или две?</h3>
+  <div class="compare">
+    <div>
+      <b>Одна грамматическая основа</b>
+      <p>Он <b>вошёл и сел</b>.</p>
+      <p>Один субъект — «он». «Вошёл» и «сел» — однородные сказуемые.</p>
+    </div>
+    <div>
+      <b>Две грамматические основы</b>
+      <p>Он <b>вошёл</b>, и брат <b>сел</b>.</p>
+      <p>Две основы: «он вошёл» + «брат сел». Это уже сложное предложение.</p>
+    </div>
+  </div>
+
+  <div class="card purple">
+    <b>Главное правило:</b> прежде чем ставить запятую между словами, сначала посмотри на грамматические основы. Если основ две, нельзя автоматически объяснять запятую однородными членами.
+  </div>
+
+  <h3 class="block-title">Быстрая проверка</h3>
+  <div class="choice-q">
+    <p class="choice-prompt">«Он вошёл и сел у окна». Это…</p>
+    <div class="choice-options">
+      <button class="choice-opt" data-correct="true" onclick="pickChoice(this)">одна основа, однородные сказуемые</button>
+      <button class="choice-opt" data-correct="false" onclick="pickChoice(this)">две грамматические основы</button>
+    </div>
+    <div class="choice-explain"><div class="choice-explain-inner">Правильно: одна основа — «он вошёл и сел». Сказуемые однородные.</div></div>
+  </div>
+
+  <div class="choice-q">
+    <p class="choice-prompt">«Он вошёл, и брат сел у окна». Это…</p>
+    <div class="choice-options">
+      <button class="choice-opt" data-correct="false" onclick="pickChoice(this)">одна основа, однородные сказуемые</button>
+      <button class="choice-opt" data-correct="true" onclick="pickChoice(this)">две грамматические основы</button>
+    </div>
+    <div class="choice-explain"><div class="choice-explain-inner">Правильно: «он вошёл» + «брат сел» — две грамматические основы. Это сложное предложение.</div></div>
+  </div>
+
+  <div class="stage-nav">
+    <button class="nav-btn" onclick="showStage(2)">← Назад</button>
+    <button class="nav-btn primary" onclick="showStage(4)">Дальше: ловушки →</button>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="stage" data-stage="4">
+  <div class="stage-head">
+    <p class="stage-kicker">Блок 4 · 15 минут</p>
+    <h2>Ловушки ОГЭ</h2>
+    <p class="stage-sub">Теперь смешиваем правила. Здесь важно не угадывать знак, а объяснять структуру.</p>
+  </div>
+
+  <h3 class="block-title">Ловушка №1 · Не всё перечисление — однородные члены</h3>
+  <div class="ex">
+    <p class="ex-sentence">«На столе лежала большая красная книга».</p>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">Разобрать</button>
+    <div class="answer"><div class="answer-inner">Не ставим запятую. Это не типичный ряд однородных определений. На этом этапе не нужно автоматически ставить знак между любыми двумя определениями.</div></div>
+  </div>
+
+  <h3 class="block-title">Ловушка №2 · «И» не всегда означает отсутствие запятой</h3>
+  <div class="ex">
+    <p class="ex-sentence">«И смех и радость и песни звучали вокруг».</p>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">Поставить запятые</button>
+    <div class="answer"><div class="answer-inner"><b>И смех, и радость, и песни</b> звучали вокруг. Союз «и» повторяется → запятые разделяют однородные члены.</div></div>
+  </div>
+
+  <h3 class="block-title">Ловушка №3 · Не перепутай однородные члены и две основы</h3>
+  <div class="ex">
+    <p class="ex-sentence">«Солнце взошло и город проснулся».</p>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">Разобрать</button>
+    <div class="answer"><div class="answer-inner">Здесь две грамматические основы: <b>солнце взошло</b> и <b>город проснулся</b>. Это не однородные сказуемые. Запятая перед «и» зависит от правила о сложном предложении, которое подробно изучим дальше.</div></div>
+  </div>
+
+  <h3 class="block-title">Ловушка №4 · А / НО / ЗАТО</h3>
+  <div class="ex">
+    <p class="ex-sentence">«Он говорил спокойно но очень уверенно».</p>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">Поставить знак</button>
+    <div class="answer"><div class="answer-inner">Он говорил <b>спокойно, но очень уверенно</b>. Однородные обстоятельства соединены противительным союзом «но» → запятая перед «но».</div></div>
+  </div>
+
+  <h3 class="block-title">Активная практика · сама расставь запятые</h3>
+  <p class="stage-sub">Сначала продиктуй/запиши вариант без подсказки. Только потом открывай ответ.</p>
+
+  <div class="ex">
+    <p class="ex-n">1</p>
+    <p class="ex-sentence">«Мы купили яблоки груши и бананы».</p>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">Сверить</button>
+    <div class="answer"><div class="answer-inner"><b>Мы купили яблоки, груши и бананы.</b></div></div>
+  </div>
+
+  <div class="ex">
+    <p class="ex-n">2</p>
+    <p class="ex-sentence">«Она отвечала спокойно но уверенно».</p>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">Сверить</button>
+    <div class="answer"><div class="answer-inner"><b>Она отвечала спокойно, но уверенно.</b></div></div>
+  </div>
+
+  <div class="ex">
+    <p class="ex-n">3</p>
+    <p class="ex-sentence">«И дождь и ветер мешали нам».</p>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">Сверить</button>
+    <div class="answer"><div class="answer-inner"><b>И дождь, и ветер мешали нам.</b></div></div>
+  </div>
+
+  <div class="ex">
+    <p class="ex-n">4</p>
+    <p class="ex-sentence">«Мы можем встретиться вечером или утром».</p>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">Сверить</button>
+    <div class="answer"><div class="answer-inner"><b>Мы можем встретиться вечером или утром.</b> Запятая не ставится.</div></div>
+  </div>
+
+  <div class="stage-nav">
+    <button class="nav-btn" onclick="showStage(3)">← Назад</button>
+    <button class="nav-btn primary" onclick="showStage(5)">Дальше: ОГЭ →</button>
+  </div>
+</section>
+
+<!-- 5 -->
+<section class="stage" data-stage="5">
+  <div class="stage-head">
+    <p class="stage-kicker">Блок 5 · 7 минут</p>
+    <h2>Мини-ОГЭ</h2>
+    <p class="stage-sub">Сначала реши самостоятельно. Затем открой разбор.</p>
+  </div>
+
+  <div class="score-bar"><span>Результат</span><span id="scoreDisplay">0 / 4</span></div>
+
+  <div class="choice-q" data-score="true">
+    <p class="choice-prompt">1. Укажите предложение, в котором есть однородные члены.</p>
+    <div class="choice-options">
+      <button class="choice-opt" data-correct="false" onclick="pickChoice(this)">А) Вечером мы вернулись домой.</button>
+      <button class="choice-opt" data-correct="true" onclick="pickChoice(this)">Б) На столе лежали книги, тетради и журналы.</button>
+      <button class="choice-opt" data-correct="false" onclick="pickChoice(this)">В) За окном быстро темнело.</button>
+      <button class="choice-opt" data-correct="false" onclick="pickChoice(this)">Г) В комнате было тепло.</button>
+    </div>
+    <div class="choice-explain"><div class="choice-explain-inner">Ответ: <b>Б</b>. «Книги, тетради и журналы» — однородные подлежащие.</div></div>
+  </div>
+
+  <div class="choice-q" data-score="true">
+    <p class="choice-prompt">2. В каком варианте нужна запятая? «Он был спокойным ___ но очень внимательным».</p>
+    <div class="choice-options">
+      <button class="choice-opt" data-correct="true" onclick="pickChoice(this)">перед «но»</button>
+      <button class="choice-opt" data-correct="false" onclick="pickChoice(this)">не нужна</button>
+    </div>
+    <div class="choice-explain"><div class="choice-explain-inner">Ответ: нужна. «Спокойным» и «внимательным» — однородные именные части сказуемого, соединённые союзом «но».</div></div>
+  </div>
+
+  <div class="choice-q" data-score="true">
+    <p class="choice-prompt">3. Где запятая НЕ ставится?</p>
+    <div class="choice-options">
+      <button class="choice-opt" data-correct="false" onclick="pickChoice(this)">Он купил хлеб, молоко и сыр.</button>
+      <button class="choice-opt" data-correct="true" onclick="pickChoice(this)">Он купил хлеб и молоко.</button>
+      <button class="choice-opt" data-correct="false" onclick="pickChoice(this)">Он купил хлеб, но не сыр.</button>
+    </div>
+    <div class="choice-explain"><div class="choice-explain-inner">Ответ: «хлеб и молоко» — два однородных дополнения, соединённые одиночным союзом «и».</div></div>
+  </div>
+
+  <div class="choice-q" data-score="true">
+    <p class="choice-prompt">4. Где поставлены все нужные запятые? «И солнце и ветер и дождь сопровождали нас».</p>
+    <div class="choice-options">
+      <button class="choice-opt" data-correct="false" onclick="pickChoice(this)">И солнце, и ветер и дождь сопровождали нас.</button>
+      <button class="choice-opt" data-correct="true" onclick="pickChoice(this)">И солнце, и ветер, и дождь сопровождали нас.</button>
+      <button class="choice-opt" data-correct="false" onclick="pickChoice(this)">И солнце и ветер, и дождь сопровождали нас.</button>
+    </div>
+    <div class="choice-explain"><div class="choice-explain-inner">Ответ: второй вариант. Схема: <b>и О, и О, и О</b>.</div></div>
+  </div>
+
+  <div class="card yellow">
+    <b>Формат ответа на ОГЭ:</b> мало просто сказать «ставим запятую». Нужно видеть структуру: <i>однородные члены + способ связи + правило</i>.
+  </div>
+
+  <div class="stage-nav">
+    <button class="nav-btn" onclick="showStage(4)">← Назад</button>
+    <button class="nav-btn primary" onclick="showStage(6)">Дальше: итог →</button>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="stage" data-stage="6">
+  <div class="stage-head">
+    <p class="stage-kicker">Блок 6 · 3 минуты</p>
+    <h2>Итог</h2>
+    <p class="stage-sub">Собираем всё в один алгоритм, который пригодится дальше в заданиях на пунктуацию.</p>
+  </div>
+
+  <h3 class="block-title">Алгоритм «Однородные + запятая»</h3>
+  <ol class="algo">
+    <li>Найди грамматическую основу.</li>
+    <li>Посмотри, есть ли несколько членов предложения, отвечающих на один вопрос.</li>
+    <li>Проверь, относятся ли они к одному слову и выполняют ли одну функцию.</li>
+    <li>Если да — это могут быть однородные члены.</li>
+    <li>Нет союза → запятая.</li>
+    <li>Одиночный И / ИЛИ / ЛИБО → запятая не ставится.</li>
+    <li>А / НО / ЗАТО → запятая ставится.</li>
+    <li>Повторяющийся союз → запятые между однородными.</li>
+    <li>Если перед тобой две грамматические основы — сначала разбирай границы сложного предложения.</li>
+  </ol>
+
+  <h3 class="block-title">3 ошибки, которые нужно запомнить</h3>
+  <div class="mistake"><span class="x">✗</span>«Два одинаковых по форме слова = однородные». Нет: сначала проверяем функцию и зависимое слово.</div>
+  <div class="mistake"><span class="x">✗</span>«Перед И всегда нужна/не нужна запятая». Смотрим, одиночный это союз или повторяющийся.</div>
+  <div class="mistake"><span class="x">✗</span>«Запятая перед И — значит однородные». Нет: если по обе стороны союза две грамматические основы, это может быть сложное предложение.</div>
+
+  <div class="card green">
+    <b>Домашняя отработка:</b> найти в любом тексте 10 предложений с перечислением и для каждого определить: однородные ли это члены, чем связаны и нужна ли запятая. Для 3 самых сложных предложений — написать короткое объяснение правила.
+  </div>
+
+  <h3 class="block-title">⭐ Если осталось время</h3>
+  <p class="stage-sub">Дополнительный уровень — не обязателен. Используй, если основная часть урока прошла быстрее.</p>
+
+  <div class="ex"><p class="ex-n">1 · смешанный случай</p><p class="ex-sentence">«Мы долго спорили обсуждали и сравнивали варианты».</p>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">Показать разбор</button>
+    <div class="answer"><div class="answer-inner"><b>Мы долго спорили, обсуждали и сравнивали варианты.</b> Однородные сказуемые без союза + одиночный «и» перед последним.</div></div></div>
+
+  <div class="ex"><p class="ex-n">2 · повторяющийся союз</p><p class="ex-sentence">«Он хотел и читать и гулять и путешествовать».</p>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">Показать разбор</button>
+    <div class="answer"><div class="answer-inner"><b>Он хотел и читать, и гулять, и путешествовать.</b> Повторяющийся союз «и».</div></div></div>
+
+  <div class="ex"><p class="ex-n">3 · противительный союз</p><p class="ex-sentence">«Задача трудная зато интересная».</p>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">Показать разбор</button>
+    <div class="answer"><div class="answer-inner"><b>Задача трудная, зато интересная.</b> Однородные именные части сказуемого, союз «зато».</div></div></div>
+
+  <div class="ex"><p class="ex-n">4 · одна или две основы?</p><p class="ex-sentence">«Море успокоилось и лодки вернулись к берегу».</p>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">Показать разбор</button>
+    <div class="answer"><div class="answer-inner">Две основы: <b>море успокоилось</b> + <b>лодки вернулись</b>. Это уже сложное предложение; знак объясняется не однородностью.</div></div></div>
+
+  <div class="ex"><p class="ex-n">5 · усложнение</p><p class="ex-sentence">«Он говорил быстро но ясно и уверенно».</p>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">Показать разбор</button>
+    <div class="answer"><div class="answer-inner"><b>Он говорил быстро, но ясно и уверенно.</b> «Быстро», «ясно», «уверенно» — однородные обстоятельства; «но» соединяет первый и второй блок, а «и» — два последних однородных члена.</div></div></div>
+
+  <div class="ex"><p class="ex-n">6 · объясни словами</p><p class="ex-sentence">«И солнце и ветер и дождь сопровождали нас».</p>
+    <button class="reveal-btn" onclick="toggleAnswer(this)">Показать разбор</button>
+    <div class="answer"><div class="answer-inner"><b>И солнце, и ветер, и дождь сопровождали нас.</b> Нужно назвать: однородные подлежащие → повторяющийся союз → запятые между однородными.</div></div></div>
+
+  <div class="teacher">
+    <button class="teacher-toggle" onclick="toggleTeacher(this)">Открыть заметки преподавателя</button>
+    <div class="teacher-body">
+      <h4>Цель урока</h4>
+      <p>Не добиться механического запоминания «перед И нет запятой», а сформировать цепочку: грамматическая основа → синтаксическая функция → однородность → способ связи → знак.</p>
+      <h4>На что обратить внимание</h4>
+      <ol>
+        <li>Если ученица сразу ставит запятую по интонации, возвращать к вопросу: «Что здесь однородное? К чему относится? Чем соединено?»</li>
+        <li>Особенно проговорить различие между «однородные сказуемые» и «две грамматические основы»: «Он вошёл и сел» ≠ «Он вошёл, и брат сел».</li>
+        <li>Не перегружать сейчас всеми спорными случаями однородных определений. Базовая задача урока — уверенно распознавать типовые случаи ОГЭ.</li>
+        <li>На следующем этапе логично перейти к границам частей сложного предложения, потому что ученица уже умеет находить грамматические основы и сегодня увидела, почему это важно для пунктуации.</li>
+      </ol>
+      <h4>Ответы мини-ОГЭ</h4>
+      <ol><li>Б</li><li>Перед «но»</li><li>«Он купил хлеб и молоко»</li><li>«И солнце, и ветер, и дождь сопровождали нас»</li></ol>
+    </div>
+  </div>
+
+  <div class="stage-nav">
+    <button class="nav-btn" onclick="showStage(5)">← Назад</button>
+    <button class="nav-btn primary" onclick="resetAllExercises();showStage(1)">Пройти ещё раз ↻</button>
+  </div>
+</section>
+
+<footer class="end">Урок 3 · Русский язык · ОГЭ · Однородные члены предложения</footer>
+</div>
+
+<script>
+const TOTAL_STAGES=6;
+function resetAllExercises(){
+  score=0;
+  const scoreEl=document.getElementById('scoreDisplay');
+  if(scoreEl) scoreEl.textContent='0 / 4';
+  document.querySelectorAll('.choice-q').forEach(group=>{
+    delete group.dataset.answered;
+    group.querySelectorAll('.choice-opt').forEach(o=>{
+      o.disabled=false;
+      o.classList.remove('correct','incorrect');
+    });
+    const exp=group.querySelector('.choice-explain');
+    if(exp) exp.classList.remove('open');
+  });
+  document.querySelectorAll('.answer.open').forEach(a=>a.classList.remove('open'));
+  document.querySelectorAll('.reveal-btn').forEach(btn=>{
+    if(btn.textContent==='Скрыть разбор' || btn.textContent==='Скрыть заметки преподавателя' || btn.textContent==='Скрыть ответ'){
+      btn.textContent = btn.classList.contains('teacher-toggle') ? 'Открыть заметки преподавателя' : 'Показать ответ';
+    }
+  });
+}
+function showStage(n){
+  document.querySelectorAll('.stage').forEach(s=>s.classList.remove('active'));
+  document.getElementById('stage0').style.display=n===0?'block':'none';
+  if(n>0){
+    const el=document.querySelector('.stage[data-stage="'+n+'"]');
+    if(el) el.classList.add('active');
+  }
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  const tab=document.querySelector('.tab[data-stage="'+n+'"]');
+  if(tab) tab.classList.add('active');
+  document.getElementById('progressFill').style.width=(n===0?0:(n/TOTAL_STAGES*100))+'%';
+  window.scrollTo(0,0);
+}
+function toggleAnswer(btn){
+  const ans=btn.nextElementSibling;
+  const wasOpen=ans.classList.contains('open');
+  ans.classList.toggle('open');
+  if(wasOpen){
+    btn.textContent = btn.dataset.closedText || 'Показать ответ';
+  }else{
+    btn.dataset.closedText = btn.dataset.closedText || btn.textContent;
+    btn.textContent='Скрыть разбор';
+  }
+}
+function toggleTeacher(btn){
+  const body=btn.nextElementSibling;
+  body.classList.toggle('open');
+  btn.textContent=body.classList.contains('open')?'Скрыть заметки преподавателя':'Открыть заметки преподавателя';
+}
+let score=0;
+function pickChoice(btn){
+  const group=btn.closest('.choice-q');
+  if(group.dataset.answered==='true') return;
+  group.dataset.answered='true';
+  group.querySelectorAll('.choice-opt').forEach(o=>{
+    o.disabled=true;
+    if(o.dataset.correct==='true') o.classList.add('correct');
+  });
+  if(btn.dataset.correct!=='true') btn.classList.add('incorrect');
+  const exp=group.querySelector('.choice-explain');
+  if(exp) exp.classList.add('open');
+  if(group.dataset.score==='true'){
+    if(btn.dataset.correct==='true') score++;
+    document.getElementById('scoreDisplay').textContent=score+' / 4';
+  }
+}
+showStage(0);
+</script>
+</body>
+</html>
