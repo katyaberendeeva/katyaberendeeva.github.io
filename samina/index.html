@@ -2,161 +2,176 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Самина • Русский язык • ОГЭ</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Самина · Русский язык · ОГЭ</title>
 <style>
 :root{
-  --ink:#231C33;--purple:#5F3FA6;--purple-deep:#452C82;--purple-light:#F2EEFB;
-  --yellow:#FFC93C;--yellow-wash:#FFF6DE;--blue-wash:#EAF3FB;
-  --green-wash:#EAF7EF;--pink:#FCEDED;--line:#E4DEF2;--white:#fff;
+  --dark:#202a2d;
+  --cream:#f7f1e7;
+  --card:#fffdf9;
+  --gold:#c79b45;
+  --teal:#2d8c8b;
+  --brick:#b85f4d;
+  --text:#20252b;
+  --muted:#737779;
 }
 *{box-sizing:border-box}
 body{
-  margin:0;background:#fff;color:var(--ink);
-  font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-  line-height:1.55;
+  margin:0;
+  background:var(--cream);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
 }
-.wrap{max-width:820px;margin:auto;padding:18px 20px 70px}
+.container{max-width:900px;margin:auto;padding:18px}
 .hero{
-  position:relative;overflow:hidden;border-radius:28px;padding:38px 30px 32px;
-  background:linear-gradient(135deg,#452C82 0%,#5F3FA6 58%,#8d73d1 100%);
-  color:#fff;box-shadow:0 14px 38px rgba(69,44,130,.16)
-}
-.hero:after{
-  content:"";position:absolute;width:260px;height:260px;border-radius:50%;
-  background:rgba(255,201,60,.22);right:-75px;top:-100px
+  background:var(--dark);
+  color:#fff;
+  border-radius:26px;
+  padding:30px 24px;
+  margin-bottom:18px;
 }
 .kicker{
-  display:inline-block;background:var(--yellow);color:#452C82;border-radius:999px;
-  padding:7px 13px;font-weight:800;font-size:12px;position:relative;z-index:1
+  color:#e5c46f;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.09em;
+  text-transform:uppercase;
 }
 h1{
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp(35px,7vw,60px);line-height:1;margin:18px 0 14px;
-  letter-spacing:-2px;position:relative;z-index:1
+  font-family:Georgia,serif;
+  font-size:clamp(34px,8vw,52px);
+  line-height:1;
+  margin:9px 0 13px;
 }
-.hero p{font-size:18px;max-width:680px;position:relative;z-index:1}
-.meta{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px;position:relative;z-index:1}
-.pill{
-  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);
-  padding:7px 11px;border-radius:999px;font-size:13px
+.hero p{margin:0;color:#e8eceb;font-size:16px}
+.lesson-list{display:grid;gap:12px}
+.lesson-card{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  text-decoration:none;
+  color:var(--text);
+  background:var(--card);
+  border:1px solid #e7dfd2;
+  border-radius:20px;
+  padding:17px;
+  transition:.15s;
+  box-shadow:0 5px 18px #00000008;
 }
-.route{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}
-.route div{
-  padding:13px 9px;border-radius:16px;text-align:center;background:#fff;
-  border:1px solid var(--line);font-size:13px;font-weight:750
+.lesson-card:active{transform:scale(.99)}
+.lesson-number{
+  min-width:52px;
+  height:52px;
+  display:grid;
+  place-items:center;
+  border-radius:15px;
+  background:var(--dark);
+  color:#fff;
+  font-weight:900;
+  font-size:16px;
 }
-.route div:first-child{background:var(--yellow-wash)}
-.card{
-  background:#fff;border:1px solid var(--line);border-radius:24px;
-  padding:24px;box-shadow:0 8px 25px rgba(69,44,130,.06);margin:22px 0
+.lesson-content{flex:1}
+.lesson-content h2{
+  margin:0 0 4px;
+  font-family:Georgia,serif;
+  font-size:20px;
 }
-h2{font-family:Georgia,"Times New Roman",serif;font-size:30px;line-height:1.08;margin:0 0 8px;color:var(--purple-deep)}
-.lead{font-size:17px;color:#5B5468;margin-top:0}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
-.lesson{
-  display:block;text-decoration:none;color:var(--ink);padding:20px;
-  border-radius:21px;border:1px solid var(--line);
-  transition:transform .18s ease,box-shadow .18s ease
+.lesson-content p{
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.4;
 }
-.lesson:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(69,44,130,.11)}
-.num{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:38px;height:38px;border-radius:13px;background:var(--yellow);
-  color:var(--purple-deep);font-weight:900;margin-bottom:12px
+.lesson-arrow{
+  color:var(--gold);
+  font-size:25px;
+  font-weight:700;
 }
-.lesson h3{
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:20px;line-height:1.15;margin:0 0 7px;color:var(--purple-deep)
-}
-.lesson p{margin:0;color:#6b6575;font-size:14px}
-.lesson:nth-child(1){background:#fbf9ff}
-.lesson:nth-child(2){background:#fffaf0}
-.lesson:nth-child(3){background:#f3f8ff}
 .badge{
-  display:inline-block;margin-top:13px;padding:5px 9px;border-radius:999px;
-  background:rgba(255,255,255,.8);font-size:11px;font-weight:800;color:#5F3FA6
+  display:inline-block;
+  margin-top:8px;
+  padding:4px 9px;
+  border-radius:999px;
+  background:#e7f3f0;
+  color:#206b69;
+  font-size:11px;
+  font-weight:800;
 }
 .footer{
-  background:#452C82;color:#fff;border-radius:24px;padding:24px;margin-top:25px
+  margin-top:18px;
+  background:#fffaf2;
+  border:1px solid #e7dfd2;
+  border-radius:20px;
+  padding:18px;
+  color:var(--muted);
+  font-size:13px;
 }
-.footer strong{color:var(--yellow)}
-.small{font-size:13px;color:#ddd7ee}
-@media(max-width:650px){
-  .wrap{padding:12px}
-  .hero{padding:28px 21px}
-  .card{padding:19px}
-  .grid{grid-template-columns:1fr}
-  .route{grid-template-columns:1fr}
-  h2{font-size:26px}
+@media(max-width:600px){
+  .container{padding:12px}
+  .hero{padding:24px 18px;border-radius:21px}
+  .lesson-card{padding:14px}
+  .lesson-number{min-width:47px;height:47px}
+  .lesson-content h2{font-size:18px}
 }
 </style>
 </head>
+
 <body>
-<div class="wrap">
+<div class="container">
 
-<header class="hero">
-  <span class="kicker">САМИНА • РУССКИЙ ЯЗЫК • ОГЭ</span>
-  <h1>Русский язык ✍️</h1>
-  <p>Интерактивные уроки: правило → практика → задания в формате ОГЭ → закрепление.</p>
-  <div class="meta">
-    <span class="pill">3 урока</span>
-    <span class="pill">интерактивный формат</span>
-    <span class="pill">теория + практика</span>
-    <span class="pill">ОГЭ</span>
+<section class="hero">
+  <div class="kicker">ОГЭ · русский язык</div>
+  <h1>Самина</h1>
+  <p>Уроки по синтаксису и пунктуации — от базы к заданиям ОГЭ.</p>
+</section>
+
+<section class="lesson-list">
+
+<a href="urok-grammaticheskaya-osnova.html" class="lesson-card">
+  <div class="lesson-number">01</div>
+  <div class="lesson-content">
+    <h2>Грамматическая основа</h2>
+    <p>Подлежащее · сказуемое · типы сказуемого · основы предложения</p>
+    <span class="badge">Урок завершён</span>
   </div>
-</header>
+  <div class="lesson-arrow">→</div>
+</a>
 
-<div class="route">
-  <div>01<br>база</div>
-  <div>02<br>закрепление</div>
-  <div>03<br>однородные члены</div>
+<a href="urok2-odnosostavnye-predlozheniya.html" class="lesson-card">
+  <div class="lesson-number">02</div>
+  <div class="lesson-content">
+    <h2>Односоставные предложения</h2>
+    <p>Определённо-личные · неопределённо-личные · безличные · назывные</p>
+    <span class="badge">Урок завершён</span>
+  </div>
+  <div class="lesson-arrow">→</div>
+</a>
+
+<a href="lesson3-odnorodnye-chleny-final.html" class="lesson-card">
+  <div class="lesson-number">03</div>
+  <div class="lesson-content">
+    <h2>Однородные члены</h2>
+    <p>Запятые при однородных членах · союзы · главные ловушки ОГЭ</p>
+    <span class="badge">Урок завершён</span>
+  </div>
+  <div class="lesson-arrow">→</div>
+</a>
+
+<a href="lesson4.html" class="lesson-card">
+  <div class="lesson-number">04</div>
+  <div class="lesson-content">
+    <h2>Сложное предложение</h2>
+    <p>ССП · СПП · границы частей · грамматические основы · пунктуация</p>
+    <span class="badge">Новый урок</span>
+  </div>
+  <div class="lesson-arrow">→</div>
+</a>
+
+</section>
+
+<div class="footer">
+  <b>Алгоритм:</b> основы → части → связь → граница → знак.
 </div>
-
-<section class="card">
-  <h2>📚 Все уроки</h2>
-  <p class="lead">Выбирай урок — он откроется на отдельной странице.</p>
-
-  <div class="grid">
-
-    <a class="lesson" href="urok-grammaticheskaya-osnova.html">
-      <span class="num">01</span>
-      <h3>Грамматическая основа</h3>
-      <p>Базовая работа с грамматической основой предложения и её поиском.</p>
-      <span class="badge">РУССКИЙ • ОГЭ</span>
-    </a>
-
-    <a class="lesson" href="urok2-odnosostavnye-predlozheniya.html">
-      <span class="num">02</span>
-      <h3>Односоставные предложения</h3>
-      <p>Разбираем типы односоставных предложений и учимся узнавать их в заданиях.</p>
-      <span class="badge">РУССКИЙ • ОГЭ</span>
-    </a>
-
-    <a class="lesson" href="lesson3-odnorodnye-chleny-final.html">
-      <span class="num">03</span>
-      <h3>Однородные члены предложения</h3>
-      <p>Когда ставить запятую, как отличать однородные члены от двух грамматических основ и какие ловушки встречаются в ОГЭ.</p>
-      <span class="badge">РУССКИЙ • ОГЭ • НОВЫЙ</span>
-    </a>
-
-  </div>
-</section>
-
-<section class="card">
-  <h2>🧭 Как работаем</h2>
-  <p class="lead">
-    Каждый урок построен как последовательность: объяснение правила → небольшая практика →
-    проверка → задания ОГЭ → итоговая отработка.
-  </p>
-</section>
-
-<footer class="footer">
-  <strong>Самина • Русский язык</strong>
-  <p class="small" style="margin-bottom:0">
-    Интерактивные уроки · теория → практика → ОГЭ
-  </p>
-</footer>
 
 </div>
 </body>
