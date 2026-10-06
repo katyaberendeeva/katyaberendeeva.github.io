@@ -3,202 +3,83 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Настя • Обществознание • Экономика</title>
+<title>Настя · ОГЭ · Обществознание</title>
 <style>
-:root{
-  --ink:#17204a; --muted:#69708f; --cream:#fffaf0; --white:#fff;
-  --blue:#6f9df7; --cyan:#bfeef5; --yellow:#ffe58a; --lime:#dfff63;
-  --pink:#ffb8d8; --green:#bdebd1; --orange:#ffd4a8; --purple:#d9c8ff;
-  --line:#e6e4dc; --shadow:0 12px 35px rgba(23,32,74,.10);
-}
-*{box-sizing:border-box}
-body{
-  margin:0;background:var(--cream);color:var(--ink);
-  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  line-height:1.55;
-}
-.wrap{max-width:920px;margin:auto;padding:18px}
-.hero{
-  position:relative;overflow:hidden;border-radius:30px;padding:38px 30px 32px;
-  background:linear-gradient(135deg,#17204a 0%,#263a8e 58%,#6f9df7 100%);
-  color:#fff;box-shadow:var(--shadow)
-}
-.hero:after{
-  content:"";position:absolute;width:280px;height:280px;border-radius:50%;
-  background:rgba(223,255,99,.22);right:-80px;top:-100px
-}
-.kicker{
-  display:inline-block;background:var(--lime);color:#17204a;border-radius:999px;
-  padding:7px 13px;font-weight:800;font-size:13px;position:relative;z-index:1
-}
-h1{
-  font-size:clamp(34px,7vw,60px);line-height:.98;margin:18px 0 14px;
-  letter-spacing:-2px;position:relative;z-index:1
-}
-.hero p{font-size:18px;max-width:700px;position:relative;z-index:1;margin-bottom:0}
-.meta{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px;position:relative;z-index:1}
-.pill{
-  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.24);
-  padding:7px 11px;border-radius:999px;font-size:13px
-}
-.route{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0
-}
-.route div{
-  padding:13px 9px;border-radius:16px;text-align:center;background:#fff;
-  border:1px solid var(--line);font-size:13px;font-weight:750
-}
-.route div:first-child{background:var(--yellow)}
-.card{
-  background:#fff;border:1px solid var(--line);border-radius:24px;
-  padding:24px;box-shadow:0 8px 25px rgba(23,32,74,.05);margin:22px 0
-}
-h2{font-size:30px;line-height:1.08;margin:0 0 8px;letter-spacing:-.7px}
-.lead{font-size:17px;color:#30385e;margin-top:0}
-.grid{
-  display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px
-}
-.lesson{
-  display:block;text-decoration:none;color:var(--ink);
-  padding:20px;border-radius:22px;border:1px solid var(--line);
-  transition:transform .18s ease,box-shadow .18s ease
-}
-.lesson:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(23,32,74,.10)}
-.lesson .num{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:38px;height:38px;border-radius:13px;background:var(--yellow);
-  font-weight:900;margin-bottom:12px
-}
-.lesson h3{font-size:20px;line-height:1.15;margin:0 0 7px}
-.lesson p{margin:0;color:var(--muted);font-size:14px}
-.lesson:nth-child(2){background:#f5fbff}
-.lesson:nth-child(3){background:#f3fff7}
-.lesson:nth-child(4){background:#fff8fc}
-.lesson:nth-child(5){background:#fffaf0}
-.lesson:nth-child(6){background:#f6f2ff}
-.lesson:nth-child(7){background:#fff4e9}
-.lesson:nth-child(8){background:#eef4ff}
-.badge{
-  display:inline-block;margin-top:13px;padding:5px 9px;border-radius:999px;
-  background:rgba(255,255,255,.8);font-size:11px;font-weight:800;color:#39436e
-}
-.footer{
-  background:#17204a;color:#fff;border-radius:25px;padding:24px;margin-top:25px
-}
-.footer strong{color:var(--lime)}
-.small{font-size:13px;color:#777d95}
-@media(max-width:700px){
-  .wrap{padding:12px}
-  .hero{padding:28px 21px}
-  .card{padding:19px}
-  .grid{grid-template-columns:1fr}
-  .route{grid-template-columns:repeat(2,1fr)}
-  h2{font-size:26px}
-}
+:root{--bg:#f7f1e7;--paper:#fffdf8;--ink:#202b55;--muted:#68718d;--navy:#18265c;--yellow:#ffe27a;--line:#e5dccd}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Arial,sans-serif}
+.wrap{max-width:1100px;margin:auto;padding:28px 22px 60px}
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#17245b,#29428e 55%,#6695eb);color:#fff;border-radius:34px;padding:42px;margin-bottom:22px}
+.hero:after{content:"";position:absolute;width:290px;height:290px;border-radius:50%;background:#9ab8dc55;right:-65px;top:-125px}
+.kicker{display:inline-block;background:#d9ff3f;color:#15245b;border-radius:999px;padding:9px 17px;font-weight:850;position:relative;z-index:1}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:58px;line-height:1.02;margin:25px 0 18px;position:relative;z-index:1}
+.hero p{font-size:22px;line-height:1.4;max-width:830px;margin:0;position:relative;z-index:1}
+.meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px;position:relative;z-index:1}
+.pill{padding:9px 16px;border-radius:999px;border:1px solid #ffffff55;background:#ffffff20;font-weight:700}
+.route{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:26px}
+.route a{text-decoration:none;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:18px;text-align:center;font-weight:800;font-size:17px}
+.route a:first-child{background:var(--yellow)}
+.content{background:var(--paper);border:1px solid var(--line);border-radius:30px;padding:30px}
+h2{font-family:Georgia,"Times New Roman",serif;font-size:34px;margin:0 0 4px}
+.lead{color:var(--muted);font-size:19px;margin:0 0 22px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 4px 16px #25315c0b}
+.card.lesson10{background:#fffaf0}.card.lesson11{background:#f5f9ff}
+.num{display:inline-flex;background:var(--yellow);border-radius:13px;padding:8px 12px;font-weight:900;font-size:17px;margin-bottom:14px}
+.card h3{font-family:Georgia,"Times New Roman",serif;font-size:28px;line-height:1.12;margin:0 0 10px}
+.card p{color:var(--muted);font-size:17px;margin:0 0 15px}
+.tag{display:inline-block;background:#f2f4fb;border-radius:999px;padding:6px 11px;font-size:13px;font-weight:800;color:#35426f}
+.footer{text-align:center;color:var(--muted);margin-top:28px}
+@media(max-width:760px){.wrap{padding:16px 12px 40px}.hero{padding:30px 24px}h1{font-size:42px}.hero p{font-size:18px}.route{grid-template-columns:repeat(2,1fr)}.content{padding:22px}.grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<div class="wrap">
-
+<main class="wrap">
 <header class="hero">
-  <span class="kicker">НАСТЯ • ОГЭ • ОБЩЕСТВОЗНАНИЕ</span>
-  <h1>Экономика 💸</h1>
-  <p>Интерактивные уроки по экономике: теория → практика → задания в формате ОГЭ.</p>
-  <div class="meta">
-    <span class="pill">8 уроков</span>
-    <span class="pill">интерактивный формат</span>
-    <span class="pill">теория + практика</span>
-    <span class="pill">ОГЭ-срезы</span>
-  </div>
+<span class="kicker">НАСТЯ · ОГЭ · ОБЩЕСТВОЗНАНИЕ</span>
+<h1>Экономика 💸</h1>
+<p>Интерактивные уроки по экономике: теория → практика → задания в формате ОГЭ.</p>
+<div class="meta"><span class="pill">11 уроков</span><span class="pill">интерактивный формат</span><span class="pill">теория + практика</span><span class="pill">ОГЭ-срезы</span></div>
 </header>
 
-<div class="route">
-  <div>01–02<br>база</div>
-  <div>03–04<br>рынок и банки</div>
-  <div>05–06<br>спрос и производство</div>
-  <div>07–08<br>предприятие и бюджет</div>
-</div>
+<nav class="route">
+<a href="#lessons">01–02<br>база</a>
+<a href="#lessons">03–04<br>рынок и банки</a>
+<a href="#lessons">05–06<br>спрос и производство</a>
+<a href="#lessons">07–11<br>предприятие и экономика</a>
+</nav>
 
-<section class="card">
-  <h2>📚 Все уроки</h2>
-  <p class="lead">Нажми на нужный урок — он откроется в отдельной странице.</p>
+<section class="content" id="lessons">
+<h2>📚 Все уроки</h2>
+<p class="lead">Нажми на нужный урок — он откроется в отдельной странице.</p>
+<div class="grid">
 
-  <div class="grid">
+<a class="card" href="urok-01-inflyatsiya.html"><span class="num">01</span><h3>Инфляция</h3><p>Что такое инфляция, почему растут цены и как это отражается на экономике.</p><span class="tag">экономика</span></a>
+<a class="card" href="urok-02-dengi.html"><span class="num">02</span><h3>Деньги</h3><p>Функции денег, виды денег и их роль в экономике.</p><span class="tag">экономика</span></a>
+<a class="card" href="urok-03-banki.html"><span class="num">03</span><h3>Банки</h3><p>Банковская система, услуги банков и финансовая безопасность.</p><span class="tag">экономика</span></a>
+<a class="card" href="urok-04-rynok.html"><span class="num">04</span><h3>Рынок</h3><p>Как работает рынок, его участники и основные рыночные механизмы.</p><span class="tag">экономика</span></a>
+<a class="card" href="urok-05-spros-i-predlozhenie.html"><span class="num">05</span><h3>Спрос и предложение</h3><p>Что влияет на спрос и предложение и как анализировать экономические ситуации.</p><span class="tag">экономика</span></a>
+<a class="card" href="urok-06-proizvodstvo.html"><span class="num">06</span><h3>Производство</h3><p>Факторы производства, производительность и основы организации производства.</p><span class="tag">экономика</span></a>
+<a class="card" href="lesson7-enterprise-and-entrepreneurship.html"><span class="num">07</span><h3>Предприятие и предпринимательство</h3><p>Предприятие, предпринимательская деятельность, издержки, выручка и прибыль.</p><span class="tag">экономика</span></a>
+<a class="card" href="lesson8-taxes-and-budget.html"><span class="num">08</span><h3>Налоги и бюджет</h3><p>Налоги, государственный бюджет и роль государства в экономике.</p><span class="tag">экономика</span></a>
+<a class="card" href="lesson9-labor-market-and-unemployment.html"><span class="num">09</span><h3>Рынок труда и безработица</h3><p>Рынок труда, занятость, безработица и её основные виды.</p><span class="tag">экономика</span></a>
 
-    <a class="lesson" href="urok-01-inflyatsiya.html">
-      <span class="num">01</span>
-      <h3>Инфляция</h3>
-      <p>Что такое инфляция, почему растут цены и как это отражается на экономике.</p>
-      <span class="badge">ЭКОНОМИКА</span>
-    </a>
+<a class="card lesson10" href="lesson10-economics-final-block-updated-v3.html">
+<span class="num">10</span>
+<h3>Экономика: семья, безопасность, ценные бумаги и государство</h3>
+<p>Семья и семейный бюджет · финансовая безопасность · ценные бумаги · государство в экономике.</p>
+<span class="tag">финальный большой теоретический блок</span>
+</a>
 
-    <a class="lesson" href="urok-02-dengi.html">
-      <span class="num">02</span>
-      <h3>Деньги</h3>
-      <p>Функции денег, виды денег и их роль в экономике.</p>
-      <span class="badge">ЭКОНОМИКА</span>
-    </a>
-
-    <a class="lesson" href="urok-03-banki.html">
-      <span class="num">03</span>
-      <h3>Банки</h3>
-      <p>Банковская система, кредиты, вклады и базовые экономические ситуации.</p>
-      <span class="badge">ЭКОНОМИКА</span>
-    </a>
-
-    <a class="lesson" href="urok-04-rynok.html">
-      <span class="num">04</span>
-      <h3>Рынок</h3>
-      <p>Рыночный механизм, конкуренция и основные признаки рынка.</p>
-      <span class="badge">ЭКОНОМИКА</span>
-    </a>
-
-    <a class="lesson" href="urok-05-spros-i-predlozhenie.html">
-      <span class="num">05</span>
-      <h3>Спрос и предложение</h3>
-      <p>Как меняются спрос и предложение и что происходит с ценой.</p>
-      <span class="badge">ЭКОНОМИКА</span>
-    </a>
-
-    <a class="lesson" href="urok-06-proizvodstvo.html">
-      <span class="num">06</span>
-      <h3>Производство</h3>
-      <p>Факторы производства, ресурсы и экономические решения производителя.</p>
-      <span class="badge">ЭКОНОМИКА</span>
-    </a>
-
-    <a class="lesson" href="lesson7-enterprise-and-entrepreneurship.html">
-      <span class="num">07</span>
-      <h3>Предприятие и предпринимательство</h3>
-      <p>Издержки, выручка, прибыль и предпринимательская деятельность.</p>
-      <span class="badge">ЭКОНОМИКА</span>
-    </a>
-
-    <a class="lesson" href="lesson8-taxes-and-budget.html">
-      <span class="num">08</span>
-      <h3>Налоги и государственный бюджет</h3>
-      <p>Виды и функции налогов, доходы и расходы бюджета, дефицит и профицит.</p>
-      <span class="badge">ЭКОНОМИКА • НОВЫЙ</span>
-    </a>
-
-  </div>
-</section>
-
-<section class="card">
-  <h2>🧭 Как идём по курсу</h2>
-  <p class="lead">
-    Сначала разбираем экономическое понятие, затем применяем его в ситуациях,
-    после этого закрепляем материал заданиями ОГЭ и возвращаемся к пройденным темам.
-  </p>
-</section>
-
-<footer class="footer">
-  <strong>Настя • Обществознание</strong>
-  <p class="small" style="color:#d9def4;margin-bottom:0">
-    Интерактивные уроки по экономике · теория → применение → ОГЭ
-  </p>
-</footer>
+<a class="card lesson11" href="lesson11-economics-practice-final.html">
+<span class="num">11</span>
+<h3>Экономика — нарешка</h3>
+<p>Экономика как хозяйство и наука · ограниченность ресурсов и экономический выбор · факторы производства и факторные доходы · экономические системы и формы собственности.</p>
+<span class="tag">теория + практика · ОГЭ-формат</span>
+</a>
 
 </div>
+</section>
+<div class="footer">Настя · ОГЭ · Обществознание</div>
+</main>
 </body>
 </html>
