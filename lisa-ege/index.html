@@ -1,209 +1,143 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>Лиза · ЕГЭ Английский</title>
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Лиза · ЕГЭ English</title>
 <style>
 :root{
-  --bg:#F4F6FA;
-  --card:#FFFFFF;
-  --ink:#1B1F2E;
-  --soft:#687086;
-  --border:#E3E6F0;
-  --blue:#4F5DFF;
-  --blue-bg:#EEF0FF;
-  --green:#0FA98F;
-  --green-bg:#E6F8F4;
-  --orange:#FF7A45;
-  --orange-bg:#FFEEE4;
+  --bg:#f5f6fa;
+  --card:#fff;
+  --ink:#252938;
+  --muted:#687189;
+  --line:#dfe3ee;
+  --blue:#5267ff;
+  --blue-soft:#eef0ff;
+  --mint:#dff5ee;
+  --peach:#fff0e7;
+  --lav:#eeeaff;
+  --yellow:#fff3cc;
 }
-
-*{box-sizing:border-box;}
-
+*{box-sizing:border-box}
 body{
   margin:0;
   background:var(--bg);
   color:var(--ink);
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  padding:40px 20px 80px;
+  font:16px/1.55 Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
-
-.wrap{
-  max-width:760px;
-  margin:0 auto;
-}
-
-.header{
-  margin-bottom:32px;
-}
-
-.header h1{
+main{max-width:1040px;margin:auto;padding:42px 28px 52px}
+.hero{margin:0 0 26px;padding:12px 4px 6px}
+h1{
   font-family:Georgia,"Times New Roman",serif;
-  font-size:34px;
-  margin:0 0 8px;
-  letter-spacing:-0.02em;
+  font-size:46px;
+  line-height:1.08;
+  margin:0 0 10px;
+  letter-spacing:-.02em;
 }
-
-.header p{
-  margin:0;
-  color:var(--soft);
-  font-size:15px;
-}
-
-.grid{
-  display:grid;
-  gap:14px;
-}
-
+.subtitle{font-size:20px;color:var(--muted);margin:0}
 .card{
-  display:block;
-  text-decoration:none;
-  color:inherit;
   background:var(--card);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:22px;
-  transition:transform .15s ease, box-shadow .15s ease;
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:28px 30px;
+  margin:18px 0;
+  box-shadow:0 7px 24px #4b557014;
 }
-
-.card:hover{
-  transform:translateY(-2px);
-  box-shadow:0 8px 24px rgba(27,31,46,.07);
+.card-top{display:flex;gap:16px;align-items:flex-start}
+.icon{
+  width:52px;height:52px;border-radius:15px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:25px;flex:0 0 52px;
 }
-
-.card-top{
-  display:flex;
+.icon-diagnostic{background:var(--peach)}
+.icon-1{background:var(--blue-soft);color:var(--blue)}
+.icon-2{background:var(--mint);color:#16a085}
+.icon-3{background:var(--lav);color:#7562d8}
+h2{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:28px;
+  line-height:1.2;
+  margin:5px 0 10px;
+}
+.description{color:var(--muted);font-size:17px;margin:0 0 18px}
+.link{
+  display:inline-flex;
   align-items:center;
-  gap:12px;
-  margin-bottom:12px;
-}
-
-.number{
-  width:38px;
-  height:38px;
-  border-radius:11px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-family:Georgia,serif;
-  font-weight:700;
+  gap:7px;
+  color:var(--blue);
+  text-decoration:none;
+  font-weight:750;
   font-size:17px;
 }
-
-.blue .number{
-  background:var(--blue-bg);
-  color:var(--blue);
-}
-
-.green .number{
-  background:var(--green-bg);
-  color:var(--green);
-}
-
-.orange .number{
-  background:var(--orange-bg);
-  color:var(--orange);
-}
-
-.card h2{
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:20px;
-  margin:0;
-}
-
-.card p{
-  margin:0;
-  color:var(--soft);
-  font-size:14px;
-  line-height:1.55;
-}
-
-.arrow{
-  margin-top:16px;
-  font-size:13px;
-  font-weight:600;
-  color:var(--blue);
-}
-
+.link:hover{text-decoration:underline}
 .footer{
-  margin-top:28px;
   text-align:center;
-  color:var(--soft);
-  font-size:12px;
+  color:var(--muted);
+  margin-top:34px;
+  font-size:16px;
+}
+@media(max-width:650px){
+  main{padding:28px 16px 42px}
+  h1{font-size:34px}
+  .subtitle{font-size:17px}
+  .card{padding:21px}
+  h2{font-size:24px}
+  .description{font-size:16px}
 }
 </style>
 </head>
-
 <body>
-
-<div class="wrap">
-
-  <div class="header">
+<main>
+  <header class="hero">
     <h1>Лиза · ЕГЭ English</h1>
-    <p>Уроки английского · теория → практика → ЕГЭ</p>
-  </div>
+    <p class="subtitle">Уроки английского · теория → практика → ЕГЭ</p>
+  </header>
 
-  <div class="grid">
-
-    <!-- DIAGNOSTIC -->
-    <a class="card orange" href="ege-diagnostic.html">
-      <div class="card-top">
-        <div class="number">✓</div>
+  <section class="card">
+    <div class="card-top">
+      <div class="icon icon-diagnostic">✓</div>
+      <div>
         <h2>Диагностика</h2>
+        <p class="description">Определяем текущий уровень, сильные стороны и темы, которые нужно подтянуть перед ЕГЭ.</p>
+        <a class="link" href="ege-diagnostic.html">Открыть диагностику →</a>
       </div>
+    </div>
+  </section>
 
-      <p>
-        Определяем текущий уровень, сильные стороны
-        и темы, которые нужно подтянуть перед ЕГЭ.
-      </p>
-
-      <div class="arrow">Открыть диагностику →</div>
-    </a>
-
-
-    <!-- LESSON 1 -->
-    <a class="card blue" href="lesson1_student.html">
-      <div class="card-top">
-        <div class="number">1</div>
+  <section class="card">
+    <div class="card-top">
+      <div class="icon icon-1">1</div>
+      <div>
         <h2>Урок 1 · Основы английского</h2>
+        <p class="description">Parts of Speech · структура предложения · Subject–Verb–Object · глагол to be · am / is / are · утверждения, отрицания и вопросы.</p>
+        <a class="link" href="lesson1_student.html">Открыть урок →</a>
       </div>
+    </div>
+  </section>
 
-      <p>
-        Parts of Speech · структура предложения ·
-        Subject–Verb–Object · глагол to be ·
-        am / is / are · утверждения, отрицания и вопросы.
-      </p>
-
-      <div class="arrow">Открыть урок →</div>
-    </a>
-
-
-    <!-- LESSON 2 -->
-    <a class="card green" href="lesson2_student.html">
-      <div class="card-top">
-        <div class="number">2</div>
+  <section class="card">
+    <div class="card-top">
+      <div class="icon icon-2">2</div>
+      <div>
         <h2>Урок 2 · Present Simple</h2>
+        <p class="description">Present Simple · утверждения · отрицания · вопросы · do / does · окончания -s / -es · практика и задания в формате ЕГЭ.</p>
+        <a class="link" href="lesson2_student.html">Открыть урок →</a>
       </div>
+    </div>
+  </section>
 
-      <p>
-        Present Simple · утверждения · отрицания ·
-        вопросы · do / does · окончания -s / -es ·
-        практика и задания в формате ЕГЭ.
-      </p>
+  <section class="card">
+    <div class="card-top">
+      <div class="icon icon-3">3</div>
+      <div>
+        <h2>Урок 3 · Present Simple → Present Continuous → Past Simple</h2>
+        <p class="description">Закрепляем Present Simple · изучаем Present Continuous · сравниваем времена · Reading · Speaking · Past Simple · Mini ЕГЭ · большая практика на образование форм.</p>
+        <a class="link" href="lesson3.html">Открыть урок →</a>
+      </div>
+    </div>
+  </section>
 
-      <div class="arrow">Открыть урок →</div>
-    </a>
-
-  </div>
-
-  <div class="footer">
-    Катя · English
-  </div>
-
-</div>
-
+  <div class="footer">Катя · English</div>
+</main>
 </body>
 </html>
