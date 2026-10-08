@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Катя • English — интерактивные уроки</title>
-<style>
 
+<style>
   :root{
     --ivory: #FBF9F5;
     --card: #FFFFFF;
@@ -38,8 +38,6 @@
     overflow-x: hidden;
   }
 
-  /* ---------- decorative background shapes ---------- */
-
   .field-shape{
     position: absolute;
     border-radius: 50%;
@@ -47,6 +45,7 @@
     pointer-events: none;
     z-index: 0;
   }
+
   .field-shape--violet{
     width: 420px;
     height: 420px;
@@ -54,6 +53,7 @@
     top: -140px;
     right: -100px;
   }
+
   .field-shape--amber{
     width: 360px;
     height: 360px;
@@ -62,8 +62,6 @@
     left: -160px;
   }
 
-  /* ---------- layout shell ---------- */
-
   .page{
     position: relative;
     z-index: 1;
@@ -71,8 +69,6 @@
     margin: 0 auto;
     padding: 88px 32px 64px;
   }
-
-  /* ---------- hero ---------- */
 
   .hero{
     text-align: center;
@@ -83,7 +79,10 @@
   }
 
   @keyframes rise{
-    to{ opacity: 1; transform: translateY(0); }
+    to{
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .hero__eyebrow{
@@ -129,8 +128,6 @@
     border-radius: 2px;
   }
 
-  /* ---------- students section ---------- */
-
   .section-label{
     font-size: 13px;
     letter-spacing: 0.12em;
@@ -145,8 +142,6 @@
     gap: 20px;
   }
 
-  /* ---------- card ---------- */
-
   .card{
     position: relative;
     display: block;
@@ -158,9 +153,10 @@
     color: inherit;
     overflow: hidden;
     box-shadow: var(--shadow-rest);
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-                box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-                border-color 0.35s ease;
+    transition:
+      transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 0.35s ease;
   }
 
   .card:hover,
@@ -232,15 +228,15 @@
     width: 13px;
     height: 13px;
     stroke: var(--ink-soft);
-    transition: stroke 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    transition:
+      stroke 0.35s ease,
+      transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .card:hover .card__arrow svg{
     stroke: #fff;
     transform: translateX(2px);
   }
-
-  /* ---------- footer ---------- */
 
   .footer{
     position: relative;
@@ -265,13 +261,22 @@
     margin: 0;
   }
 
-  /* ---------- responsive ---------- */
-
   @media (max-width: 640px){
-    .page{ padding: 64px 20px 40px; }
-    .hero{ margin-bottom: 64px; }
-    .grid{ grid-template-columns: 1fr; }
-    .card{ padding: 26px 22px; }
+    .page{
+      padding: 64px 20px 40px;
+    }
+
+    .hero{
+      margin-bottom: 64px;
+    }
+
+    .grid{
+      grid-template-columns: 1fr;
+    }
+
+    .card{
+      padding: 26px 22px;
+    }
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -280,76 +285,140 @@
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
-    .hero{ opacity: 1; transform: none; }
-  }
 
+    .hero{
+      opacity: 1;
+      transform: none;
+    }
+  }
 </style>
 </head>
+
 <body>
 
-  <div class="field-shape field-shape--violet"></div>
-  <div class="field-shape field-shape--amber"></div>
+<div class="field-shape field-shape--violet"></div>
+<div class="field-shape field-shape--amber"></div>
 
-  <div class="page">
+<div class="page">
 
-    <header class="hero">
-      <div class="hero__eyebrow">
-        <span class="hero__eyebrow-dot"></span>
-        Катя · English
-      </div>
-      <h1 class="hero__title">Интерактивные уроки</h1>
-      <p class="hero__subtitle">Здесь собраны материалы для наших занятий</p>
-      <div class="hero__rule"></div>
-    </header>
+  <header class="hero">
+    <div class="hero__eyebrow">
+      <span class="hero__eyebrow-dot"></span>
+      Катя · English
+    </div>
 
-    <main>
-      <h2 class="section-label">Мои ученики</h2>
+    <h1 class="hero__title">Интерактивные уроки</h1>
 
-      <div class="grid" id="studentGrid">
-        <!-- Cards are rendered from data below -->
-      </div>
-    </main>
+    <p class="hero__subtitle">
+      Здесь собраны материалы для наших занятий
+    </p>
 
-  </div>
+    <div class="hero__rule"></div>
+  </header>
 
-  <footer class="footer">
-    <p class="footer__title">Катя · English</p>
-    <p class="footer__sub">Интерактивные материалы для наших занятий</p>
-  </footer>
+  <main>
+    <h2 class="section-label">Мои ученики</h2>
 
-  <script>
-    // Student list — order is meaningful and preserved on render.
-    // Add future students here; each becomes a card automatically.
-    var students = [
-      { name: "Самина", meta: "Русский язык · ОГЭ",        href: "./samina/",      accent: "violet" },
-      { name: "Лиза",   meta: "English · ЕГЭ · 11 класс",  href: "./lisa-ege/",    accent: "amber"  },
-      { name: "Лиза",   meta: "English",                    href: "./lisa-english/", accent: "violet" },
-      { name: "Женя",   meta: "English · 5 класс",          href: "./zhenya/",      accent: "amber"  },
-      { name: "Миша",   meta: "English",                    href: "./misha/",       accent: "violet" },
-      { name: "Настя",  meta: "Обществознание · ОГЭ",       href: "./nastya/",      accent: "amber"  }
-    ];
+    <div class="grid" id="studentGrid"></div>
+  </main>
 
-    var grid = document.getElementById("studentGrid");
+</div>
 
-    students.forEach(function(student){
-      var card = document.createElement("a");
-      card.className = "card" + (student.accent === "amber" ? " card--amber" : "");
-      card.href = student.href;
+<footer class="footer">
+  <p class="footer__title">Катя · English</p>
+  <p class="footer__sub">
+    Интерактивные материалы для наших занятий
+  </p>
+</footer>
 
-      card.innerHTML =
-        '<span class="card__mark" aria-hidden="true"></span>' +
-        '<p class="card__name">' + student.name + '</p>' +
-        '<p class="card__meta">' + student.meta + '</p>' +
-        '<span class="card__arrow" aria-hidden="true">' +
-          '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
-            '<line x1="5" y1="12" x2="19" y2="12"></line>' +
-            '<polyline points="12 5 19 12 12 19"></polyline>' +
-          '</svg>' +
-        '</span>';
+<script>
 
-      grid.appendChild(card);
-    });
-  </script>
+var students = [
+
+  {
+    name: "Самина",
+    meta: "Русский язык · ОГЭ",
+    href: "./samina/",
+    accent: "violet"
+  },
+
+  {
+    name: "Лиза",
+    meta: "English · ЕГЭ · 11 класс",
+    href: "./lisa-ege/",
+    accent: "amber"
+  },
+
+  {
+    name: "Лиза",
+    meta: "English",
+    href: "./lisa-english/",
+    accent: "violet"
+  },
+
+  {
+    name: "Женя",
+    meta: "English · 5 класс",
+    href: "./zhenya/",
+    accent: "amber"
+  },
+
+  {
+    name: "Алиса",
+    meta: "English",
+    href: "./alisa/",
+    accent: "violet"
+  },
+
+  {
+    name: "Настя",
+    meta: "Обществознание · ОГЭ",
+    href: "./nastya/",
+    accent: "amber"
+  }
+
+];
+
+var grid = document.getElementById("studentGrid");
+
+students.forEach(function(student){
+
+  var card = document.createElement("a");
+
+  card.className =
+    "card" +
+    (student.accent === "amber" ? " card--amber" : "");
+
+  card.href = student.href;
+
+  card.innerHTML =
+    '<span class="card__mark" aria-hidden="true"></span>' +
+
+    '<p class="card__name">' +
+      student.name +
+    '</p>' +
+
+    '<p class="card__meta">' +
+      student.meta +
+    '</p>' +
+
+    '<span class="card__arrow" aria-hidden="true">' +
+
+      '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+
+        '<line x1="5" y1="12" x2="19" y2="12"></line>' +
+
+        '<polyline points="12 5 19 12 12 19"></polyline>' +
+
+      '</svg>' +
+
+    '</span>';
+
+  grid.appendChild(card);
+
+});
+
+</script>
 
 </body>
 </html>
