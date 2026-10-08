@@ -1,176 +1,224 @@
 <!doctype html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Самина · Русский язык · ОГЭ</title>
 <style>
 :root{
-  --dark:#202a2d;
-  --cream:#f7f1e7;
+  --bg:#f6f0e7;
+  --ink:#202c2e;
+  --muted:#737879;
   --card:#fffdf9;
-  --gold:#c79b45;
-  --teal:#2d8c8b;
-  --brick:#b85f4d;
-  --text:#20252b;
-  --muted:#737779;
+  --line:#e7ded1;
+  --dark:#1e2c2e;
+  --gold:#c99535;
+  --mint:#dcefeb;
+  --shadow:0 8px 24px rgba(40,35,25,.07);
 }
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
   margin:0;
-  background:var(--cream);
-  color:var(--text);
+  background:var(--bg);
+  color:var(--ink);
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  line-height:1.5;
 }
-.container{max-width:900px;margin:auto;padding:18px}
+.wrap{max-width:1100px;margin:auto;padding:28px 22px 60px}
 .hero{
   background:var(--dark);
   color:#fff;
-  border-radius:26px;
-  padding:30px 24px;
-  margin-bottom:18px;
+  border-radius:0 0 42px 42px;
+  padding:42px 34px 48px;
+  margin:0 0 28px;
+  position:relative;
+  overflow:hidden;
 }
-.kicker{
-  color:#e5c46f;
-  font-size:13px;
+.hero:after{
+  content:"✦  ✧  ✦";
+  position:absolute;
+  right:28px;
+  top:25px;
+  font-size:34px;
+  opacity:.16;
+  letter-spacing:10px;
+}
+.eyebrow{
+  font-size:14px;
+  letter-spacing:.13em;
+  color:#d8b66d;
   font-weight:800;
-  letter-spacing:.09em;
-  text-transform:uppercase;
 }
 h1{
-  font-family:Georgia,serif;
-  font-size:clamp(34px,8vw,52px);
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:58px;
   line-height:1;
-  margin:9px 0 13px;
+  margin:12px 0 16px;
+  letter-spacing:-1px;
 }
-.hero p{margin:0;color:#e8eceb;font-size:16px}
-.lesson-list{display:grid;gap:12px}
-.lesson-card{
+.hero p{
+  margin:0;
+  max-width:760px;
+  color:#e4e8e7;
+  font-size:19px;
+}
+.lessons{display:grid;gap:16px}
+.lesson{
   display:flex;
   align-items:center;
-  gap:15px;
+  gap:20px;
   text-decoration:none;
-  color:var(--text);
+  color:inherit;
   background:var(--card);
-  border:1px solid #e7dfd2;
-  border-radius:20px;
-  padding:17px;
-  transition:.15s;
-  box-shadow:0 5px 18px #00000008;
+  border:1px solid var(--line);
+  border-radius:27px;
+  padding:22px 25px;
+  box-shadow:var(--shadow);
+  transition:transform .16s ease, box-shadow .16s ease;
 }
-.lesson-card:active{transform:scale(.99)}
-.lesson-number{
-  min-width:52px;
-  height:52px;
-  display:grid;
-  place-items:center;
-  border-radius:15px;
+.lesson:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 30px rgba(40,35,25,.11);
+}
+.number{
+  flex:0 0 64px;
+  height:64px;
+  border-radius:19px;
   background:var(--dark);
   color:#fff;
-  font-weight:900;
-  font-size:16px;
-}
-.lesson-content{flex:1}
-.lesson-content h2{
-  margin:0 0 4px;
-  font-family:Georgia,serif;
-  font-size:20px;
-}
-.lesson-content p{
-  margin:0;
-  color:var(--muted);
-  font-size:14px;
-  line-height:1.4;
-}
-.lesson-arrow{
-  color:var(--gold);
-  font-size:25px;
-  font-weight:700;
-}
-.badge{
-  display:inline-block;
-  margin-top:8px;
-  padding:4px 9px;
-  border-radius:999px;
-  background:#e7f3f0;
-  color:#206b69;
-  font-size:11px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
   font-weight:800;
 }
-.footer{
-  margin-top:18px;
-  background:#fffaf2;
-  border:1px solid #e7dfd2;
-  border-radius:20px;
-  padding:18px;
-  color:var(--muted);
-  font-size:13px;
+.content{flex:1;min-width:0}
+.content h2{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:28px;
+  line-height:1.15;
+  margin:0 0 5px;
 }
-@media(max-width:600px){
-  .container{padding:12px}
-  .hero{padding:24px 18px;border-radius:21px}
-  .lesson-card{padding:14px}
-  .lesson-number{min-width:47px;height:47px}
-  .lesson-content h2{font-size:18px}
+.content p{
+  margin:0;
+  color:var(--muted);
+  font-size:16px;
+}
+.status{
+  display:inline-block;
+  margin-top:10px;
+  padding:5px 11px;
+  border-radius:999px;
+  background:var(--mint);
+  color:#24706b;
+  font-size:12px;
+  font-weight:800;
+}
+.arrow{
+  flex:0 0 auto;
+  color:var(--gold);
+  font-size:34px;
+  font-weight:300;
+}
+.bottom{
+  margin-top:18px;
+  background:#fffaf1;
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:18px 22px;
+  color:var(--muted);
+}
+.bottom b{color:var(--ink)}
+.lesson.five .number{
+  background:linear-gradient(135deg,#342951,#7558d5);
+}
+.lesson.five .status{
+  background:#eee8ff;
+  color:#6248c4;
+}
+@media(max-width:700px){
+  .wrap{padding:14px 12px 40px}
+  .hero{
+    border-radius:0 0 30px 30px;
+    padding:30px 22px 34px;
+  }
+  h1{font-size:42px}
+  .hero p{font-size:16px}
+  .lesson{padding:17px 16px;gap:13px;border-radius:21px}
+  .number{flex-basis:52px;height:52px;border-radius:15px;font-size:18px}
+  .content h2{font-size:22px}
+  .content p{font-size:14px;line-height:1.4}
+  .arrow{font-size:28px}
 }
 </style>
 </head>
 
 <body>
-<div class="container">
+<div class="wrap">
 
-<section class="hero">
-  <div class="kicker">ОГЭ · русский язык</div>
+<header class="hero">
+  <div class="eyebrow">ОГЭ · РУССКИЙ ЯЗЫК</div>
   <h1>Самина</h1>
-  <p>Уроки по синтаксису и пунктуации — от базы к заданиям ОГЭ.</p>
-</section>
+  <p>Уроки по синтаксису и пунктуации — от базы к сложным заданиям ОГЭ.</p>
+</header>
 
-<section class="lesson-list">
+<main class="lessons">
 
-<a href="urok-grammaticheskaya-osnova.html" class="lesson-card">
-  <div class="lesson-number">01</div>
-  <div class="lesson-content">
-    <h2>Грамматическая основа</h2>
-    <p>Подлежащее · сказуемое · типы сказуемого · основы предложения</p>
-    <span class="badge">Урок завершён</span>
-  </div>
-  <div class="lesson-arrow">→</div>
-</a>
+  <a class="lesson" href="urok-grammaticheskaya-osnova.html">
+    <div class="number">01</div>
+    <div class="content">
+      <h2>Грамматическая основа</h2>
+      <p>Подлежащее · сказуемое · типы сказуемого · основы предложения</p>
+      <span class="status">Урок завершён</span>
+    </div>
+    <div class="arrow">→</div>
+  </a>
 
-<a href="urok2-odnosostavnye-predlozheniya.html" class="lesson-card">
-  <div class="lesson-number">02</div>
-  <div class="lesson-content">
-    <h2>Односоставные предложения</h2>
-    <p>Определённо-личные · неопределённо-личные · безличные · назывные</p>
-    <span class="badge">Урок завершён</span>
-  </div>
-  <div class="lesson-arrow">→</div>
-</a>
+  <a class="lesson" href="urok2-odnosostavnye-predlozheniya.html">
+    <div class="number">02</div>
+    <div class="content">
+      <h2>Односоставные предложения</h2>
+      <p>Определённо-личные · неопределённо-личные · безличные · назывные</p>
+      <span class="status">Урок завершён</span>
+    </div>
+    <div class="arrow">→</div>
+  </a>
 
-<a href="lesson3-odnorodnye-chleny-final.html" class="lesson-card">
-  <div class="lesson-number">03</div>
-  <div class="lesson-content">
-    <h2>Однородные члены</h2>
-    <p>Запятые при однородных членах · союзы · главные ловушки ОГЭ</p>
-    <span class="badge">Урок завершён</span>
-  </div>
-  <div class="lesson-arrow">→</div>
-</a>
+  <a class="lesson" href="lesson3-odnorodnye-chleny-final.html">
+    <div class="number">03</div>
+    <div class="content">
+      <h2>Однородные члены</h2>
+      <p>Запятые при однородных членах · союзы · главные ловушки ОГЭ</p>
+      <span class="status">Урок завершён</span>
+    </div>
+    <div class="arrow">→</div>
+  </a>
 
-<a href="lesson4.html" class="lesson-card">
-  <div class="lesson-number">04</div>
-  <div class="lesson-content">
-    <h2>Сложное предложение</h2>
-    <p>ССП · СПП · границы частей · грамматические основы · пунктуация</p>
-    <span class="badge">Новый урок</span>
-  </div>
-  <div class="lesson-arrow">→</div>
-</a>
+  <a class="lesson" href="lesson4.html">
+    <div class="number">04</div>
+    <div class="content">
+      <h2>Сложное предложение</h2>
+      <p>ССП · СПП · границы частей · грамматические основы · пунктуация</p>
+      <span class="status">Новый урок</span>
+    </div>
+    <div class="arrow">→</div>
+  </a>
 
-</section>
+  <a class="lesson five" href="lesson5-obosoblennye-konstrukcii.html">
+    <div class="number">05</div>
+    <div class="content">
+      <h2>Обособленные конструкции</h2>
+      <p>Причастные и деепричастные обороты · вводные слова · виды придаточных · сложный разбор · ОГЭ</p>
+      <span class="status">Новый урок</span>
+    </div>
+    <div class="arrow">→</div>
+  </a>
 
-<div class="footer">
-  <b>Алгоритм:</b> основы → части → связь → граница → знак.
+</main>
+
+<div class="bottom">
+  <b>Алгоритм:</b> основы → части → связь → конструкция → граница → знак.
 </div>
 
 </div>
