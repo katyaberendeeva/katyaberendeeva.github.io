@@ -7,47 +7,40 @@
 <style>
 :root{--bg:#fff7e9;--paper:#fffefa;--ink:#26345f;--muted:#6c7694;--navy:#2347a5;--yellow:#ffe07a;--line:#e9dfca;--pink:#ff8e9f;--mint:#8fe0c4;--sky:#8dd7f2}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Arial,sans-serif}
-.wrap{max-width:1100px;margin:auto;padding:28px 22px 60px}
-.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#ff8e9f,#ffb85e 52%,#ffe07a);color:#26345f;border-radius:34px;padding:42px;margin-bottom:22px}
+.wrap{max-width:980px;margin:auto;padding:20px 18px 42px}
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#ff8e9f,#ffb85e 52%,#ffe07a);color:#26345f;border-radius:24px;padding:24px 28px;margin-bottom:16px}
 .hero:after{content:"";position:absolute;width:290px;height:290px;border-radius:50%;background:#ffffff55;right:-65px;top:-125px}
 .kicker{display:inline-block;background:#fffefa;color:#26345f;border-radius:999px;padding:9px 17px;font-weight:850;position:relative;z-index:1}
-h1{font-family:Georgia,"Times New Roman",serif;font-size:58px;line-height:1.02;margin:25px 0 18px;position:relative;z-index:1}
-.hero p{font-size:22px;line-height:1.4;max-width:830px;margin:0;position:relative;z-index:1}
-.meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px;position:relative;z-index:1}
-.pill{padding:9px 16px;border-radius:999px;border:1px solid #ffffff55;background:#ffffff20;font-weight:700}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:36px;line-height:1.08;margin:12px 0 8px;position:relative;z-index:1}
+.hero p{font-size:16px;line-height:1.4;max-width:830px;margin:0;position:relative;z-index:1}
+.meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;position:relative;z-index:1}
+.pill{padding:5px 10px;border-radius:999px;border:1px solid #ffffff80;background:#ffffff55;font-weight:700;font-size:13px}
 .route{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:26px}
 .route a{text-decoration:none;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:18px;text-align:center;font-weight:800;font-size:17px}
 .route a:first-child{background:#ffe07a}.route a:nth-child(2){background:#d9f5e9}.route a:nth-child(3){background:#dff4ff}.route a:nth-child(4){background:#ffe0e8}
-.content{background:var(--paper);border:1px solid var(--line);border-radius:30px;padding:30px}
-.block{margin:0 0 20px}.block:last-child{margin-bottom:0}.block summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:14px;background:#fff0c2;border:1px solid #f4d984;border-radius:22px;padding:20px 22px;font-weight:850;font-size:22px}.block summary::-webkit-details-marker{display:none}.block summary:after{content:"＋";margin-left:auto;color:#d56b73}.block[open] summary:after{content:"−"}.block.politics summary{background:#def5e9;border-color:#bdebd5}.block.locked summary{background:#eef1f9;border-color:#dde2ef;color:#68718d;cursor:default}.block.locked summary:after{content:"🔒"}.block .block-body{padding:24px 0 0}
-h2{font-family:Georgia,"Times New Roman",serif;font-size:34px;margin:0 0 4px}
-.lead{color:var(--muted);font-size:19px;margin:0 0 22px}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 4px 16px #25315c0b}
+.content{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:20px}
+.block{margin:0 0 12px}.block:last-child{margin-bottom:0}.block summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:10px;background:#fff0c2;border:1px solid #f4d984;border-radius:16px;padding:13px 16px;font-weight:850;font-size:18px}.block summary::-webkit-details-marker{display:none}.block summary:after{content:"＋";margin-left:auto;color:#d56b73}.block[open] summary:after{content:"−"}.block.politics summary{background:#def5e9;border-color:#bdebd5}.block.locked summary{background:#eef1f9;border-color:#dde2ef;color:#68718d;cursor:default}.block.locked summary:after{content:"🔒"}.block .block-body{padding:16px 0 0}
+h2{font-family:Georgia,"Times New Roman",serif;font-size:25px;margin:0 0 4px}
+.lead{color:var(--muted);font-size:15px;margin:0 0 14px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px;box-shadow:0 4px 16px #25315c0b}
 .card.lesson10{background:#fffaf0}.card.lesson11{background:#f5f9ff}
-.num{display:inline-flex;background:var(--yellow);border-radius:13px;padding:8px 12px;font-weight:900;font-size:17px;margin-bottom:14px}
-.card h3{font-family:Georgia,"Times New Roman",serif;font-size:28px;line-height:1.12;margin:0 0 10px}
-.card p{color:var(--muted);font-size:17px;margin:0 0 15px}
+.num{display:inline-flex;background:var(--yellow);border-radius:10px;padding:5px 9px;font-weight:900;font-size:14px;margin-bottom:8px}
+.card h3{font-family:Georgia,"Times New Roman",serif;font-size:20px;line-height:1.15;margin:0 0 7px}
+.card p{color:var(--muted);font-size:14px;margin:0 0 9px}
 .tag{display:inline-block;background:#f2f4fb;border-radius:999px;padding:6px 11px;font-size:13px;font-weight:800;color:#35426f}
 .footer{text-align:center;color:var(--muted);margin-top:28px}
-@media(max-width:760px){.wrap{padding:16px 12px 40px}.hero{padding:30px 24px}h1{font-size:42px}.hero p{font-size:18px}.route{grid-template-columns:repeat(2,1fr)}.content{padding:22px}.grid{grid-template-columns:1fr}}
+@media(max-width:760px){.wrap{padding:12px 10px 30px}.hero{padding:20px 18px}h1{font-size:30px}.hero p{font-size:15px}.content{padding:14px}.grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <main class="wrap">
 <header class="hero">
 <span class="kicker">НАСТЯ · ОГЭ · ОБЩЕСТВОЗНАНИЕ</span>
-<h1>Учебные блоки ✨</h1>
-<p>Интерактивные уроки по экономике: теория → практика → задания в формате ОГЭ.</p>
+<h1>Настины уроки ✨</h1>
+<p>Обществознание: теория и практика в формате ОГЭ.</p>
 <div class="meta"><span class="pill">интерактивный формат</span><span class="pill">теория + практика</span><span class="pill">ОГЭ-срезы</span></div>
 </header>
-
-<nav class="route">
-<a href="#lessons">01–02<br>база</a>
-<a href="#lessons">03–04<br>рынок и банки</a>
-<a href="#lessons">05–06<br>спрос и производство</a>
-<a href="#lessons">07–11<br>предприятие и экономика</a>
-</nav>
 
 <section class="content" id="lessons">
 <details class="block" open>
@@ -85,10 +78,17 @@ h2{font-family:Georgia,"Times New Roman",serif;font-size:34px;margin:0 0 4px}
 </div>
 </details>
 </section>
-<section class="content" style="margin-top:20px">
+<section class="content" style="margin-top:14px">
 <details class="block politics">
-<summary>🏛️ Политика <span class="tag">уроки скоро появятся</span></summary>
-<div class="block-body"><p class="lead">Раздел готов для шести уроков. Файлы по политике пока не найдены в папке Насти; добавим ссылки, когда они появятся.</p></div>
+<summary>🏛️ Политика <span class="tag">6 уроков</span></summary>
+<div class="block-body"><div class="grid">
+<a class="card" href="politics-lesson-1.html"><span class="num">01</span><h3>Политика, власть и государство</h3><p>Человек в политическом измерении.</p><span class="tag">политика</span></a>
+<a class="card" href="politics-lesson-2.html"><span class="num">02</span><h3>Форма государства и политические режимы</h3><p>Формы правления, территориальное устройство и режимы.</p><span class="tag">политика</span></a>
+<a class="card" href="politics-lesson-3.html"><span class="num">03</span><h3>Участие граждан в политике, партии и организации</h3><p>Как граждане участвуют в политической жизни.</p><span class="tag">политика</span></a>
+<a class="card" href="politics-lesson-4.html"><span class="num">04</span><h3>Россия и Конституция</h3><p>Конституционные основы государства.</p><span class="tag">политика</span></a>
+<a class="card" href="politics-lesson-5.html"><span class="num">05</span><h3>Органы государственной власти РФ</h3><p>Система органов государственной власти России.</p><span class="tag">политика</span></a>
+<a class="card" href="politics-lesson-6.html"><span class="num">06</span><h3>Федеративное устройство и местное самоуправление</h3><p>Уровни власти и территориальное устройство.</p><span class="tag">политика</span></a>
+</div></div>
 </details>
 <details class="block locked"><summary>🤝 Человек и общество <span class="tag">скоро откроется</span></summary></details>
 <details class="block locked"><summary>👥 Социология <span class="tag">скоро откроется</span></summary></details>
