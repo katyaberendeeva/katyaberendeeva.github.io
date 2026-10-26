@@ -9,13 +9,14 @@
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,sans-serif}
 .page{max-width:1050px;margin:auto;padding:70px 28px}
-.brand{text-align:center;color:var(--muted);letter-spacing:.12em;font-weight:700}
-.dot{color:var(--violet)}
-header{text-align:center;margin:22px 0 70px}
+.brand{text-align:center;color:#3b3939;font-size:clamp(30px,4vw,44px);letter-spacing:-.035em;font-weight:800}
+.dot{display:none}
+.leaf{display:block;text-align:center;font-size:48px;line-height:1;margin:8px 0 28px}
+header{text-align:center;margin:0 0 70px}
 h1,h2{font-family:Georgia,serif;font-weight:500}
-h1{font-size:58px;margin:0 0 12px}
-header p{color:var(--muted);font-size:18px}
-.line{width:70px;height:3px;background:linear-gradient(90deg,var(--violet),var(--amber));margin:28px auto}
+h1{font-family:Arial,sans-serif;font-size:clamp(30px,4vw,44px);font-weight:800;letter-spacing:-.035em;margin:0 0 20px}
+header p{font-family:Georgia,serif;color:var(--muted);font-size:clamp(21px,2.5vw,28px);margin:0}
+.line{display:none}
 .label{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#aaa1b1;font-weight:700;margin-bottom:22px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
 .lesson{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:24px;padding:30px 28px 25px;text-decoration:none;color:inherit;box-shadow:0 12px 30px -22px #0005;min-height:250px;transition:.25s}
@@ -32,13 +33,11 @@ header p{color:var(--muted);font-size:18px}
 <body>
 <div class="page">
 
-<div class="brand"><span class="dot">●</span> Катя · English</div>
+<div class="leaf" aria-hidden="true">🌿</div>
+<div class="brand">Алиса · English</div>
 
 <header>
-<h1>Алиса</h1>
-<p>English</p>
-<div class="line"></div>
-<p>Интерактивные уроки для реальной жизни</p>
+<p>English lessons · My New Life</p>
 </header>
 
 <div class="label">Мои уроки</div>
@@ -79,6 +78,26 @@ header p{color:var(--muted);font-size:18px}
 <div class="number">04</div>
 <h2>Hotel English 🏨</h2>
 <p>A2–B1 speaking lesson. Учимся заселяться в отель, просить о нужном, решать проблемы с номером и читать текст The Ice Hotel.</p>
+<div class="footer">
+<span>60 минут · Speaking</span>
+<span class="cta">Открыть урок →</span>
+</div>
+</a>
+
+<a class="lesson" href="./alisa-lesson-5.html">
+<div class="number">05</div>
+<h2>Hotel English 2 🧳</h2>
+<p>A2–B1 speaking lesson. Продолжаем практиковать английский для путешествий: ситуации в отеле, полезная лексика и role-play.</p>
+<div class="footer">
+<span>60 минут · Speaking</span>
+<span class="cta">Открыть урок →</span>
+</div>
+</a>
+
+<a class="lesson" href="./alisa-lesson-6.html">
+<div class="number">06</div>
+<h2>Wedding Traditions Around the World 💍</h2>
+<p>A2–B1 conversation lesson. Обсуждаем свадебные традиции разных стран, культуру, праздники и свадьбу мечты.</p>
 <div class="footer">
 <span>60 минут · Speaking</span>
 <span class="cta">Открыть урок →</span>
