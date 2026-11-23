@@ -1,123 +1,388 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Алиса · English</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Катя • English — интерактивные уроки</title>
+
 <style>
-:root{--bg:#fbf8f3;--ink:#2d2933;--muted:#756e7d;--line:#e9ddcf;--violet:#8e7bc7;--amber:#c38b3b}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,sans-serif}
-.page{max-width:1050px;margin:auto;padding:70px 28px}
-.brand{text-align:center;color:#3b3939;font-size:clamp(30px,4vw,44px);letter-spacing:-.035em;font-weight:800}
-.dot{display:none}
-.leaf{display:block;text-align:center;font-size:48px;line-height:1;margin:8px 0 28px}
-header{text-align:center;margin:0 0 70px}
-h1,h2{font-family:Georgia,serif;font-weight:500}
-h1{font-family:Arial,sans-serif;font-size:clamp(30px,4vw,44px);font-weight:800;letter-spacing:-.035em;margin:0 0 20px}
-header p{font-family:Georgia,serif;color:var(--muted);font-size:clamp(21px,2.5vw,28px);margin:0}
-.line{display:none}
-.label{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#aaa1b1;font-weight:700;margin-bottom:22px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
-.lesson{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:24px;padding:30px 28px 25px;text-decoration:none;color:inherit;box-shadow:0 12px 30px -22px #0005;min-height:250px;transition:.25s}
-.lesson:hover{transform:translateY(-5px)}
-.number{color:var(--amber);font-family:Georgia,serif;font-weight:700}
-.lesson h2{font-size:28px;margin:15px 0 8px}
-.lesson p{color:var(--muted);font-size:15px;flex-grow:1}
-.footer{border-top:1px solid var(--line);padding-top:16px;display:flex;justify-content:space-between;font-size:13px;color:#aaa1b1}
-.cta{color:var(--violet);font-weight:700}
-.back{display:inline-block;margin-top:30px;color:var(--muted);text-decoration:none}
-@media(max-width:600px){h1{font-size:43px}.page{padding:42px 18px}}
+  :root{
+    --ivory: #FBF9F5;
+    --card: #FFFFFF;
+    --ink: #2A2630;
+    --ink-soft: #756E7C;
+    --ink-faint: #A79FB0;
+    --violet: #7A5AC7;
+    --violet-soft: #EFE9FA;
+    --amber: #E3A23B;
+    --amber-soft: #FBF0DC;
+    --hairline: #E9E4DD;
+    --shadow-rest: 0 1px 2px rgba(42,38,48,0.04), 0 1px 1px rgba(42,38,48,0.03);
+    --shadow-hover: 0 20px 40px -18px rgba(122,90,199,0.28), 0 6px 14px -6px rgba(42,38,48,0.08);
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body{
+    margin: 0;
+    background: var(--ivory);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  .field-shape{
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .field-shape--violet{
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle, rgba(122,90,199,0.16), rgba(122,90,199,0) 70%);
+    top: -140px;
+    right: -100px;
+  }
+
+  .field-shape--amber{
+    width: 360px;
+    height: 360px;
+    background: radial-gradient(circle, rgba(227,162,59,0.14), rgba(227,162,59,0) 70%);
+    top: 420px;
+    left: -160px;
+  }
+
+  .page{
+    position: relative;
+    z-index: 1;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 88px 32px 64px;
+  }
+
+  .hero{
+    text-align: center;
+    margin-bottom: 96px;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes rise{
+    to{
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero__eyebrow{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+    font-weight: 600;
+    margin-bottom: 28px;
+  }
+
+  .hero__eyebrow-dot{
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--violet);
+  }
+
+  .hero__title{
+    font-family: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-weight: 500;
+    font-size: clamp(38px, 6vw, 64px);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    margin: 0 0 22px;
+    color: var(--ink);
+  }
+
+  .hero__subtitle{
+    font-size: 17px;
+    color: var(--ink-soft);
+    max-width: 440px;
+    margin: 0 auto;
+  }
+
+  .hero__rule{
+    width: 56px;
+    height: 2px;
+    margin: 32px auto 0;
+    background: linear-gradient(90deg, var(--violet), var(--amber));
+    border-radius: 2px;
+  }
+
+  .section-label{
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+    color: var(--ink-faint);
+    margin: 0 0 28px;
+  }
+
+  .grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+
+  .card{
+    position: relative;
+    display: block;
+    background: var(--card);
+    border: 1px solid var(--hairline);
+    border-radius: 20px;
+    padding: 30px 26px 28px;
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    box-shadow: var(--shadow-rest);
+    transition:
+      transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 0.35s ease;
+  }
+
+  .card:hover,
+  .card:focus-visible{
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+    border-color: rgba(122,90,199,0.28);
+  }
+
+  .card:focus-visible{
+    outline: 2px solid var(--violet);
+    outline-offset: 3px;
+  }
+
+  .card__mark{
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: var(--violet-soft);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .card--amber .card__mark{
+    background: var(--amber-soft);
+  }
+
+  .card:hover .card__mark{
+    transform: scale(1.15);
+  }
+
+  .card__name{
+    position: relative;
+    font-family: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size: 26px;
+    font-weight: 500;
+    margin: 0 0 8px;
+    color: var(--ink);
+  }
+
+  .card__meta{
+    position: relative;
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .card__arrow{
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid var(--hairline);
+    margin-top: 20px;
+    transition: border-color 0.35s ease, background 0.35s ease;
+  }
+
+  .card:hover .card__arrow{
+    border-color: transparent;
+    background: var(--violet);
+  }
+
+  .card__arrow svg{
+    width: 13px;
+    height: 13px;
+    stroke: var(--ink-soft);
+    transition:
+      stroke 0.35s ease,
+      transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .card:hover .card__arrow svg{
+    stroke: #fff;
+    transform: translateX(2px);
+  }
+
+  .footer{
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 40px 32px 56px;
+    border-top: 1px solid var(--hairline);
+    margin-top: 88px;
+  }
+
+  .footer__title{
+    font-family: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
+    margin: 0 0 4px;
+  }
+
+  .footer__sub{
+    font-size: 13px;
+    color: var(--ink-faint);
+    margin: 0;
+  }
+
+  @media (max-width: 640px){
+    .page{
+      padding: 64px 20px 40px;
+    }
+
+    .hero{
+      margin-bottom: 64px;
+    }
+
+    .grid{
+      grid-template-columns: 1fr;
+    }
+
+    .card{
+      padding: 26px 22px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+
+    .hero{
+      opacity: 1;
+      transform: none;
+    }
+  }
 </style>
 </head>
+
 <body>
+
+<div class="field-shape field-shape--violet"></div>
+<div class="field-shape field-shape--amber"></div>
+
 <div class="page">
 
-<div class="leaf" aria-hidden="true">🌿</div>
-<div class="brand">Алиса · English</div>
+  <header class="hero">
+    <div class="hero__eyebrow">
+      <span class="hero__eyebrow-dot"></span>
+      Катя · English
+    </div>
 
-<header>
-<p>English lessons · My New Life</p>
-</header>
+    <h1 class="hero__title">Интерактивные уроки</h1>
 
-<div class="label">Мои уроки</div>
+    <p class="hero__subtitle">
+      Здесь собраны материалы для наших занятий
+    </p>
 
-<div class="grid">
+    <div class="hero__rule"></div>
+  </header>
 
-<a class="lesson" href="./alisa-lesson-1.html">
-<div class="number">01</div>
-<h2>Real Conversations</h2>
-<p>English for Actual Life · Bali edition. Начинаем разговор, реагируем, задаём follow-up вопросы и делимся чем-то о себе.</p>
-<div class="footer">
-<span>60 минут · Speaking</span>
-<span class="cta">Открыть урок →</span>
-</div>
-</a>
+  <main>
+    <h2 class="section-label">Мои ученики</h2>
 
-<a class="lesson" href="./alisa-lesson-2.html">
-<div class="number">02</div>
-<h2>A Day at the Beach 🌊</h2>
-<p>A2–B1 speaking lesson. Beach vocabulary, speaking practice and real-life conversation.</p>
-<div class="footer">
-<span>60 минут · Speaking</span>
-<span class="cta">Открыть урок →</span>
-</div>
-</a>
-
-<a class="lesson" href="./alisa-lesson-3.html">
-<div class="number">03</div>
-<h2>Feelings 💛</h2>
-<p>A2–B1 speaking lesson. Учимся точнее описывать эмоции, расширяем словарь чувств и обсуждаем реальные ситуации и реакции.</p>
-<div class="footer">
-<span>60 минут · Speaking</span>
-<span class="cta">Открыть урок →</span>
-</div>
-</a>
-
-<a class="lesson" href="./alisa-lesson-4.html">
-<div class="number">04</div>
-<h2>Hotel English 🏨</h2>
-<p>A2–B1 speaking lesson. Учимся заселяться в отель, просить о нужном, решать проблемы с номером и читать текст The Ice Hotel.</p>
-<div class="footer">
-<span>60 минут · Speaking</span>
-<span class="cta">Открыть урок →</span>
-</div>
-</a>
-
-<a class="lesson" href="./alisa-lesson-5.html">
-<div class="number">05</div>
-<h2>Hotel English 2 🧳</h2>
-<p>A2–B1 speaking lesson. Продолжаем практиковать английский для путешествий: ситуации в отеле, полезная лексика и role-play.</p>
-<div class="footer">
-<span>60 минут · Speaking</span>
-<span class="cta">Открыть урок →</span>
-</div>
-</a>
-
-<a class="lesson" href="./alisa-lesson-6.html">
-<div class="number">06</div>
-<h2>Wedding Traditions Around the World 💍</h2>
-<p>A2–B1 conversation lesson. Обсуждаем свадебные традиции разных стран, культуру, праздники и свадьбу мечты.</p>
-<div class="footer">
-<span>60 минут · Speaking</span>
-<span class="cta">Открыть урок →</span>
-</div>
-</a>
-
-<a class="lesson" href="./Realistic_Life_Reset_A2-B1_Lesson_updated.html">
-<div class="number">07</div>
-<h2>Realistic Life Reset 🌿</h2>
-<p>A2–B1 speaking lesson. Обсуждаем маленькие привычки, порядок в делах и пространстве, отдых, стресс и реалистичный reset без давления на себя.</p>
-<div class="footer">
-<span>60 минут · Speaking</span>
-<span class="cta">Открыть урок →</span>
-</div>
-</a>
+    <div class="grid" id="studentGrid"></div>
+  </main>
 
 </div>
 
-<a class="back" href="../">← На главную</a>
+<footer class="footer">
+  <p class="footer__title">Катя · English</p>
+  <p class="footer__sub">
+    Интерактивные материалы для наших занятий
+  </p>
+</footer>
 
-</div>
+<script>
+
+var students = [
+  { name: "Алиса", meta: "English", href: "./alisa/", accent: "violet" },
+  { name: "Ангелина", meta: "English", href: "./angelina/", accent: "amber" },
+  { name: "Лиза", meta: "English · ЕГЭ · 11 класс", href: "./lisa-ege/", accent: "violet" },
+  { name: "Лиза", meta: "English", href: "./lisa-english/", accent: "amber" },
+  { name: "Настя", meta: "Обществознание · ОГЭ", href: "./nastya/", accent: "violet" },
+  { name: "Самина", meta: "Русский язык · ОГЭ", href: "./samina/", accent: "amber" },
+  { name: "Валерия", meta: "English", href: "./valeria/", accent: "violet" }
+];
+
+var grid = document.getElementById("studentGrid");
+
+students.forEach(function(student){
+
+  var card = document.createElement("a");
+
+  card.className =
+    "card" +
+    (student.accent === "amber" ? " card--amber" : "");
+
+  card.href = student.href;
+
+  card.innerHTML =
+    '<span class="card__mark" aria-hidden="true"></span>' +
+
+    '<p class="card__name">' +
+      student.name +
+    '</p>' +
+
+    '<p class="card__meta">' +
+      student.meta +
+    '</p>' +
+
+    '<span class="card__arrow" aria-hidden="true">' +
+
+      '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+
+        '<line x1="5" y1="12" x2="19" y2="12"></line>' +
+
+        '<polyline points="12 5 19 12 12 19"></polyline>' +
+
+      '</svg>' +
+
+    '</span>';
+
+  grid.appendChild(card);
+
+});
+
+</script>
+
 </body>
 </html>
